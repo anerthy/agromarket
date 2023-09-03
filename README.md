@@ -1,2 +1,2 @@
-# agromarket
-Plataforma de promoción de productos agricolas locales
+# AgroMarket
+Plataforma para la promoción de productos agricolas locales
