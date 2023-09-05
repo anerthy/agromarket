@@ -126,5 +126,13 @@ SELECT  COD_PRODUCTOR,
         FEC_MODIFICACION
 FROM AFILIADOS;
 --=========================================================
--- ...
+-- PUBLICIDAD / ANUNCIOS
 --=========================================================
+SELECT  COD_ANUNCIO,
+        DES_ANUNCIO,
+        IMG_ANUNCIO,
+        IND_ESTADO,
+        FEC_VENCIMIENTO, -- Hasta que fecha se muestra el anuncio¿
+        FEC_CREACION,
+        FEC_MODIFICACION
+FROM ANUNCIOS;
