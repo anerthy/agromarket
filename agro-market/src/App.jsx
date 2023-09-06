@@ -3,9 +3,13 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-// import ProductsPage from "./components/ProductsPage";
 import { Card } from "./components/Card";
+// import { ProductPage } from "./pages/ProductPage";
 import { PhotoList } from "./components/PhotoList";
+
+// import { Link, BrowserRouter, Route, Switch } from "react-router-dom";
+
+// const Actividades = () => <h1>Actividades</h1>;
 
 function App() {
   const [count, setCount] = useState(0);
