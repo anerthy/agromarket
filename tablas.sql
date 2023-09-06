@@ -1,5 +1,5 @@
 --=========================================================
--- PRODUCTORES
+-- PRODUCTORES ✔️
 --=========================================================
 SELECT  COD_PRODUCTOR,      -- ID
         CED_PRODUCTOR,      -- CEDULA DEL PRODUCTOR
@@ -16,7 +16,7 @@ SELECT  COD_PRODUCTOR,      -- ID
         FEC_MODIFICACION    -- ULTIMA VEZ QUE SE MODIFICÓ EL REGISTRO
 FROM PRODUCTORES;
 --=========================================================
--- PRODUCTOS
+-- PRODUCTOS ✔️
 --=========================================================
 SELECT  COD_PRODUCTO,
         NOM_PRODUCTO,
@@ -30,7 +30,7 @@ SELECT  COD_PRODUCTO,
         FEC_MODIFICACION
 FROM PRODUCTOS;
 --=========================================================
--- ACTIVIDADES
+-- ACTIVIDADES ✔️
 --=========================================================
 SELECT  COD_ACTIVIDAD,
         NOM_ACTIVIDAD,
@@ -44,7 +44,7 @@ SELECT  COD_ACTIVIDAD,
         FEC_MODIFICACION
 FROM ACTIVIDADES;
 --=========================================================
--- USUARIOS
+-- USUARIOS ✔️
 --=========================================================
 SELECT  COD_USUARIO,
         USR_EMAIL,
@@ -57,7 +57,7 @@ SELECT  COD_USUARIO,
         FEC_MODIFICACION
 FROM USUARIOS;
 --=========================================================
--- ROLES
+-- ROLES ✔️
 --=========================================================
 SELECT  COD_ROL,
         NOM_ROL,
@@ -67,7 +67,7 @@ SELECT  COD_ROL,
         FEC_MODIFICACION
 FROM ROLES;
 --=========================================================
--- PERMISOS : que puede hacer un rol dentro de cada pagina 
+-- PERMISOS :  ✔️que puede hacer un rol dentro de cada pagina 
 --=========================================================
 SELECT  COD_PERMISO,    -- ID
         COD_ROL,        -- ID del rol
@@ -78,7 +78,7 @@ SELECT  COD_PERMISO,    -- ID
         PER_ELIMINAR    -- S-i / N-o
 FROM PERMISOS;
 --=========================================================
--- PÁGINAS (modulo en paraiso_azul)
+-- PÁGINAS (modulo en paraiso_azul) ✔️
 --=========================================================
 SELECT  COD_PAGINA,
         NOM_PAGINA,
@@ -88,13 +88,13 @@ SELECT  COD_PAGINA,
         FEC_MODIFICACION
 FROM PAGINAS;
 --=========================================================
--- MÉTODOS_PAGO : metodos de pago que maneja la plataforma
+-- MÉTODOS_PAGO :✔️ metodos de pago que maneja la plataforma
 --=========================================================
 SELECT  COD_METODO, -- SINPE / CUENTA / TARJETA / PAYPAL...
         NOM_METODO, -- SINPE MOVIL
 FROM METODOS_PAGO;
 --=========================================================
--- MÉTODOS_PAGO_PRODUCTORES : Que metodos de pago acepta el productor
+-- MÉTODOS_PAGO_PRODUCTORES  ✔️ : Que metodos de pago acepta el productor
 --=========================================================
 SELECT  COD_PRODUCTOR,
         COD_METODO,
@@ -105,7 +105,7 @@ SELECT  COD_PRODUCTOR,
         FEC_MODIFICACION
 FROM METODOS_PAGO_PRODUCTORES;
 --=========================================================
--- DONACIONES : para mostrar la info en la parte informativa
+-- DONACIONES : ✔️ para mostrar la info en la parte informativa
 --=========================================================
 SELECT  COD_DONACION,
         DES_DONACION,
@@ -114,7 +114,7 @@ SELECT  COD_DONACION,
         IND_ESTADO
 FROM DONACIONES;
 --=========================================================
--- AFILIADOS : productores que pagan la membresia
+-- AFILIADOS : productores que pagan la membresia ✔️
 --=========================================================
 SELECT  COD_PRODUCTOR,
         COD_USUARIO,
@@ -126,7 +126,7 @@ SELECT  COD_PRODUCTOR,
         FEC_MODIFICACION
 FROM AFILIADOS;
 --=========================================================
--- PUBLICIDAD / ANUNCIOS
+-- PUBLICIDAD / ANUNCIOS ✔️
 --=========================================================
 SELECT  COD_ANUNCIO,
         DES_ANUNCIO,
