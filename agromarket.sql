@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 06-09-2023 a las 04:45:56
+-- Tiempo de generación: 08-09-2023 a las 17:49:35
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -185,6 +185,28 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `personas`
+--
+
+DROP TABLE IF EXISTS `personas`;
+CREATE TABLE IF NOT EXISTS `personas` (
+  `per_cedula` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `per_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `per_apellido1` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `per_apellido2` varchar(50) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `per_direccion` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `per_telefono` varchar(15) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `usr_id` int DEFAULT NULL,
+  `per_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
+  `per_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `per_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`per_cedula`),
+  KEY `usr_id` (`usr_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productores`
 --
 
@@ -193,10 +215,6 @@ CREATE TABLE IF NOT EXISTS `productores` (
   `pdt_id` int NOT NULL AUTO_INCREMENT,
   `pdt_cedula` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
   `pdt_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pdt_apellido1` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pdt_apellido2` varchar(50) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `pdt_direccion` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `pdt_telefono` varchar(15) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `pdt_ubicacion` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `pdt_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `usr_id` int DEFAULT NULL,
