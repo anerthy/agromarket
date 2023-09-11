@@ -1,7 +1,4 @@
-import Boton from "./Boton";
-import "./ProductsPage.css";
-
-function ProductsPage() {
+export default function Products() {
   return (
     <>
       <h1>Productos</h1>
@@ -11,9 +8,6 @@ function ProductsPage() {
         exercitationem iusto, at facere soluta eligendi repellendus! Numquam nam
         temporibus debitis!
       </p>
-      <Boton texto="Ver más" link="https://bard.google.com/" />
     </>
   );
 }
-
-export default ProductsPage;
