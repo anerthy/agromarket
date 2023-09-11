@@ -14,7 +14,13 @@ const ProducerDetails = () => {
 
   return (
     <>
-      <h1>Producer details...</h1>
+      <h1>Detalles del productor #{params.id}</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus earum
+        consequatur at iure. Dignissimos cumque inventore impedit officia
+        mollitia, eum aperiam sunt accusamus esse, voluptatibus sed possimus
+        ullam deleniti doloremque?
+      </p>
     </>
   );
 };
