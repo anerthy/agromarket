@@ -1,3 +1,10 @@
+import Navbar from "./Navbar";
+
 export default function Producers() {
-  return <h1>Productores de AgroMarket</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1>Productores de AgroMarket</h1>
+    </>
+  );
 }

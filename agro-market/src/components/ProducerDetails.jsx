@@ -1,4 +1,5 @@
 import { useRoute } from "wouter";
+import Navbar from "./Navbar";
 
 const fetchProducer = async (id) => {
   const response = await fetch(`http://localhost/agromarket/producer/${id}`);
@@ -14,6 +15,7 @@ const ProducerDetails = () => {
 
   return (
     <>
+      <Navbar />
       <h1>Detalles del productor #{params.id}</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus earum

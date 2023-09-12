@@ -1,3 +1,10 @@
+import Navbar from "./Navbar";
+
 export default function Activities() {
-  return <div>Actividades</div>;
+  return (
+    <>
+      <Navbar />
+      <h1>Actividades</h1>
+    </>
+  );
 }
