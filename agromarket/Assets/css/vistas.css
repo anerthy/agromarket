@@ -1,0 +1,56 @@
+#cardgrupos{
+    /* margin: 5px; */
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+}
+#descripcion{
+    text-align: justify;
+    width:300px;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#logo{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.nombre{
+    text-align: center;
+   
+}
+.grupos_titulo{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.form-row{
+    justify-content: center;
+}
+.info{
+    text-align: justify;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+img.vis-CEMEDE {
+    width:706px;
+    height:300px; 
+    margin: 0px 0px 0px 0px;
+    /* margin-left: -10px; */
+  }
+  img.vis-CEMEDE  {
+    max-width:84%;
+    max-height:300%;
+  }
+  #cardcemede{
+    /* margin: 5px; */
+    width: 30;
+    padding: 10px;
+    margin: 4px 10px 8px 100px;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    background-color: #efefef;
+   border-radius: 10px;
+}

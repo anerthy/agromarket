@@ -1,6 +1,9 @@
+import Navbar from "./Navbar";
+
 export default function Products() {
   return (
     <>
+      <Navbar />
       <h1>Productos</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum repellat

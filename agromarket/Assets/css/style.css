@@ -1,0 +1,177 @@
+.app-sidebar__user-avatar {
+  width: 48px;
+  background: rgb(255, 255, 255);
+  padding: 6px;
+}
+.app-sidebar__toggle {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15pt;
+}
+.app-sidebar__toggle::before {
+  display: none;
+}
+.headerRegister,
+.header-primary {
+  background: #0f265c;
+  color: #fff;
+}
+.headerUpdate {
+  background: #0f265c;
+  color: #fff;
+}
+.notBlock {
+  display: none;
+}
+/*Estilos login*/
+#divLoading {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(254, 254, 255, 0.65);
+  z-index: 9999;
+  display: none;
+}
+#divLoading img {
+  width: 50px;
+  height: 50px;
+}
+.required {
+  color: red;
+  font-size: 13pt;
+  font-weight: bold;
+}
+/* style portada categoría */
+.prevPhoto {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #ccc;
+  position: relative;
+  cursor: pointer;
+  background: url(../images/uploads/portada_categoria.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin: auto;
+}
+.prevPhoto label {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.prevPhoto img {
+  width: 100%;
+  height: 100%;
+}
+.upimg,
+.notBlock {
+  display: none !important;
+}
+.errorArchivo {
+  font-size: 16px;
+  font-family: arial;
+  color: #cc0000;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.delPhoto {
+  color: #fff;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background: red;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  z-index: 10;
+}
+#tbl_list_productos img {
+  width: 50px;
+}
+.imgProductoDelete {
+  width: 175px;
+}
+
+#imgGrupo {
+  text-align: center;
+}
+#imgGrupo img {
+  width: 200px;
+  margin: auto;
+}
+#imgComunidad {
+  text-align: center;
+}
+#imgComunidad img {
+  width: 200px;
+  margin: auto;
+}
+
+#imgHospedaje {
+  text-align: center;
+}
+#imgHospedaje img {
+  width: 200px;
+  margin: auto;
+}
+#imgAlimentacion {
+  text-align: center;
+}
+#imgAlimentacion img {
+  width: 200px;
+  margin: auto;
+}
+#imgTransporte {
+  text-align: center;
+}
+#imgTransporte img {
+  width: 200px;
+  margin: auto;
+}
+
+#imgTour {
+  text-align: center;
+}
+#imgTour img {
+  width: 400px;
+  margin: auto;
+}
+
+#imgGaleria {
+  text-align: center;
+}
+#imgGaleria img {
+  width: 300px;
+  margin: auto;
+}
+
+#imgEspecie {
+  text-align: center;
+}
+#imgEspecie img {
+  width: 200px;
+  margin: auto;
+}
