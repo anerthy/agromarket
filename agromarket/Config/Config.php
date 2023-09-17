@@ -1,5 +1,5 @@
 <?php
-const BASE_URL = "http://localhost/agromarket";
+const BASE_URL = "http://localhost/agromarket/agromarket";
 
 //Zona horaria
 date_default_timezone_set('America/Costa_Rica');
