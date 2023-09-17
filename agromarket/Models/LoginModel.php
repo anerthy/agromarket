@@ -29,16 +29,16 @@ class LoginModel extends Mysql
 	{
 		$this->intIdUsuario = $iduser;
 		//BUSCAR ROLE 
-		$sql = "SELECT	u.id_usuario, 
-						u.nombre_usuario, 
-						u.correo, 
-						r.id_rol, 
-						r.nombre_rol, 
-						u.status 
-				FROM usuario as u
-				INNER JOIN rol as r
-				ON u.rol_id = r.id_rol 
-				WHERE u.id_usuario = $this->intIdUsuario";
+		$sql = "SELECT	usr_id, 
+						usr_nombre, 
+						usr_email, 
+						rol_id, 
+						rol_nombre, 
+						usr_estado 
+				FROM USUARIOS
+				INNER JOIN ROLES
+				ON USUARIOS.rol_id = ROLES.rol_id 
+				WHERE usr_id = $this->intIdUsuario";
 		$request = $this->select($sql);
 		$_SESSION['userData'] = $request;
 		return $request;
