@@ -17,11 +17,11 @@ class UsuariosModel extends Mysql
 	public function insertUsuario(string $nombre, string $correo, string $contraseña, int $tipoid, int $status)
 	{
 
-		$this->strNombre = $nombre;
-		$this->strCorreo = $correo;
-		$this->strContraseña = $contraseña;
-		$this->intTipoId = $tipoid;
-		$this->intStatus = $status;
+		$this->strNombre 		= $nombre;
+		$this->strCorreo 		= $correo;
+		$this->strContraseña 	= $contraseña;
+		$this->intTipoId 		= $tipoid;
+		$this->intStatus 		= $status;
 		$return = 0;
 
 		$sql = "SELECT	nombre_usuario 
@@ -87,29 +87,29 @@ class UsuariosModel extends Mysql
 	public function updateUsuario(int $idUsuario, string $nombre, string $correo, string $contraseña, int $tipoid, int $status)
 	{
 
-		$this->intIdUsuario = $idUsuario;
-		$this->strNombre = $nombre;
-		$this->strCorreo = $correo;
-		$this->strContraseña = $contraseña;
-		$this->intTipoId = $tipoid;
-		$this->intStatus = $status;
+		$this->intIdUsuario 	= $idUsuario;
+		$this->strNombre 		= $nombre;
+		$this->strCorreo 		= $correo;
+		$this->strContraseña	= $contraseña;
+		$this->intTipoId 		= $tipoid;
+		$this->intStatus 		= $status;
 
-		$sql = "SELECT nombre_usuario 
-				FROM usuario 
-				WHERE	(correo	=	'{$this->strCorreo}' AND 
-						id_usuario	!=	$this->intIdUsuario) OR (nombre_usuario = '{$this->strNombre}' 
-				AND 	id_usuario	!=	$this->intIdUsuario) ";
+		$sql = "SELECT usr_nombre 
+				FROM USUARIOS 
+				WHERE	(usr_email	=	'{$this->strCorreo}' AND 
+						usr_id	!=	$this->intIdUsuario) OR (usr_nombre = '{$this->strNombre}' 
+				AND 	usr_id	!=	$this->intIdUsuario) ";
 		$request = $this->select_all($sql);
 
 		if (empty($request)) {
 			if ($this->strContraseña  != "") {
-				$sql = "UPDATE usuario 
-						SET	nombre_usuario	=	?, 
-							correo			=	?, 
-							contraseña		=	?, 
+				$sql = "UPDATE usuarios 
+						SET	usr_nombre		=	?, 
+							usr_email		=	?, 
+							usr_contraseña	=	?, 
 							rol_id			=	?, 
-							status			=	? 
-						WHERE id_usuario = $this->intIdUsuario ";
+							usr_estado		=	? 
+						WHERE usr_id = $this->intIdUsuario ";
 				$arrData = array(
 					$this->strNombre,
 					$this->strCorreo,
@@ -118,12 +118,12 @@ class UsuariosModel extends Mysql
 					$this->intStatus
 				);
 			} else {
-				$sql = "UPDATE usuario 
-						SET nombre_usuario	=	?, 
-							correo			=	?, 
+				$sql = "UPDATE usuarios 
+						SET usr_nombre		=	?, 
+							usr_email		=	?, 
 							rol_id			=	?, 
-							status			=	? 
-						WHERE id_usuario 	= 	$this->intIdUsuario ";
+							usr_estado		=	? 
+						WHERE usr_id = $this->intIdUsuario ";
 				$arrData = array(
 					$this->strNombre,
 					$this->strCorreo,
@@ -140,8 +140,8 @@ class UsuariosModel extends Mysql
 	public function deleteUsuario(int $intIdusuario)
 	{
 		$this->intIdUsuario = $intIdusuario;
-		$sql = "DELETE FROM usuario 
-				WHERE id_usuario = $this->intIdUsuario ";
+		$sql = "DELETE FROM usuarios 
+				WHERE usr_id = $this->intIdUsuario ";
 		$request = $this->delete($sql);
 		return $request;
 	}

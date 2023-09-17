@@ -47,13 +47,15 @@ class LoginModel extends Mysql
 	public function getUserEmail(string $strEmail)
 	{
 		$this->strUsuario = $strEmail;
-		$sql = "SELECT 	id_usuario,
-						nombre_usuario,
-						correo,
-						status 
-				FROM usuario 
-				WHERE correo = '$this->strUsuario' 
-				AND status = 1 ";
+		$sql = "SELECT
+					usr_id,
+					usr_nombre,
+					usr_email,
+					usr_estado
+				FROM
+					USUARIOS 
+				WHERE usr_email = '$this->strUsuario' 
+				  AND usr_estado = 'Activo' ";
 		$request = $this->select($sql);
 		return $request;
 	}
@@ -62,9 +64,9 @@ class LoginModel extends Mysql
 	{
 		$this->intIdUsuario = $id_usuario;
 		$this->strToken = $token;
-		$sql = "UPDATE usuario 
-				SET token = ? 
-				WHERE id_usuario = $this->intIdUsuario ";
+		$sql = "UPDATE USUARIOS 
+				SET usr_token = ? 
+				WHERE usr_id = $this->intIdUsuario ";
 		$arrData = array($this->strToken);
 		$request = $this->update($sql, $arrData);
 		return $request;
@@ -74,11 +76,11 @@ class LoginModel extends Mysql
 	{
 		$this->strUsuario = $email;
 		$this->strToken = $token;
-		$sql = "SELECT id_usuario 
-				FROM usuario 
-				WHERE correo = '$this->strUsuario' 
-				AND token = '$this->strToken' 
-				AND status = 1 ";
+		$sql = "SELECT usr_id 
+				FROM USUARIOS 
+				WHERE usr_email 	= '$this->strUsuario' 
+				  AND usr_token		= '$this->strToken' 
+				  AND usr_estado 	= 'Activo' ";
 		$request = $this->select($sql);
 		return $request;
 	}
@@ -87,10 +89,10 @@ class LoginModel extends Mysql
 	{
 		$this->intIdUsuario = $idUsuario;
 		$this->strPassword = $password;
-		$sql = "UPDATE usuario 
-				SET contraseña = ?, 
-					token = ? 
-				WHERE id_usuario = $this->intIdUsuario ";
+		$sql = "UPDATE usuarios 
+				SET usr_contrasena 	= ?, 
+					usr_token 		= ? 
+				WHERE usr_id = $this->intIdUsuario ";
 		$arrData = array($this->strPassword, "");
 		$request = $this->update($sql, $arrData);
 		return $request;
