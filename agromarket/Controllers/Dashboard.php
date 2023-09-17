@@ -7,7 +7,7 @@ class Dashboard extends Controllers
 	{
 		sessionStart();
 		parent::__construct();
-	
+
 		if (empty($_SESSION['login'])) {
 			header('Location: ' . base_url() . '/login');
 		}
@@ -23,7 +23,7 @@ class Dashboard extends Controllers
 		$data['page_tag']	=	"Panel de control";
 		$data['page_title']	=	"Panel de control";
 		$data['page_name']	=	"Panel de control";
-		$data['modulos']	=	$this->countRegistrosT();
+		// $data['modulos']	=	$this->countRegistrosT();
 		$this->views->getView($this, "dashboard", $data);
 	}
 }
