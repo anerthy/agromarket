@@ -126,7 +126,7 @@ headerAdmin($data);
                 <b>1</b>
                 <?php
                 if (
-                  $arrModulos[6]['Pendientes'] > 0 &&
+                  1 > 0 &&
                   (in_array($_SESSION['userData']['rol_id'], [1, 2, 3]))
                 ) {
                 ?>
