@@ -1,5 +1,4 @@
 <?php
-
 class RolModel extends Mysql
 {
 	public $intId;
@@ -19,7 +18,11 @@ class RolModel extends Mysql
 		// 	$whereAdmin = " WHERE id_rol != 1 ";
 		// }
 		//EXTRAE ROLES
-		$sql = "SELECT * 
+		$sql = "SELECT 
+					rol_id,
+					rol_nombre,
+					rol_descripcion,
+					rol_estado  
 				FROM ROLES ";
 		$request = $this->select_all($sql);
 		return $request;
@@ -28,16 +31,19 @@ class RolModel extends Mysql
 	public function getById(int $id)
 	{
 		$this->intId = $id;
-		$sql = "SELECT * 
-				FROM rol 
-				WHERE id_rol = $this->intId";
+		$sql = "SELECT 
+					rol_id,
+					rol_nombre,
+					rol_descripcion,
+					rol_estado 
+				FROM roles 
+				WHERE rol_id = $this->intId";
 		$request = $this->select($sql);
 		return $request;
 	}
 
 	public function insertRol(string $rol, string $descripcion, int $estado)
 	{
-
 		$return = "";
 		$this->strNombre 		= $rol;
 		$this->strDescripcion 	= $descripcion;

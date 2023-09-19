@@ -22,45 +22,37 @@ class Rol extends Controllers
 		$data['page_tag'] = "Roles de Usuario";
 		$data['page_name'] = "rol_usuario";
 		$data['page_title'] = "Roles";
-		$data['page_functions_js'] = "functions_roles.js";
-		$this->views->getView($this, "roles", $data);
+		$data['page_functions_js'] = "functions_rol.js";
+		$this->views->getView($this, "rol", $data);
 	}
 
-	public function getRoles()
+	public function getAll()
 	{
-		if ($_SESSION['permisosMod']['ver']) {
-			$btnView = '';
-			$btnEdit = '';
-			$btnDelete = '';
-			$arrData = $this->model->selectRoles();
+		//if ($_SESSION['permisosMod']['ver']) {
+		$btnView = '';
+		$btnEdit = '';
+		$btnDelete = '';
+		$arrData = $this->model->selectRoles();
 
-			for ($i = 0; $i < count($arrData); $i++) {
-				// boton de actualizar
-				if ($_SESSION['permisosMod']['actualizar']) {
-					$btnView = '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol(' . $arrData[$i]['id_rol'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
-					$btnEdit = '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos(' . $arrData[$i]['id_rol'] . ')" title="Permisos"><i class="fas fa-key"></i></button>';
-				}
+		for ($i = 0; $i < count($arrData); $i++) {
+			$btnView 	= '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol(' . $arrData[$i]['rol_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
+			$btnEdit 	= '<button class="btn btn-secondary btn-sm btnPermisosRol" onClick="fntPermisos(' . $arrData[$i]['rol_id'] . ')" title="Permisos"><i class="fas fa-key"></i></button>';
+			$btnDelete 	= '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol(' . $arrData[$i]['rol_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
 
-				// boton de eliminar
-				if ($_SESSION['permisosMod']['eliminar']) {
-					$btnDelete = '<button class="btn btn-danger btn-sm btnDelRol" onClick="fntDelRol(' . $arrData[$i]['id_rol'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
-				}
+			$arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDelete . '</div>';
 
-				$arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDelete . '</div>';
-
-				if ($arrData[$i]['id_rol'] == 1) {
-					$arrData[$i]['options'] = '<center><span class="badge">No hay acciones</span></center>';
-				}
-
-				// estado
-				if ($arrData[$i]['status'] == 1) {
-					$arrData[$i]['status'] = '<span class="badge badge-success">Activo</span>';
-				} else {
-					$arrData[$i]['status'] = '<span class="badge badge-danger">Inactivo</span>';
-				}
+			if ($arrData[$i]['rol_id'] == 1) {
+				$arrData[$i]['options'] = '<center><span class="badge">No hay acciones</span></center>';
 			}
-			echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+
+			if ($arrData[$i]['rol_estado'] == 'Activo') {
+				$arrData[$i]['rol_estado'] = '<span class="badge badge-info">Activo</span>';
+			} else {
+				$arrData[$i]['rol_estado'] = '<span class="badge badge-danger">Inactivo</span>';
+			}
 		}
+		echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+		//}
 		die();
 	}
 
@@ -79,11 +71,11 @@ class Rol extends Controllers
 		die();
 	}
 
-	public function getRol($idrol)
+	public function getById($id)
 	{
-		$intIdrol = intval(strClean($idrol));
-		if ($intIdrol > 0) {
-			$arrData = $this->model->selectRol($intIdrol);
+		$intId = intval(strClean($id));
+		if ($intId > 0) {
+			$arrData = $this->model->selectRol($intId);
 			if (empty($arrData)) {
 				$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
 			} else {
@@ -97,18 +89,18 @@ class Rol extends Controllers
 	public function setRol()
 	{
 
-		$intIdrol = intval($_POST['idRol']);
-		$strRol =  strClean($_POST['txtNombre']);
-		$strDescipcion = strClean($_POST['txtDescripcion']);
-		$intStatus = intval($_POST['listStatus']);
+		$intId 			= intval($_POST['idRol']);
+		$strNombre 		= strClean($_POST['txtNombre']);
+		$strDescipcion 	= strClean($_POST['txtDescripcion']);
+		$strEstado 		= intval($_POST['listEstado']);
 
-		if ($intIdrol == 0) {
+		if ($intId == 0) {
 			//Crear
-			$request_rol = $this->model->insertRol($strRol, $strDescipcion, $intStatus);
+			$request_rol = $this->model->insertRol($strNombre, $strDescipcion, $strEstado);
 			$option = 1;
 		} else {
 			//Actualizar
-			$request_rol = $this->model->updateRol($intIdrol, $strRol, $strDescipcion, $intStatus);
+			$request_rol = $this->model->updateRol($intId, $strNombre, $strDescipcion, $strEstado);
 			$option = 2;
 		}
 
@@ -128,11 +120,11 @@ class Rol extends Controllers
 		die();
 	}
 
-	public function delRol()
+	public function delete()
 	{
 		if ($_POST) {
-			$intIdrol = intval($_POST['id_rol']);
-			$requestDelete = $this->model->deleteRol($intIdrol);
+			$intId = intval($_POST['rol_id']);
+			$requestDelete = $this->model->deleteRol($intId);
 			if ($requestDelete == 'ok') {
 				$arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el Rol');
 			} else if ($requestDelete == 'exist') {
