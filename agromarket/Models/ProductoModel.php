@@ -10,29 +10,26 @@ class ProductoModel extends Mysql
     public $strImagen;
     public $intIdProductor;
     public $strEstado;
-    //public $strFechaCreacion;
-   //public $strFechaModificacion;
     public $intIdUsuario;
-
 
     public function __construct()
     {
         parent::__construct();
     }
 
-    /*public function selectProductos()
+    public function getAll()
     {
-        $isAdmin = " AND alim_estado IN (2,3) 
-        AND bit_usuario = {$_SESSION['idUser']}";
+        // $isAdmin = " AND alim_estado IN (2,3) 
+        // AND bit_usuario = {$_SESSION['idUser']}";
 
-        $roles = array(2, 3, 4); // Administrador Desarrollador y Supervisor
-        if (in_array($_SESSION['userData']['id_rol'], $roles)) {
-            $isAdmin = " AND alim_estado IN (1,2,3)";
-        }
+        // $roles = array(2, 3, 4); // Administrador Desarrollador y Supervisor
+        // if (in_array($_SESSION['userData']['id_rol'], $roles)) {
+        //     $isAdmin = " AND alim_estado IN (1,2,3)";
+        // }
 
-        if ($_SESSION['userData']['id_rol'] == 1) {
-            $isAdmin = " ";
-        }
+        // if ($_SESSION['userData']['id_rol'] == 1) {
+        //     $isAdmin = " ";
+        // }
 
         $sql = "SELECT  
                     pro_id,
@@ -46,49 +43,49 @@ class ProductoModel extends Mysql
                     usr_id
                 FROM productos
                 WHERE pro_estado = 'Activo' 
-                and pro_id = ";
+                and pro_id = $this->intIdProducto";
         $request = $this->select_all($sql);
         return $request;
     }
 
-    public function getByid(int $alim_id)
+    public function getByid(int $id)
     {
-        $this->intIdAlimentacion = $alim_id;
-        $sql = "SELECT alim_id, 
-                alim_nombre, 
-                alim_descripcion, 
-                alim_direccion, 
-                DATE_FORMAT(alim_hora_apertura, '%h:%i') AS alim_hora_apertura, 
-                DATE_FORMAT(alim_hora_cierre, '%h:%i') AS alim_hora_cierre, 
-                alim_telefono, 
-                alim_imagen, 
-                alim_estado 
-                FROM alimentaciones 
-                WHERE alim_id = $this->intIdAlimentacion";
+        $this->intIdProducto = $id;
+        $sql = "SELECT 
+                    pro_id,
+                    pro_nombre,
+                    pro_descripcion,
+                    pro_categoria,
+                    pro_precio,
+                    pro_imagen,
+                    pdt_id,
+                    pro_estado,
+                    usr_id
+                FROM productos 
+                WHERE pro_id = $this->intIdProducto";
         $request = $this->select($sql);
         return $request;
-    }*/
+    }
 
     public function insertProducto(
-        //string $id,
         string $nombre,
         string $descripcion,
         string $categoria,
         string $precio,
         string $imagen,
-        //string $id, 
+        string $productor,
         string $estado,
-        //string $id, 
-       
+        string $usuario
     ) {
         $return = "";
-        $this->strNombre = $nombre;
-        $this->strDescripcion = $descripcion;
-        $this->strCategoria = $categoria;
-        $this->strPrecio = $precio;
-        $this->strImagen = $imagen;
-        $this->strEstado = $estado;
-    
+        $this->strNombre        = $nombre;
+        $this->strDescripcion   = $descripcion;
+        $this->strCategoria     = $categoria;
+        $this->intPrecio        = $precio;
+        $this->strImagen        = $imagen;
+        $this->intIdProductor   = $productor;
+        $this->strEstado        = $estado;
+        $this->intIdUsuario     = $usuario;
 
         $sql = "SELECT pro_nombre 
                 FROM productos 
@@ -96,23 +93,27 @@ class ProductoModel extends Mysql
         $request = $this->select_all($sql);
 
         if (empty($request)) {
-            $query_insert  = "INSERT INTO productos
-                            (pro_nombre, 
-                            pro_descripcion, 
-                            pro_categoria, 
-                            pro_precio, 
-                            pro_imagen, 
-                            pro_estado, 
+            $query_insert  = "INSERT INTO productos(
+                                pro_nombre, 
+                                pro_descripcion, 
+                                pro_categoria, 
+                                pro_precio, 
+                                pro_imagen, 
+                                pdt_id,
+                                pro_estado,
+                                usr_id 
                             ) 
-                            VALUES(?,?,?,?,?,?)";
+                            VALUES(?,?,?,?,?,?,?,?)";
 
             $arrData = array(
                 $this->strNombre,
                 $this->strDescripcion,
                 $this->strCategoria,
-                $this->strPrecio,
+                $this->intPrecio,
                 $this->strImagen,
-                $this->strEstado
+                $this->intIdProductor,
+                $this->strEstado,
+                $this->intIdUsuario
             );
             $request_insert = $this->insert($query_insert, $arrData);
         } else {
@@ -121,20 +122,27 @@ class ProductoModel extends Mysql
         return $return;
     }
 
-    public function updateProducto(int $pro_id, string $nombre, string $descripcion, string $categoria, string $precio, string $imagen, string $ptd_id, string $estado, int $fec_creacion, int $fec_modificacion, int $usr_id)
-    {
-        $this->intIProducto = $pro_id;
-        $this->strNombre = $nombre;
-        $this->strDescripcion = $descripcion;
-        $this->strCategoria = $categoria;
-        $this->strPrecio = $precio;
-        $this->strImagen = $imagen;
-        $this->strIdProductor = $pdt_id;
-        $this->intEstado = $estado;
-        $this->strFechaCreacion = $fec_creacion;
-        $this->strFechaModificacion = $fec_modificacion;
-        $this->strIdUsuario = $usr_id;
-      
+    public function updateProducto(
+        int     $id,
+        string $nombre,
+        string $descripcion,
+        string $categoria,
+        string $precio,
+        string $imagen,
+        string $productor,
+        string $estado,
+        string $usuario
+    ) {
+        $this->intIdProducto    = $id;
+        $this->strNombre        = $nombre;
+        $this->strDescripcion   = $descripcion;
+        $this->strCategoria     = $categoria;
+        $this->intPrecio        = $precio;
+        $this->strImagen        = $imagen;
+        $this->intIdProductor   = $productor;
+        $this->strEstado        = $estado;
+        $this->intIdUsuario     = $usuario;
+
 
 
         $sql = "SELECT pro_id 
@@ -145,27 +153,35 @@ class ProductoModel extends Mysql
 
         if (empty($request)) {
             $sql = "UPDATE productos 
-                    SET pro_nombre = ?, 
+                    SET pro_nombre      = ?, 
                         pro_descripcion = ?, 
-                        pro_categoria = ?, 
-                        pro_precio = ?, 
-                        pro_imagen = ?, 
-                        pro_estado = ?
-                
-        
+                        pro_categoria   = ?, 
+                        pro_precio      = ?, 
+                        pro_imagen      = ?,
+                        pdt_id          = ?, 
+                        pro_estado      = ?,
+                        usr_id          = ?
                     WHERE pro_id = $this->intIdProducto ";
-            $arrData = array($this->strNombre, $this->strDescripcion, $this->strCategoria, $this->Precio, $this->strImagen, $this->intEstado);
+            $arrData = array(
+                $this->strNombre,
+                $this->strDescripcion,
+                $this->strCategoria,
+                $this->intPrecio,
+                $this->strImagen,
+                $this->intIdProductor,
+                $this->strEstado,
+                $this->intIdUsuario
+            );
             $request = $this->update($sql, $arrData);
-
         } else {
             $request = "exist";
         }
         return $request;
     }
 
-    public function disableProducto(int $alim_id)
+    public function disableProducto(int $id)
     {
-        $this->intIdProducto = $pro_id;
+        $this->intIdProducto = $id;
         $sql = "UPDATE productos 
                 SET pro_estado = 'Eliminado' 
                 WHERE pro_id = $this->intIdProducto";
@@ -174,9 +190,9 @@ class ProductoModel extends Mysql
         return $request;
     }
 
-    public function deleteProducto(int $pro_id)
+    public function deleteProducto(int $id)
     {
-        $this->intIdProducto = $pro_id;
+        $this->intIdProducto = $id;
         $sql = "DELETE FROM productos 
                 WHERE pro_id = $this->intIdProducto";
         $request = $this->delete($sql);
