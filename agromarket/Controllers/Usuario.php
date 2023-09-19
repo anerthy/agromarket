@@ -98,7 +98,7 @@ class Usuario extends Controllers
 			$btnDelete = '';
 
 			if ($arrData[$i]['usr_estado'] == 'Activo') {
-				$arrData[$i]['usr_estado'] = '<span class="badge badge-success">Activo</span>';
+				$arrData[$i]['usr_estado'] = '<span class="badge badge-info">Activo</span>';
 			} else {
 				$arrData[$i]['usr_estado'] = '<span class="badge badge-danger">Inactivo</span>';
 			}
