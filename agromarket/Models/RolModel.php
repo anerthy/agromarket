@@ -2,10 +2,10 @@
 
 class RolModel extends Mysql
 {
-	public $intIdrol;
-	public $strRol;
+	public $intId;
+	public $strNombre;
 	public $strDescripcion;
-	public $intStatus;
+	public $strEstado;
 
 	public function __construct()
 	{
@@ -25,33 +25,41 @@ class RolModel extends Mysql
 		return $request;
 	}
 
-	public function selectRol(int $idrol)
+	public function getById(int $id)
 	{
-		//BUSCAR ROLE
-		$this->intIdrol = $idrol;
+		$this->intId = $id;
 		$sql = "SELECT * 
 				FROM rol 
-				WHERE id_rol = $this->intIdrol";
+				WHERE id_rol = $this->intId";
 		$request = $this->select($sql);
 		return $request;
 	}
 
-	public function insertRol(string $rol, string $descripcion, int $status)
+	public function insertRol(string $rol, string $descripcion, int $estado)
 	{
 
 		$return = "";
-		$this->strRol = $rol;
-		$this->strDescripcion = $descripcion;
-		$this->intStatus = $status;
+		$this->strNombre 		= $rol;
+		$this->strDescripcion 	= $descripcion;
+		$this->strEstado 		= $estado;
 
 		$sql = "SELECT * 
-				FROM rol 
-				WHERE nombre_rol = '{$this->strRol}' ";
+				FROM roles 
+				WHERE rol_nombre = '{$this->strNombre}' ";
 		$request = $this->select_all($sql);
 
 		if (empty($request)) {
-			$query_insert  = "INSERT INTO rol(nombre_rol,descripcion,status) VALUES(?,?,?)";
-			$arrData = array($this->strRol, $this->strDescripcion, $this->intStatus);
+			$query_insert  = 	"INSERT INTO roles (
+										rol_nombre, 
+										rol_descripcion, 
+										rol_estado
+								) 
+								VALUES(?,?,?)";
+			$arrData = array(
+				$this->strNombre,
+				$this->strDescripcion,
+				$this->strEstado
+			);
 			$request_insert = $this->insert($query_insert, $arrData);
 			$return = $request_insert;
 		} else {
@@ -60,25 +68,30 @@ class RolModel extends Mysql
 		return $return;
 	}
 
-	public function updateRol(int $idrol, string $rol, string $descripcion, int $status)
+	public function updateRol(int $id, string $rol, string $descripcion, int $estado)
 	{
-		$this->intIdrol = $idrol;
-		$this->strRol = $rol;
-		$this->strDescripcion = $descripcion;
-		$this->intStatus = $status;
+		$this->intId 			= $id;
+		$this->strNombre 		= $rol;
+		$this->strDescripcion 	= $descripcion;
+		$this->strEstado 		= $estado;
 
-		$sql = "SELECT * FROM rol 
-				WHERE	nombre_rol	=	'$this->strRol' AND 
-						id_rol		!=	$this->intIdrol";
+		$sql = "SELECT * 
+				FROM roles 
+				WHERE	rol_nombre	=	'$this->strNombre' AND 
+						id_rol		!=	$this->intId";
 		$request = $this->select_all($sql);
 
 		if (empty($request)) {
-			$sql = "UPDATE rol 
-					SET nombre_rol 	=	?, 
-						descripcion =	?, 
-						status 		=	? 
-					WHERE id_rol	= $this->intIdrol ";
-			$arrData = array($this->strRol, $this->strDescripcion, $this->intStatus);
+			$sql = "UPDATE roles 
+					SET rol_nombre 		=	?, 
+						rol_descripcion =	?, 
+						rol_estado		=	? 
+					WHERE rol_id = $this->intId ";
+			$arrData = array(
+				$this->strNombre,
+				$this->strDescripcion,
+				$this->strEstado
+			);
 			$request = $this->update($sql, $arrData);
 		} else {
 			$request = "exist";
@@ -86,15 +99,17 @@ class RolModel extends Mysql
 		return $request;
 	}
 
-	public function deleteRol(int $idrol)
+	public function deleteRol(int $id)
 	{
-		$this->intIdrol = $idrol;
-		$sql = "SELECT * FROM usuario 
-				WHERE rol_id = $this->intIdrol";
+		$this->intId = $id;
+		$sql = "SELECT usr_id 
+				FROM usuarios 
+				WHERE rol_id = $this->intId";
 		$request = $this->select_all($sql);
+
 		if (empty($request)) {
-			$sql = "DELETE FROM rol 
-					WHERE id_rol = $this->intIdrol";
+			$sql = "DELETE FROM roles 
+					WHERE rol_id = $this->intId";
 			$request = $this->delete($sql);
 			if ($request) {
 				$request = 'ok';
