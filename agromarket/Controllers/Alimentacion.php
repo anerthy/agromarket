@@ -4,20 +4,20 @@ class Alimentacion extends Controllers
 {
     public function __construct()
     {
-        sessionStart();
+        // sessionStart();
         parent::__construct();
         
-        if (empty($_SESSION['login'])) {
-            header('Location: ' . base_url() . '/login');
-        }
-        getPermisos(6);
+        // if (empty($_SESSION['login'])) {
+        //     header('Location: ' . base_url() . '/login');
+        // }
+        // getPermisos(6);
     }
 
     public function Alimentacion()
     {
-        if (empty($_SESSION['permisosMod']['ver'])) {
-            header("Location:" . base_url() . '/access_denied');
-        }
+        // if (empty($_SESSION['permisosMod']['ver'])) {
+        //     header("Location:" . base_url() . '/access_denied');
+        // }
         $data['page_id'] = 6;
         $data['page_tag'] = "Servicios de Alimentación";
         $data['page_name'] = "alimentacion";

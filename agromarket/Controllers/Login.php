@@ -2,8 +2,6 @@
 
 class Login extends Controllers
 {
-
-
 	public function __construct()
 	{
 		session_start();
@@ -15,8 +13,8 @@ class Login extends Controllers
 
 	public function login()
 	{
-		$data['page_tag']			=	"Login - Paraíso Azul";
-		$data['page_title'] 		=	"Paraíso Azul";
+		$data['page_tag']			=	"Login";
+		$data['page_title'] 		=	"AgroMarket";
 		$data['page_name']			=	"login";
 		$data['page_functions_js'] 	=	"functions_login.js";
 		$this->views->getView($this, "login", $data);
@@ -24,7 +22,6 @@ class Login extends Controllers
 
 	public function loginUser()
 	{
-
 		if ($_POST) {
 			if (empty($_POST['txtEmail']) || empty($_POST['txtPassword'])) {
 				$arrResponse = array('status' => false, 'msg' => 'Error de datos');
@@ -36,14 +33,14 @@ class Login extends Controllers
 					$arrResponse = array('status' => false, 'msg' => 'El correo o la contraseña son incorrectos.');
 				} else {
 					$arrData = $requestUser;
-					if ($arrData['status'] == 1) {
-						$_SESSION['idUser']		=	$arrData['id_usuario'];
+					if ($arrData['usr_estado'] == 'Activo') {
+						$_SESSION['usr_id']		=	$arrData['usr_id'];
 						$_SESSION['login']		=	true;
 						$_SESSION['timeout']	=	true;
 						$_SESSION['inicio']		=	time();
 
-						$arrData = $this->model->sessionLogin($_SESSION['idUser']);
-						sessionUser($_SESSION['idUser']);
+						$arrData = $this->model->sessionLogin($_SESSION['usr_id']);
+						sessionUser($_SESSION['usr_id']);
 						$arrResponse = array('status' => true, 'msg' => 'ok');
 					} else {
 						$arrResponse = array('status' => false, 'msg' => 'Usuario inactivo.');
@@ -70,8 +67,8 @@ class Login extends Controllers
 				if (empty($arrData)) {
 					$arrResponse = array('status' => false, 'msg' => 'Usuario no existente.');
 				} else {
-					$id_usuario = $arrData['id_usuario'];
-					$nombreUsuario = $arrData['nombre_usuario'];
+					$id_usuario = $arrData['usr_id'];
+					$nombreUsuario = $arrData['usr_nombre'];
 
 					$url_recovery = base_url() . '/login/confirmUser/' . $strEmail . '/' . $token;
 					$requestUpdate = $this->model->setTokenUser($id_usuario, $token);
@@ -124,9 +121,9 @@ class Login extends Controllers
 				$data['page_tag'] = "Cambiar contraseña";
 				$data['page_name'] = "cambiar_contrasenia";
 				$data['page_title'] = "Cambiar Contraseña";
-				$data['correo'] = $strEmail;
-				$data['token'] = $strToken;
-				$data['id_usuario'] = $arrResponse['id_usuario'];
+				$data['usr_correo'] = $strEmail;
+				$data['usr_token'] = $strToken;
+				$data['usr_id'] = $arrResponse['usr_id'];
 				$data['page_functions_js'] = "functions_login.js";
 				$this->views->getView($this, "cambiar_password", $data);
 			}
@@ -137,14 +134,20 @@ class Login extends Controllers
 	public function setPassword()
 	{
 
-		if (empty($_POST['idUsuario']) || empty($_POST['txtEmail']) || empty($_POST['txtToken']) || empty($_POST['txtPassword']) || empty($_POST['txtPasswordConfirm'])) {
+		if (
+			empty($_POST['usr_id']) ||
+			empty($_POST['txtEmail']) ||
+			empty($_POST['txtToken']) ||
+			empty($_POST['txtPassword']) ||
+			empty($_POST['txtPasswordConfirm'])
+		) {
 
 			$arrResponse = array(
 				'status' => false,
 				'msg' => 'Error de datos'
 			);
 		} else {
-			$intIdusuario = intval($_POST['idUsuario']);
+			$intIdusuario = intval($_POST['usr_id']);
 			$strPassword = $_POST['txtPassword'];
 			$strPasswordConfirm = $_POST['txtPasswordConfirm'];
 			$strEmail = strClean($_POST['txtEmail']);
@@ -160,7 +163,7 @@ class Login extends Controllers
 				if (empty($arrResponseUser)) {
 					$arrResponse = array(
 						'status' => false,
-						'msg' => 'Erro de datos.'
+						'msg' => 'Error de datos.'
 					);
 				} else {
 					$strPassword = hash("SHA256", $strPassword);
