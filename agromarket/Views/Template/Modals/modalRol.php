@@ -12,7 +12,7 @@
         <div class="tile">
           <div class="tile-body">
             <form id="formRol" name="formRol">
-              <input type="hidden" id="idRol" name="idRol" value="">
+              <input type="hidden" id="rol_id" name="rol_id" value="">
               <div class="form-group">
                 <label class="control-label">Nombre</label>
                 <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Nombre del rol" required="">
@@ -24,9 +24,9 @@
 
               <div class="form-group">
                 <label for="exampleSelect1">Estado</label>
-                <select class="form-control" id="listStatus" name="listStatus" required="">
-                  <option value="1">Activo</option>
-                  <option value="2">Inactivo</option>
+                <select class="form-control" id="listEstado" name="listEstado" required="">
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
                 </select>
               </div>
 

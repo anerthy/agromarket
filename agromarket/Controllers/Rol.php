@@ -32,7 +32,7 @@ class Rol extends Controllers
 		$btnView = '';
 		$btnEdit = '';
 		$btnDelete = '';
-		$arrData = $this->model->selectRoles();
+		$arrData = $this->model->getAll();
 
 		for ($i = 0; $i < count($arrData); $i++) {
 			$btnView 	= '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol(' . $arrData[$i]['rol_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
