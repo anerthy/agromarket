@@ -22,7 +22,7 @@ class UsuarioModel extends Mysql
 		string 	$contrasena,
 		string 	$rol,
 		string 	$cedula,
-		int 	$estado
+		string 	$estado
 	) {
 
 		$this->strEmail 		= $email;
@@ -121,7 +121,7 @@ class UsuarioModel extends Mysql
 		string 	$contrasena,
 		string 	$rol,
 		string 	$cedula,
-		int 	$estado
+		string 	$estado
 	) {
 
 		$this->intId 			= $id;
