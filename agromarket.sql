@@ -3,18 +3,22 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 08-09-2023 a las 17:49:35
+-- Tiempo de generación: 19-09-2023 a las 04:25:28
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+
 START TRANSACTION;
+
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+
 /*!40101 SET NAMES utf8mb4 */;
 
 --
@@ -27,22 +31,23 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `actividades`
 --
 
-DROP TABLE IF EXISTS `actividades`;
-CREATE TABLE IF NOT EXISTS `actividades` (
-  `act_id` int NOT NULL AUTO_INCREMENT,
-  `act_nombre` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `act_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `act_fecha` date NOT NULL,
-  `act_lugar` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `act_categoria` varchar(50) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `act_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `act_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `act_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `act_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `usr_id` int DEFAULT NULL,
-  PRIMARY KEY (`act_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `ACTIVIDADES`;
+
+CREATE TABLE IF NOT EXISTS `ACTIVIDADES` (
+  `ACT_ID` INT NOT NULL AUTO_INCREMENT,
+  `ACT_NOMBRE` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `ACT_DESCRIPCION` TEXT COLLATE UTF8MB4_SWEDISH_CI,
+  `ACT_FECHA` DATE NOT NULL,
+  `ACT_LUGAR` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `ACT_CATEGORIA` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `ACT_IMAGEN` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `ACT_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `ACT_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `ACT_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USR_ID` INT DEFAULT NULL,
+  PRIMARY KEY (`ACT_ID`),
+  KEY `USR_ID` (`USR_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -50,20 +55,21 @@ CREATE TABLE IF NOT EXISTS `actividades` (
 -- Estructura de tabla para la tabla `afiliados`
 --
 
-DROP TABLE IF EXISTS `afiliados`;
-CREATE TABLE IF NOT EXISTS `afiliados` (
-  `afl_id` int NOT NULL AUTO_INCREMENT,
-  `pdt_id` int DEFAULT NULL,
-  `usr_id` int DEFAULT NULL,
-  `afl_fec_afiliacion` date NOT NULL,
-  `afl_fec_vencimiento` date DEFAULT NULL,
-  `afl_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `afl_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `afl_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`afl_id`),
-  KEY `pdt_id` (`pdt_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `AFILIADOS`;
+
+CREATE TABLE IF NOT EXISTS `AFILIADOS` (
+  `AFL_ID` INT NOT NULL AUTO_INCREMENT,
+  `PDT_ID` INT DEFAULT NULL,
+  `USR_ID` INT DEFAULT NULL,
+  `AFL_FEC_AFILIACION` DATE NOT NULL,
+  `AFL_FEC_VENCIMIENTO` DATE DEFAULT NULL,
+  `AFL_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `AFL_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `AFL_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`AFL_ID`),
+  KEY `PDT_ID` (`PDT_ID`),
+  KEY `USR_ID` (`USR_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -71,19 +77,22 @@ CREATE TABLE IF NOT EXISTS `afiliados` (
 -- Estructura de tabla para la tabla `anuncios`
 --
 
-DROP TABLE IF EXISTS `anuncios`;
-CREATE TABLE IF NOT EXISTS `anuncios` (
-  `anu_id` int NOT NULL AUTO_INCREMENT,
-  `anu_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `anu_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `anu_fec_vigencia` date NOT NULL,
-  `anu_estado` enum('Activo','Inactivo','Expirado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `anu_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `anu_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `usr_id` int DEFAULT NULL,
-  PRIMARY KEY (`anu_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `ANUNCIOS`;
+
+CREATE TABLE IF NOT EXISTS `ANUNCIOS` (
+  `ANU_ID` INT NOT NULL AUTO_INCREMENT,
+  `ANU_DESCRIPCION` TEXT COLLATE UTF8MB4_SWEDISH_CI,
+  `ANU_TIPO` VARCHAR(20) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `ANU_IMAGEN` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `ANU_FEC_VIGENCIA` DATE NOT NULL,
+  `ANU_ESTADO` ENUM('Activo', 'Inactivo', 'Expirado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `ANU_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `ANU_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USR_ID` INT DEFAULT NULL,
+  PRIMARY KEY (`ANU_ID`),
+  KEY `USR_ID` (`USR_ID`),
+  KEY `PAG_ID` (`ANU_TIPO`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -91,17 +100,18 @@ CREATE TABLE IF NOT EXISTS `anuncios` (
 -- Estructura de tabla para la tabla `donaciones`
 --
 
-DROP TABLE IF EXISTS `donaciones`;
-CREATE TABLE IF NOT EXISTS `donaciones` (
-  `don_id` int NOT NULL AUTO_INCREMENT,
-  `don_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `don_medio` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `don_informacion` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `don_estado` enum('Pendiente','Aprobado','Rechazado') COLLATE utf8mb4_swedish_ci DEFAULT 'Pendiente',
-  `don_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `don_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`don_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `DONACIONES`;
+
+CREATE TABLE IF NOT EXISTS `DONACIONES` (
+  `DON_ID` INT NOT NULL AUTO_INCREMENT,
+  `DON_DESCRIPCION` TEXT COLLATE UTF8MB4_SWEDISH_CI,
+  `DON_MEDIO` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `DON_INFORMACION` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `DON_ESTADO` ENUM('Pendiente', 'Aprobado', 'Rechazado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Pendiente',
+  `DON_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `DON_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`DON_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -109,15 +119,16 @@ CREATE TABLE IF NOT EXISTS `donaciones` (
 -- Estructura de tabla para la tabla `metodos_pago`
 --
 
-DROP TABLE IF EXISTS `metodos_pago`;
-CREATE TABLE IF NOT EXISTS `metodos_pago` (
-  `met_id` int NOT NULL AUTO_INCREMENT,
-  `met_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `met_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `met_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `met_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`met_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `METODOS_PAGO`;
+
+CREATE TABLE IF NOT EXISTS `METODOS_PAGO` (
+  `MET_ID` INT NOT NULL AUTO_INCREMENT,
+  `MET_NOMBRE` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `MET_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `MET_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `MET_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`MET_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -125,22 +136,23 @@ CREATE TABLE IF NOT EXISTS `metodos_pago` (
 -- Estructura de tabla para la tabla `metodos_pago_productor`
 --
 
-DROP TABLE IF EXISTS `metodos_pago_productor`;
-CREATE TABLE IF NOT EXISTS `metodos_pago_productor` (
-  `met_pdt_id` int NOT NULL AUTO_INCREMENT,
-  `met_id` int DEFAULT NULL,
-  `pdt_id` int DEFAULT NULL,
-  `met_pdt_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `met_pdt_informacion` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `met_pdt_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `met_pdt_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `met_pdt_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `usr_id` int DEFAULT NULL,
-  PRIMARY KEY (`met_pdt_id`),
-  KEY `met_id` (`met_id`),
-  KEY `pdt_id` (`pdt_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `METODOS_PAGO_PRODUCTOR`;
+
+CREATE TABLE IF NOT EXISTS `METODOS_PAGO_PRODUCTOR` (
+  `MET_PDT_ID` INT NOT NULL AUTO_INCREMENT,
+  `MET_ID` INT DEFAULT NULL,
+  `PDT_ID` INT DEFAULT NULL,
+  `MET_PDT_DESCRIPCION` TEXT COLLATE UTF8MB4_SWEDISH_CI,
+  `MET_PDT_INFORMACION` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `MET_PDT_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `MET_PDT_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `MET_PDT_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USR_ID` INT DEFAULT NULL,
+  PRIMARY KEY (`MET_PDT_ID`),
+  KEY `MET_ID` (`MET_ID`),
+  KEY `PDT_ID` (`PDT_ID`),
+  KEY `USR_ID` (`USR_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -148,16 +160,37 @@ CREATE TABLE IF NOT EXISTS `metodos_pago_productor` (
 -- Estructura de tabla para la tabla `paginas`
 --
 
-DROP TABLE IF EXISTS `paginas`;
-CREATE TABLE IF NOT EXISTS `paginas` (
-  `pag_id` int NOT NULL AUTO_INCREMENT,
-  `pag_nombre` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pag_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `pag_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `pag_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `pag_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `PAGINAS`;
+
+CREATE TABLE IF NOT EXISTS `PAGINAS` (
+  `PAG_ID` INT NOT NULL AUTO_INCREMENT,
+  `PAG_NOMBRE` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PAG_DESCRIPCION` TEXT COLLATE UTF8MB4_SWEDISH_CI,
+  `PAG_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `PAG_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `PAG_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`PAG_ID`)
+) ENGINE=MYISAM AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
+
+--
+-- Volcado de datos para la tabla `paginas`
+--
+
+INSERT INTO `PAGINAS` (
+  `PAG_ID`,
+  `PAG_NOMBRE`,
+  `PAG_DESCRIPCION`,
+  `PAG_ESTADO`,
+  `PAG_FEC_CREACION`,
+  `PAG_FEC_MODIFICACION`
+) VALUES (
+  1,
+  'Panel de control',
+  'Panel de control',
+  'Activo',
+  '2023-09-17 05:30:40',
+  '2023-09-17 05:30:40'
+);
 
 -- --------------------------------------------------------
 
@@ -165,22 +198,23 @@ CREATE TABLE IF NOT EXISTS `paginas` (
 -- Estructura de tabla para la tabla `permisos`
 --
 
-DROP TABLE IF EXISTS `permisos`;
-CREATE TABLE IF NOT EXISTS `permisos` (
-  `per_id` int NOT NULL AUTO_INCREMENT,
-  `rol_id` int DEFAULT NULL,
-  `pag_id` int DEFAULT NULL,
-  `per_ver` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT 'NO',
-  `per_agregar` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT 'NO',
-  `per_actualizar` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT 'NO',
-  `per_eliminar` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT 'NO',
-  `per_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `per_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `per_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`per_id`),
-  KEY `rol_id` (`rol_id`),
-  KEY `pag_id` (`pag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `PERMISOS`;
+
+CREATE TABLE IF NOT EXISTS `PERMISOS` (
+  `PER_ID` INT NOT NULL AUTO_INCREMENT,
+  `ROL_ID` INT DEFAULT NULL,
+  `PAG_ID` INT DEFAULT NULL,
+  `PER_VER` VARCHAR(3) CHARACTER SET UTF8MB4 COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'NO',
+  `PER_AGREGAR` VARCHAR(3) CHARACTER SET UTF8MB4 COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'NO',
+  `PER_ACTUALIZAR` VARCHAR(3) CHARACTER SET UTF8MB4 COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'NO',
+  `PER_ELIMINAR` VARCHAR(3) CHARACTER SET UTF8MB4 COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'NO',
+  `PER_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `PER_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `PER_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`PER_ID`),
+  KEY `ROL_ID` (`ROL_ID`),
+  KEY `PAG_ID` (`PAG_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -188,21 +222,20 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 -- Estructura de tabla para la tabla `personas`
 --
 
-DROP TABLE IF EXISTS `personas`;
-CREATE TABLE IF NOT EXISTS `personas` (
-  `per_cedula` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `per_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `per_apellido1` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `per_apellido2` varchar(50) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `per_direccion` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `per_telefono` varchar(15) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `usr_id` int DEFAULT NULL,
-  `per_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `per_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `per_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`per_cedula`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `PERSONAS`;
+
+CREATE TABLE IF NOT EXISTS `PERSONAS` (
+  `PER_CEDULA` VARCHAR(15) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PER_NOMBRE` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PER_APELLIDO1` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PER_APELLIDO2` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `PER_DIRECCION` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `PER_TELEFONO` VARCHAR(15) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `PER_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `PER_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `PER_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`PER_CEDULA`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -210,20 +243,21 @@ CREATE TABLE IF NOT EXISTS `personas` (
 -- Estructura de tabla para la tabla `productores`
 --
 
-DROP TABLE IF EXISTS `productores`;
-CREATE TABLE IF NOT EXISTS `productores` (
-  `pdt_id` int NOT NULL AUTO_INCREMENT,
-  `pdt_cedula` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pdt_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pdt_ubicacion` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `pdt_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `usr_id` int DEFAULT NULL,
-  `pdt_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `pdt_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `pdt_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pdt_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `PRODUCTORES`;
+
+CREATE TABLE IF NOT EXISTS `PRODUCTORES` (
+  `PDT_ID` INT NOT NULL AUTO_INCREMENT,
+  `PDT_CEDULA` VARCHAR(15) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PDT_NOMBRE` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PDT_UBICACION` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `PDT_IMAGEN` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `USR_ID` INT DEFAULT NULL,
+  `PDT_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `PDT_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `PDT_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`PDT_ID`),
+  KEY `USR_ID` (`USR_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -231,23 +265,24 @@ CREATE TABLE IF NOT EXISTS `productores` (
 -- Estructura de tabla para la tabla `productos`
 --
 
-DROP TABLE IF EXISTS `productos`;
-CREATE TABLE IF NOT EXISTS `productos` (
-  `pro_id` int NOT NULL AUTO_INCREMENT,
-  `pro_nombre` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pro_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `pro_categoria` varchar(50) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `pro_precio` decimal(10,2) NOT NULL,
-  `pro_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `pdt_id` int DEFAULT NULL,
-  `pro_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `pro_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `pro_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `usr_id` int DEFAULT NULL,
-  PRIMARY KEY (`pro_id`),
-  KEY `pdt_id` (`pdt_id`),
-  KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `PRODUCTOS`;
+
+CREATE TABLE IF NOT EXISTS `PRODUCTOS` (
+  `PRO_ID` INT NOT NULL AUTO_INCREMENT,
+  `PRO_NOMBRE` VARCHAR(100) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `PRO_DESCRIPCION` TEXT COLLATE UTF8MB4_SWEDISH_CI,
+  `PRO_CATEGORIA` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `PRO_PRECIO` DECIMAL(10, 2) NOT NULL,
+  `PRO_IMAGEN` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `PDT_ID` INT DEFAULT NULL,
+  `PRO_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `PRO_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `PRO_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `USR_ID` INT DEFAULT NULL,
+  PRIMARY KEY (`PRO_ID`),
+  KEY `PDT_ID` (`PDT_ID`),
+  KEY `USR_ID` (`USR_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -255,16 +290,17 @@ CREATE TABLE IF NOT EXISTS `productos` (
 -- Estructura de tabla para la tabla `roles`
 --
 
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE IF NOT EXISTS `roles` (
-  `rol_id` int NOT NULL AUTO_INCREMENT,
-  `rol_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `rol_descripcion` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `rol_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `rol_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `rol_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`rol_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `ROLES`;
+
+CREATE TABLE IF NOT EXISTS `ROLES` (
+  `ROL_ID` INT NOT NULL AUTO_INCREMENT,
+  `ROL_NOMBRE` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `ROL_DESCRIPCION` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `ROL_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `ROL_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `ROL_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ROL_ID`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
 
 -- --------------------------------------------------------
 
@@ -272,22 +308,28 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `usr_id` int NOT NULL AUTO_INCREMENT,
-  `usr_email` varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `usr_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `usr_contrasena` varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `usr_token` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `rol_id` int DEFAULT NULL,
-  `usr_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
-  `usr_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `usr_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`usr_id`),
-  KEY `rol_id` (`rol_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+DROP TABLE IF EXISTS `USUARIOS`;
+
+CREATE TABLE IF NOT EXISTS `USUARIOS` (
+  `USR_ID` INT NOT NULL AUTO_INCREMENT,
+  `USR_EMAIL` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `USR_NOMBRE` VARCHAR(50) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `USR_CONTRASENA` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `USR_TOKEN` VARCHAR(255) COLLATE UTF8MB4_SWEDISH_CI DEFAULT NULL,
+  `ROL_ID` INT DEFAULT NULL,
+  `PER_CEDULA` VARCHAR(15) CHARACTER SET UTF8MB4 COLLATE UTF8MB4_SWEDISH_CI NOT NULL,
+  `USR_ESTADO` ENUM('Activo', 'Inactivo', 'Pendiente', 'Eliminado', 'Bloqueado') COLLATE UTF8MB4_SWEDISH_CI DEFAULT 'Activo',
+  `USR_FEC_CREACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `USR_FEC_MODIFICACION` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`USR_ID`),
+  KEY `ROL_ID` (`ROL_ID`),
+  KEY `PER_CEDULA` (`PER_CEDULA`)
+) ENGINE=MYISAM DEFAULT CHARSET=UTF8MB4 COLLATE=UTF8MB4_SWEDISH_CI;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
