@@ -1,19 +1,19 @@
 <?php
 
-class Alimentacion extends Controllers
+class Producto extends Controllers
 {
     public function __construct()
     {
         // sessionStart();
         parent::__construct();
-        
+
         // if (empty($_SESSION['login'])) {
         //     header('Location: ' . base_url() . '/login');
         // }
         // getPermisos(6);
     }
 
-    public function Alimentacion()
+    public function Producto()
     {
         // if (empty($_SESSION['permisosMod']['ver'])) {
         //     header("Location:" . base_url() . '/access_denied');
@@ -22,8 +22,8 @@ class Alimentacion extends Controllers
         $data['page_tag'] = "Servicios de Alimentación";
         $data['page_name'] = "alimentacion";
         $data['page_title'] = "Alimentación";
-        $data['page_functions_js'] = "functions_alimentacion.js";
-        $this->views->getView($this, "alimentacion", $data);
+        $data['page_functions_js'] = "functions_producto.js";
+        $this->views->getView($this, "producto", $data);
     }
 
     public function getAlimentaciones()
@@ -52,37 +52,36 @@ class Alimentacion extends Controllers
             }
 
             //boton de revisar
-            if ($_SESSION['permisosMod']['actualizar'] && $_SESSION['permisosMod']['eliminar']){
+            if ($_SESSION['permisosMod']['actualizar'] && $_SESSION['permisosMod']['eliminar']) {
                 $btnCheck = '<button class="btn btn-warning btn-sm fntCheckAlimentacion" onClick="fntCheckAlimentacion(' . $arrData[$i]['alim_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
             }
 
-            $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>'; 
-            
-            if($arrData[$i]['alim_estado'] == 1){
-                $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';  
+            $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>';
+
+            if ($arrData[$i]['alim_estado'] == 1) {
+                $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';
             }
 
-            if($arrData[$i]['alim_estado'] == 4){
-                $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';  
+            if ($arrData[$i]['alim_estado'] == 4) {
+                $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';
             }
-        
+
             switch ($arrData[$i]['alim_estado']) {
                 case 1:
-                    $arrData[$i]['alim_estado'] = '<span class="badge badge-warning">Pendiente</span>';
-                  break;
+                    $arrData[$i]['alim_estado'] = '<span class="badge badge-warning">' . $arrData[$i]['alim_estado'] . '</span>';
+                    break;
                 case 2:
                     $arrData[$i]['alim_estado'] = '<span class="badge badge-info">Activo</span>';
-                  break;
+                    break;
                 case 3:
                     $arrData[$i]['alim_estado'] = '<span class="badge badge-danger">Inactivo</span>';
-                  break;
+                    break;
                 case 4:
                     $arrData[$i]['alim_estado'] = '<span class="badge badge-dark">Eliminado</span>';
                     break;
                 default:
-                  // do something else
-              }
-
+                    // do something else
+            }
         }
         echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
         die();
@@ -96,7 +95,7 @@ class Alimentacion extends Controllers
             if (empty($arrData)) {
                 $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
             } else {
-                $arrData['url_imagen'] = media() . '/images/uploads/alimentaciones/' . $arrData['alim_imagen'];
+                $arrData['url_imagen'] = media() . '/images/uploads/productos/' . $arrData['alim_imagen'];
                 $arrResponse = array('status' => true, 'data' => $arrData);
             }
             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
@@ -127,14 +126,15 @@ class Alimentacion extends Controllers
 
         if ($intIdAlimentacion == 0) {
             //Crear
-            $request_alimentacion = $this->model->insertAlimentacion($strNombre,
-                                                                    $strDescripcion,
-                                                                    $strDireccion,
-                                                                    $strHoraApertura,
-                                                                    $strHoraCierre,
-                                                                    $strTelefono,
-                                                                    $imgImagen
-                                                                    );
+            $request_alimentacion = $this->model->insertAlimentacion(
+                $strNombre,
+                $strDescripcion,
+                $strDireccion,
+                $strHoraApertura,
+                $strHoraCierre,
+                $strTelefono,
+                $imgImagen
+            );
             $option = 1;
         } else {
             //Actualizar
@@ -143,7 +143,7 @@ class Alimentacion extends Controllers
                     $imgImagen = $_POST['foto_actual'];
                 }
             }
-            $request_alimentacion = $this->model->updateAlimentacion($intIdAlimentacion, $strNombre, $strDescripcion, $strDireccion,  $strHoraApertura, $strHoraCierre, $strTelefono, $imgImagen,$intEstado);
+            $request_alimentacion = $this->model->updateAlimentacion($intIdAlimentacion, $strNombre, $strDescripcion, $strDireccion,  $strHoraApertura, $strHoraCierre, $strTelefono, $imgImagen, $intEstado);
             $option = 2;
         }
 
