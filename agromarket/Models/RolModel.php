@@ -1,6 +1,6 @@
 <?php
 
-class RolesModel extends Mysql
+class RolModel extends Mysql
 {
 	public $intIdrol;
 	public $strRol;
@@ -12,16 +12,15 @@ class RolesModel extends Mysql
 		parent::__construct();
 	}
 
-	public function selectRoles()
+	public function getAll()
 	{
-		$whereAdmin = "";
-		if ($_SESSION['idUser'] != 1) {
-			$whereAdmin = " WHERE id_rol != 1 ";
-		}
+		// $whereAdmin = "";
+		// if ($_SESSION['idUser'] != 1) {
+		// 	$whereAdmin = " WHERE id_rol != 1 ";
+		// }
 		//EXTRAE ROLES
 		$sql = "SELECT * 
-				FROM rol "
-			. $whereAdmin;
+				FROM ROLES ";
 		$request = $this->select_all($sql);
 		return $request;
 	}

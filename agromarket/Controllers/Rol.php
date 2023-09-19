@@ -1,23 +1,23 @@
 <?php
 
-class Roles extends Controllers
+class Rol extends Controllers
 {
 	public function __construct()
 	{
-		sessionStart();
+		//	sessionStart();
 		parent::__construct();
 
-		if (empty($_SESSION['login'])) {
-			header('Location: ' . base_url() . '/login');
-		}
-		getPermisos(2);
+		// if (empty($_SESSION['login'])) {
+		// 	header('Location: ' . base_url() . '/login');
+		// }
+		// getPermisos(2);
 	}
 
-	public function Roles()
+	public function Rol()
 	{
-		if (empty($_SESSION['permisosMod']['ver'])) {
-			header("Location:" . base_url() . '/access_denied');
-		}
+		// if (empty($_SESSION['permisosMod']['ver'])) {
+		// 	header("Location:" . base_url() . '/access_denied');
+		// }
 		$data['page_id'] = 2;
 		$data['page_tag'] = "Roles de Usuario";
 		$data['page_name'] = "rol_usuario";
@@ -47,7 +47,7 @@ class Roles extends Controllers
 				}
 
 				$arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDelete . '</div>';
-				
+
 				if ($arrData[$i]['id_rol'] == 1) {
 					$arrData[$i]['options'] = '<center><span class="badge">No hay acciones</span></center>';
 				}
@@ -64,14 +64,14 @@ class Roles extends Controllers
 		die();
 	}
 
-	public function getSelectRoles()
+	public function getList()
 	{
 		$htmlOptions = "";
-		$arrData = $this->model->selectRoles();
+		$arrData = $this->model->getAll();
 		if (count($arrData) > 0) {
 			for ($i = 0; $i < count($arrData); $i++) {
-				if ($arrData[$i]['status'] == 1) {
-					$htmlOptions .= '<option value="' . $arrData[$i]['id_rol'] . '">' . $arrData[$i]['nombre_rol'] . '</option>';
+				if ($arrData[$i]['rol_estado'] == 'Activo') {
+					$htmlOptions .= '<option value="' . $arrData[$i]['rol_id'] . '">' . $arrData[$i]['rol_nombre'] . '</option>';
 				}
 			}
 		}

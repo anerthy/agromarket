@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <form id="formUsuario" name="formUsuario" class="form-horizontal">
-          <input type="hidden" id="idUsuario" name="idUsuario" value="">
+          <input type="hidden" id="usr_id" name="usr_id" value="">
           <p class="text-primary">Todos los campos son obligatorios.</p>
 
           <div class="form-row">
@@ -19,34 +19,42 @@
               <input type="text" class="form-control" id="txtNombre" name="txtNombre" required="">
             </div>
             <div class="form-group col-md-6">
-              <label for="txtCorreo">Correo</label>
-              <input type="email" class="form-control valid validEmail" id="txtCorreo" name="txtCorreo" required="">
+              <label for="txtEmail">Email</label>
+              <input type="email" class="form-control valid validEmail" id="txtEmail" name="txtEmail" required="">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="txtCedula">Cedula</label>
+              <input type="text" class="form-control" id="txtCedula" name="txtCedula" required="">
             </div>
           </div>
+
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="listRolid">Rol del usuario</label>
-              <select class="form-control" data-live-search="true" id="listRolid" name="listRolid" required>
+              <label for="listRol">Rol del usuario</label>
+              <select class="form-control" data-live-search="true" id="listRol" name="listRol" required>
               </select>
             </div>
             <div class="form-group col-md-6">
-              <label for="listStatus">Estado</label>
-              <select class="form-control selectpicker" id="listStatus" name="listStatus" required>
-                <option value="1">Activo</option>
-                <option value="2">Inactivo</option>
+              <label for="listEstado">Estado</label>
+              <select class="form-control selectpicker" id="listEstado" name="listEstado" required>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
               </select>
             </div>
           </div>
+
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="txtContraseña">Contraseña</label>
-              <input type="password" class="form-control" id="txtContraseña" name="txtContraseña">
+              <label for="txtContrasena">Contraseña</label>
+              <input type="password" class="form-control" id="txtContrasena" name="txtContrasena">
             </div>
           </div>
+
           <div class="tile-footer">
             <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText">Guardar</span></button>&nbsp;&nbsp;&nbsp;
             <button class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cerrar</button>
           </div>
+
         </form>
       </div>
     </div>
@@ -68,20 +76,24 @@
           <tbody>
             <tr>
               <td>Nombre:</td>
-              <td id="celNombre">Jacob</td>
+              <td id="celNombre"></td>
             </tr>
 
             <tr>
-              <td>Correo (Usuario):</td>
-              <td id="celCorreo">Larry</td>
+              <td>Email:</td>
+              <td id="celEmail"></td>
             </tr>
             <tr>
               <td>Rol de Usuario:</td>
-              <td id="celTipoUsuario">Larry</td>
+              <td id="celRol"></td>
+            </tr>
+            <tr>
+              <td>Cedula:</td>
+              <td id="celCedula"></td>
             </tr>
             <tr>
               <td>Estado:</td>
-              <td id="celEstado">Larry</td>
+              <td id="celEstado"></td>
             </tr>
           </tbody>
         </table>

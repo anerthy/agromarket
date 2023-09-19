@@ -10,15 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "ajax": {
-            "url": " " + base_url + "/Usuarios/getUsuarios",
+            "url": " " + base_url + "/usuario/getAll",
             "dataSrc": ""
         },
         "columns": [
-            { "data": "id_usuario" },
-            { "data": "nombre_usuario" },
-            { "data": "correo" },
-            { "data": "nombre_rol" },
-            { "data": "status" },
+            { "data": "usr_id" },
+            { "data": "usr_nombre" },
+            { "data": "usr_email" },
+            { "data": "rol_nombre" },
+            { "data": "per_cedula" },
+            { "data": "usr_estado" },
             { "data": "options" }
         ],
         'dom': 'lBfrtip',
@@ -91,11 +92,12 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             let strNombre = document.querySelector('#txtNombre').value;
             let strCorreo = document.querySelector('#txtCorreo').value;
-            let intTipousuario = document.querySelector('#listRolid').value;
-            let strContraseña = document.querySelector('#txtContraseña').value;
-            let intStatus = document.querySelector('#listStatus').value;
+            let intRol = document.querySelector('#listRol').value;
+            let strCedula = document.querySelector('#txtCedula').value;
+            let strContrasena = document.querySelector('#txtContrasena').value;
+            let strEstado = document.querySelector('#listEstado').value;
 
-            if (strNombre == '' || strCorreo == '' || intTipousuario == '') {
+            if (strNombre == '' || strCorreo == '' || intRol == '' || strCedula == '') {
                 swal("Atención", "Todos los campos son obligatorios.", "error");
                 return false;
             }
@@ -109,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/Usuarios/setUsuario';
+            let ajaxUrl = base_url + '/usuario/setUsuario';
             let formData = new FormData(formUsuario);
             request.open("POST", ajaxUrl, true);
             request.send(formData);
@@ -120,13 +122,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (rowTable == "") {
                             tableUsuarios.api().ajax.reload();
                         } else {
-                            htmlStatus = intStatus == 1 ?
+                            htmlStatus = strEstado == 'Activo' ?
                                 '<span class="badge badge-success">Activo</span>' :
                                 '<span class="badge badge-danger">Inactivo</span>';
                             rowTable.cells[1].textContent = strNombre;
                             rowTable.cells[2].textContent = strCorreo;
-                            rowTable.cells[3].textContent = document.querySelector("#listRolid").selectedOptions[0].text;
-                            rowTable.cells[4].innerHTML = htmlStatus;
+                            rowTable.cells[3].textContent = document.querySelector("#listRol").selectedOptions[0].text;
+                            rowTable.cells[4].textContent = strCedula;
+                            rowTable.cells[5].innerHTML = htmlStatus;
 
                         }
                         $('#modalFormUsuario').modal("hide");
@@ -147,25 +150,25 @@ window.addEventListener('load', function () {
 }, false);
 
 function fntRolesUsuario() {
-    let ajaxUrl = base_url + '/Roles/getSelectRoles';
+    let ajaxUrl = base_url + '/rol/getList';
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     request.open("GET", ajaxUrl, true);
     request.send();
 
     request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
-            document.querySelector('#listRolid').innerHTML = request.responseText;
+            document.querySelector('#listRol').innerHTML = request.responseText;
 
-            $('#listRolid').selectpicker('render');
+            $('#listRol').selectpicker('render');
         }
     }
 
 }
 
-function fntViewUsuario(id_usuario) {
-    let idusuario = id_usuario;
+function fntViewUsuario(id) {
+    let usr_id = id;
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    let ajaxUrl = base_url + '/Usuarios/getUsuario/' + idusuario;
+    let ajaxUrl = base_url + '/usuario/getById/' + usr_id;
     request.open("GET", ajaxUrl, true);
     request.send();
     request.onreadystatechange = function () {
@@ -173,14 +176,15 @@ function fntViewUsuario(id_usuario) {
             let objData = JSON.parse(request.responseText);
 
             if (objData.status) {
-                let estadoUsuario = objData.data.status == 1 ?
+                let estado = objData.data.usr_estado == 'Activo' ?
                     '<span class="badge badge-success">Activo</span>' :
                     '<span class="badge badge-danger">Inactivo</span>';
 
-                document.querySelector("#celNombre").innerHTML = objData.data.nombre_usuario;
-                document.querySelector("#celCorreo").innerHTML = objData.data.correo;
-                document.querySelector("#celTipoUsuario").innerHTML = objData.data.nombre_rol;
-                document.querySelector("#celEstado").innerHTML = estadoUsuario;
+                document.querySelector("#celCorreo").innerHTML = objData.data.usr_email;
+                document.querySelector("#celNombre").innerHTML = objData.data.usr_nombre;
+                document.querySelector("#celRol").innerHTML = objData.data.rol_nombre;
+                document.querySelector("#celCedula").innerHTML = objData.data.per_cedula;
+                document.querySelector("#celEstado").innerHTML = estado;
                 $('#modalViewUser').modal('show');
             } else {
                 swal("Error", objData.msg, "error");
@@ -196,9 +200,9 @@ function fntEditUsuario(element, id_usuario) {
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
     document.querySelector('#btnText').innerHTML = "Actualizar";
 
-    let idusuario = id_usuario;
+    let usr_id = id_usuario;
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    let ajaxUrl = base_url + '/Usuarios/getUsuario/' + idusuario;
+    let ajaxUrl = base_url + '/usuario/getById/' + usr_id;
     request.open("GET", ajaxUrl, true);
     request.send();
     request.onreadystatechange = function () {
@@ -207,18 +211,19 @@ function fntEditUsuario(element, id_usuario) {
             let objData = JSON.parse(request.responseText);
 
             if (objData.status) {
-                document.querySelector("#idUsuario").value = objData.data.id_usuario;
-                document.querySelector("#txtNombre").value = objData.data.nombre_usuario;
-                document.querySelector("#txtCorreo").value = objData.data.correo;
-                document.querySelector("#listRolid").value = objData.data.id_rol;
-                $('#listRolid').selectpicker('render');
+                document.querySelector("#usr_id").value = objData.data.usr_id;
+                document.querySelector("#txtNombre").value = objData.data.usr_nombre;
+                document.querySelector("#txtEmail").value = objData.data.usr_email;
+                document.querySelector("#listRol").value = objData.data.rol_id;
+                document.querySelector("#txtCedula").value = objData.data.per_cedula;
+                $('#listRol').selectpicker('render');
 
-                if (objData.data.status == 1) {
-                    document.querySelector("#listStatus").value = 1;
+                if (objData.data.usr_estado == 'Activo') {
+                    document.querySelector("#listEstado").value = 'Activo';
                 } else {
-                    document.querySelector("#listStatus").value = 2;
+                    document.querySelector("#listEstado").value = 'Inactivo';
                 }
-                $('#listStatus').selectpicker('render');
+                $('#listEstado').selectpicker('render');
             }
         }
 
@@ -242,8 +247,8 @@ function fntDelUsuario(id_usuario) {
 
         if (isConfirm) {
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/Usuarios/delUsuario';
-            let strData = "idUsuario=" + idUsuario;
+            let ajaxUrl = base_url + '/usuario/delete';
+            let strData = "usr_id=" + idUsuario;
             request.open("POST", ajaxUrl, true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             request.send(strData);
