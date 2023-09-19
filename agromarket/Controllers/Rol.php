@@ -86,7 +86,7 @@ class Rol extends Controllers
 		die();
 	}
 
-	public function setRol()
+	public function set()
 	{
 
 		$intId 			= intval($_POST['idRol']);
