@@ -1,23 +1,23 @@
 <?php
 headerAdmin($data);
-getModal('modalRoles', $data);
+getModal('modalRol', $data);
 ?>
 <div id="contentAjax"></div>
 <main class="app-content">
   <div class="app-title">
     <div>
       <h1>
-      <a href="<?= base_url(); ?>/roles" style="text-decoration: none;">
-        <i class="fa fa-gear"></i> <?= $data['page_title'] ?>
-      </a>
-        <?php if ($_SESSION['permisosMod']['agregar']) { ?>
-          <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
-        <?php } ?>
+        <a href="<?= base_url(); ?>/rol" style="text-decoration: none;">
+          <i class="fa fa-gear"></i> <?= $data['page_title'] ?>
+        </a>
+
+        <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
+
       </h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
       <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard"><i class="fa fa-home fa-lg"></i></a></li>
-      <li class="breadcrumb-item">Seguridad / <a href="<?= base_url(); ?>/roles"><?= $data['page_title'] ?></a></li>
+      <li class="breadcrumb-item">Seguridad / <a href="<?= base_url(); ?>/rol"><?= $data['page_title'] ?></a></li>
     </ul>
   </div>
 
