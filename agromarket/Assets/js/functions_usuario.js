@@ -180,7 +180,7 @@ function fntViewUsuario(id) {
                     '<span class="badge badge-success">Activo</span>' :
                     '<span class="badge badge-danger">Inactivo</span>';
 
-                document.querySelector("#celCorreo").innerHTML = objData.data.usr_email;
+                document.querySelector("#celEmail").innerHTML = objData.data.usr_email;
                 document.querySelector("#celNombre").innerHTML = objData.data.usr_nombre;
                 document.querySelector("#celRol").innerHTML = objData.data.rol_nombre;
                 document.querySelector("#celCedula").innerHTML = objData.data.per_cedula;
@@ -193,14 +193,14 @@ function fntViewUsuario(id) {
     }
 }
 
-function fntEditUsuario(element, id_usuario) {
+function fntEditUsuario(element, id) {
     rowTable = element.parentNode.parentNode.parentNode;
     document.querySelector('#titleModal').innerHTML = "Actualizar Usuario";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
     document.querySelector('#btnText').innerHTML = "Actualizar";
 
-    let usr_id = id_usuario;
+    let usr_id = id;
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     let ajaxUrl = base_url + '/usuario/getById/' + usr_id;
     request.open("GET", ajaxUrl, true);
