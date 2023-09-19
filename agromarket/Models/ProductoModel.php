@@ -2,16 +2,16 @@
 
 class ProductoModel extends Mysql
 {
-    public $intIdAlimentacion;
+    public $intIdProducto;
     public $strNombre;
     public $strDescripcion;
-    public $strDireccion;
-    public $strHoraApertura;
-    public $strHoraCierre;
-    public $strTelefono;
+    public $strCategoria;
+    public $intPrecio;
     public $strImagen;
-    public $intEstado;
     public $intIdProductor;
+    public $strEstado;
+    //public $strFechaCreacion;
+   //public $strFechaModificacion;
     public $intIdUsuario;
 
 
@@ -20,7 +20,7 @@ class ProductoModel extends Mysql
         parent::__construct();
     }
 
-    public function selectAlimentaciones()
+    /*public function selectProductos()
     {
         $isAdmin = " AND alim_estado IN (2,3) 
         AND bit_usuario = {$_SESSION['idUser']}";
@@ -67,25 +67,28 @@ class ProductoModel extends Mysql
                 WHERE alim_id = $this->intIdAlimentacion";
         $request = $this->select($sql);
         return $request;
-    }
+    }*/
 
-    public function insertAlimentacion(
+    public function insertProducto(
+        //string $id,
         string $nombre,
         string $descripcion,
-        string $direccion,
-        string $hora_apertura,
-        string $hora_cierre,
-        string $telefono,
-        string $imagen
+        string $categoria,
+        string $precio,
+        string $imagen,
+        //string $id, 
+        string $estado,
+        //string $id, 
+       
     ) {
         $return = "";
         $this->strNombre = $nombre;
         $this->strDescripcion = $descripcion;
-        $this->strDireccion = $direccion;
-        $this->strHoraApertura = $hora_apertura;
-        $this->strHoraCierre = $hora_cierre;
-        $this->strTelefono = $telefono;
+        $this->strCategoria = $categoria;
+        $this->strPrecio = $precio;
         $this->strImagen = $imagen;
+        $this->strEstado = $estado;
+    
 
         $sql = "SELECT pro_nombre 
                 FROM productos 
@@ -93,24 +96,23 @@ class ProductoModel extends Mysql
         $request = $this->select_all($sql);
 
         if (empty($request)) {
-            $query_insert  = "INSERT INTO alimentaciones
-                            (alim_nombre, 
-                            alim_descripcion, 
-                            alim_direccion, 
-                            alim_hora_apertura, 
-                            alim_hora_cierre, 
-                            alim_telefono, 
-                            alim_imagen) 
-                            VALUES(?,?,?,?,?,?,?)";
+            $query_insert  = "INSERT INTO productos
+                            (pro_nombre, 
+                            pro_descripcion, 
+                            pro_categoria, 
+                            pro_precio, 
+                            pro_imagen, 
+                            pro_estado, 
+                            ) 
+                            VALUES(?,?,?,?,?,?)";
 
             $arrData = array(
                 $this->strNombre,
                 $this->strDescripcion,
-                $this->strDireccion,
-                $this->strHoraApertura,
-                $this->strHoraCierre,
-                $this->strTelefono,
-                $this->strImagen
+                $this->strCategoria,
+                $this->strPrecio,
+                $this->strImagen,
+                $this->strEstado
             );
             $request_insert = $this->insert($query_insert, $arrData);
         } else {
@@ -119,36 +121,40 @@ class ProductoModel extends Mysql
         return $return;
     }
 
-    public function updateAlimentacion(int $alim_id, string $nombre, string $descripcion, string $direccion, string $hora_apertura, string $hora_cierre, string $telefono, string $imagen, int $estado)
+    public function updateProducto(int $pro_id, string $nombre, string $descripcion, string $categoria, string $precio, string $imagen, string $ptd_id, string $estado, int $fec_creacion, int $fec_modificacion, int $usr_id)
     {
-        $this->intIdAlimentacion = $alim_id;
+        $this->intIProducto = $pro_id;
         $this->strNombre = $nombre;
         $this->strDescripcion = $descripcion;
-        $this->strDireccion = $direccion;
-        $this->strHoraApertura = $hora_apertura;
-        $this->strHoraCierre = $hora_cierre;
-        $this->strTelefono = $telefono;
+        $this->strCategoria = $categoria;
+        $this->strPrecio = $precio;
         $this->strImagen = $imagen;
+        $this->strIdProductor = $pdt_id;
         $this->intEstado = $estado;
+        $this->strFechaCreacion = $fec_creacion;
+        $this->strFechaModificacion = $fec_modificacion;
+        $this->strIdUsuario = $usr_id;
+      
 
-        $sql = "SELECT alim_id 
-                FROM alimentaciones 
-                WHERE alim_nombre = '$this->strNombre' 
-                AND alim_id != $this->intIdAlimentacion";
+
+        $sql = "SELECT pro_id 
+                FROM productos
+                WHERE pro_nombre = '$this->strNombre' 
+                AND pro_id != $this->intIdProducto";
         $request = $this->select_all($sql);
 
         if (empty($request)) {
-            $sql = "UPDATE alimentaciones 
-                    SET alim_nombre = ?, 
-                        alim_descripcion = ?, 
-                        alim_direccion = ?, 
-                        alim_hora_apertura = ?, 
-                        alim_hora_cierre = ?, 
-                        alim_telefono = ?, 
-                        alim_imagen = ?,
-                        alim_estado = ? 
-                    WHERE alim_id = $this->intIdAlimentacion ";
-            $arrData = array($this->strNombre, $this->strDescripcion, $this->strDireccion, $this->strHoraApertura, $this->strHoraCierre, $this->strTelefono, $this->strImagen, $this->intEstado);
+            $sql = "UPDATE productos 
+                    SET pro_nombre = ?, 
+                        pro_descripcion = ?, 
+                        pro_categoria = ?, 
+                        pro_precio = ?, 
+                        pro_imagen = ?, 
+                        pro_estado = ?
+                
+        
+                    WHERE pro_id = $this->intIdProducto ";
+            $arrData = array($this->strNombre, $this->strDescripcion, $this->strCategoria, $this->Precio, $this->strImagen, $this->intEstado);
             $request = $this->update($sql, $arrData);
 
         } else {
@@ -157,22 +163,22 @@ class ProductoModel extends Mysql
         return $request;
     }
 
-    public function disableAlimentacion(int $alim_id)
+    public function disableProducto(int $alim_id)
     {
-        $this->intIdAlimentacion = $alim_id;
-        $sql = "UPDATE alimentaciones 
-                SET alim_estado = 'Eliminado' 
-                WHERE alim_id = $this->intIdAlimentacion";
+        $this->intIdProducto = $pro_id;
+        $sql = "UPDATE productos 
+                SET pro_estado = 'Eliminado' 
+                WHERE pro_id = $this->intIdProducto";
         $request = $this->update($sql);
 
         return $request;
     }
 
-    public function deleteAlimentacion(int $alim_id)
+    public function deleteProducto(int $pro_id)
     {
-        $this->intIdAlimentacion = $alim_id;
-        $sql = "DELETE FROM alimentaciones 
-                WHERE alim_id = $this->intIdAlimentacion";
+        $this->intIdProducto = $pro_id;
+        $sql = "DELETE FROM productos 
+                WHERE pro_id = $this->intIdProducto";
         $request = $this->delete($sql);
         return $request;
     }
