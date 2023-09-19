@@ -91,27 +91,28 @@ document.addEventListener('DOMContentLoaded', function () {
         formUsuario.onsubmit = function (e) {
             e.preventDefault();
             let strNombre = document.querySelector('#txtNombre').value;
-            let strCorreo = document.querySelector('#txtCorreo').value;
+            let strEmail = document.querySelector('#txtEmail').value;
             let intRol = document.querySelector('#listRol').value;
             let strCedula = document.querySelector('#txtCedula').value;
             let strContrasena = document.querySelector('#txtContrasena').value;
             let strEstado = document.querySelector('#listEstado').value;
 
-            if (strNombre == '' || strCorreo == '' || intRol == '' || strCedula == '') {
+            if (strNombre == '' || strEmail == '' || intRol == '' || strCedula == '') {
                 swal("Atención", "Todos los campos son obligatorios.", "error");
                 return false;
             }
 
-            let elementsValid = document.getElementsByClassName("valid");
-            for (let i = 0; i < elementsValid.length; i++) {
-                if (elementsValid[i].classList.contains('is-invalid')) {
-                    swal("Atención", "Por favor verifique los campos en rojo.", "error");
-                    return false;
-                }
-            }
+            //! REVISAR
+            // let elementsValid = document.getElementsByClassName("valid");
+            // for (let i = 0; i < elementsValid.length; i++) {
+            //     if (elementsValid[i].classList.contains('is-invalid')) {
+            //         swal("Atención", "Por favor verifique los campos en rojo.", "error");
+            //         return false;
+            //     }
+            // }
 
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/usuario/setUsuario';
+            let ajaxUrl = base_url + '/usuario/set';
             let formData = new FormData(formUsuario);
             request.open("POST", ajaxUrl, true);
             request.send(formData);
@@ -122,15 +123,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (rowTable == "") {
                             tableUsuarios.api().ajax.reload();
                         } else {
-                            htmlStatus = strEstado == 'Activo' ?
+                            htmlEstado = strEstado == 'Activo' ?
                                 '<span class="badge badge-success">Activo</span>' :
                                 '<span class="badge badge-danger">Inactivo</span>';
-                            rowTable.cells[1].textContent = strNombre;
-                            rowTable.cells[2].textContent = strCorreo;
+                            rowTable.cells[1].textContent = strEmail;
+                            rowTable.cells[2].textContent = strNombre;
                             rowTable.cells[3].textContent = document.querySelector("#listRol").selectedOptions[0].text;
                             rowTable.cells[4].textContent = strCedula;
-                            rowTable.cells[5].innerHTML = htmlStatus;
-
+                            rowTable.cells[5].innerHTML = htmlEstado;
                         }
                         $('#modalFormUsuario').modal("hide");
                         formUsuario.reset();
@@ -272,7 +272,7 @@ function fntDelUsuario(id_usuario) {
 
 function openModal() {
     rowTable = "";
-    document.querySelector('#idUsuario').value = "";
+    document.querySelector('#usr_id').value = "";
     document.querySelector('.modal-header').classList.replace("headerUpdate", "headerRegister");
     document.querySelector('#btnActionForm').classList.replace("btn-info", "btn-primary");
     document.querySelector('#btnText').innerHTML = "Guardar";

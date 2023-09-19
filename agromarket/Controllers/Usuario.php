@@ -24,14 +24,14 @@ class Usuario extends Controllers
 		$this->views->getView($this, "usuario", $data);
 	}
 
-	public function setUsuario()
+	public function set()
 	{
 		if ($_POST) {
 			//if (($_SESSION['permisosMod']['agregar']) || ($_SESSION['permisosMod']['actualizar'])) {
 
 			if (
-				empty($_POST['txtNombre'])
-				|| empty($_POST['txtEmail'])
+				empty($_POST['txtEmail'])
+				|| empty($_POST['txtNombre'])
 				|| empty($_POST['listRol'])
 				|| empty($_POST['listCedula'])
 				|| empty($_POST['listEstado'])
