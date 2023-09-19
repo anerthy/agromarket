@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             tableUsuarios.api().ajax.reload();
                         } else {
                             htmlEstado = strEstado == 'Activo' ?
-                                '<span class="badge badge-success">Activo</span>' :
+                                '<span class="badge badge-info">Activo</span>' :
                                 '<span class="badge badge-danger">Inactivo</span>';
                             rowTable.cells[1].textContent = strEmail;
                             rowTable.cells[2].textContent = strNombre;
@@ -178,7 +178,7 @@ function fntViewUsuario(id) {
 
             if (objData.status) {
                 let estado = objData.data.usr_estado == 'Activo' ?
-                    '<span class="badge badge-success">Activo</span>' :
+                    '<span class="badge badge-info">Activo</span>' :
                     '<span class="badge badge-danger">Inactivo</span>';
 
                 document.querySelector("#celEmail").innerHTML = objData.data.usr_email;
