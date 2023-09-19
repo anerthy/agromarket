@@ -33,7 +33,7 @@ class Usuario extends Controllers
 				empty($_POST['txtEmail'])
 				|| empty($_POST['txtNombre'])
 				|| empty($_POST['listRol'])
-				|| empty($_POST['listCedula'])
+				|| empty($_POST['txtCedula'])
 				|| empty($_POST['listEstado'])
 			) {
 				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
@@ -42,8 +42,8 @@ class Usuario extends Controllers
 				$strEmail 	= strtolower(strClean($_POST['txtEmail']));
 				$strNombre 	= ucwords(strClean($_POST['txtNombre']));
 				$intRol 	= intval(strClean($_POST['listRol']));
-				$strCedula 	= intval(strClean($_POST['listCedula']));
-				$strEstado 	= intval(strClean($_POST['listEstado']));
+				$strCedula 	= strClean($_POST['txtCedula']);
+				$strEstado 	= strClean($_POST['listEstado']);
 
 				if ($intId == 0) {
 					$option = 1;

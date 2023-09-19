@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let formUsuario = document.querySelector("#formUsuario");
         formUsuario.onsubmit = function (e) {
             e.preventDefault();
+            var intIdUsuario = document.querySelector('#usr_id').value;
             let strNombre = document.querySelector('#txtNombre').value;
             let strEmail = document.querySelector('#txtEmail').value;
             let intRol = document.querySelector('#listRol').value;
