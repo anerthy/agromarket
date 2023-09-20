@@ -10,9 +10,9 @@ getModal('modalProducto', $data);
                 <a href="<?= base_url(); ?>/producto" style="text-decoration: none;">
                     <i class="fas fa-utensils"></i> <?= $data['page_title'] ?>
                 </a>
-                <?php if ($_SESSION['permisosMod']['agregar']) { ?>
-                    <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
-                <?php } ?>
+
+                <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
+
             </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
