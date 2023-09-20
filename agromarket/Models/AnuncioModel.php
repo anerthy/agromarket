@@ -23,14 +23,14 @@ class AnuncioModel extends Mysql
                         anu_fec_vigencia,
                         anu_estado
                 FROM anuncios
-                WHERE 1 ";
+                ";
         $request = $this->select_all($sql);
         return $request;
     }
 
-    public function selectAnuncio(int $ANU_ID)
+    public function selectAnuncio(int $anu_id)
     {
-        $this->intIdAnuncio = $ANU_ID;
+        $this->intIdAnuncio = $anu_id;
         $sql = "SELECT anu_id, 
                 anu_descripcion, 
                 anu_tipo, 
@@ -38,7 +38,7 @@ class AnuncioModel extends Mysql
                 anu_fec_vigencia, 
                 anu_estado 
                 FROM anuncios 
-                WHERE ANU_ID = $this->intIdAnuncio";
+                WHERE anu_id = $this->intIdAnuncio";
         $request = $this->select($sql);
         return $request;
     }
@@ -52,18 +52,18 @@ class AnuncioModel extends Mysql
         $this->strFechaVigencia = $fechaVigencia;
         $this->strEstado = $estado;
 
-        $sql = "SELECT ANU_DESCRIPCION 
-                FROM anuncios 
-                WHERE ANU_DESCRIPCION = '{$this->strDescripcion}' ";
+        $sql = "SELECT anu_descripcion 
+                from anuncios 
+                where anu_descripcion = '{$this->strDescripcion}' ";
         $request = $this->select_all($sql);
 
         if (empty($request)) {
             $query_insert  = "INSERT INTO anuncios
-                            (ANU_DESCRIPCION, 
-                            ANU_TIPO, 
-                            ANU_IMAGEN, 
-                            ANU_FEC_VIGENCIA, 
-                            ANU_ESTADO) 
+                            (anu_descripcion, 
+                            anu_tipo, 
+                            anu_imagen, 
+                            anu_fec_vigencia, 
+                            anu_estado) 
                             VALUES(?,?,?,?,?)";
 
             $arrData = array($this->strDescripcion, 
@@ -79,29 +79,29 @@ class AnuncioModel extends Mysql
         return $return;
     }
 
-    public function updateAnuncio(int $ANU_ID, string $descripcion, string $tipo, string $imagen, string $fechaVigencia, string $estado)
+    public function updateAnuncio(int $anu_id, string $descripcion, string $tipo, string $imagen, string $fechaVigencia, string $estado)
     {
-        $this->intIdAnuncio = $ANU_ID;
+        $this->intIdAnuncio = $anu_id;
         $this->strDescripcion = $descripcion;
         $this->strTipo = $tipo;
         $this->strImagen = $imagen;
         $this->strFechaVigencia = $fechaVigencia;
         $this->strEstado = $estado;
 
-        $sql = "SELECT ANU_ID 
+        $sql = "SELECT anu_id 
                 FROM anuncios 
-                WHERE ANU_DESCRIPCION = '$this->strDescripcion' 
-                AND ANU_ID != $this->intIdAnuncio";
+                WHERE anu_descripcion = '$this->strDescripcion' 
+                AND anu_id != $this->intIdAnuncio";
         $request = $this->select_all($sql);
 
         if (empty($request)) {
             $sql = "UPDATE anuncios 
-                    SET ANU_DESCRIPCION = ?, 
-                        ANU_TIPO = ?, 
-                        ANU_IMAGEN = ?, 
-                        ANU_FEC_VIGENCIA = ?, 
-                        ANU_ESTADO = ? 
-                    WHERE ANU_ID = $this->intIdAnuncio ";
+                    SET anu_descripcion = ?, 
+                        anu_tipo = ?, 
+                        anu_imagen = ?, 
+                        anu_fec_vigencia = ?, 
+                        anu_estado = ? 
+                    WHERE anu_id = $this->intIdAnuncio ";
             $arrData = array($this->strDescripcion, $this->strTipo, $this->strImagen, $this->strFechaVigencia, $this->strEstado);
             $request = $this->update($sql, $arrData);
 
@@ -111,21 +111,21 @@ class AnuncioModel extends Mysql
         return $request;
     }
 
-    public function disableAnuncio(int $ANU_ID)
+    public function disableAnuncio(int $anu_id)
     {
-        $this->intIdAnuncio = $ANU_ID;
+        $this->intIdAnuncio = $anu_id;
         $sql = "UPDATE anuncios 
-                SET ANU_ESTADO = 'Eliminado' 
-                WHERE ANU_ID = $this->intIdAnuncio";
+                SET anu_estado = 'Eliminado' 
+                WHERE anu_id = $this->intIdAnuncio";
         $request = $this->update($sql);
         return $request;
     }
 
-    public function deleteAnuncio(int $ANU_ID)
+    public function deleteAnuncio(int $anu_id)
     {
-        $this->intIdAnuncio = $ANU_ID;
+        $this->intIdAnuncio = $anu_id;
         $sql = "DELETE FROM anuncios 
-                WHERE ANU_ID = $this->intIdAnuncio";
+                WHERE anu_id = $this->intIdAnuncio";
         $request = $this->delete($sql);
         return $request;
     }

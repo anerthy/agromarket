@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
             { "data": "anu_id" },
             { "data": "anu_descripcion" },
             { "data": "anu_tipo" },
-            { "data": "anu_fechavigencia" },
+            { "data": "anu_fec_vigencia" },
             { "data": "anu_estado" },
             { "data": "options" }
         ],
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         rowTable.cells[1].textContent = strDescripcion;
                         rowTable.cells[2].textContent = strTipo;
-                        rowTable.cells[3].innerHTML = strFechaVigencia;
+                        rowTable.cells[3].textContent = strFechaVigencia;
                         rowTable.cells[4].innerHTML = strEstado;
                    
                         rowTable = "";
@@ -279,10 +279,10 @@ function fntCheckAnuncio(anu_id) {
             var objData = JSON.parse(request.responseText);
             if (objData.status) {
                 document.querySelector("#anu_id").value = objData.data.anu_id;
-                document.querySelector("#txtDescripcion").value = objData.data.ANU_DESCRIPCION;
-                document.querySelector("#txtTipo").value = objData.data.ANU_TIPO;
-                document.querySelector("#txtFechaVigencia").value = objData.data.ANU_FEC_VIGENCIA;
-                document.querySelector('#foto_actual').value = objData.data.ANU_IMAGEN;
+                document.querySelector("#txtDescripcion").value = objData.data.anu_descripcion;
+                document.queryselector("#txttipo").value = objdata.data.anu_tipo;
+                document.queryselector("#txtfechavigencia").value = objdata.data.anu_fec_vigencia;
+                document.queryselector('#foto_actual').value = objdata.data.anu_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
                 document.querySelector("#listEstado").value = 2;

@@ -28,43 +28,43 @@ class Anuncio extends Controllers
             $btnCheck = '';
 
             if ($_SESSION['permisosMod']['ver']) {
-                $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['ANU_ID'] . ')" title="Ver anuncio"><i class="far fa-eye"></i></button>';
+                $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['anu_id'] . ')" title="Ver anuncio"><i class="far fa-eye"></i></button>';
             }
 
             if ($_SESSION['permisosMod']['actualizar']) {
-                $btnEdit = '<button class="btn btn-primary btn-sm fntEditAnuncio" onClick="fntEditAnuncio(' . $arrData[$i]['ANU_ID'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
+                $btnEdit = '<button class="btn btn-primary btn-sm fntEditAnuncio" onClick="fntEditAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
             }
 
             if ($_SESSION['permisosMod']['eliminar']) {
-                $btnDisable = '<button class="btn btn-danger btn-sm fntDisAnuncio" onClick="fntDisAnuncio(' . $arrData[$i]['ANU_ID'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
+                $btnDisable = '<button class="btn btn-danger btn-sm fntDisAnuncio" onClick="fntDisAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
             }
 
             if ($_SESSION['permisosMod']['actualizar'] && $_SESSION['permisosMod']['eliminar']){
-                $btnCheck = '<button class="btn btn-warning btn-sm fntCheckAnuncio" onClick="fntCheckAnuncio(' . $arrData[$i]['ANU_ID'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
+                $btnCheck = '<button class="btn btn-warning btn-sm fntCheckAnuncio" onClick="fntCheckAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
             }
 
             $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>'; 
             
-            if($arrData[$i]['ANU_ESTADO'] == 1){
+            if($arrData[$i]['anu_estado'] == 1){
                 $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';  
             }
 
-            if($arrData[$i]['ANU_ESTADO'] == 4){
+            if($arrData[$i]['anu_estado'] == 4){
                 $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';  
             }
         
-            switch ($arrData[$i]['ANU_ESTADO']) {
+            switch ($arrData[$i]['anu_estado']) {
                 case 1:
-                    $arrData[$i]['ANU_ESTADO'] = '<span class="badge badge-warning">Pendiente</span>';
+                    $arrData[$i]['anu_estado'] = '<span class="badge badge-warning">Pendiente</span>';
                   break;
                 case 2:
-                    $arrData[$i]['ANU_ESTADO'] = '<span class="badge badge-info">Activo</span>';
+                    $arrData[$i]['anu_estado'] = '<span class="badge badge-info">Activo</span>';
                   break;
                 case 3:
-                    $arrData[$i]['ANU_ESTADO'] = '<span class="badge badge-danger">Inactivo</span>';
+                    $arrData[$i]['anu_estado'] = '<span class="badge badge-danger">Inactivo</span>';
                   break;
                 case 4:
-                    $arrData[$i]['ANU_ESTADO'] = '<span class="badge badge-dark">Eliminado</span>';
+                    $arrData[$i]['anu_estado'] = '<span class="badge badge-dark">Eliminado</span>';
                     break;
                 default:
                   // do something else
@@ -75,9 +75,9 @@ class Anuncio extends Controllers
         die();
     }
 
-    public function getAnuncio(int $ANU_ID)
+    public function getAnuncio(int $anu_id)
     {
-        $intIdAnuncio = intval(strClean($ANU_ID));
+        $intIdAnuncio = intval(strClean($anu_id));
         if ($intIdAnuncio > 0) {
             $arrData = $this->model->selectAnuncio($intIdAnuncio);
             if (empty($arrData)) {
@@ -95,7 +95,7 @@ class Anuncio extends Controllers
         $intIdAnuncio = intval($_POST['anu_id']);
         $strDescripcion = strClean($_POST['txtDescripcion']);
         $strTipo = strClean($_POST['txtTipo']);
-        $strFechaVigencia = $_POST['txtFechaVigencia'];
+        $strFechaVigencia = strClean($_POST['txtFechaVigencia']);
         $strEstado = strClean($_POST['listEstado']);
 
         $foto       = $_FILES['foto'];
@@ -161,7 +161,7 @@ class Anuncio extends Controllers
     public function disAnuncio()
     {
         if ($_POST) {
-            $intIdAnuncio = intval($_POST['ANU_ID']);
+            $intIdAnuncio = intval($_POST['anu_id']);
             $requestDelete = $this->model->disableAnuncio($intIdAnuncio);
             if ($requestDelete) {
                 $arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el anuncio');
@@ -176,7 +176,7 @@ class Anuncio extends Controllers
     public function delAnuncio()
     {
         if ($_POST) {
-            $intIdAnuncio = intval($_POST['ANU_ID']);
+            $intIdAnuncio = intval($_POST['anu_id']);
             $requestDelete = $this->model->deleteAnuncio($intIdAnuncio);
             if ($requestDelete) {
                 $arrResponse = array('status' => true, 'msg' => 'Se ha eliminado el anuncio');
