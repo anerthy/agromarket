@@ -38,7 +38,8 @@ class AnuncioModel extends Mysql
                 anu_fec_vigencia, 
                 anu_estado 
                 FROM anuncios 
-                WHERE anu_id = $this->intIdAnuncio";
+                WHERE anu_id = $this->intIdAnuncio
+                  AND anu_estado IN ('Activo','Inactivo')";
         $request = $this->select($sql);
         return $request;
     }
@@ -115,7 +116,7 @@ class AnuncioModel extends Mysql
     {
         $this->intIdAnuncio = $anu_id;
         $sql = "UPDATE anuncios 
-                SET anu_estado = 'Eliminado' 
+                SET anu_estado = 'Expirado' 
                 WHERE anu_id = $this->intIdAnuncio";
         $request = $this->update($sql);
         return $request;
