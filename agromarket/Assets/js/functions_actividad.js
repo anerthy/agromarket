@@ -146,7 +146,7 @@ formActividad.onsubmit = function (e) {
     var strCategoria = document.querySelector('#txtCategoria').value;
     var strEstado = document.querySelector('#listEstado').value;
 
-    if (strNombre == '' || strDescripcion == '' || strLugar == '' || strFecha == '' || strCategoria == '' || strEstado == '') {
+    if (strNombre == '' || strDescripcion == '' || strLugar == '' || strFecha == '' || strCategoria == '') {
         swal("Atención", "Todos los campos son obligatorios.", "error");
         return false;
     }
@@ -252,69 +252,7 @@ function fntViewInfo(act_id) {
     }
 }
 
-function fntCheckActividad(act_id) {
-    document.querySelector('#titleModal').innerHTML = "Revisar registro";
-    document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
-    document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
-    document.querySelector('#btnText').innerHTML = "Revisar";
 
-    document.getElementById("selectEstado").style.display = "none";
-    document.getElementById("tile-footer").style.display = "none";
-
-    document.querySelector("#optionButtons").innerHTML =
-        `<br><button id="btnActionForm" class="btn btn-info" type="submit">
-            <i class="fa fa-fw fa-lg fa-check-circle"></i>
-            <span id="btnText">Aceptar</span>
-        </button>&nbsp;&nbsp;&nbsp;
-        <a class="btn btn-danger" href="#" data-dismiss="modal" onClick="fntDelActividad(${act_id})">
-            <i class="fa fa-fw fa-lg fa-times-circle"></i>Rechazar
-        </a>`;
-    document.getElementById("optionButtons").style.display = "block";
-
-    var act_id = act_id;
-    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Actividad/getActividad/' + act_id; // Asegúrate de usar la URL y la ruta correctas
-    request.open("GET", ajaxUrl, true);
-    request.send();
-
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-            var objData = JSON.parse(request.responseText);
-            if (objData.status) {
-
-
-        
-                document.querySelector("#act_id").value = objData.data.act_id;
-                document.querySelector("#txtNombre").value = objData.data.act_nombre;
-                document.querySelector("#txtDescripcion").value = objData.data.act_descripcion;
-                document.querySelector("#txtFecha").value = objData.data.act_fecha;
-                document.querySelector("#txtLugar").value = objData.data.act_lugar;
-                document.querySelector("#txtCategoria").value = objData.data.act_categoria;
-                document.querySelector("#txtEstado").value = objData.data.act_estado;
-                document.querySelector('#foto_actual').value = objData.data.act_imagen;
-                document.querySelector("#foto_remove").value = 0;
-
-                document.querySelector("#listEstado").value = 2;
-                $('#listEstado').selectpicker('render');
-
-                if (document.querySelector('#img')) {
-                    document.querySelector('#img').src = objData.data.url_imagen;
-                } else {
-                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_imagen + ">";
-                }
-
-                if (objData.data.act_imagen == 'imageUnavailable.png') {
-                    document.querySelector('.delPhoto').classList.add("notBlock");
-                } else {
-                    document.querySelector('.delPhoto').classList.remove("notBlock");
-                }
-                $('#modalFormActividad').modal('show');
-            } else {
-                swal("Error", objData.msg, "error");
-            }
-        }
-    }
-}
 
 
 function fntEditActividad(act_id) {

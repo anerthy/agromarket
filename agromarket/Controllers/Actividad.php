@@ -9,7 +9,6 @@ class Actividad extends Controllers
 
     public function Actividad()
     {
-        $data['page_id'] = 6;
         $data['page_tag'] = "Actividades";
         $data['page_name'] = "actividad";
         $data['page_title'] = "Actividad";
