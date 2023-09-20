@@ -28,7 +28,7 @@ class Producto extends Controllers
 
     public function getProductos()
     {
-        $arrData = $this->model->selectProductos();
+        $arrData = $this->model->getAll();
 
         for ($i = 0; $i < count($arrData); $i++) {
             $btnView = '';
@@ -36,41 +36,23 @@ class Producto extends Controllers
             $btnDisable = '';
             $btnCheck = '';
 
-            // boton de ver
-            if ($_SESSION['permisosMod']['ver']) {
-                $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['pro_id'] . ')" title="Ver Producto"><i class="far fa-eye"></i></button>';
-            }
-
-            // boton de actualizar
-            if ($_SESSION['permisosMod']['actualizar']) {
-                $btnEdit = '<button class="btn btn-primary btn-sm fntEditProducto" onClick="fntEditProducto(' . $arrData[$i]['pro_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
-            }
-
-            // boton de eliminar
-            if ($_SESSION['permisosMod']['eliminar']) {
-                $btnDisable = '<button class="btn btn-danger btn-sm fntDisProducto" onClick="fntDisProducto(' . $arrData[$i]['pro_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
-            }
-
-            //boton de revisar
-            if ($_SESSION['permisosMod']['actualizar'] && $_SESSION['permisosMod']['eliminar']) {
-                $btnCheck = '<button class="btn btn-warning btn-sm fntCheckProducto" onClick="fntCheckProducto(' . $arrData[$i]['pro_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
-            }
+            $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['pro_id'] . ')" title="Ver Producto"><i class="far fa-eye"></i></button>';
+            $btnDisable = '<button class="btn btn-danger btn-sm fntDisProducto" onClick="fntDisProducto(' . $arrData[$i]['pro_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
+            $btnCheck = '<button class="btn btn-warning btn-sm fntCheckProducto" onClick="fntCheckProducto(' . $arrData[$i]['pro_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
+            $btnEdit = '<button class="btn btn-primary btn-sm fntEditProducto" onClick="fntEditProducto(' . $arrData[$i]['pro_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
 
             $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>';
 
-            if ($arrData[$i]['pro_estado'] == 1) {
+            if ($arrData[$i]['pro_estado'] == 'Activo') {
                 $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';
             }
 
-            if ($arrData[$i]['pro_estado'] == 4) {
+            if ($arrData[$i]['pro_estado'] == 'Eliminado') {
                 $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';
             }
 
             switch ($arrData[$i]['pro_estado']) {
-                case 1:
-                    $arrData[$i]['pro_estado'] = '<span class="badge badge-warning">' . $arrData[$i]['pro_estado'] . '</span>';
-                    break;
-                case 2:
+                case 'Activo':
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-info">Activo</span>';
                     break;
                 case 3:
@@ -91,7 +73,7 @@ class Producto extends Controllers
     {
         $intIdProducto = intval(strClean($alim_id));
         if ($intIdProducto > 0) {
-            $arrData = $this->model->selectProducto($intIdProducto);
+            $arrData = $this->model->getById($intIdProducto);
             if (empty($arrData)) {
                 $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
             } else {
@@ -109,13 +91,13 @@ class Producto extends Controllers
         $strNombre =  strClean($_POST['txtNombre']);
         $strDescripcion = strClean($_POST['txtDescripcion']);
         $strCategoria = strClean($_POST['txtCategoria']);
-        $intPrecio = intval($_POST['pro_id'])
-        $strImagen = intval($_POST['pro_imagen'])
+        $intPrecio = intval($_POST['pro_id']);
+        $strImagen = intval($_POST['pro_imagen']);
         $intIdProductor = intval($_POST['ptd_id']);
-        $intEstado = intval($_POST['listEstado']);
+        $strEstado = intval($_POST['listEstado']);
         $intIdUsuario = intval($_POST['usr_id']);
-     
-    
+
+
 
         $foto       = $_FILES['foto'];
         $nombre_foto     = $foto['name'];
@@ -138,8 +120,6 @@ class Producto extends Controllers
                 $intIdProductor,
                 $strEstado,
                 $intIdUsuario
-
-
             );
             $option = 1;
         } else {
@@ -149,7 +129,17 @@ class Producto extends Controllers
                     $imgImagen = $_POST['foto_actual'];
                 }
             }
-            $request_producto = $this->model->updateProducto($intIdProducto, $strNombre, $strDescripcion, $strCategoria,  $intPrecio, $imgImagen, $intIdProductor, $strEstado, $intIdUsuario);
+            $request_producto = $this->model->updateProducto(
+                $intIdProducto,
+                $strNombre,
+                $strDescripcion,
+                $strCategoria,
+                $intPrecio,
+                $imgImagen,
+                $intIdProductor,
+                $strEstado,
+                $intIdUsuario
+            );
             $option = 2;
         }
 
