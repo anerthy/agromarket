@@ -18,10 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
         "columns": [
             { "data": "pro_id" },
             { "data": "pro_nombre" },
-            { "data": "alim_descripcion" },
+            { "data": "pro_descripcion" },
             { "data": "pro_categoria" },
             { "data": "pro_precio" },
-            { "data": "pro_imagen" },
             { "data": "pro_estado" },
             { "data": "options" }
 
@@ -133,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    //NUEVA ALIMENTACION
     var formProducto = document.querySelector("#formProducto");
     formProducto.onsubmit = function (e) {
         e.preventDefault();
@@ -143,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var strDescripcion = document.querySelector('#txtDescripcion').value;
         var strCategoria = document.querySelector('#txtCategoria').value;
         var intPrecio = document.querySelector('#txtPrecio').value;
-        var strImagen = document.querySelector('#txtImagen').value;
+      //  var strImagen = document.querySelector('#txtImagen').value;
         var strEstado = document.querySelector('#listEstado').value;
 
-        if (strNombre == '' || strDescripcion == '' || strCategoria == '' || intPrecio == '' || strImagen == '' || strEstado == '') {
+        if (strNombre == '' || strDescripcion == '' || strCategoria == '' || intPrecio == '' || strEstado == '') {
             swal("Atención", "Todos los campos son obligatorios.", "error");
             return false;
         }
