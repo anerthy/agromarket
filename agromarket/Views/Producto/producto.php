@@ -17,7 +17,7 @@ getModal('modalProducto', $data);
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard"><i class="fa fa-home fa-lg"></i></a></li>
-            <li class="breadcrumb-item">Servicios / <a href="<?= base_url(); ?>/alimentacion"><?= $data['page_title'] ?></a></li>
+            <li class="breadcrumb-item">Servicios / <a href="<?= base_url(); ?>/producto"><?= $data['page_title'] ?></a></li>
         </ul>
     </div>
 
@@ -26,7 +26,7 @@ getModal('modalProducto', $data);
             <div class="tile">
                 <div class="tile-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered" id="tableAlimentaciones">
+                        <table class="table table-hover table-bordered" id="tableProductos">
                             <thead>
                                 <tr>
                                     <th>ID</th>

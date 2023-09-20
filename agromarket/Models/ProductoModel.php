@@ -129,9 +129,9 @@ class ProductoModel extends Mysql
         string $categoria,
         int $precio,
         string $imagen,
-        string $productor,
+        int $productor,
         string $estado,
-        string $usuario
+        int $usuario
     ) {
         $this->intIdProducto    = $id;
         $this->strNombre        = $nombre;

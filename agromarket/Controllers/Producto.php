@@ -55,10 +55,10 @@ class Producto extends Controllers
                 case 'Activo':
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-info">Activo</span>';
                     break;
-                case Inactivo:
+                case 'Inactivo':
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-danger">Inactivo</span>';
                     break;
-                case Eliminado:
+                case 'Eliminado':
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-dark">Eliminado</span>';
                     break;
                 default:
@@ -69,9 +69,9 @@ class Producto extends Controllers
         die();
     }
 
-    public function getProducto(int $alim_id)
+    public function getProducto(int $pro_id)
     {
-        $intIdProducto = intval(strClean($alim_id));
+        $intIdProducto = intval(strClean($pro_id));
         if ($intIdProducto > 0) {
             $arrData = $this->model->getById($intIdProducto);
             if (empty($arrData)) {
@@ -104,7 +104,7 @@ class Producto extends Controllers
         $type              = $foto['type'];
         $url_temp        = $foto['tmp_name'];
         $imgImagen     = 'imageUnavailable.png';
-        $request_alimentacion = "";
+        $request_producto = "";
         if ($nombre_foto != '') {
             $imgImagen = 'img_' . md5(date('d-m-Y H:m:s')) . '.jpg';
         }
