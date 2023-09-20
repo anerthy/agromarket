@@ -1,8 +1,6 @@
 <?php
-// require_once("Models/Traits/TCount.php");
 class Dashboard extends Controllers
 {
-	// use TCount;
 	public function __construct()
 	{
 		sessionStart();
@@ -12,7 +10,6 @@ class Dashboard extends Controllers
 			header('Location: ' . base_url() . '/login');
 		}
 		// getPermisos(1);
-
 	}
 
 	public function dashboard()
