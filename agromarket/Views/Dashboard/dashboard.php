@@ -43,6 +43,17 @@ headerAdmin($data);
         </div>
       <?php } ?>
 
+      <?php if (!empty($_SESSION['permisos'][2]['ver'])) { ?>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small info coloured-icon"><i class="icon fa fa-gear fa-3x"></i>
+            <div class="info">
+              <h4><a href="<?= base_url(); ?>/anuncio">anuncios</a></h4>
+              <p><b> 1</b></p>
+            </div>
+          </div>
+        </div>
+      <?php } ?>
+
       <?php if (!empty($_SESSION['permisos'][4]['ver'])) { ?>
         <div class="col-md-6 col-lg-3">
           <div class="widget-small warning coloured-icon"><i class="icon fa fa-building fa-3x"></i>
