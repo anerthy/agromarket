@@ -1,13 +1,13 @@
 <?php
 headerAdmin($data);
-getModal('modalAlimentacion', $data);
+getModal('modalProducto', $data);
 ?>
 <div id="contentAjax"></div>
 <main class="app-content">
     <div class="app-title">
         <div>
             <h1>
-                <a href="<?= base_url(); ?>/alimentacion" style="text-decoration: none;">
+                <a href="<?= base_url(); ?>/producto" style="text-decoration: none;">
                     <i class="fas fa-utensils"></i> <?= $data['page_title'] ?>
                 </a>
                 <?php if ($_SESSION['permisosMod']['agregar']) { ?>
@@ -32,9 +32,9 @@ getModal('modalAlimentacion', $data);
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
-                                    <th>Dirección</th>
-                                    <th>Horario</th>
-                                    <th>Teléfono</th>
+                                    <th>Categoria</th>
+                                    <th>Precio</th>
+                                    <th>Imagen</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
