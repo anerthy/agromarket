@@ -63,6 +63,16 @@
                             </li>
                         <?php } ?>
 
+                        <?php if (!empty($_SESSION['permisos'][6]['ver'])) { ?>
+                            <li>
+                                <a class="app-menu__item" href="<?= base_url(); ?>/actividades">
+
+                                    <i class="app-menu__icon fas fa-utensils" aria-hidden="true"></i>
+                                    <span class="app-menu__label">Actividades</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+
                         <?php if (!empty($_SESSION['permisos'][8]['ver'])) { ?>
                             <li>
                                 <a class="app-menu__item" href="<?= base_url(); ?>/hospedaje">
