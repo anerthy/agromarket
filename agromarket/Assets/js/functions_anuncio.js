@@ -248,65 +248,7 @@ function fntViewInfo(anu_id) {
     }
 }
 
-function fntCheckAnuncio(anu_id) {
-    document.querySelector('#titleModal').innerHTML = "Revisar registro";
-    document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
-    document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
-    document.querySelector('#btnText').innerHTML = "Revisar";
 
-    document.getElementById("selectEstado").style.display = "none";
-    document.getElementById("tile-footer").style.display = "none";
-
-    document.querySelector("#optionButtons").innerHTML =
-        `<br><button id="btnActionForm" class="btn btn-info" type="submit">
-            <i class="fa fa-fw fa-lg fa-check-circle"></i>
-            <span id="btnText">Aceptar</span>
-        </button>&nbsp;&nbsp;&nbsp;
-            <a class="btn btn-danger" href="#" data-dismiss="modal" onClick="fntDelAnuncio(${anu_id})" >
-            <i class="fa fa-fw fa-lg fa-times-circle"></i>Rechazar
-        </a>`;
-    document.getElementById("optionButtons").style.display = "block";
-
-    var anu_id = anu_id;
-    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Anuncio/getAnuncio/' + anu_id;
-    request.open("GET", ajaxUrl, true);
-    request.send();
-
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-
-            var objData = JSON.parse(request.responseText);
-            if (objData.status) {
-                document.querySelector("#anu_id").value = objData.data.anu_id;
-                document.querySelector("#txtDescripcion").value = objData.data.anu_descripcion;
-                document.queryselector("#txttipo").value = objdata.data.anu_tipo;
-                document.queryselector("#txtfechavigencia").value = objdata.data.anu_fec_vigencia;
-                document.queryselector('#foto_actual').value = objdata.data.anu_imagen;
-                document.querySelector("#foto_remove").value = 0;
-
-                document.querySelector("#listEstado").value = 2;
-                $('#listEstado').selectpicker('render');
-
-                if (document.querySelector('#img')) {
-                    document.querySelector('#img').src = objData.data.url_imagen;
-                } else {
-                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_imagen + ">";
-                }
-
-                if (objData.data.ANU_IMAGEN == 'imageUnavailable.png') {
-                    document.querySelector('.delPhoto').classList.add("notBlock");
-                } else {
-                    document.querySelector('.delPhoto').classList.remove("notBlock");
-                }
-                $('#modalFormAnuncio').modal('show');
-
-            } else {
-                swal("Error", objData.msg, "error");
-            }
-        }
-    }
-}
 
 function fntEditAnuncio(anu_id) {
 
@@ -443,3 +385,32 @@ function removePhoto() {
         document.querySelector('#img').remove();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

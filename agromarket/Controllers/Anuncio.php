@@ -1,3 +1,6 @@
+
+
+
 <?php
 
 class Anuncio extends Controllers
@@ -27,21 +30,21 @@ class Anuncio extends Controllers
             $btnDisable = '';
             $btnCheck = '';
 
-            if ($_SESSION['permisosMod']['ver']) {
+          
                 $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['anu_id'] . ')" title="Ver anuncio"><i class="far fa-eye"></i></button>';
-            }
+          
 
-            if ($_SESSION['permisosMod']['actualizar']) {
+            
                 $btnEdit = '<button class="btn btn-primary btn-sm fntEditAnuncio" onClick="fntEditAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
-            }
+            
 
-            if ($_SESSION['permisosMod']['eliminar']) {
+          
                 $btnDisable = '<button class="btn btn-danger btn-sm fntDisAnuncio" onClick="fntDisAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
-            }
+          
 
-            if ($_SESSION['permisosMod']['actualizar'] && $_SESSION['permisosMod']['eliminar']){
+         
                 $btnCheck = '<button class="btn btn-warning btn-sm fntCheckAnuncio" onClick="fntCheckAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
-            }
+          
 
             $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>'; 
             
@@ -83,6 +86,7 @@ class Anuncio extends Controllers
             if (empty($arrData)) {
                 $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
             } else {
+                $arrData['url_imagen'] = media() . '/images/uploads/Anuncios/' . $arrData['anu_imagen'];
                 $arrResponse = array('status' => true, 'data' => $arrData);
             }
             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
@@ -112,7 +116,7 @@ class Anuncio extends Controllers
             //Crear
             $request_anuncio = $this->model->insertAnuncio($strDescripcion,
                                                                     $strTipo,
-                                                                    $strImagen,
+                                                                    $imgImagen,
                                                                     $strFechaVigencia,
                                                                     $strEstado,
                                                                    
@@ -125,7 +129,7 @@ class Anuncio extends Controllers
                     $imgImagen = $_POST['foto_actual'];
                 }
             }
-            $request_anuncio = $this->model->updateAnuncio($intIdAnuncio, $strDescripcion, $strTipo, $strImagen, $strFechaVigencia, $strEstado);
+            $request_anuncio = $this->model->updateAnuncio($intIdAnuncio, $strDescripcion, $strTipo, $imgImagen, $strFechaVigencia, $strEstado);
             $option = 2;
         }
 
@@ -154,8 +158,7 @@ class Anuncio extends Controllers
         }
         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
         die();
-        echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
-        die();
+       
     }
 
     public function disAnuncio()
@@ -188,3 +191,7 @@ class Anuncio extends Controllers
         die();
     }
 }
+
+
+
+
