@@ -53,10 +53,10 @@ class PermisoModel extends Mysql
 		$query_insert  = "INSERT INTO permisos (
 							rol_id,
 							pag_id,
-							ver,
-							agregar,
-							actualizar,
-							eliminar
+							per_ver,
+							per_agregar,
+							per_actualizar,
+							per_eliminar
 						) VALUES(?,?,?,?,?,?)";
 		$arrData = array(
 			$this->intRol,
@@ -77,10 +77,10 @@ class PermisoModel extends Mysql
 					p.rol_id,
 					p.pag_id,
 					pg.pag_nombre,
-					p.ver,
-					p.agregar,
-					p.actualizar,
-					p.eliminar 
+					p.per_ver,
+					p.per_agregar,
+					p.per_actualizar,
+					p.per_eliminar 
 				FROM permisos p 
 				INNER JOIN paginas pg
 				ON p.pag_id = pg.pag_id

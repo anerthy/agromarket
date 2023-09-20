@@ -83,7 +83,6 @@ class UsuarioModel extends Mysql
 		string 	$cedula,
 		string 	$estado
 	) {
-
 		$this->intId 			= $id;
 		$this->strEmail 		= $email;
 		$this->strNombre 		= $nombre;

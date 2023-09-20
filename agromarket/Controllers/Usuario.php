@@ -24,7 +24,7 @@ class Usuario extends Controllers
 		$this->views->getView($this, "usuario", $data);
 	}
 
-	public function setUsuario()
+	public function upsertUser()
 	{
 		if ($_POST) {
 			//if (($_SESSION['permisosMod']['agregar']) || ($_SESSION['permisosMod']['actualizar'])) {
@@ -46,7 +46,6 @@ class Usuario extends Controllers
 				$strEstado 	= strClean($_POST['listEstado']);
 
 				if ($intId == 0) {
-					$option = 1;
 					$strContrasena =  empty($_POST['txtContrasena']) ? hash("SHA256", passGenerator()) : hash("SHA256", $_POST['txtContrasena']);
 					$request_user = $this->model->insertUsuario(
 						$strEmail,
@@ -56,8 +55,8 @@ class Usuario extends Controllers
 						$strCedula,
 						$strEstado
 					);
+					$option = 1;
 				} else {
-					$option = 2;
 					$strContrasena =  empty($_POST['txtContrasena']) ? "" : hash("SHA256", $_POST['txtContrasena']);
 					$request_user = $this->model->updateUsuario(
 						$intId,
@@ -68,6 +67,7 @@ class Usuario extends Controllers
 						$strCedula,
 						$strEstado
 					);
+					$option = 2;
 				}
 
 				if ($request_user > 0) {

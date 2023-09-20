@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/rol/upsert';
+        var ajaxUrl = base_url + '/rol/upsertRol';
         var formData = new FormData(formRol);
         request.open("POST", ajaxUrl, true);
         request.send(formData);

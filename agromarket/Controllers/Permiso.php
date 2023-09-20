@@ -17,8 +17,8 @@ class Permiso extends Controllers
 		if ($rolid > 0) {
 			$arrModulos = $this->model->getPages();
 			$arrPermisosRol = $this->model->getPermisosByPagina($rolid);
-			$arrPermisos = array('ver' => 0, 'agregar' => 0, 'actualizar' => 0, 'eliminar' => 0);
-			$arrPermisoRol = array('id_rol' => $rolid);
+			$arrPermisos = array('per_ver' => 0, 'per_agregar' => 0, 'per_actualizar' => 0, 'per_eliminar' => 0);
+			$arrPermisoRol = array('rol_id' => $rolid);
 
 			if (empty($arrPermisosRol)) {
 				for ($i = 0; $i < count($arrModulos); $i++) {
@@ -27,20 +27,20 @@ class Permiso extends Controllers
 				}
 			} else {
 				for ($i = 0; $i < count($arrModulos); $i++) {
-					$arrPermisos = array('ver' => 0, 'agregar' => 0, 'actualizar' => 0, 'eliminar' => 0);
+					$arrPermisos = array('per_ver' => 0, 'per_agregar' => 0, 'per_actualizar' => 0, 'per_eliminar' => 0);
 					if (isset($arrPermisosRol[$i])) {
 						$arrPermisos = array(
-							'ver' => $arrPermisosRol[$i]['ver'],
-							'agregar' => $arrPermisosRol[$i]['agregar'],
-							'actualizar' => $arrPermisosRol[$i]['actualizar'],
-							'eliminar' => $arrPermisosRol[$i]['eliminar']
+							'per_ver' => $arrPermisosRol[$i]['per_ver'],
+							'per_agregar' => $arrPermisosRol[$i]['per_agregar'],
+							'per_actualizar' => $arrPermisosRol[$i]['per_actualizar'],
+							'per_eliminar' => $arrPermisosRol[$i]['per_eliminar']
 						);
 					}
 					$arrModulos[$i]['permisos'] = $arrPermisos;
 				}
 			}
 			$arrPermisoRol['modulos'] = $arrModulos;
-			$html = getModal("modalPermisos", $arrPermisoRol);
+			$html = getModal("modalPermiso", $arrPermisoRol);
 		}
 		die();
 	}
@@ -48,17 +48,24 @@ class Permiso extends Controllers
 	public function setPermisos()
 	{
 		if ($_POST) {
-			$intIdrol = intval($_POST['id_rol']);
+			$intIdrol = intval($_POST['rol_id']);
 			$modulos = $_POST['modulos'];
 
 			$this->model->deletePermisos($intIdrol);
 			foreach ($modulos as $modulo) {
-				$idModulo = $modulo['id_modulo'];
-				$ver = empty($modulo['ver']) ? 0 : 1;
-				$agregar = empty($modulo['agregar']) ? 0 : 1;
-				$actualizar = empty($modulo['actualizar']) ? 0 : 1;
-				$eliminar = empty($modulo['eliminar']) ? 0 : 1;
-				$requestPermiso = $this->model->insertPermisos($intIdrol, $idModulo, $ver, $agregar, $actualizar, $eliminar);
+				$idModulo = $modulo['pag_id'];
+				$ver = empty($modulo['per_ver']) ? 0 : 1;
+				$agregar = empty($modulo['per_agregar']) ? 0 : 1;
+				$actualizar = empty($modulo['per_actualizar']) ? 0 : 1;
+				$eliminar = empty($modulo['per_eliminar']) ? 0 : 1;
+				$requestPermiso = $this->model->insertPermisos(
+					$intIdrol,
+					$idModulo,
+					$ver,
+					$agregar,
+					$actualizar,
+					$eliminar
+				);
 			}
 			if ($requestPermiso > 0) {
 				$arrResponse = array('status' => true, 'msg' => 'Permisos asignados correctamente.');

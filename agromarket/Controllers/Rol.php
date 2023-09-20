@@ -86,7 +86,7 @@ class Rol extends Controllers
 		die();
 	}
 
-	public function upsert()
+	public function upsertRol()
 	{
 
 		$intId 			= intval($_POST['rol_id']);

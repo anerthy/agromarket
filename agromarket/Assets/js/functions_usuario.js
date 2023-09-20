@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // }
 
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/usuario/setUsuario';
+            let ajaxUrl = base_url + '/usuario/upsertUser';
             let formData = new FormData(formUsuario);
             request.open("POST", ajaxUrl, true);
             request.send(formData);
