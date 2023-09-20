@@ -12,7 +12,7 @@
                 <div class="tile">
                     <div class="tile-body">
                         <form id="formProducto" name="formProducto">
-                            <input type="hidden" id="alim_id" name="alim_id" value="">
+                            <input type="hidden" id="pro_id" name="pro_id" value="">
                             <input type="hidden" id="foto_actual" name="foto_actual" value="">
                             <input type="hidden" id="foto_remove" name="foto_remove" value="0">
                             <div class="form-group">
@@ -42,7 +42,7 @@
                                     <option value="Inactivo">Inactivo</option>
                                 </select>
                             </div>
-                            
+
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="photo">

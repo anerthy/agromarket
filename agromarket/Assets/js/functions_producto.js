@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     //NUEVA ALIMENTACION
-    var formAlimentacion = document.querySelector("#formProducto");
+    var formProducto = document.querySelector("#formProducto");
     formProducto.onsubmit = function (e) {
         e.preventDefault();
 
@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var strImagen = document.querySelector('#txtImagen').value;
         var strEstado = document.querySelector('#listEstado').value;
 
-        if (strNombre == '' || strDescripcion == '' || strCategoria == '' || intPrecio == '' || strImagen == '' || strEstado== '') {
+        if (strNombre == '' || strDescripcion == '' || strCategoria == '' || intPrecio == '' || strImagen == '' || strEstado == '') {
             swal("Atención", "Todos los campos son obligatorios.", "error");
             return false;
         }
