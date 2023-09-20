@@ -42,8 +42,14 @@ class PermisoModel extends Mysql
 		return $request;
 	}
 
-	public function insertPermisos(int $rol, int $pagina, int $ver, int $agregar, int $actualizar, int $eliminar)
-	{
+	public function insertPermisos(
+		int $rol,
+		int $pagina,
+		int $ver,
+		int $agregar,
+		int $actualizar,
+		int $eliminar
+	) {
 		$this->intRol 		= $rol;
 		$this->intPagina 	= $pagina;
 		$this->ver 			= $ver;
