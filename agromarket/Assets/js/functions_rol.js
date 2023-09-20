@@ -104,16 +104,12 @@ function fntEditRol(id) {
                 document.querySelector("#txtNombre").value = objData.data.rol_nombre;
                 document.querySelector("#txtDescripcion").value = objData.data.rol_descripcion;
 
-                if (objData.data.rol_estado == 'Activo') {
-                    var optionSelect = '<option value="Activo" selected class="notBlock">Activo</option>';
+                if (objData.data.rol_estado == "Activo") {
+                    document.querySelector("#listEstado").value = "Activo";
                 } else {
-                    var optionSelect = '<option value="Inactivo" selected class="notBlock">Inactivo</option>';
+                    document.querySelector("#listEstado").value = "Inactivo";
                 }
-                var htmlSelect = `${optionSelect}
-                                  <option value="Activo">Activo</option>
-                                  <option value="Inactivo">Inactivo</option>
-                                `;
-                document.querySelector("#listEstado").innerHTML = htmlSelect;
+                $('#listEstado').selectpicker('render');
                 $('#modalFormRol').modal('show');
             } else {
                 swal("Error", objData.msg, "error");
