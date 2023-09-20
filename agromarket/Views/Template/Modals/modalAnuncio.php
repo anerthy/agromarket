@@ -103,6 +103,10 @@
                             <td id="celTipo"></td>
                         </tr>
                         <tr>
+                            <td>fecha:</td>
+                            <td id="celFechaVigencia"></td>
+                        </tr>
+                        <tr>
                             <td>Estado:</td>
                             <td id="celEstado"></td> <!-- Agrega esta fila para mostrar el estado -->
                         </tr>

@@ -218,29 +218,31 @@ function fntViewInfo(anu_id) {
         if (request.readyState == 4 && request.status == 200) {
             let objData = JSON.parse(request.responseText);
             if (objData.status) {
-                switch (objData.data.ANU_ESTADO) {
-                    case "1":
-                        objData.data.ANU_ESTADO = '<span class="badge badge-warning">Pendiente</span>';
+                switch (objData.data.anu_estado) {
+                    case "Pendiente":
+                        objData.data.anu_estado = '<span class="badge badge-warning">pendiente</span>';
                         break;
-                    case "2":
-                        objData.data.ANU_ESTADO = '<span class="badge badge-info">Activo</span>';
+                    case "Activo":
+                        objData.data.anu_estado = '<span class="badge badge-info">activo</span>';
                         break;
-                    case "3":
-                        objData.data.ANU_ESTADO = '<span class="badge badge-danger">Inactivo</span>';
+                    case "Inactivo":
+                        objData.data.anu_estado = '<span class="badge badge-danger">inactivo</span>';
                         break;
-                    case "4":
-                        objData.data.ANU_ESTADO = '<span class="badge badge-dark">Eliminado</span>';
+                    case "Eliminado":
+                        objData.data.anu_estado = '<span class="badge badge-dark">eliminado</span>';
                         break;
                     default:
-                        objData.data.ANU_ESTADO = objData.data.ANU_ESTADO;
+                        objData.data.anu_estado = objData.data.anu_estado;
                         break;
                 }
                 document.querySelector("#celId").innerHTML = objData.data.anu_id;
-                document.querySelector("#celDescripcion").innerHTML = objData.data.ANU_DESCRIPCION;
-                document.querySelector("#celTipo").innerHTML = objData.data.ANU_TIPO;
-                document.querySelector("#celEstado").innerHTML = objData.data.ANU_TIPO;
+                document.querySelector("#celDescripcion").innerHTML = objData.data.anu_descripcion;
+                document.querySelector("#celTipo").innerHTML = objData.data.anu_tipo; 
+                document.querySelector("#celFechaVigencia").innerHTML = objData.data.anu_fec_vigencia; 
+                document.querySelector("#celEstado").innerHTML = objData.data.anu_estado; 
                 document.querySelector("#imgAnuncio").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
                 $('#modalViewAnuncio').modal('show');
+                
             } else {
                 swal("Error", objData.msg, "error");
             }
@@ -272,16 +274,16 @@ function fntEditAnuncio(anu_id) {
             var objData = JSON.parse(request.responseText);
             if (objData.status) {
                 document.querySelector("#anu_id").value = objData.data.anu_id;
-                document.querySelector("#txtDescripcion").value = objData.data.ANU_DESCRIPCION;
-                document.querySelector("#txtTipo").value = objData.data.ANU_TIPO;
-                document.querySelector("#txtFechaVigencia").value = objData.data.ANU_FEC_VIGENCIA;
-                document.querySelector('#foto_actual').value = objData.data.ANU_IMAGEN;
+                document.querySelector("#txtDescripcion").value = objData.data.anu_descripcion;
+                document.querySelector("#txtTipo").value = objData.data.anu_tipo;
+                document.querySelector("#txtFechaVigencia").value = objData.data.anu_fec_vigencia;
+                document.querySelector('#foto_actual').value = objData.data.anu_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
-                if (objData.data.ANU_ESTADO == 2) {
-                    document.querySelector("#listEstado").value = 2;
+                if (objData.data.anu_estado == "Activo") {
+                    document.querySelector("#listEstado").value = "Activo";
                 } else {
-                    document.querySelector("#listEstado").value = 3;
+                    document.querySelector("#listEstado").value = "Inactivo";
                 }
                 $('#listEstado').selectpicker('render');
 
@@ -291,7 +293,7 @@ function fntEditAnuncio(anu_id) {
                     document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_imagen + ">";
                 }
 
-                if (objData.data.ANU_IMAGEN == 'imageUnavailable.png') {
+                if (objData.data.anu_imagen == 'imageUnavailable.png') {
                     document.querySelector('.delPhoto').classList.add("notBlock");
                 } else {
                     document.querySelector('.delPhoto').classList.remove("notBlock");
