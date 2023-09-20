@@ -2,9 +2,7 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
-            <img class="user-img" src="<?= media(); ?>/images/avatar (2).png" width="75" height="75" alt="User icon" />
-
-
+            <!-- <span class="fa fa-user">Usuario</span> -->
             <div>
                 <!-- <p class="app-sidebar__user-name"><?= $_SESSION['userData']['usr_nombre']; ?></p>
                 <p class="app-sidebar__user-designation"><?= $_SESSION['userData']['rol_nombre']; ?></p> -->
