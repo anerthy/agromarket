@@ -1,14 +1,14 @@
 <?php
 
-class Permisos extends Controllers
+class Permiso extends Controllers
 {
 	public function __construct()
 	{
-		sessionStart();
+		// sessionStart();
 		parent::__construct();
-		if (empty($_SESSION['login'])) {
-			header('Location: ' . base_url() . '/login');
-		}
+		// if (empty($_SESSION['login'])) {
+		// 	header('Location: ' . base_url() . '/login');
+		// }
 	}
 
 	public function getPermisosRol(int $idrol)
@@ -41,8 +41,6 @@ class Permisos extends Controllers
 			}
 			$arrPermisoRol['modulos'] = $arrModulos;
 			$html = getModal("modalPermisos", $arrPermisoRol);
-			
-
 		}
 		die();
 	}
