@@ -47,7 +47,7 @@ class Rol extends Controllers
 
 			if ($arrData[$i]['rol_estado'] == 'Activo') {
 				$arrData[$i]['rol_estado'] = '<span class="badge badge-info">Activo</span>';
-			} else {
+			} else if ($arrData[$i]['rol_estado'] == 'Inactivo') {
 				$arrData[$i]['rol_estado'] = '<span class="badge badge-danger">Inactivo</span>';
 			}
 		}
@@ -92,7 +92,7 @@ class Rol extends Controllers
 		$intId 			= intval($_POST['rol_id']);
 		$strNombre 		= strClean($_POST['txtNombre']);
 		$strDescipcion 	= strClean($_POST['txtDescripcion']);
-		$strEstado 		= intval($_POST['listEstado']);
+		$strEstado 		= strClean($_POST['listEstado']);
 
 		if ($intId == 0) {
 			//Crear

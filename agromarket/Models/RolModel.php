@@ -23,7 +23,8 @@ class RolModel extends Mysql
 					rol_nombre,
 					rol_descripcion,
 					rol_estado  
-				FROM ROLES ";
+				FROM ROLES 
+				WHERE rol_estado IN ('Activo','Inactivo')";
 		$request = $this->select_all($sql);
 		return $request;
 	}
@@ -37,12 +38,13 @@ class RolModel extends Mysql
 					rol_descripcion,
 					rol_estado 
 				FROM roles 
-				WHERE rol_id = $this->intId";
+				WHERE rol_id = $this->intId
+				  AND rol_estado IN ('Activo','Inactivo')";
 		$request = $this->select($sql);
 		return $request;
 	}
 
-	public function insertRol(string $nombre, string $descripcion, int $estado)
+	public function insertRol(string $nombre, string $descripcion, string $estado)
 	{
 		$return = "";
 		$this->strNombre 		= $nombre;
@@ -74,7 +76,7 @@ class RolModel extends Mysql
 		return $return;
 	}
 
-	public function updateRol(int $id, string $nombre, string $descripcion, int $estado)
+	public function updateRol(int $id, string $nombre, string $descripcion, string $estado)
 	{
 		$this->intId 			= $id;
 		$this->strNombre 		= $nombre;
