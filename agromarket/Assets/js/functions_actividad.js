@@ -283,10 +283,10 @@ function fntEditActividad(act_id) {
                 document.querySelector('#foto_actual').value = objData.data.act_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
-                if (objData.data.act_estado == 2) {
-                    document.querySelector("#listEstado").value = 2;
+                if (objData.data.act_estado == "Activo") {
+                    document.querySelector("#listEstado").value = "Activo";
                 } else {
-                    document.querySelector("#listEstado").value = 3;
+                    document.querySelector("#listEstado").value = "Inactivo";
                 }
                 $('#listEstado').selectpicker('render');
 

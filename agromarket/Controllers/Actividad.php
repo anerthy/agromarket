@@ -128,7 +128,7 @@ class Actividad extends Controllers
                     $imgImagen = $_POST['foto_actual'];
                 }
             }
-            $requestActividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion, $strLugar, $strCategoria, $imgImagen, $strEstado);
+            $requestActividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion,$strFecha, $strLugar, $strCategoria, $imgImagen, $strEstado);
             $option = 2;
         }
 

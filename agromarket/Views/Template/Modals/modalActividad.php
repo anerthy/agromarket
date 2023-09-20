@@ -37,8 +37,13 @@
 
                             <div class="form-group">
                                 <label class="control-label">Fecha</label>
-                                <input type="datetime-local" class="form-control" id="txtFecha" name="txtFecha" placeholder="Fecha y hora de inicio" required="">
+                               
+                                <input class="form-control" id="txtFecha" name="txtFecha" type="date" required="">
                             </div>
+
+  
+
+                            
 
                             <div class="form-group" id="selectEstado" style="display: none">
                                 <label for="exampleSelect1">Estado</label>
