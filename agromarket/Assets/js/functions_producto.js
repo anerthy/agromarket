@@ -1,29 +1,30 @@
 
-var tableAlimentaciones;
+var tableProductos;
 let rowTable = "";
 let divLoading = document.querySelector("#divLoading");
 document.addEventListener('DOMContentLoaded', function () {
 
 
-    tableAlimentaciones = $('#tableAlimentaciones').dataTable({
+    tableProductos = $('#tableProductos').dataTable({
         "aProcessing": true,
         "aServerSide": true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "ajax": {
-            "url": " " + base_url + "/Alimentacion/getAlimentaciones",
+            "url": " " + base_url + "/Producto/getProductos",
             "dataSrc": ""
         },
         "columns": [
-            { "data": "alim_id" },
-            { "data": "alim_nombre" },
+            { "data": "pro_id" },
+            { "data": "pro_nombre" },
             { "data": "alim_descripcion" },
-            { "data": "alim_direccion" },
-            { "data": "alim_horario" },
-            { "data": "alim_telefono" },
-            { "data": "alim_estado" },
+            { "data": "pro_categoria" },
+            { "data": "pro_precio" },
+            { "data": "pro_imagen" },
+            { "data": "pro_estado" },
             { "data": "options" }
+
         ],
         'dom': 'lBfrtip',
         'buttons': [
@@ -132,22 +133,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
     //NUEVA ALIMENTACION
-    var formAlimentacion = document.querySelector("#formAlimentacion");
-    formAlimentacion.onsubmit = function (e) {
+    var formAlimentacion = document.querySelector("#formProducto");
+    formProducto.onsubmit = function (e) {
         e.preventDefault();
 
-        var intIdAlimentacion = document.querySelector('#alim_id').value;
+        var intIdProducto = document.querySelector('#pro_id').value;
         var strNombre = document.querySelector('#txtNombre').value;
         var strDescripcion = document.querySelector('#txtDescripcion').value;
-        var strDireccion = document.querySelector('#txtDireccion').value;
-        var strHoraApertura = document.querySelector('#txtHoraApertura').value;
-        var strHoraCierre = document.querySelector('#txtHoraCierre').value;
-        var strTelefono = document.querySelector('#txtTelefono').value;
-        var intEstado = document.querySelector('#listEstado').value;
+        var strCategoria = document.querySelector('#txtCategoria').value;
+        var intPrecio = document.querySelector('#txtPrecio').value;
+        var strImagen = document.querySelector('#txtImagen').value;
+        var strEstado = document.querySelector('#listEstado').value;
 
-        if (strNombre == '' || strDescripcion == '' || strDireccion == '' || strHoraApertura == '' || strHoraCierre == '' || strTelefono == '' || intEstado == '') {
+        if (strNombre == '' || strDescripcion == '' || strCategoria == '' || intPrecio == '' || strImagen == '' || strEstado== '') {
             swal("Atención", "Todos los campos son obligatorios.", "error");
             return false;
         }
@@ -157,8 +156,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/Alimentacion/setAlimentacion';
-        var formData = new FormData(formAlimentacion);
+        var ajaxUrl = base_url + '/Producto/setProducto';
+        var formData = new FormData(formProducto);
         request.open("POST", ajaxUrl, true);
         request.send(formData);
         request.onreadystatechange = function () {
@@ -175,19 +174,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         rowTable.cells[1].textContent = strNombre;
                         rowTable.cells[2].textContent = strDescripcion;
-                        rowTable.cells[3].innerHTML = strDireccion;
-                        rowTable.cells[5].innerHTML = strHoraApertura;
-                        rowTable.cells[6].innerHTML = strHoraCierre;
-                        rowTable.cells[6].innerHTML = strTelefono;
+                        rowTable.cells[3].innerHTML = strCategoria;
+                        rowTable.cells[5].innerHTML = intPrecio;
+                        rowTable.cells[6].innerHTML = strImagen;
                         rowTable.cells[7].innerHTML = htmlEstado;
                         rowTable = "";
                     }
 
-                    $('#modalFormAlimentacion').modal("hide");
-                    formAlimentacion.reset();
-                    swal("Alimentación", objData.msg, "success");
+                    $('#modalFormProducto').modal("hide");
+                    formProducto.reset();
+                    swal("Producto", objData.msg, "success");
                     removePhoto();
-                    tableAlimentaciones.api().ajax.reload();
+                    tableProductos.api().ajax.reload();
                 } else {
                     swal("Error", objData.msg, "error");
                 }
@@ -203,56 +201,54 @@ document.addEventListener('DOMContentLoaded', function () {
 function openModal() {
     rowTable = "";
     document.getElementById("selectEstado").style.display = "none";
-    document.querySelector('#alim_id').value = "";
+    document.querySelector('#pro_id').value = "";
     document.querySelector('.modal-header').classList.replace("headerUpdate", "headerRegister");
     document.querySelector('#btnActionForm').classList.replace("btn-info", "btn-primary");
     document.querySelector('#btnText').innerHTML = "Guardar";
-    document.querySelector('#titleModal').innerHTML = "Nueva alimentación";
-    document.querySelector("#formAlimentacion").reset();
+    document.querySelector('#titleModal').innerHTML = "Nuevo Producto";
+    document.querySelector("#formProducto").reset();
 
     document.getElementById("tile-footer").style.display = "block";
     document.getElementById("optionButtons").style.display = "none";
 
-    $('#modalFormAlimentacion').modal('show');
+    $('#modalFormProducto').modal('show');
     removePhoto();
 }
 
 function fntViewInfo(alim_id) {
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    let ajaxUrl = base_url + '/Alimentacion/getAlimentacion/' + alim_id;
+    let ajaxUrl = base_url + '/Producto/getProducto/' + pro_id;
     request.open("GET", ajaxUrl, true);
     request.send();
     request.onreadystatechange = function () {
         if (request.readyState == 4 && request.status == 200) {
             let objData = JSON.parse(request.responseText);
             if (objData.status) {
-                switch (objData.data.alim_estado) {
-                    case "1":
-                        objData.data.alim_estado = '<span class="badge badge-warning">Pendiente</span>';
+                switch (objData.data.pro_estado) {
+                    case "Pendiente":
+                        objData.data.pro_estado = '<span class="badge badge-warning">Pendiente</span>';
                         break;
-                    case "2":
-                        objData.data.alim_estado = '<span class="badge badge-info">Activo</span>';
+                    case "Activo":
+                        objData.data.pro_estado = '<span class="badge badge-info">Activo</span>';
                         break;
-                    case "3":
-                        objData.data.alim_estado = '<span class="badge badge-danger">Inactivo</span>';
+                    case "Inactivo":
+                        objData.data.pro_estado = '<span class="badge badge-danger">Inactivo</span>';
                         break;
-                    case "4":
-                        objData.data.alim_estado = '<span class="badge badge-dark">Eliminado</span>';
+                    case "Eliminado":
+                        objData.data.pro_estado = '<span class="badge badge-dark">Eliminado</span>';
                         break;
                     default:
-                        objData.data.alim_estado = objData.data.alim_estado;
+                        objData.data.pro_estado = objData.data.pro_estado;
                         break;
                 }
-                document.querySelector("#celId").innerHTML = objData.data.alim_id;
-                document.querySelector("#celNombre").innerHTML = objData.data.alim_nombre;
-                document.querySelector("#celDescripcion").innerHTML = objData.data.alim_descripcion;
-                document.querySelector("#celDireccion").innerHTML = objData.data.alim_direccion;
-                document.querySelector("#celHoraApertura").innerHTML = objData.data.alim_hora_apertura;
-                document.querySelector("#celHoraCierre").innerHTML = objData.data.alim_hora_cierre;
-                document.querySelector("#celTelefono").innerHTML = objData.data.alim_telefono;
+                document.querySelector("#celId").innerHTML = objData.data.pro_id;
+                document.querySelector("#celNombre").innerHTML = objData.data.pro_nombre;
+                document.querySelector("#celDescripcion").innerHTML = objData.data.pro_descripcion;
+                document.querySelector("#celCategoria").innerHTML = objData.data.pro_categoria;
+                document.querySelector("#celPrecio").innerHTML = objData.data.pro_precio;
                 document.querySelector("#celEstado").innerHTML = objData.data.alim_estado;
-                document.querySelector("#imgAlimentacion").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
-                $('#modalViewAlimentacion').modal('show');
+                document.querySelector("#img").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
+                $('#modalViewProducto').modal('show');
             } else {
                 swal("Error", objData.msg, "error");
             }
@@ -260,7 +256,7 @@ function fntViewInfo(alim_id) {
     }
 }
 
-function fntCheckAlimentacion(alim_id) {
+function fntCheckProducto(alim_id) {
     document.querySelector('#titleModal').innerHTML = "Revisar registro";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
@@ -274,14 +270,14 @@ function fntCheckAlimentacion(alim_id) {
             <i class="fa fa-fw fa-lg fa-check-circle"></i>
             <span id="btnText">Aceptar</span>
         </button>&nbsp;&nbsp;&nbsp;
-            <a class="btn btn-danger" href="#" data-dismiss="modal" onClick="fntDelAlimentacion(${alim_id})" >
+            <a class="btn btn-danger" href="#" data-dismiss="modal" onClick="fntDelProducto(${alim_id})" >
             <i class="fa fa-fw fa-lg fa-times-circle"></i>Rechazar
         </a>`;
     document.getElementById("optionButtons").style.display = "block";
 
-    var alim_id = alim_id;
+    var pro_id = pro_id;
     var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Alimentacion/getAlimentacion/' + alim_id;
+    var ajaxUrl = base_url + '/Producto/getProducto/' + pro_id;
     request.open("GET", ajaxUrl, true);
     request.send();
 
@@ -290,15 +286,16 @@ function fntCheckAlimentacion(alim_id) {
 
             var objData = JSON.parse(request.responseText);
             if (objData.status) {
-                document.querySelector("#alim_id").value = objData.data.alim_id;
-                document.querySelector("#txtNombre").value = objData.data.alim_nombre;
-                document.querySelector("#txtDescripcion").value = objData.data.alim_descripcion;
-                document.querySelector("#txtDireccion").value = objData.data.alim_direccion;
-                document.querySelector("#txtHoraApertura").value = objData.data.alim_hora_apertura;
-                document.querySelector("#txtHoraCierre").value = objData.data.alim_hora_cierre;
-                document.querySelector("#txtTelefono").value = objData.data.alim_telefono;
-                document.querySelector('#foto_actual').value = objData.data.alim_imagen;
+                document.querySelector("#pro_id").value = objData.data.pro_id;
+                document.querySelector("#txtNombre").value = objData.data.pro_nombre;
+                document.querySelector("#txtDescripcion").value = objData.data.pro_descripcion;
+                document.querySelector("#txtCategoria").value = objData.data.pro_categoria;
+                document.querySelector("#txtPrecio").value = objData.data.pro_precio;
+                document.querySelector("#txtEstado").value = objData.data.pro_estado;
+                document.querySelector('#foto_actual').value = objData.data.pro_imagen;
                 document.querySelector("#foto_remove").value = 0;
+
+
 
                 document.querySelector("#listEstado").value = 2;
                 $('#listEstado').selectpicker('render');
@@ -309,12 +306,12 @@ function fntCheckAlimentacion(alim_id) {
                     document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_imagen + ">";
                 }
 
-                if (objData.data.alim_imagen == 'imageUnavailable.png') {
+                if (objData.data.pro_imagen == 'imageUnavailable.png') {
                     document.querySelector('.delPhoto').classList.add("notBlock");
                 } else {
                     document.querySelector('.delPhoto').classList.remove("notBlock");
                 }
-                $('#modalFormAlimentacion').modal('show');
+                $('#modalFormProducto').modal('show');
 
             } else {
                 swal("Error", objData.msg, "error");
@@ -323,9 +320,9 @@ function fntCheckAlimentacion(alim_id) {
     }
 }
 
-function fntEditAlimentacion(alim_id) {
+function fntEditProducto(pro_id) {
 
-    document.querySelector('#titleModal').innerHTML = "Actualizar Alimentación";
+    document.querySelector('#titleModal').innerHTML = "Actualizar Producto";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
     document.querySelector('#btnText').innerHTML = "Actualizar";
@@ -333,9 +330,9 @@ function fntEditAlimentacion(alim_id) {
     document.getElementById("tile-footer").style.display = "block";
     document.getElementById("optionButtons").style.display = "none";
 
-    var alim_id = alim_id;
+    var pro_id = pro_id;
     var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Alimentacion/getAlimentacion/' + alim_id;
+    var ajaxUrl = base_url + '/Producto/getProducto/' + pro_id;
     request.open("GET", ajaxUrl, true);
     request.send();
 
@@ -344,17 +341,16 @@ function fntEditAlimentacion(alim_id) {
 
             var objData = JSON.parse(request.responseText);
             if (objData.status) {
-                document.querySelector("#alim_id").value = objData.data.alim_id;
-                document.querySelector("#txtNombre").value = objData.data.alim_nombre;
-                document.querySelector("#txtDescripcion").value = objData.data.alim_descripcion;
-                document.querySelector("#txtDireccion").value = objData.data.alim_direccion;
-                document.querySelector("#txtHoraApertura").value = objData.data.alim_hora_apertura;
-                document.querySelector("#txtHoraCierre").value = objData.data.alim_hora_cierre;
-                document.querySelector("#txtTelefono").value = objData.data.alim_telefono;
-                document.querySelector('#foto_actual').value = objData.data.alim_imagen;
+                document.querySelector("#pro_id").value = objData.data.pro_id;
+                document.querySelector("#txtNombre").value = objData.data.pro_nombre;
+                document.querySelector("#txtDescripcion").value = objData.data.pro_descripcion;
+                document.querySelector("#txtCategoria").value = objData.data.pro_categoria;
+                document.querySelector("#txtPrecio").value = objData.data.pro_precio;
+                document.querySelector("#txtEstado").value = objData.data.pro_estado;
+                document.querySelector('#foto_actual').value = objData.data.pro_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
-                if (objData.data.alim_estado == 2) {
+                if (objData.data.pro_estado == 2) {
                     document.querySelector("#listEstado").value = 2;
                 } else {
                     document.querySelector("#listEstado").value = 3;
@@ -373,7 +369,7 @@ function fntEditAlimentacion(alim_id) {
                     document.querySelector('.delPhoto').classList.remove("notBlock");
                 }
 
-                $('#modalFormAlimentacion').modal('show');
+                $('#modalFormProducto').modal('show');
 
             } else {
                 swal("Error", objData.msg, "error");
@@ -382,9 +378,9 @@ function fntEditAlimentacion(alim_id) {
     }
 }
 
-function fntDisAlimentacion(alim_id) {
+function fntDisProducto(alim_id) {
     swal({
-        title: "Eliminar Alimentación",
+        title: "Eliminar Producto",
         text: `¿Realmente quiere eliminar el registro No. ${alim_id}?`,
         type: "warning",
         showCancelButton: true,
@@ -396,8 +392,8 @@ function fntDisAlimentacion(alim_id) {
 
         if (isConfirm) {
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/Alimentacion/disAlimentacion';
-            let strData = "alim_id=" + alim_id;
+            let ajaxUrl = base_url + '/Producto/disProducto';
+            let strData = "pro_id=" + alim_id;
             request.open("POST", ajaxUrl, true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             request.send(strData);
@@ -406,7 +402,7 @@ function fntDisAlimentacion(alim_id) {
                     let objData = JSON.parse(request.responseText);
                     if (objData.status) {
                         swal("Eliminado", objData.msg, "success");
-                        tableAlimentaciones.api().ajax.reload();
+                        tableProductos.api().ajax.reload();
                     } else {
                         swal("Atención!", objData.msg, "error");
                     }
@@ -418,7 +414,7 @@ function fntDisAlimentacion(alim_id) {
 
 }
 
-function fntDelAlimentacion(alim_id) {
+function fntDelProducto(alim_id) {
     swal({
         title: "Rechazar registro",
         text: `¿Está seguro de que quiere eliminar el registro No. ${alim_id}?\nEsta acción es permanente.`,
@@ -432,8 +428,8 @@ function fntDelAlimentacion(alim_id) {
 
         if (isConfirm) {
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/Alimentacion/delAlimentacion';
-            let strData = "alim_id=" + alim_id;
+            let ajaxUrl = base_url + '/Producto/delProducto';
+            let strData = "pro_id=" + pro_id;
             request.open("POST", ajaxUrl, true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             request.send(strData);
@@ -442,7 +438,7 @@ function fntDelAlimentacion(alim_id) {
                     let objData = JSON.parse(request.responseText);
                     if (objData.status) {
                         swal("Eliminado", objData.msg, "success");
-                        tableAlimentaciones.api().ajax.reload();
+                        tableProductos.api().ajax.reload();
                     } else {
                         swal("Atención!", objData.msg, "error");
                     }
