@@ -31,8 +31,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Precio del Producto</label>
-                                <input type="time" class="form-control" id="txtPrecio" name="txtPrecio" rows="2" placeholder="Precio del Producto" required="">
+                                <label class="control-label">Precio</label>
+                                <textarea class="form-control" id="txtPrecio" name="txtPrecio" rows="2" placeholder="Precio del Producto" required=""></textarea>
                             </div>
 
                             <div class="form-group" id="selectEstado" style="display: none">
@@ -121,7 +121,7 @@
 
                         <tr>
                             <td>Imagen:</td>
-                            <td id="imgAlimentacion"></td>
+                            <td id="imgProducto"></td>
                         </tr>
                     </tbody>
                 </table>

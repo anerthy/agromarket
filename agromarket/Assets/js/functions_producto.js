@@ -148,10 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
             swal("Atención", "Todos los campos son obligatorios.", "error");
             return false;
         }
-        if (strTelefono.length < 8) {
-            swal("Atención", "El numero de telefono debe de tener 8 numeros", "error");
-            return false;
-        }
+  
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxUrl = base_url + '/Producto/setProducto';
@@ -164,9 +161,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 var objData = JSON.parse(request.responseText);
                 if (objData.status) {
                     if (rowTable == "") {
-                        tableAlimentaciones.api().ajax.reload();
+                        tableProductos.api().ajax.reload();
                     } else {
-                        htmlEstado = intEstado == 2 ?
+                        htmlEstado = intEstado == 'Activo' ?
                             '<span class="badge badge-info">Activo</span>' :
                             '<span class="badge badge-danger">Inactivo</span>';
 
@@ -213,7 +210,7 @@ function openModal() {
     removePhoto();
 }
 
-function fntViewInfo(alim_id) {
+function fntViewInfo(pro_id) {
     let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     let ajaxUrl = base_url + '/Producto/getProducto/' + pro_id;
     request.open("GET", ajaxUrl, true);
@@ -223,16 +220,16 @@ function fntViewInfo(alim_id) {
             let objData = JSON.parse(request.responseText);
             if (objData.status) {
                 switch (objData.data.pro_estado) {
-                    case "Pendiente":
+                    case 'Pendiente':
                         objData.data.pro_estado = '<span class="badge badge-warning">Pendiente</span>';
                         break;
-                    case "Activo":
+                    case 'Activo':
                         objData.data.pro_estado = '<span class="badge badge-info">Activo</span>';
                         break;
-                    case "Inactivo":
+                    case 'Inactivo':
                         objData.data.pro_estado = '<span class="badge badge-danger">Inactivo</span>';
                         break;
-                    case "Eliminado":
+                    case 'Eliminado':
                         objData.data.pro_estado = '<span class="badge badge-dark">Eliminado</span>';
                         break;
                     default:
@@ -254,7 +251,7 @@ function fntViewInfo(alim_id) {
     }
 }
 
-function fntCheckProducto(alim_id) {
+function fntCheckProducto(pro_id) {
     document.querySelector('#titleModal').innerHTML = "Revisar registro";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
@@ -295,7 +292,7 @@ function fntCheckProducto(alim_id) {
 
 
 
-                document.querySelector("#listEstado").value = 2;
+                document.querySelector("#listEstado").value = 'Activo';
                 $('#listEstado').selectpicker('render');
 
                 if (document.querySelector('#img')) {
@@ -348,10 +345,10 @@ function fntEditProducto(pro_id) {
                 document.querySelector('#foto_actual').value = objData.data.pro_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
-                if (objData.data.pro_estado == 2) {
-                    document.querySelector("#listEstado").value = 2;
+                if (objData.data.pro_estado == 'Activo') {
+                    document.querySelector("#listEstado").value = 'Activo';
                 } else {
-                    document.querySelector("#listEstado").value = 3;
+                    document.querySelector("#listEstado").value = 'Inactivo';
                 }
                 $('#listEstado').selectpicker('render');
 
@@ -376,10 +373,10 @@ function fntEditProducto(pro_id) {
     }
 }
 
-function fntDisProducto(alim_id) {
+function fntDisProducto(pro_id) {
     swal({
         title: "Eliminar Producto",
-        text: `¿Realmente quiere eliminar el registro No. ${alim_id}?`,
+        text: `¿Realmente quiere eliminar el registro No. ${pro_id}?`,
         type: "warning",
         showCancelButton: true,
         confirmButtonText: "Si, eliminar!",
@@ -391,7 +388,7 @@ function fntDisProducto(alim_id) {
         if (isConfirm) {
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
             let ajaxUrl = base_url + '/Producto/disProducto';
-            let strData = "pro_id=" + alim_id;
+            let strData = "pro_id=" + pro_id;
             request.open("POST", ajaxUrl, true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             request.send(strData);
@@ -412,7 +409,7 @@ function fntDisProducto(alim_id) {
 
 }
 
-function fntDelProducto(alim_id) {
+function fntDelProducto(pro_id) {
     swal({
         title: "Rechazar registro",
         text: `¿Está seguro de que quiere eliminar el registro No. ${alim_id}?\nEsta acción es permanente.`,
