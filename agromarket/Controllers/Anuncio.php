@@ -7,7 +7,13 @@ class Anuncio extends Controllers
 {
     public function __construct()
     {
+        sessionStart();
         parent::__construct();
+        
+         if (empty($_SESSION['login'])) {
+             header('Location: ' . base_url() . '/login');
+        }
+        //getPermisos(6);
     }
 
     public function Anuncio()
@@ -22,6 +28,10 @@ class Anuncio extends Controllers
 
     public function getAnuncios()
     {
+         if (empty($_SESSION['permisosMod']['ver'])) {
+            header("Location:" . base_url() . '/access_denied');
+        
+     }
         $arrData = $this->model->selectAnuncios();
 
         for ($i = 0; $i < count($arrData); $i++) {
@@ -30,17 +40,16 @@ class Anuncio extends Controllers
             $btnDisable = '';
             $btnCheck = '';
 
-          
+            if ($_SESSION['permisosMod']['ver']) {
                 $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['anu_id'] . ')" title="Ver anuncio"><i class="far fa-eye"></i></button>';
-          
-
-            
+            }
+            if ($_SESSION['permisosMod']['actualizar']) {
                 $btnEdit = '<button class="btn btn-primary btn-sm fntEditAnuncio" onClick="fntEditAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
-            
+            }
 
-          
+            if ($_SESSION['permisosMod']['eliminar']) {
                 $btnDisable = '<button class="btn btn-danger btn-sm fntDisAnuncio" onClick="fntDisAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
-          
+            }
 
          
                 $btnCheck = '<button class="btn btn-warning btn-sm fntCheckAnuncio" onClick="fntCheckAnuncio(' . $arrData[$i]['anu_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';

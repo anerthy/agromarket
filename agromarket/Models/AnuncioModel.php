@@ -16,6 +16,20 @@ class AnuncioModel extends Mysql
 
     public function selectAnuncios()
     {
+        
+        $isAdmin = " AND anu_id IN (2,3) 
+        AND bit_usuario = {$_SESSION['idUser']}";
+
+         $roles = array(2,3,4);// Administrador Desarrollador y Supervisor
+        if (in_array($_SESSION['userData']['id_rol'], $roles)) {
+        $isAdmin = " AND anu_id IN (1,2,3)";
+
+        }
+        if($_SESSION['userData']['id_rol'] == 1){
+            $isAdmin = " ";
+        }
+
+
         $sql = "SELECT  anu_id,
                         anu_descripcion,
                         anu_tipo,
@@ -72,6 +86,8 @@ class AnuncioModel extends Mysql
                             $this->strImagen, 
                             $this->strFechaVigencia, 
                             "Activo");
+          $data = array(6, $request_insert,$_SESSION['userData']['id_usuario'], $_SESSION['userData']['id_rol']);
+
             $request_insert = $this->insert($query_insert, $arrData);
             $return = $request_insert;
         } else {
