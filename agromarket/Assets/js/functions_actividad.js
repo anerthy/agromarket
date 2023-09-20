@@ -1,9 +1,10 @@
-
 var tableActividades;
 let rowTable = "";
 let divLoading = document.querySelector("#divLoading");
-
 document.addEventListener('DOMContentLoaded', function () {
+
+
+    
     tableActividades = $('#tableActividades').dataTable({
         "processing": true,
         "serverSide": true,
@@ -18,9 +19,9 @@ document.addEventListener('DOMContentLoaded', function () {
             { "data": "act_id" },
             { "data": "act_nombre" },
             { "data": "act_descripcion" },
-            { "data": "act_lugar" },
             { "data": "act_fecha" },
-            { "data": "act_hora" },
+            { "data": "act_lugar" },
+            { "data": "act_categoria" },
             { "data": "act_estado" },
             { "data": "options" }
         ],
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    //NUEVA ALIMENTACION
+    //NUEVA ACTIVIDAD
     var formActividad = document.querySelector("#formActividad");
 formActividad.onsubmit = function (e) {
     e.preventDefault();
@@ -140,12 +141,12 @@ formActividad.onsubmit = function (e) {
     var intIdActividad = document.querySelector('#act_id').value;
     var strNombre = document.querySelector('#txtNombre').value;
     var strDescripcion = document.querySelector('#txtDescripcion').value;
-    var strLugar = document.querySelector('#txtLugar').value;
     var strFecha = document.querySelector('#txtFecha').value;
-    var strHora = document.querySelector('#txtHora').value;
-    var intEstado = document.querySelector('#listEstado').value;
+    var strLugar = document.querySelector('#txtLugar').value;
+    var strCategoria = document.querySelector('#txtCategoria').value;
+    var strEstado = document.querySelector('#listEstado').value;
 
-    if (strNombre == '' || strDescripcion == '' || strLugar == '' || strFecha == '' || strHora == '' || intEstado == '') {
+    if (strNombre == '' || strDescripcion == '' || strLugar == '' || strFecha == '' || strCategoria == '' || strEstado == '') {
         swal("Atención", "Todos los campos son obligatorios.", "error");
         return false;
     }
@@ -162,15 +163,15 @@ formActividad.onsubmit = function (e) {
                 if (rowTable == "") {
                     tableActividades.api().ajax.reload();
                 } else {
-                    var htmlEstado = intEstado == 2 ?
+                    var htmlEstado = strEstado == "Activo" ?
                         '<span class="badge badge-info">Activo</span>' :
                         '<span class="badge badge-danger">Inactivo</span>';
 
                     rowTable.cells[1].textContent = strNombre;
                     rowTable.cells[2].textContent = strDescripcion;
-                    rowTable.cells[3].textContent = strLugar;
-                    rowTable.cells[4].textContent = strFecha;
-                    rowTable.cells[5].textContent = strHora;
+                    rowTable.cells[3].textContent = strFecha;
+                    rowTable.cells[4].textContent = strLugar;
+                    rowTable.cells[5].textContent = strCategoria;
                     rowTable.cells[6].innerHTML = htmlEstado;
                     rowTable = "";
                 }
@@ -199,11 +200,11 @@ function openModal() {
     document.querySelector('#btnText').innerHTML = "Guardar";
     document.querySelector('#titleModal').innerHTML = "Nueva Actividad";
     document.querySelector("#formActividad").reset();
-
     document.getElementById("tile-footer").style.display = "block";
     document.getElementById("optionButtons").style.display = "none";
 
     $('#modalFormActividad').modal('show');
+    removePhoto();
 }
 
 
@@ -217,29 +218,30 @@ function fntViewInfo(act_id) {
             let objData = JSON.parse(request.responseText);
             if (objData.status) {
                 switch (objData.data.act_estado) {
-                    case "1":
+                    case "Pendiente":
                         objData.data.act_estado = '<span class="badge badge-warning">Pendiente</span>';
                         break;
-                    case "2":
+                    case "Activo":
                         objData.data.act_estado = '<span class="badge badge-info">Activo</span>';
                         break;
-                    case "3":
+                    case "Inactivo":
                         objData.data.act_estado = '<span class="badge badge-danger">Inactivo</span>';
                         break;
-                    case "4":
+                    case "Eliminado":
                         objData.data.act_estado = '<span class="badge badge-dark">Eliminado</span>';
                         break;
                     default:
                         objData.data.act_estado = objData.data.act_estado;
                         break;
                 }
+
+          
                 document.querySelector("#celId").innerHTML = objData.data.act_id;
                 document.querySelector("#celNombre").innerHTML = objData.data.act_nombre;
                 document.querySelector("#celDescripcion").innerHTML = objData.data.act_descripcion;
-                document.querySelector("#celDireccion").innerHTML = objData.data.act_direccion;
-                document.querySelector("#celHoraApertura").innerHTML = objData.data.act_hora_apertura;
-                document.querySelector("#celHoraCierre").innerHTML = objData.data.act_hora_cierre;
-                document.querySelector("#celTelefono").innerHTML = objData.data.act_telefono;
+                document.querySelector("#celFecha").innerHTML = objData.data.act_fecha;
+                document.querySelector("#celLugar").innerHTML = objData.data.act_lugar;
+                document.querySelector("#celCategoria").innerHTML = objData.data.act_categoria;
                 document.querySelector("#celEstado").innerHTML = objData.data.act_estado;
                 document.querySelector("#imgActividad").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
                 $('#modalViewActividad').modal('show');
@@ -279,13 +281,16 @@ function fntCheckActividad(act_id) {
         if (request.readyState == 4 && request.status == 200) {
             var objData = JSON.parse(request.responseText);
             if (objData.status) {
+
+
+        
                 document.querySelector("#act_id").value = objData.data.act_id;
                 document.querySelector("#txtNombre").value = objData.data.act_nombre;
                 document.querySelector("#txtDescripcion").value = objData.data.act_descripcion;
-                document.querySelector("#txtDireccion").value = objData.data.act_direccion;
-                document.querySelector("#txtHoraApertura").value = objData.data.act_hora_apertura;
-                document.querySelector("#txtHoraCierre").value = objData.data.act_hora_cierre;
-                document.querySelector("#txtTelefono").value = objData.data.act_telefono;
+                document.querySelector("#txtFecha").value = objData.data.act_fecha;
+                document.querySelector("#txtLugar").value = objData.data.act_lugar;
+                document.querySelector("#txtCategoria").value = objData.data.act_categoria;
+                document.querySelector("#txtEstado").value = objData.data.act_estado;
                 document.querySelector('#foto_actual').value = objData.data.act_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
@@ -334,10 +339,9 @@ function fntEditActividad(act_id) {
                 document.querySelector("#act_id").value = objData.data.act_id;
                 document.querySelector("#txtNombre").value = objData.data.act_nombre;
                 document.querySelector("#txtDescripcion").value = objData.data.act_descripcion;
-                document.querySelector("#txtDireccion").value = objData.data.act_direccion;
-                document.querySelector("#txtHoraApertura").value = objData.data.act_hora_apertura;
-                document.querySelector("#txtHoraCierre").value = objData.data.act_hora_cierre;
-                document.querySelector("#txtTelefono").value = objData.data.act_telefono;
+                document.querySelector("#txtFecha").value = objData.data.act_fecha;
+                document.querySelector("#txtLugar").value = objData.data.act_lugar;
+                document.querySelector("#txtCategoria").value = objData.data.act_categoria;
                 document.querySelector('#foto_actual').value = objData.data.act_imagen;
                 document.querySelector("#foto_remove").value = 0;
 

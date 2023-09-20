@@ -12,38 +12,39 @@
                 <div class="tile">
                     <div class="tile-body">
                         <form id="formActividad" name="formActividad">
-                            <input type="hidden" id="COD_ACTIVIDAD" name="COD_ACTIVIDAD" value="">
-                            <input type="hidden" id="IMG_ACTIVIDAD" name="IMG_ACTIVIDAD" value="">
+                            <input type="hidden" id="act_id" name="act_id" value="">
+                            <input type="hidden" id="foto_actual" name="foto_actual" value="">
+                            <input type="hidden" id="foto_remove" name="foto_remove" value="0">
                             <div class="form-group">
                                 <label class="control-label">Nombre</label>
-                                <input class="form-control" id="NOM_ACTIVIDAD" name="NOM_ACTIVIDAD" type="text" placeholder="Nombre de la actividad" required="">
+                                <input class="form-control" id="txtNombre" name="txtNombre" type="text" placeholder="Nombre de la actividad" required="">
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Descripción</label>
-                                <textarea class="form-control" id="DES_ACTIVIDAD" name="DES_ACTIVIDAD" rows="2" placeholder="Descripción de la actividad" required=""></textarea>
+                                <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="2" placeholder="Descripción de la actividad" required=""></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Lugar</label>
-                                <input class="form-control" id="ACT_LUGAR" name="ACT_LUGAR" type="text" placeholder="Lugar de la actividad" required="">
+                                <input class="form-control" id="txtLugar" name="txtLugar" type="text" placeholder="Lugar de la actividad" required="">
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">Categoría</label>
-                                <input class="form-control" id="ACT_CATEGORIA" name="ACT_CATEGORIA" type="text" placeholder="Categoría de la actividad" required="">
+                                <input class="form-control" id="txtCategoria" name="txtCategoria" type="text" placeholder="Categoría de la actividad" required="">
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Hora de inicio</label>
-                                <input type="datetime-local" class="form-control" id="FEC_ACTIVIDAD" name="FEC_ACTIVIDAD" placeholder="Fecha y hora de inicio" required="">
+                                <label class="control-label">Fecha</label>
+                                <input type="datetime-local" class="form-control" id="txtFecha" name="txtFecha" placeholder="Fecha y hora de inicio" required="">
                             </div>
 
                             <div class="form-group" id="selectEstado" style="display: none">
                                 <label for="exampleSelect1">Estado</label>
-                                <select class="form-control" id="IND_ESTADO" name="IND_ESTADO" required="">
-                                    <option value="2">Activo</option>
-                                    <option value="3">Inactivo</option>
+                                <select class="form-control" id="listEstado" name="listEstado" required="">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
                                 </select>
                             </div>
                             
@@ -102,31 +103,31 @@
                     <tbody>
                         <tr>
                             <td>ID:</td>
-                            <td id="celCOD_ACTIVIDAD"></td>
+                            <td id="celId"></td>
                         </tr>
                         <tr>
                             <td>Nombre:</td>
-                            <td id="celNOM_ACTIVIDAD"></td>
+                            <td id="celNombre"></td>
                         </tr>
                         <tr>
                             <td>Descripción:</td>
-                            <td id="celDES_ACTIVIDAD"></td>
+                            <td id="celDescripcion"></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha:</td>
+                            <td id="celFecha"></td>
                         </tr>
                         <tr>
                             <td>Lugar:</td>
-                            <td id="celACT_LUGAR"></td>
+                            <td id="celLugar"></td>
                         </tr>
                         <tr>
-                            <td>Categoría:</td>
-                            <td id="celACT_CATEGORIA"></td>
-                        </tr>
-                        <tr>
-                            <td>Fecha y hora de inicio:</td>
-                            <td id="celFEC_ACTIVIDAD"></td>
+                            <td>Categoria:</td>
+                            <td id="celCategoria"></td>
                         </tr>
                         <tr>
                             <td>Estado:</td>
-                            <td id="celIND_ESTADO"></td>
+                            <td id="celEstado"></td>
                         </tr>
                         <tr>
                             <td>Imagen:</td>

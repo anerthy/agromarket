@@ -10,9 +10,9 @@ getModal('modalActividad', $data); // Asegúrate de que el modal tenga el nombre
                 <a href="<?= base_url(); ?>/actividad" style="text-decoration: none;">
                     <i class="fas fa-utensils"></i> <?= $data['page_title'] ?>
                 </a>
-                <?php if ($_SESSION['permisosMod']['agregar']) { ?>
+           
                     <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
-                <?php } ?>
+            
             </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
@@ -32,9 +32,9 @@ getModal('modalActividad', $data); // Asegúrate de que el modal tenga el nombre
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
-                                    <th>Dirección</th>
-                                    <th>Horario</th>
-                                    <th>Teléfono</th>
+                                    <th>Lugar</th>
+                                    <th>Categoria</th>
+                                    <th>Fecha</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
