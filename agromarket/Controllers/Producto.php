@@ -55,10 +55,10 @@ class Producto extends Controllers
                 case 'Activo':
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-info">Activo</span>';
                     break;
-                case 3:
+                case Inactivo:
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-danger">Inactivo</span>';
                     break;
-                case 4:
+                case Eliminado:
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-dark">Eliminado</span>';
                     break;
                 default:
