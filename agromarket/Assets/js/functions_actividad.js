@@ -325,7 +325,7 @@ function fntDisableActividad(act_id) {
 
         if (isConfirm) {
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-            let ajaxUrl = base_url + '/Actividad/disActividad'; // Asegúrate de usar la URL y la ruta correctas
+            let ajaxUrl = base_url + '/Actividad/disableActividad'; // Asegúrate de usar la URL y la ruta correctas
             let strData = "act_id=" + act_id;
             request.open("POST", ajaxUrl, true);
             request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
