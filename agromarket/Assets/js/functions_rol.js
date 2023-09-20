@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var intIdRol = document.querySelector('#rol_id').value;
         var strNombre = document.querySelector('#txtNombre').value;
         var strDescripcion = document.querySelector('#txtDescripcion').value;
-        var intStatus = document.querySelector('#listEstado').value;
-        if (strNombre == '' || strDescripcion == '' || intStatus == '') {
+        var strEstado = document.querySelector('#listEstado').value;
+        if (strNombre == '' || strDescripcion == '' || strEstado == '') {
             swal("Atención", "Todos los campos son obligatorios.", "error");
             return false;
         }
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/rol/set';
+        var ajaxUrl = base_url + '/rol/upsert';
         var formData = new FormData(formRol);
         request.open("POST", ajaxUrl, true);
         request.send(formData);
@@ -163,7 +163,7 @@ function fntDelRol(id) {
 function fntPermisos(id_rol) {
     var idrol = id_rol;
     var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Permisos/getPermisosRol/' + idrol;
+    var ajaxUrl = base_url + '/Permiso/getPermisosRol/' + idrol;
     request.open("GET", ajaxUrl, true);
     request.send();
 

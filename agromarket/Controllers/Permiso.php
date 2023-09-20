@@ -15,8 +15,8 @@ class Permiso extends Controllers
 	{
 		$rolid = intval($idrol);
 		if ($rolid > 0) {
-			$arrModulos = $this->model->selectModulos();
-			$arrPermisosRol = $this->model->selectPermisosRol($rolid);
+			$arrModulos = $this->model->getPages();
+			$arrPermisosRol = $this->model->getPermisosByPagina($rolid);
 			$arrPermisos = array('ver' => 0, 'agregar' => 0, 'actualizar' => 0, 'eliminar' => 0);
 			$arrPermisoRol = array('id_rol' => $rolid);
 

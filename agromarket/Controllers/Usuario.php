@@ -24,7 +24,7 @@ class Usuario extends Controllers
 		$this->views->getView($this, "usuario", $data);
 	}
 
-	public function set()
+	public function setUsuario()
 	{
 		if ($_POST) {
 			//if (($_SESSION['permisosMod']['agregar']) || ($_SESSION['permisosMod']['actualizar'])) {

@@ -75,7 +75,7 @@ class Rol extends Controllers
 	{
 		$intId = intval(strClean($id));
 		if ($intId > 0) {
-			$arrData = $this->model->selectRol($intId);
+			$arrData = $this->model->getById($intId);
 			if (empty($arrData)) {
 				$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
 			} else {
@@ -86,10 +86,10 @@ class Rol extends Controllers
 		die();
 	}
 
-	public function set()
+	public function upsert()
 	{
 
-		$intId 			= intval($_POST['idRol']);
+		$intId 			= intval($_POST['rol_id']);
 		$strNombre 		= strClean($_POST['txtNombre']);
 		$strDescipcion 	= strClean($_POST['txtDescripcion']);
 		$strEstado 		= intval($_POST['listEstado']);
