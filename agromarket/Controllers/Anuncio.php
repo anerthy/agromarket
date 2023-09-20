@@ -86,7 +86,7 @@ class Anuncio extends Controllers
             if (empty($arrData)) {
                 $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
             } else {
-                $arrData['url_imagen'] = media() . '/images/uploads/Anuncios/' . $arrData['anu_imagen'];
+                $arrData['url_imagen'] = media() . '/images/uploads/anuncio/' . $arrData['anu_imagen'];
                 $arrResponse = array('status' => true, 'data' => $arrData);
             }
             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
