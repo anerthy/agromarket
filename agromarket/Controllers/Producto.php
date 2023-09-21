@@ -43,14 +43,6 @@ class Producto extends Controllers
 
             $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>';
 
-            if ($arrData[$i]['pro_estado'] == 'Activo') {
-                $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';
-            }
-
-            if ($arrData[$i]['pro_estado'] == 'Eliminado') {
-                $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';
-            }
-
             switch ($arrData[$i]['pro_estado']) {
                 case 'Activo':
                     $arrData[$i]['pro_estado'] = '<span class="badge badge-info">Activo</span>';
@@ -87,17 +79,14 @@ class Producto extends Controllers
 
     public function setProducto()
     {
-        $intIdProducto = intval($_POST['pro_id']);
-        $strNombre =  strClean($_POST['txtNombre']);
+        $intIdProducto  = intval($_POST['pro_id']);
+        $strNombre      = strClean($_POST['txtNombre']);
         $strDescripcion = strClean($_POST['txtDescripcion']);
-        $strCategoria = strClean($_POST['txtCategoria']);
-        $intPrecio = intval($_POST['pro_id']);
-        $strImagen = intval($_POST['pro_imagen']);
-        $intIdProductor = intval($_POST['ptd_id']);
-        $strEstado = intval($_POST['listEstado']);
-        $intIdUsuario = intval($_POST['usr_id']);
-
-
+        $strCategoria   = strClean($_POST['txtCategoria']);
+        $intPrecio      = intval($_POST['txtPrecio']);
+    // $intIdProductor = intval($_POST['ptd_id']);
+        $intIdProductor = 1; //! PENDIENTE DE OBTENER EL PRODUCTOR DE ESE USUARIO
+        $strEstado      = strClean($_POST['listEstado']);
 
         $foto       = $_FILES['foto'];
         $nombre_foto     = $foto['name'];
@@ -105,6 +94,7 @@ class Producto extends Controllers
         $url_temp        = $foto['tmp_name'];
         $imgImagen     = 'imageUnavailable.png';
         $request_producto = "";
+
         if ($nombre_foto != '') {
             $imgImagen = 'img_' . md5(date('d-m-Y H:m:s')) . '.jpg';
         }
@@ -118,8 +108,7 @@ class Producto extends Controllers
                 $intPrecio,
                 $imgImagen,
                 $intIdProductor,
-                $strEstado,
-                $intIdUsuario
+                $strEstado
             );
             $option = 1;
         } else {
@@ -137,8 +126,7 @@ class Producto extends Controllers
                 $intPrecio,
                 $imgImagen,
                 $intIdProductor,
-                $strEstado,
-                $intIdUsuario
+                $strEstado
             );
             $option = 2;
         }

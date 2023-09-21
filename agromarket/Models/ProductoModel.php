@@ -10,7 +10,6 @@ class ProductoModel extends Mysql
     public $strImagen;
     public $intIdProductor;
     public $strEstado;
-    public $intIdUsuario;
 
     public function __construct()
     {
@@ -19,18 +18,6 @@ class ProductoModel extends Mysql
 
     public function getAll()
     {
-        // $isAdmin = " AND alim_estado IN (2,3) 
-        // AND bit_usuario = {$_SESSION['idUser']}";
-
-        // $roles = array(2, 3, 4); // Administrador Desarrollador y Supervisor
-        // if (in_array($_SESSION['userData']['id_rol'], $roles)) {
-        //     $isAdmin = " AND alim_estado IN (1,2,3)";
-        // }
-
-        // if ($_SESSION['userData']['id_rol'] == 1) {
-        //     $isAdmin = " ";
-        // }
-
         $sql = "SELECT  
                     pro_id,
                     pro_nombre,
@@ -47,7 +34,7 @@ class ProductoModel extends Mysql
         return $request;
     }
 
-    public function getByid(int $id)
+    public function getById(int $id)
     {
         $this->intIdProducto = $id;
         $sql = "SELECT 
@@ -67,14 +54,13 @@ class ProductoModel extends Mysql
     }
 
     public function insertProducto(
-        string $nombre,
-        string $descripcion,
-        string $categoria,
-        int $precio,
-        string $imagen,
-        string $productor,
-        string $estado,
-        string $usuario
+        string  $nombre,
+        string  $descripcion,
+        string  $categoria,
+        int     $precio,
+        string  $imagen,
+        string  $productor,
+        string  $estado
     ) {
         $return = "";
         $this->strNombre        = $nombre;
@@ -84,7 +70,6 @@ class ProductoModel extends Mysql
         $this->strImagen        = $imagen;
         $this->intIdProductor   = $productor;
         $this->strEstado        = $estado;
-        $this->intIdUsuario     = $usuario;
 
         $sql = "SELECT pro_nombre 
                 FROM productos 
@@ -112,7 +97,7 @@ class ProductoModel extends Mysql
                 $this->strImagen,
                 $this->intIdProductor,
                 $this->strEstado,
-                $this->intIdUsuario
+                1
             );
             $request_insert = $this->insert($query_insert, $arrData);
         } else {
@@ -123,14 +108,13 @@ class ProductoModel extends Mysql
 
     public function updateProducto(
         int     $id,
-        string $nombre,
-        string $descripcion,
-        string $categoria,
-        int $precio,
-        string $imagen,
-        int $productor,
-        string $estado,
-        int $usuario
+        string  $nombre,
+        string  $descripcion,
+        string  $categoria,
+        int     $precio,
+        string  $imagen,
+        int     $productor,
+        string  $estado
     ) {
         $this->intIdProducto    = $id;
         $this->strNombre        = $nombre;
@@ -140,9 +124,6 @@ class ProductoModel extends Mysql
         $this->strImagen        = $imagen;
         $this->intIdProductor   = $productor;
         $this->strEstado        = $estado;
-        $this->intIdUsuario     = $usuario;
-
-
 
         $sql = "SELECT pro_id 
                 FROM productos
@@ -169,7 +150,7 @@ class ProductoModel extends Mysql
                 $this->strImagen,
                 $this->intIdProductor,
                 $this->strEstado,
-                $this->intIdUsuario
+                1
             );
             $request = $this->update($sql, $arrData);
         } else {
