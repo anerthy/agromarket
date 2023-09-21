@@ -39,9 +39,9 @@ class Usuario extends Controllers
 				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 			} else {
 				$intId 		= intval($_POST['usr_id']);
-				$strEmail 	= strClean($_POST['txtEmail']);
+				$strEmail 	= strtolower(strClean($_POST['txtEmail']));
 				$strNombre 	= strClean($_POST['txtNombre']);
-				$intRol 	= intval($_POST['listRol']);
+				$intRol 	= intval(strClean($_POST['listRol']));
 				$strCedula 	= strClean($_POST['txtCedula']);
 				$strEstado 	= strClean($_POST['listEstado']);
 

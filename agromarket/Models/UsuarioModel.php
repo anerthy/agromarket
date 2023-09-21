@@ -6,7 +6,6 @@ class UsuarioModel extends Mysql
 	private $strEmail;
 	private $strNombre;
 	private $strContrasena;
-	// private $strToken;
 	private $intRol;
 	private $strCedula;
 	private $strEstado;
@@ -31,7 +30,7 @@ class UsuarioModel extends Mysql
 		$this->intRol 			= $rol;
 		$this->strCedula    	= $cedula;
 		$this->strEstado    	= $estado;
-		$return = 0;
+		$rtn_request = 0;
 
 		$sql = "SELECT	
 					usr_nombre 
@@ -41,22 +40,8 @@ class UsuarioModel extends Mysql
 		$request = $this->select_all($sql);
 
 		if (empty($request)) {
-			$query_insert  = 	"INSERT INTO usuarios(
-									usr_email,
-									usr_nombre,
-									usr_contrasena,
-									rol_id,
-									per_cedula,
-									usr_estado
-								)
-								VALUES(
-									'?',
-									'?',
-									'?',
-									'?',
-									'?',
-									'?'
-								)";
+			$query_insert  = 	"INSERT INTO usuarios(usr_email,usr_nombre,usr_contrasena,rol_id,per_cedula,usr_estado)
+								VALUES('?', '?', '?', '?', '?', '?')";
 
 			$arrData = array(
 				$this->strEmail,
@@ -66,12 +51,13 @@ class UsuarioModel extends Mysql
 				$this->strCedula,
 				$this->strEstado
 			);
+
 			$request_insert = $this->insert($query_insert, $arrData);
-			$return = $request_insert;
+			$rtn_request = $request_insert;
 		} else {
-			$return = "exist";
+			$rtn_request = "exist";
 		}
-		return $return;
+		return $rtn_request;
 	}
 
 	public function updateUsuario(
@@ -102,7 +88,7 @@ class UsuarioModel extends Mysql
 				$sql = "UPDATE usuarios 
 						SET	usr_email		=	?,
 							usr_nombre		=	?,  
-							usr_contraseña	=	?, 
+							usr_contrasena	=	?, 
 							rol_id			=	?, 
 							per_cedula		=	?, 
 							usr_estado		=	? 
@@ -146,8 +132,8 @@ class UsuarioModel extends Mysql
 		// }
 		$sql = "SELECT 
 					usr_id, 
-					usr_nombre, 
 					usr_email, 
+					usr_nombre, 
 					usr_estado, 
 					rol_nombre, 
 					per_cedula
@@ -164,8 +150,8 @@ class UsuarioModel extends Mysql
 		$this->intId = $id;
 		$sql = "SELECT 
 					usr_id, 
-					usr_nombre, 
 					usr_email, 
+					usr_nombre, 
 					usr_estado, 
 					rol_nombre, 
 					per_cedula
