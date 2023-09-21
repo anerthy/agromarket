@@ -171,8 +171,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         rowTable.cells[2].textContent = strDescripcion;
                         rowTable.cells[3].innerHTML = strCategoria;
                         rowTable.cells[5].innerHTML = intPrecio;
-                        rowTable.cells[6].innerHTML = strImagen;
-                        rowTable.cells[7].innerHTML = htmlEstado;
+                        // rowTable.cells[6].innerHTML = strImagen;
+                        rowTable.cells[6].innerHTML = htmlEstado;
                         rowTable = "";
                     }
 
@@ -242,7 +242,7 @@ function fntViewInfo(pro_id) {
                 document.querySelector("#celCategoria").innerHTML = objData.data.pro_categoria;
                 document.querySelector("#celPrecio").innerHTML = objData.data.pro_precio;
                 document.querySelector("#celEstado").innerHTML = objData.data.pro_estado;
-                document.querySelector("#img").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
+                document.querySelector("#imgProducto").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
                 $('#modalViewProducto').modal('show');
             } else {
                 swal("Error", objData.msg, "error");
@@ -293,7 +293,7 @@ function fntEditProducto(pro_id) {
                     document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_imagen + ">";
                 }
 
-                if (objData.data.alim_imagen == 'imageUnavailable.png') {
+                if (objData.data.pro_imagen == 'imageUnavailable.png') {
                     document.querySelector('.delPhoto').classList.add("notBlock");
                 } else {
                     document.querySelector('.delPhoto').classList.remove("notBlock");
@@ -347,7 +347,7 @@ function fntDisProducto(pro_id) {
 function fntDelProducto(pro_id) {
     swal({
         title: "Rechazar registro",
-        text: `¿Está seguro de que quiere eliminar el registro No. ${alim_id}?\nEsta acción es permanente.`,
+        text: `¿Está seguro de que quiere eliminar el registro No. ${pro_id}?\nEsta acción es permanente.`,
         type: "warning",
         showCancelButton: true,
         confirmButtonText: "Si, rechazar!",
