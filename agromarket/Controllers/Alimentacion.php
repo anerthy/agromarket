@@ -18,7 +18,7 @@ class Alimentacion extends Controllers
         // if (empty($_SESSION['permisosMod']['ver'])) {
         //     header("Location:" . base_url() . '/access_denied');
         // }
-        $data['page_id'] = 6;
+        $data['page_id'] = 0;
         $data['page_tag'] = "Servicios de Alimentación";
         $data['page_name'] = "alimentacion";
         $data['page_title'] = "Alimentación";
