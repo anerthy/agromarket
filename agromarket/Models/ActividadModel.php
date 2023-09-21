@@ -27,7 +27,8 @@ class ActividadModel extends Mysql
                         act_categoria,
                         act_imagen,
                         act_estado
-                FROM actividades";
+                FROM actividades
+                WHERE act_estado IN ('Activo', 'Inactivo')";
         $request = $this->select_all($sql);
         return $request;
     }
