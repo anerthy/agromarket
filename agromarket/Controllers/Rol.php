@@ -4,12 +4,12 @@ class Rol extends Controllers
 {
 	public function __construct()
 	{
-		//	sessionStart();
+		sessionStart();
 		parent::__construct();
 
-		// if (empty($_SESSION['login'])) {
-		// 	header('Location: ' . base_url() . '/login');
-		// }
+		if (empty($_SESSION['login'])) {
+			header('Location: ' . base_url() . '/login');
+		}
 		// getPermisos(2);
 	}
 
@@ -32,7 +32,7 @@ class Rol extends Controllers
 		$btnView = '';
 		$btnEdit = '';
 		$btnDelete = '';
-		$arrData = $this->model->selectRoles();
+		$arrData = $this->model->getAll();
 
 		for ($i = 0; $i < count($arrData); $i++) {
 			$btnView 	= '<button class="btn btn-primary btn-sm btnEditRol" onClick="fntEditRol(' . $arrData[$i]['rol_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
@@ -47,7 +47,7 @@ class Rol extends Controllers
 
 			if ($arrData[$i]['rol_estado'] == 'Activo') {
 				$arrData[$i]['rol_estado'] = '<span class="badge badge-info">Activo</span>';
-			} else {
+			} else if ($arrData[$i]['rol_estado'] == 'Inactivo') {
 				$arrData[$i]['rol_estado'] = '<span class="badge badge-danger">Inactivo</span>';
 			}
 		}
@@ -75,7 +75,7 @@ class Rol extends Controllers
 	{
 		$intId = intval(strClean($id));
 		if ($intId > 0) {
-			$arrData = $this->model->selectRol($intId);
+			$arrData = $this->model->getById($intId);
 			if (empty($arrData)) {
 				$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
 			} else {
@@ -86,13 +86,13 @@ class Rol extends Controllers
 		die();
 	}
 
-	public function set()
+	public function upsertRol()
 	{
 
-		$intId 			= intval($_POST['idRol']);
+		$intId 			= intval($_POST['rol_id']);
 		$strNombre 		= strClean($_POST['txtNombre']);
 		$strDescipcion 	= strClean($_POST['txtDescripcion']);
-		$strEstado 		= intval($_POST['listEstado']);
+		$strEstado 		= strClean($_POST['listEstado']);
 
 		if ($intId == 0) {
 			//Crear

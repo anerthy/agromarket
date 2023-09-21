@@ -20,9 +20,9 @@ class UsuarioModel extends Mysql
 		string 	$email,
 		string 	$nombre,
 		string 	$contrasena,
-		string 	$rol,
+		int 	$rol,
 		string 	$cedula,
-		int 	$estado
+		string 	$estado
 	) {
 
 		$this->strEmail 		= $email;
@@ -74,6 +74,70 @@ class UsuarioModel extends Mysql
 		return $return;
 	}
 
+	public function updateUsuario(
+		int 	$id,
+		string 	$email,
+		string 	$nombre,
+		string 	$contrasena,
+		int 	$rol,
+		string 	$cedula,
+		string 	$estado
+	) {
+		$this->intId 			= $id;
+		$this->strEmail 		= $email;
+		$this->strNombre 		= $nombre;
+		$this->strContrasena	= $contrasena;
+		$this->intRol 			= $rol;
+		$this->strCedula		= $cedula;
+		$this->strEstado 		= $estado;
+
+		$sql = "SELECT usr_nombre 
+				FROM USUARIOS 
+				WHERE (usr_email 	= '{$this->strEmail}' 	AND usr_id != $this->intId) 
+				   OR (usr_nombre 	= '{$this->strNombre}' 	AND usr_id != $this->intId) ";
+		$request = $this->select_all($sql);
+
+		if (empty($request)) {
+			if ($this->strContrasena  != "") {
+				$sql = "UPDATE usuarios 
+						SET	usr_email		=	?,
+							usr_nombre		=	?,  
+							usr_contraseña	=	?, 
+							rol_id			=	?, 
+							per_cedula		=	?, 
+							usr_estado		=	? 
+						WHERE usr_id = $this->intId ";
+				$arrData = array(
+					$this->strEmail,
+					$this->strNombre,
+					$this->strContrasena,
+					$this->intRol,
+					$this->strCedula,
+					$this->strEstado
+				);
+			} else {
+				$sql = "UPDATE usuarios 
+						SET	usr_email		=	?,
+							usr_nombre		=	?,  
+							rol_id			=	?, 
+							per_cedula		=	?, 
+							usr_estado		=	? 
+						WHERE usr_id = $this->intId ";
+				$arrData = array(
+					$this->strEmail,
+					$this->strNombre,
+					$this->intRol,
+					$this->strCedula,
+					$this->strEstado
+				);
+			}
+			$request = $this->update($sql, $arrData);
+		} else {
+			$request = "exist";
+		}
+		return $request;
+	}
+
 	public function getAll()
 	{
 		// $whereAdmin = "";
@@ -111,71 +175,6 @@ class UsuarioModel extends Mysql
 				WHERE usr_id = $this->intId
 				  AND usr_estado IN ('Activo', 'Inactivo')";
 		$request = $this->select($sql);
-		return $request;
-	}
-
-	public function updateUsuario(
-		int 	$id,
-		string 	$email,
-		string 	$nombre,
-		string 	$contrasena,
-		string 	$rol,
-		string 	$cedula,
-		int 	$estado
-	) {
-
-		$this->intId 			= $id;
-		$this->strEmail 		= $email;
-		$this->strNombre 		= $nombre;
-		$this->strContrasena	= $contrasena;
-		$this->intRol 			= $rol;
-		$this->strCedula		= $cedula;
-		$this->strEstado 		= $estado;
-
-		$sql = "SELECT usr_nombre 
-				FROM USUARIOS 
-				WHERE (usr_email 	= '{$this->strEmail}' 	AND usr_id != $this->intId) 
-				   OR (usr_nombre 	= '{$this->strNombre}' 	AND usr_id != $this->intId) ";
-		$request = $this->select_all($sql);
-
-		if (empty($request)) {
-			if ($this->strContrasena  != "") {
-				$sql = "UPDATE usuarios 
-						SET	usr_email		=	?,
-							usr_nombre		=	?,  
-							usr_contraseña	=	?, 
-							rol_id			=	?, 
-							cedula			=	?, 
-							usr_estado		=	? 
-						WHERE usr_id = $this->intId ";
-				$arrData = array(
-					$this->strEmail,
-					$this->strNombre,
-					$this->strContrasena,
-					$this->intRol,
-					$this->strCedula,
-					$this->strEstado
-				);
-			} else {
-				$sql = "UPDATE usuarios 
-						SET	usr_email		=	?,
-							usr_nombre		=	?,  
-							rol_id			=	?, 
-							cedula			=	?, 
-							usr_estado		=	? 
-						WHERE usr_id = $this->intId ";
-				$arrData = array(
-					$this->strEmail,
-					$this->strNombre,
-					$this->intRol,
-					$this->strCedula,
-					$this->strEstado
-				);
-			}
-			$request = $this->update($sql, $arrData);
-		} else {
-			$request = "exist";
-		}
 		return $request;
 	}
 

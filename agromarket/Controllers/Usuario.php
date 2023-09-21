@@ -4,12 +4,12 @@ class Usuario extends Controllers
 {
 	public function __construct()
 	{
-		// sessionStart();
+		sessionStart();
 		parent::__construct();
-		// if (empty($_SESSION['login'])) {
-		// 	header('Location: ' . base_url() . '/login');
-		// }
-		// getPermisos(3);
+		if (empty($_SESSION['login'])) {
+			header('Location: ' . base_url() . '/login');
+		}
+		//  getPermisos(3);
 	}
 
 	public function Usuario()
@@ -24,7 +24,7 @@ class Usuario extends Controllers
 		$this->views->getView($this, "usuario", $data);
 	}
 
-	public function set()
+	public function upsertUser()
 	{
 		if ($_POST) {
 			//if (($_SESSION['permisosMod']['agregar']) || ($_SESSION['permisosMod']['actualizar'])) {
@@ -39,14 +39,13 @@ class Usuario extends Controllers
 				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 			} else {
 				$intId 		= intval($_POST['usr_id']);
-				$strEmail 	= strtolower(strClean($_POST['txtEmail']));
-				$strNombre 	= ucwords(strClean($_POST['txtNombre']));
-				$intRol 	= intval(strClean($_POST['listRol']));
+				$strEmail 	= strClean($_POST['txtEmail']);
+				$strNombre 	= strClean($_POST['txtNombre']);
+				$intRol 	= intval($_POST['listRol']);
 				$strCedula 	= strClean($_POST['txtCedula']);
 				$strEstado 	= strClean($_POST['listEstado']);
 
 				if ($intId == 0) {
-					$option = 1;
 					$strContrasena =  empty($_POST['txtContrasena']) ? hash("SHA256", passGenerator()) : hash("SHA256", $_POST['txtContrasena']);
 					$request_user = $this->model->insertUsuario(
 						$strEmail,
@@ -56,8 +55,8 @@ class Usuario extends Controllers
 						$strCedula,
 						$strEstado
 					);
+					$option = 1;
 				} else {
-					$option = 2;
 					$strContrasena =  empty($_POST['txtContrasena']) ? "" : hash("SHA256", $_POST['txtContrasena']);
 					$request_user = $this->model->updateUsuario(
 						$intId,
@@ -68,6 +67,7 @@ class Usuario extends Controllers
 						$strCedula,
 						$strEstado
 					);
+					$option = 2;
 				}
 
 				if ($request_user > 0) {

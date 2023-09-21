@@ -20,23 +20,34 @@ headerAdmin($data);
   </div>
   <section>
     <div class="row">
-      <?php if (!empty($_SESSION['permisos'][3]['ver'])) { ?>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
 
-            <div class="info">
-              <h4><a href="<?= base_url(); ?>/usuarios">Usuarios</a></h4>
-              <p><b> 1</b></p>
-            </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/usuario">Usuarios</a></h4>
+            <p><b> 1</b></p>
           </div>
         </div>
-      <?php } ?>
+      </div>
+
+
+
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-gear fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/rol">Roles</a></h4>
+            <p><b> 1</b></p>
+          </div>
+        </div>
+      </div>
+
 
       <?php if (!empty($_SESSION['permisos'][2]['ver'])) { ?>
         <div class="col-md-6 col-lg-3">
           <div class="widget-small info coloured-icon"><i class="icon fa fa-gear fa-3x"></i>
             <div class="info">
-              <h4><a href="<?= base_url(); ?>/roles">Roles</a></h4>
+              <h4><a href="<?= base_url(); ?>/anuncio">anuncios</a></h4>
               <p><b> 1</b></p>
             </div>
           </div>
@@ -220,6 +231,13 @@ headerAdmin($data);
         <div class="widget-small info coloured-icon"><i class="icon fa fa-home fa-3x"></i>
           <div class="info">
             <h4><a href="<?= base_url(); ?>">Página principal</a></h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-home fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/actividades">Feria</a></h4>
           </div>
         </div>
       </div>

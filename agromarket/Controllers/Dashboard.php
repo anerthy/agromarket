@@ -1,18 +1,15 @@
 <?php
-// require_once("Models/Traits/TCount.php");
 class Dashboard extends Controllers
 {
-	// use TCount;
 	public function __construct()
 	{
-		// sessionStart();
+		sessionStart();
 		parent::__construct();
 
-		// if (empty($_SESSION['login'])) {
-		// 	header('Location: ' . base_url() . '/login');
-		// }
+		if (empty($_SESSION['login'])) {
+			header('Location: ' . base_url() . '/login');
+		}
 		// getPermisos(1);
-
 	}
 
 	public function dashboard()
