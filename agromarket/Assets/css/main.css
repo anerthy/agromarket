@@ -162,7 +162,8 @@ sup {
 }
 
 a {
-  color: #0f265c;
+  color: #ffffff;
+  font-weight: bold;
   text-decoration: none;
   background-color: transparent;
 }
@@ -1294,10 +1295,11 @@ pre code {
     max-width: 16.6666666667%;
   }
   .col-lg-3 {
+   margin: 0px -500px 0px 10px;
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
-    max-width: 25%;
+        /* -ms-flex: 0 0 25%; */
+            /* flex: 0 0 25%; */
+    /* max-width: 25%; */
   }
   .col-lg-4 {
     -webkit-box-flex: 0;
@@ -11760,8 +11762,8 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.focus {
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
   background-clip: padding-box;
-  *border-right-width: 2px;
-  *border-bottom-width: 2px;
+  /* *border-right-width: 2px; */
+  /* *border-bottom-width: 2px; */
   color: #333333;
   font-size: 13px;
   line-height: 1.42857143;
@@ -14866,7 +14868,7 @@ be a descendant of the grid when it is being dragged.
   min-height: calc(100vh - 50px);
   margin-top: 50px;
   padding: 30px;
-  background-color: #E5E5E5;
+  background-color: #41764887;
   -webkit-transition: margin-left 0.3s ease;
   -o-transition: margin-left 0.3s ease;
   transition: margin-left 0.3s ease;
@@ -14922,7 +14924,7 @@ be a descendant of the grid when it is being dragged.
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #0f265c;
+  background-color: #417648; 
   z-index: 1030;
   padding-right: 15px;
 }
@@ -14959,7 +14961,7 @@ be a descendant of the grid when it is being dragged.
             flex: 0 0 auto;
     display: block;
     width: 230px;
-    background-color: #0f265c;
+    background-color: #417648;
   }
 }
 
@@ -14971,7 +14973,7 @@ be a descendant of the grid when it is being dragged.
 .app-sidebar__toggle {
   padding: 0 15px;
   font-family: fontAwesome;
-  color: #fff;
+  /*color: #fff;*/
   line-height: 2.4;
   -webkit-transition: background-color 0.3s ease;
   -o-transition: background-color 0.3s ease;
@@ -14993,7 +14995,7 @@ be a descendant of the grid when it is being dragged.
 
 .app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
   color: #fff;
-  background-color: #071840;
+   background-color: #9ab69e; 
   text-decoration: none;
 }
 
@@ -15151,6 +15153,7 @@ be a descendant of the grid when it is being dragged.
   line-height: 1.2;
 }
 
+/* Estilo normal */
 .app-sidebar {
   position: fixed;
   top: 0;
@@ -15160,16 +15163,14 @@ be a descendant of the grid when it is being dragged.
   width: 230px;
   overflow: auto;
   z-index: 10;
-  background-color: #0f265c;
+  background-image: url("http://localhost/agromarket/agromarket/Assets/images/img/Dashboard/slidebar.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   -webkit-box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
-  -webkit-transition: left 0.3s ease,
- width 0.3s ease;
-  -o-transition: left 0.3s ease,
- width 0.3s ease;
-  transition: left 0.3s ease,
- width 0.3s ease;
+  box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease, width 0.3s ease;
 }
+
 
 .app-sidebar::-webkit-scrollbar {
   width: 6px;
@@ -15255,7 +15256,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .app-menu__item.active, .app-menu__item:hover, .app-menu__item:focus {
-  background: #071840;
+  background: #ffffff36;;
   border-left-color: #009688;
   text-decoration: none;
   color: #fff;
@@ -15466,7 +15467,10 @@ be a descendant of the grid when it is being dragged.
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  background-color: #FFF;
+  /* background-color: #FFF; */
+  /* background-image: url("http://localhost/agromarket/agromarket/Assets/images/img/Dashboard/slidebar.jpg"); */
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: -30px -30px 30px;
   padding: 20px 30px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -16070,22 +16074,32 @@ be a descendant of the grid when it is being dragged.
 }
 
 .widget-small.primary.coloured-icon {
-  background-color: #fff;
+  margin: 10px;
+  height: 100px;
+  width:220px ;
+  background-color: #2C53B9;
   color: #2a2a2a;
+    /* width: 200px; */
+    box-shadow: 11px 9px 0px 0px rgb(7 7 7 / 10%);
 }
 
 .widget-small.primary.coloured-icon .icon {
   background-color: #009688;
   color: #fff;
+  
 }
 
 .widget-small.info {
+
   background-color: #17a2b8;
 }
 
 .widget-small.info.coloured-icon {
   background-color: #fff;
   color: #2a2a2a;
+  height: 100px;
+  /* width: 200px; */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .widget-small.info.coloured-icon .icon {
@@ -16733,4 +16747,88 @@ be a descendant of the grid when it is being dragged.
 
 .user .user-settings label {
   color: #666;
+}
+
+
+
+/* -----------CARDS DE MODULOS--------------- */
+
+.card {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  height: 150px;
+  border-radius: 15px;
+  background: rgb(112 205 154 / 34%);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  margin: 0px 0px 10px 0px;
+
+}
+
+.card::before {
+  content: "";
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  border-radius: 50%;
+  border: 35px solid rgba(255, 255, 255, 0.102);
+  transition: all .8s ease;
+  filter: blur(.5rem);
+}
+
+.text {
+  flex-grow: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  font-weight: 900;
+  font-size: 1.2em;
+}
+
+.subtitle {
+  font-size: .6em;
+  font-weight: 300;
+  color: rgba(240, 248, 255, 0.691);
+}
+
+.icons {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 250px;
+  border-radius: 0px 0px 15px 15px;
+  overflow: hidden;
+}
+
+.btn {
+  border: none;
+  width: 84px;
+  height: 35px;
+  background-color: rgba(247, 234, 234, 0.589);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svg-icon {
+  width: 25px;
+  height: 25px;
+  stroke: rgb(38, 59, 126);
+}
+
+.btn:hover {
+  background-color: rgb(247, 234, 234);
+}
+
+.card:hover::before {
+  width: 140px;
+  height: 140px;
+  top: -30%;
+  left: 50%;
+  filter: blur(0rem);
 }
