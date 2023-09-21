@@ -9,7 +9,7 @@ class Usuario extends Controllers
 		if (empty($_SESSION['login'])) {
 			header('Location: ' . base_url() . '/login');
 		}
-		// getPermisos(3);
+		 getPermisos(3);
 	}
 
 	public function Usuario()
@@ -39,9 +39,9 @@ class Usuario extends Controllers
 				$arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
 			} else {
 				$intId 		= intval($_POST['usr_id']);
-				$strEmail 	= strtolower(strClean($_POST['txtEmail']));
-				$strNombre 	= ucwords(strClean($_POST['txtNombre']));
-				$intRol 	= intval(strClean($_POST['listRol']));
+				$strEmail 	= strClean($_POST['txtEmail']);
+				$strNombre 	= strClean($_POST['txtNombre']);
+				$intRol 	= intval($_POST['listRol']);
 				$strCedula 	= strClean($_POST['txtCedula']);
 				$strEstado 	= strClean($_POST['listEstado']);
 
