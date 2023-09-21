@@ -11,7 +11,7 @@
         <ul class="app-menu">
             <?php if (!empty($_SESSION['permisos'][1]['ver'])) { ?>
                 <li>
-                    <a class="app-menu__item" href="<?= base_url(); ?>/dashboard">
+                    <a class="app-menu__item" href="<?= base_url(); ?>/dashboard" >
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAOJJREFUSEvtV8ENgzAM9G1SNimbtJOVTcomZZOrXIEUihIbEokgxRKv2BxnXc4GclLgJFypB5jkTUT0iQaAMTy0av7ztXbDmCQd7R8APDWP5EtEHkbNBKALc1bAJO8i8nYAjwD6GVjztc6KPmTegFurY4K5lLg6ANPCpISq1WxUGynT0Q6tTCcb2Lq8sfNqgLVdHweL0DI9VzBtmbMF7hoSJPMt08F0k1IM2Bpxv5EWKLQk8N6xmN/qNhYTYruUV9e5gRxxLl30dOGzIj6djjiXp8a13lqfXeq8nj+JUoys93wBuoHbH+b7GmMAAAAASUVORK5CYII=" />
                         <span class="app-menu__label">Panel de control</span>
                     </a>

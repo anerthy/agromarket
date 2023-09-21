@@ -7,7 +7,7 @@ headerAdmin($data);
     <div class="app-title">
         <div>
             <h1>
-                <a href="<?= base_url(); ?>/dashboard" style="text-decoration: none;">
+                <a href="<?= base_url(); ?>/dashboard" style="text-decoration: none; color:black;">
                     <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAANZJREFUSEvtV8ENgzAQM5u0m8AmZbKyCd2EblJkRKsQaHxFJyWVchKv+DC+XJyjQaZoMvGiKOILAD6peESLKifGHyp+Gco/AOhX3B3ATeQ8AVxDTFzqFsBoIKaCbsURzzwVxH+UV+Ja6m8N81fNxePEY7WER1fTPNgbKdNhhTYm4kGszu/hejHELNdkkBBapuUISsskpzJ8YsL9crFMg9gdxI04m+Jfr0UXxZZGee9xvRZVY9ZBYFOhM87FQY8Dn4rk7XTGuSw5pvFWfbnLelF/Ei6K1EtmBBlUHyr3vLcAAAAASUVORK5CYII=" />
                     <?= $data['page_tag'] ?>
@@ -15,8 +15,8 @@ headerAdmin($data);
             </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard"><i class="fa fa-home fa-lg"></i></a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard"><?= $data['page_title'] ?></a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard" style="color: black;"><i class="fa fa-home fa-lg"></i></a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard" style="color: black;"><?= $data['page_title'] ?></a></li>
         </ul>
     </div>
     <section>
