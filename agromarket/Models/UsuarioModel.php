@@ -28,6 +28,7 @@ class UsuarioModel extends Mysql
 		$this->strEmail 		= $email;
 		$this->strNombre 		= $nombre;
 		$this->strContrasena 	= $contrasena;
+		$this->intRol 			= $rol;
 		$this->strCedula    	= $cedula;
 		$this->strEstado    	= $estado;
 		$return = 0;
