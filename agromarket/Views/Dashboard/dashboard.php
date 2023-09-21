@@ -42,17 +42,24 @@ headerAdmin($data);
         </div>
       </div>
 
-
-      <?php if (!empty($_SESSION['permisos'][2]['ver'])) { ?>
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small info coloured-icon"><i class="icon fa fa-gear fa-3x"></i>
-            <div class="info">
-              <h4><a href="<?= base_url(); ?>/anuncio">anuncios</a></h4>
-              <p><b> 1</b></p>
-            </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-tree fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/actividad">Actividades</a></h4>
+            <p><b> 1</b></p>
           </div>
         </div>
-      <?php } ?>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-file fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/anuncio">Anuncios</a></h4>
+            <p><b> 1</b></p>
+          </div>
+        </div>
+      </div>
+
 
       <?php if (!empty($_SESSION['permisos'][4]['ver'])) { ?>
         <div class="col-md-6 col-lg-3">
