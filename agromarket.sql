@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 20-09-2023 a las 06:21:42
+-- Tiempo de generación: 21-09-2023 a las 19:47:03
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -256,7 +256,14 @@ CREATE TABLE IF NOT EXISTS `productores` (
   `pdt_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pdt_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `productores`
+--
+
+INSERT INTO `productores` (`pdt_id`, `pdt_cedula`, `pdt_nombre`, `pdt_ubicacion`, `pdt_imagen`, `usr_id`, `pdt_estado`, `pdt_fec_creacion`, `pdt_fec_modificacion`) VALUES
+(1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 1, 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41');
 
 -- --------------------------------------------------------
 
@@ -280,7 +287,21 @@ CREATE TABLE IF NOT EXISTS `productos` (
   PRIMARY KEY (`pro_id`),
   KEY `pdt_id` (`pdt_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`pro_id`, `pro_nombre`, `pro_descripcion`, `pro_categoria`, `pro_precio`, `pro_imagen`, `pdt_id`, `pro_estado`, `pro_fec_creacion`, `pro_fec_modificacion`, `usr_id`) VALUES
+(1, 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'fruta.png', 1, 'Activo', '2023-09-20 15:50:15', '2023-09-20 15:50:15', 1),
+(2, 'DSJKJF', 'JHHJDFJ', 'SHJFHS', '0.00', 'imageUnavailable.png', 1, 'Eliminado', '2023-09-21 17:00:37', '2023-09-21 17:18:06', 1),
+(3, 'PIZZA CARA', 'HHH', 'HHH', '5000.00', 'imageUnavailable.png', 1, 'Activo', '2023-09-21 17:16:06', '2023-09-21 18:20:30', 1),
+(4, 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_c6b10d7b98310947726dde5e2e35871a.jpg', 1, 'Activo', '2023-09-21 18:21:19', '2023-09-21 18:55:09', 1),
+(5, '', '', '', '0.00', 'imageUnavailable.png', 1, '', '2023-09-21 18:22:26', '2023-09-21 18:22:26', 1),
+(6, 'jsfkjf', 'jfkefj', 'jfksf', '234.00', 'img_8a15cbbf1790d9d588a8a38e079896a0.jpg', 1, 'Activo', '2023-09-21 18:56:00', '2023-09-21 18:56:00', 1),
+(7, 'aaroncito', 'aaroncito', 'aaroncito', '99999999.00', 'img_59a099967de2400fb3481b458eba97db.jpg', 1, 'Activo', '2023-09-21 19:06:55', '2023-09-21 19:07:35', 1),
+(8, 'cafe', 'cafe', 'fmesdk,fm', '44444.00', 'img_2aa8f6a087d7bb125caa6d99caa091f5.jpg', 1, 'Activo', '2023-09-21 19:13:18', '2023-09-21 19:13:18', 1);
 
 -- --------------------------------------------------------
 
