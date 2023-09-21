@@ -72,7 +72,7 @@ class Actividad extends Controllers
 
     public function getActividad(int $act_id)
     {
-        $intIdActividad = intval($act_id);
+        $intIdActividad = intval(strClean($act_id));
         if ($intIdActividad > 0) {
             $arrData = $this->model->selectActividad($intIdActividad);
             if (empty($arrData)) {
@@ -106,14 +106,14 @@ class Actividad extends Controllers
         $type              = $foto['type'];
         $url_temp        = $foto['tmp_name'];
         $imgImagen     = 'imageUnavailable.png';
-        $requestActividad = "";
+        $request_Actividad = "";
         if ($nombre_foto != '') {
             $imgImagen = 'img_' . md5(date('d-m-Y H:m:s')) . '.jpg';
         }
 
         if ($intIdActividad == 0) {
             // Crear
-            $requestActividad = $this->model->insertActividad($strNombre,
+            $request_Actividad = $this->model->insertActividad($strNombre,
                                                               $strDescripcion,
                                                               $strFecha,
                                                               $strLugar, 
@@ -128,11 +128,11 @@ class Actividad extends Controllers
                     $imgImagen = $_POST['foto_actual'];
                 }
             }
-            $requestActividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion,$strFecha, $strLugar, $strCategoria, $imgImagen, $strEstado);
+            $request_Actividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion,$strFecha, $strLugar, $strCategoria, $imgImagen, $strEstado);
             $option = 2;
         }
 
-        if ($requestActividad > 0) {
+        if ($request_Actividad > 0) {
             if ($option == 1) {
                 $arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
                 if ($nombre_foto != '') {
@@ -146,7 +146,7 @@ class Actividad extends Controllers
                 if (($nombre_foto == '' && $_POST['foto_remove'] == 1 && $_POST['foto_actual'] != 'imageUnavailable.png')
                     || ($nombre_foto != '' && $_POST['foto_actual'] != 'imageUnavailable.png')
                 ) {
-                    deleteFile('alimentaciones', $_POST['foto_actual']);
+                    deleteFile('actividades', $_POST['foto_actual']);
                 }
             }
         } else if ($request_Actividad == 'exist') {
