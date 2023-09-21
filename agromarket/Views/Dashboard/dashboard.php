@@ -15,94 +15,82 @@ headerAdmin($data);
             </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard" style="color: black;"><i class="fa fa-home fa-lg"></i></a></li>
-            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard" style="color: black;"><?= $data['page_title'] ?></a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard" style="color: black;"><i
+                        class="fa fa-home fa-lg"></i></a></li>
+            <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard"
+                    style="color: black;"><?= $data['page_title'] ?></a></li>
         </ul>
     </div>
     <section>
         <div class="row">
 
-        
-                <div class="widget-small primary coloured-icon">
-
-                    <div class="info">
-                        <center>
-                            <h4><a href="<?= base_url(); ?>/usuario">Usuarios</a></h4>
-                        </center>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p style="margin-right: 10px; color: #ffffff;">1</p>
-                            <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/usuario">Ir a tabla <i class="fas fa-arrow-right"
-                                    aria-hidden="true"></i></a></p>
-                        </div>
-
-                    </div>
-
-                </div>
-            
-
 
             <div class="widget-small primary coloured-icon">
 
-<div class="info">
-    <center>
-    <h4><a href="<?= base_url(); ?>/rol">Roles</a></h4>
-    </center>
-    <div style="display: flex; justify-content: space-between;">
-        <p style="margin-right: 10px; color: #ffffff;">1</p>
-        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i class="fas fa-arrow-right"
-                aria-hidden="true"></i></a></p>
-    </div>
-
-</div>
-
-</div>
-<div class="widget-small primary coloured-icon">
-
-<div class="info">
-    <center>
-    <h4><a href="<?= base_url(); ?>/rol">Roles</a></h4>
-    </center>
-    <div style="display: flex; justify-content: space-between;">
-        <p style="margin-right: 10px; color: #ffffff;">1</p>
-        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i class="fas fa-arrow-right"
-                aria-hidden="true"></i></a></p>
-    </div>
-
-</div>
-
-</div>
-<div class="widget-small primary coloured-icon">
-
-<div class="info">
-    <center>
-    <h4><a href="<?= base_url(); ?>/rol">Roles</a></h4>
-    </center>
-    <div style="display: flex; justify-content: space-between;">
-        <p style="margin-right: 10px; color: #ffffff;">1</p>
-        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i class="fas fa-arrow-right"
-                aria-hidden="true"></i></a></p>
-    </div>
-
-</div>
-
-</div>
-          
-
-              <div class="widget-small primary coloured-icon">
-
-                    <div class="info">
-                        <center>
-                        <h4><a href="<?= base_url(); ?>/rol">Roles</a></h4>
-                        </center>
-                        <div style="display: flex; justify-content: space-between;">
-                            <p style="margin-right: 10px; color: #ffffff;">1</p>
-                            <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i class="fas fa-arrow-right"
-                                    aria-hidden="true"></i></a></p>
-                        </div>
-
+                <div class="info">
+                    <center>
+                        <h4><a href="<?= base_url(); ?>/usuario">Usuarios</a></h4>
+                    </center>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p style="margin-right: 10px; color: #ffffff;">1</p>
+                        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/usuario">Ir a tabla <i
+                                    class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
                     </div>
 
                 </div>
+
+            </div>
+
+
+
+            <div class="widget-small primary coloured-icon" style="background-color: #8bcb75;">
+
+                <div class="info">
+                    <center>
+                        <h4><a href="<?= base_url(); ?>/rol">Roles</a></h4>
+                    </center>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p style="margin-right: 10px; color: #ffffff;">1</p>
+                        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i
+                                    class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="widget-small primary coloured-icon" style="background-color: #509b1fad;">
+
+                <div class="info">
+                    <center>
+                    <h4><a href="<?= base_url(); ?>/actividad">Actividades</a></h4>
+                    </center>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p style="margin-right: 10px; color: #ffffff;">1</p>
+                        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i
+                                    class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="widget-small primary coloured-icon" style="background-color: #ffc178;">
+
+                <div class="info">
+                    <center>
+                    <h4><a href="<?= base_url(); ?>/anuncio">Anuncios</a></h4>
+                    </center>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p style="margin-right: 10px; color: #ffffff;">1</p>
+                        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>/rol">Ir a tabla <i
+                                    class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+          
 
 
             <?php if (!empty($_SESSION['permisos'][4]['ver'])) { ?>
@@ -278,25 +266,25 @@ headerAdmin($data);
                 </div>
             </div>
             <?php } ?>
-        
+
 
 
 
             <div class="widget-small primary coloured-icon">
 
-<div class="info">
-    <center>
-    <h4><a href="<?= base_url(); ?>">Página principal</a></h4>
-    </center>
-    <div style="display: flex; justify-content: space-between;">
-        <p style="margin-right: 10px; color: #ffffff;">1</p>
-        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>">Ir a tabla <i class="fas fa-arrow-right"
-                aria-hidden="true"></i></a></p>
-    </div>
+                <div class="info">
+                    <center>
+                        <h4><a href="<?= base_url(); ?>">Página principal</a></h4>
+                    </center>
+                    <div style="display: flex; justify-content: space-between;">
+                        <p style="margin-right: 10px; color: #ffffff;">1</p>
+                        <p style="text-align: right; color: #ffffff;"><a href="<?= base_url(); ?>">Ir a tabla <i
+                                    class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
         </div>
     </section>
 </main>
