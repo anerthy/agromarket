@@ -4,7 +4,7 @@ let divLoading = document.querySelector("#divLoading");
 document.addEventListener('DOMContentLoaded', function () {
 
 
-    
+
     tableActividades = $('#tableActividades').dataTable({
         "processing": true,
         "serverSide": true,
@@ -135,60 +135,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //NUEVA ACTIVIDAD
     var formActividad = document.querySelector("#formActividad");
-formActividad.onsubmit = function (e) {
-    e.preventDefault();
+    formActividad.onsubmit = function (e) {
+        e.preventDefault();
 
-    var intIdActividad = document.querySelector('#act_id').value;
-    var strNombre = document.querySelector('#txtNombre').value;
-    var strDescripcion = document.querySelector('#txtDescripcion').value;
-    var strFecha = document.querySelector('#txtFecha').value;
-    var strLugar = document.querySelector('#txtLugar').value;
-    var strCategoria = document.querySelector('#txtCategoria').value;
-    var strEstado = document.querySelector('#listEstado').value;
+        var intIdActividad = document.querySelector('#act_id').value;
+        var strNombre = document.querySelector('#txtNombre').value;
+        var strDescripcion = document.querySelector('#txtDescripcion').value;
+        var strFecha = document.querySelector('#txtFecha').value;
+        var strLugar = document.querySelector('#txtLugar').value;
+        var strCategoria = document.querySelector('#txtCategoria').value;
+        var strEstado = document.querySelector('#listEstado').value;
 
-    if (strNombre == '' || strDescripcion == '' || strLugar == '' || strFecha == '' || strCategoria == '') {
-        swal("Atención", "Todos los campos son obligatorios.", "error");
-        return false;
-    }
+        if (strNombre == '' || strDescripcion == '' || strLugar == '' || strFecha == '' || strCategoria == '') {
+            swal("Atención", "Todos los campos son obligatorios.", "error");
+            return false;
+        }
 
-    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Actividad/setActividad';
-    var formData = new FormData(formActividad);
-    request.open("POST", ajaxUrl, true);
-    request.send(formData);
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-            var objData = JSON.parse(request.responseText);
-            if (objData.status) {
-                if (rowTable == "") {
+        var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        var ajaxUrl = base_url + '/Actividad/setActividad';
+        var formData = new FormData(formActividad);
+        request.open("POST", ajaxUrl, true);
+        request.send(formData);
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                var objData = JSON.parse(request.responseText);
+                if (objData.status) {
+                    if (rowTable == "") {
+                        tableActividades.api().ajax.reload();
+                    } else {
+                        var htmlEstado = strEstado == "Activo" ?
+                            '<span class="badge badge-info">Activo</span>' :
+                            '<span class="badge badge-danger">Inactivo</span>';
+
+                        rowTable.cells[1].textContent = strNombre;
+                        rowTable.cells[2].textContent = strDescripcion;
+                        rowTable.cells[3].textContent = strFecha;
+                        rowTable.cells[4].textContent = strLugar;
+                        rowTable.cells[5].textContent = strCategoria;
+                        rowTable.cells[6].innerHTML = htmlEstado;
+                        rowTable = "";
+                    }
+
+                    $('#modalFormActividad').modal("hide");
+                    formActividad.reset();
+                    swal("Actividad", objData.msg, "success");
                     tableActividades.api().ajax.reload();
                 } else {
-                    var htmlEstado = strEstado == "Activo" ?
-                        '<span class="badge badge-info">Activo</span>' :
-                        '<span class="badge badge-danger">Inactivo</span>';
-
-                    rowTable.cells[1].textContent = strNombre;
-                    rowTable.cells[2].textContent = strDescripcion;
-                    rowTable.cells[3].textContent = strFecha;
-                    rowTable.cells[4].textContent = strLugar;
-                    rowTable.cells[5].textContent = strCategoria;
-                    rowTable.cells[6].innerHTML = htmlEstado;
-                    rowTable = "";
+                    swal("Error", objData.msg, "error");
                 }
-
-                $('#modalFormActividad').modal("hide");
-                formActividad.reset();
-                swal("Actividad", objData.msg, "success");
-                tableActividades.api().ajax.reload();
-            } else {
-                swal("Error", objData.msg, "error");
             }
+            return false
         }
-        return false
     }
-}
 
-    
+
 }, false);
 
 function openModal() {
@@ -235,7 +235,7 @@ function fntViewInfo(act_id) {
                         break;
                 }
 
-          
+
                 document.querySelector("#celId").innerHTML = objData.data.act_id;
                 document.querySelector("#celNombre").innerHTML = objData.data.act_nombre;
                 document.querySelector("#celDescripcion").innerHTML = objData.data.act_descripcion;
