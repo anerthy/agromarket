@@ -29,7 +29,7 @@ class ProductoModel extends Mysql
                     pro_estado,
                     usr_id
                 FROM productos
-                WHERE pro_estado = 'Activo'";
+                WHERE pro_estado IN ('Activo','Inactivo')";
         $request = $this->select_all($sql);
         return $request;
     }

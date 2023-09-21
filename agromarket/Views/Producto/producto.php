@@ -8,7 +8,7 @@ getModal('modalProducto', $data);
         <div>
             <h1>
                 <a href="<?= base_url(); ?>/producto" style="text-decoration: none;">
-                    <i class="fas fa-utensils"></i> <?= $data['page_title'] ?>
+                    <i class="fas fa-carrot"></i> <?= $data['page_title'] ?>
                 </a>
 
                 <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
