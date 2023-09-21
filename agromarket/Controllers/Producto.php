@@ -34,11 +34,9 @@ class Producto extends Controllers
             $btnView = '';
             $btnEdit = '';
             $btnDisable = '';
-            $btnCheck = '';
 
             $btnView = '<button class="btn btn-info btn-sm" onClick="fntViewInfo(' . $arrData[$i]['pro_id'] . ')" title="Ver Producto"><i class="far fa-eye"></i></button>';
             $btnDisable = '<button class="btn btn-danger btn-sm fntDisProducto" onClick="fntDisProducto(' . $arrData[$i]['pro_id'] . ')" title="Eliminar"><i class="far fa-trash-alt"></i></button>';
-            $btnCheck = '<button class="btn btn-warning btn-sm fntCheckProducto" onClick="fntCheckProducto(' . $arrData[$i]['pro_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
             $btnEdit = '<button class="btn btn-primary btn-sm fntEditProducto" onClick="fntEditProducto(' . $arrData[$i]['pro_id'] . ')" title="Editar"><i class="fas fa-pencil-alt"></i></button>';
 
             $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>';

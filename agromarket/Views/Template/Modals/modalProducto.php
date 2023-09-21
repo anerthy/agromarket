@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="form-group" id="selectEstado" style="display: none">
-                                <label for="exampleSelect1">Estado</label>
+                                <label for="listEstado">Estado</label>
                                 <select class="form-control" id="listEstado" name="listEstado" required="">
                                     <option value="Activo">Activo</option>
                                     <option value="Inactivo">Inactivo</option>
@@ -108,7 +108,7 @@
                         </tr>
                         <tr>
                             <td>Categoria:</td>
-                            <td id="celDireccion"></td>
+                            <td id="celCategoria"></td>
                         </tr>
                         <tr>
                             <td>Precio:</td>

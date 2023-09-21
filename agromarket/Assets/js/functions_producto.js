@@ -141,14 +141,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var strDescripcion = document.querySelector('#txtDescripcion').value;
         var strCategoria = document.querySelector('#txtCategoria').value;
         var intPrecio = document.querySelector('#txtPrecio').value;
-      //  var strImagen = document.querySelector('#txtImagen').value;
+        //  var strImagen = document.querySelector('#txtImagen').value;
         var strEstado = document.querySelector('#listEstado').value;
 
         if (strNombre == '' || strDescripcion == '' || strCategoria == '' || intPrecio == '' || strEstado == '') {
             swal("Atención", "Todos los campos son obligatorios.", "error");
             return false;
         }
-  
+
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxUrl = base_url + '/Producto/setProducto';
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (rowTable == "") {
                         tableProductos.api().ajax.reload();
                     } else {
-                        htmlEstado = intEstado == 'Activo' ?
+                        htmlEstado = strEstado == 'Activo' ?
                             '<span class="badge badge-info">Activo</span>' :
                             '<span class="badge badge-danger">Inactivo</span>';
 
@@ -241,7 +241,7 @@ function fntViewInfo(pro_id) {
                 document.querySelector("#celDescripcion").innerHTML = objData.data.pro_descripcion;
                 document.querySelector("#celCategoria").innerHTML = objData.data.pro_categoria;
                 document.querySelector("#celPrecio").innerHTML = objData.data.pro_precio;
-                document.querySelector("#celEstado").innerHTML = objData.data.alim_estado;
+                document.querySelector("#celEstado").innerHTML = objData.data.pro_estado;
                 document.querySelector("#img").innerHTML = '<img src="' + objData.data.url_imagen + '"></img>';
                 $('#modalViewProducto').modal('show');
             } else {
@@ -251,72 +251,7 @@ function fntViewInfo(pro_id) {
     }
 }
 
-function fntCheckProducto(pro_id) {
-    document.querySelector('#titleModal').innerHTML = "Revisar registro";
-    document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
-    document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
-    document.querySelector('#btnText').innerHTML = "Revisar";
-
-    document.getElementById("selectEstado").style.display = "none";
-    document.getElementById("tile-footer").style.display = "none";
-
-    document.querySelector("#optionButtons").innerHTML =
-        `<br><button id="btnActionForm" class="btn btn-info" type="submit">
-            <i class="fa fa-fw fa-lg fa-check-circle"></i>
-            <span id="btnText">Aceptar</span>
-        </button>&nbsp;&nbsp;&nbsp;
-            <a class="btn btn-danger" href="#" data-dismiss="modal" onClick="fntDelProducto(${alim_id})" >
-            <i class="fa fa-fw fa-lg fa-times-circle"></i>Rechazar
-        </a>`;
-    document.getElementById("optionButtons").style.display = "block";
-
-    var pro_id = pro_id;
-    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    var ajaxUrl = base_url + '/Producto/getProducto/' + pro_id;
-    request.open("GET", ajaxUrl, true);
-    request.send();
-
-    request.onreadystatechange = function () {
-        if (request.readyState == 4 && request.status == 200) {
-
-            var objData = JSON.parse(request.responseText);
-            if (objData.status) {
-                document.querySelector("#pro_id").value = objData.data.pro_id;
-                document.querySelector("#txtNombre").value = objData.data.pro_nombre;
-                document.querySelector("#txtDescripcion").value = objData.data.pro_descripcion;
-                document.querySelector("#txtCategoria").value = objData.data.pro_categoria;
-                document.querySelector("#txtPrecio").value = objData.data.pro_precio;
-                document.querySelector("#txtEstado").value = objData.data.pro_estado;
-                document.querySelector('#foto_actual').value = objData.data.pro_imagen;
-                document.querySelector("#foto_remove").value = 0;
-
-
-
-                document.querySelector("#listEstado").value = 'Activo';
-                $('#listEstado').selectpicker('render');
-
-                if (document.querySelector('#img')) {
-                    document.querySelector('#img').src = objData.data.url_imagen;
-                } else {
-                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.url_imagen + ">";
-                }
-
-                if (objData.data.pro_imagen == 'imageUnavailable.png') {
-                    document.querySelector('.delPhoto').classList.add("notBlock");
-                } else {
-                    document.querySelector('.delPhoto').classList.remove("notBlock");
-                }
-                $('#modalFormProducto').modal('show');
-
-            } else {
-                swal("Error", objData.msg, "error");
-            }
-        }
-    }
-}
-
 function fntEditProducto(pro_id) {
-
     document.querySelector('#titleModal').innerHTML = "Actualizar Producto";
     document.querySelector('.modal-header').classList.replace("headerRegister", "headerUpdate");
     document.querySelector('#btnActionForm').classList.replace("btn-primary", "btn-info");
@@ -341,7 +276,7 @@ function fntEditProducto(pro_id) {
                 document.querySelector("#txtDescripcion").value = objData.data.pro_descripcion;
                 document.querySelector("#txtCategoria").value = objData.data.pro_categoria;
                 document.querySelector("#txtPrecio").value = objData.data.pro_precio;
-                document.querySelector("#txtEstado").value = objData.data.pro_estado;
+                document.querySelector("#listEstado").value = objData.data.pro_estado;
                 document.querySelector('#foto_actual').value = objData.data.pro_imagen;
                 document.querySelector("#foto_remove").value = 0;
 
