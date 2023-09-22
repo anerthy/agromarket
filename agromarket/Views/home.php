@@ -45,7 +45,7 @@
     <hr>
     <!-- Footer Start -->
     <?php
-    footer($data);
+    // footer($data);
     ?>
     <!-- Footer End -->
 
