@@ -31,12 +31,10 @@
     <link href="Assets/lib-home/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="Assets/css/Estilos-home/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="Assets/css/Estilos-home/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Template Stylesheet -->
-    <link href="Assets/css/Estilos-home/style.css" rel="stylesheet">
-    <link href="<?= media(); ?>/css/carousel-home/carousel-home.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
 </head>
 
