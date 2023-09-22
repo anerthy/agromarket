@@ -1,7 +1,7 @@
-export function Card({ id, nombre, categoria, precio, imagen }) {
+export default function Card({ id, nombre, categoria, precio, imagen }) {
   return (
     <>
-      <div className="card" key={id} style={{ width: "18rem" }}>
+      <div className="card" style={{ width: "18rem" }}>
         <img src={imagen} className="card-img-top" alt="Imagen del producto" />
         <div className="card-body">
           <h5 className="card-title">{nombre}</h5>

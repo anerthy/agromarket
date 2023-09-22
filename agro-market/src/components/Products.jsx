@@ -1,5 +1,5 @@
 import PageTemplate from "./PageTemplate";
-// import { PhotoList } from "./PhotoList";
+import { PhotoList } from "./PhotoList";
 
 export default function Products() {
   return (
@@ -13,7 +13,7 @@ export default function Products() {
           nam temporibus debitis!
         </p>
         <section className="container text-center">
-          {/* <PhotoList /> */}
+          <PhotoList />
         </section>
       </PageTemplate>
     </>

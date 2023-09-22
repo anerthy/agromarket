@@ -57,18 +57,18 @@ export function PhotoList() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <ul>
+      <section className="my-2">
         {itemsToShow.map((product) => (
           <CardProduct
-            key={product.pro_id}
-            id={product.pro_id}
-            nombre={product.pro_nombre}
-            categoria={product.pro_categoria}
-            precio={product.pro_precio}
-            imagen={product.pro_imagen}
+            key={product.id}
+            id={product.id}
+            nombre={product.title.substring(1, 7)}
+            categoria={product.title}
+            precio={1000 + product.id}
+            imagen={product.thumbnailUrl}
           />
         ))}
-      </ul>
+      </section>
       <div>
         {/* Botón "Anterior" */}
         <button onClick={goToPreviousPage} disabled={currentPage === 1}>
