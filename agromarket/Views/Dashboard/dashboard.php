@@ -43,6 +43,24 @@ headerAdmin($data);
       </div>
 
       <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-user fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/persona">Personas</a></h4>
+            <p><b> 1</b></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small danger coloured-icon"><i class="icon fa fa-carrot fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/producto">Productos</a></h4>
+            <p><b> 1</b></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3">
         <div class="widget-small info coloured-icon"><i class="icon fa fa-tree fa-3x"></i>
           <div class="info">
             <h4><a href="<?= base_url(); ?>/actividad">Actividades</a></h4>
