@@ -66,4 +66,63 @@ class Persona extends Controllers
 		//}
 		die();
 	}
+
+	public function setActividad()
+	{
+		// $intIdActividad = intval($_POST['act_id']);
+		// $strNombre = strClean($_POST['txtNombre']);
+		// $strDescripcion = strClean($_POST['txtDescripcion']);
+		// $strFecha = strClean($_POST['txtFecha']);
+		// $strLugar = strClean($_POST['txtLugar']);
+		// $strCategoria = strClean($_POST['txtCategoria']);
+		// $strEstado = strClean($_POST['listEstado']);
+
+		// if ($intIdActividad == 0) {
+		// 	// Crear
+		// 	$request_Actividad = $this->model->insertActividad(
+		// 		$strNombre,
+		// 		$strDescripcion,
+		// 		$strFecha,
+		// 		$strLugar,
+		// 		$strCategoria,
+		// 		$imgImagen
+		// 	);
+		// 	$option = 1;
+		// } else {
+
+		// 	// Actualizar
+		// 	if ($nombre_foto == '') {
+		// 		if ($_POST['foto_actual'] != 'imageUnavailable.png' && $_POST['foto_remove'] == 0) {
+		// 			$imgImagen = $_POST['foto_actual'];
+		// 		}
+		// 	}
+		// 	$request_Actividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion, $strFecha, $strLugar, $strCategoria, $imgImagen, $strEstado);
+		// 	$option = 2;
+		// }
+
+		// if ($request_Actividad > 0) {
+		// 	if ($option == 1) {
+		// 		$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
+		// 		if ($nombre_foto != '') {
+		// 			uploadImage('actividades', $foto, $imgImagen);
+		// 		}
+		// 	} else {
+		// 		$arrResponse = array('status' => true, 'msg' => 'Datos actualizados correctamente.');
+		// 		if ($nombre_foto != '') {
+		// 			uploadImage('actividades', $foto, $imgImagen);
+		// 		}
+		// 		if (($nombre_foto == '' && $_POST['foto_remove'] == 1 && $_POST['foto_actual'] != 'imageUnavailable.png')
+		// 			|| ($nombre_foto != '' && $_POST['foto_actual'] != 'imageUnavailable.png')
+		// 		) {
+		// 			deleteFile('actividades', $_POST['foto_actual']);
+		// 		}
+		// 	}
+		// } else if ($request_Actividad == 'exist') {
+		// 	$arrResponse = array('status' => false, 'msg' => '¡Atención! La actividad ya existe.');
+		// } else {
+		// 	$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
+		// }
+		// echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+		die();
+	}
 }
