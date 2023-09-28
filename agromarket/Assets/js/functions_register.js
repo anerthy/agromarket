@@ -3,34 +3,41 @@ document.addEventListener('DOMContentLoaded', function () {
     var formRegister = document.querySelector("#formRegister");
     formRegister.onsubmit = function (e) {
         e.preventDefault();
-        var intIdVoluntario = document.querySelector('#vol_id').value;
-        var strNombre = document.querySelector('#txtNombre').value;
-        var strPrimerApellido = document.querySelector('#txtPrimerApellido').value;
-        var strSegundoApellido = document.querySelector('#txtSegundoApellido').value;
         var strCedula = document.querySelector('#txtCedula').value;
-        var strCorreo = document.querySelector('#txtCorreo').value;
+        var strNombre = document.querySelector('#txtNombre').value;
+        var strApellido1 = document.querySelector('#txtApellido1').value;
+        var strApellido2 = document.querySelector('#txtApellido2').value;
+        var strDireccion = document.querySelector('#txtDireccion').value;
         var strTelefono = document.querySelector('#txtTelefono').value;
-        var strFechaNacimiento = document.querySelector('#txtFechaNacimiento').value;
-        var strGenero = document.querySelector('#txtGenero').value;
-        var strLugarResidencia = document.querySelector('#txtLugarResidencia').value;
+        var strEmail = document.querySelector('#txtEmail').value;
+        var strUsuario = document.querySelector('#txtUsuario').value;
+        var strContrasena = document.querySelector('#txtContrasena').value;
+        var strContrasenaConfirmar = document.querySelector('#txtContrasenaConfirmar').value;
 
-        if (strNombre == '' || strPrimerApellido == '' || strSegundoApellido == '' || strCedula == '' || strCorreo == '' || strTelefono == '' || strFechaNacimiento == '' || strGenero == '' || strLugarResidencia == '') {
-            // swal("Atención", "Todos los campos son obligatorios.", "error");
-            
+        if (strCedula == '' || strNombre == '' || strApellido1 == '' || strApellido2 == '' || strDireccion == '' || strTelefono == '' || strEmail == '' || strUsuario == '' || strContrasena == '') {
             Swal.fire({
                 title: 'Atención',
                 text: 'Todos los campos son obligatorios.',
                 icon: 'warning',
                 confirmButtonText: 'Aceptar',
                 confirmButtonColor: '#F19757'
-              })
-            
-            
+            })
+            return false;
+        }
+
+        if (strContrasena != strContrasenaConfirmar) {
+            Swal.fire({
+                title: 'Error',
+                text: 'Las contraseñas deben coincidir',
+                icon: 'warning',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#F19757'
+            })
             return false;
         }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        var ajaxUrl = base_url + '/register/addVoluntario';
+        var ajaxUrl = base_url + '/register/addPersonUser';
         var formData = new FormData(formRegister);
         request.open("POST", ajaxUrl, true);
         request.send(formData);
@@ -46,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         icon: 'success',
                         confirmButtonText: 'Aceptar',
                         confirmButtonColor: '#3085d6'
-                      })
+                    })
 
                     formRegister.reset();
                 }
@@ -57,21 +64,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         icon: 'error',
                         confirmButtonText: 'Aceptar',
                         confirmButtonColor: '#F27474'
-                      })
+                    })
                 }
             }
             return false;
         }
     }
 }, false);
-
-function openModal() {
-    rowTable = "";
-    document.querySelector('#vol_id').value = "";
-    document.querySelector('.modal-header').classList.replace("headerUpdate", "headerRegister");
-    document.querySelector('#btnActionForm').classList.replace("btn-info", "btn-primary");
-    document.querySelector('#btnText').innerHTML = "Guardar";
-    document.querySelector("#formRegister").reset();
-    $('#modalFormVoluntariado').modal('show');
-
-}
