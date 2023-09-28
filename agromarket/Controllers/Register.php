@@ -12,22 +12,21 @@ class Register extends Controllers
 		$data['page_tag']			=	"Register";
 		$data['page_title'] 		=	"AgroMarket";
 		$data['page_name']			=	"register";
-		// $data['page_functions_js'] 	=	"functions_login.js";
+		$data['page_functions_js'] 	=	"functions_register.js";
 		$this->views->getView($this, "register", $data);
 	}
 
-	public function registerPersonUser()
+	public function addPersonUser()
 	{
-		$strCedula = strClean($_POST['txtNombre']);
-		$strNombre = strClean($_POST['txtNombre']);
-		$strApellido1 = strClean($_POST['txtNombre']);
-		$strApellido2 = strClean($_POST['txtNombre']);
-		$strDireccion = strClean($_POST['txtNombre']);
-		$strTelefono = strClean($_POST['txtNombre']);
-		$strEmail = strClean($_POST['txtNombre']);
-		$strUsuario = strClean($_POST['txtNombre']);
-		$strContrasena = strClean($_POST['txtNombre']);
-
+		$strCedula 		= strClean($_POST['txtCedula']);
+		$strNombre 		= strClean($_POST['txtNombre']);
+		$strApellido1 	= strClean($_POST['txtApellido1']);
+		$strApellido2 	= strClean($_POST['txtApellido2']);
+		$strDireccion 	= strClean($_POST['txtDireccion']);
+		$strTelefono	= strClean($_POST['txtTelefono']);
+		$strEmail 		= strClean($_POST['txtEmail']);
+		$strUsuario 	= strClean($_POST['txtUsuario']);
+		$strContrasena 	= strClean($_POST['txtContrasena']);
 
 		$request = $this->model->registerPersonUser(
 			$strCedula,
@@ -44,7 +43,7 @@ class Register extends Controllers
 		if ($request > 0) {
 			$arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
 		} else if ($request == 'exist') {
-			$arrResponse = array('status' => false, 'msg' => '¡Atención! El Rol ya existe.');
+			$arrResponse = array('status' => false, 'msg' => '¡Atención! Información ya existente en el sistema');
 		} else {
 			$arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
 		}
