@@ -15,7 +15,7 @@ class ProductoModel extends Mysql
     {
         parent::__construct();
     }
-
+//corta aquí
     public function getAll()
     {
         $sql = "SELECT  
@@ -52,14 +52,14 @@ class ProductoModel extends Mysql
         $request = $this->select($sql);
         return $request;
     }
-
+//empieza acá
     public function insertProducto(
         string  $nombre,
         string  $descripcion,
         string  $categoria,
         int     $precio,
         string  $imagen,
-        string  $productor,
+        int  $productor,
         string  $estado
     ) {
         $return = "";
@@ -106,7 +106,7 @@ class ProductoModel extends Mysql
         }
         return $return;
     }
-
+//Hasta aquí
     public function updateProducto(
         int     $id,
         string  $nombre,
