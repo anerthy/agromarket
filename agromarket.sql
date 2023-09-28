@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-09-2023 a las 19:47:03
+-- Tiempo de generación: 28-09-2023 a las 06:25:49
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -20,6 +20,61 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `agromarket`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `CrearAfiliado`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT)   BEGIN
+    DECLARE v_pdt_id INT;
+    DECLARE v_afl_fec_afiliacion TIMESTAMP;
+    DECLARE v_afl_fec_vencimiento TIMESTAMP;
+    DECLARE v_afiliado_existente INT;
+    DECLARE v_productor_existente INT;
+
+    -- Verificar si el usuario ya está afiliado
+    SELECT COUNT(*) INTO v_afiliado_existente FROM afiliados WHERE usr_id = p_usr_id;
+    
+    -- Verificar si existe un registro de productor con el ID de usuario
+    SELECT COUNT(*) INTO v_productor_existente FROM productores WHERE usr_id = p_usr_id;
+    
+    IF v_productor_existente > 0 THEN
+        IF v_afiliado_existente = 0 THEN
+            -- Obtener pdt_id del productor
+            SELECT pdt_id INTO v_pdt_id FROM productores WHERE usr_id = p_usr_id;
+
+            -- Obtener la fecha de afiliación actual
+            SET v_afl_fec_afiliacion = NOW();
+
+            -- Calcular la fecha de vencimiento (fecha actual + 1 mes)
+            SET v_afl_fec_vencimiento = DATE_ADD(NOW(), INTERVAL 1 MONTH);
+
+            -- Insertar el registro en la tabla afiliados
+            INSERT INTO afiliados (pdt_id, usr_id, afl_fec_afiliacion, afl_fec_vencimiento, afl_estado)
+            VALUES (v_pdt_id, p_usr_id, v_afl_fec_afiliacion, v_afl_fec_vencimiento, 'Activo');
+            
+            SELECT 'Afiliado insertado correctamente.' AS mensaje;
+        ELSE
+            SELECT 'El usuario ya está afiliado.' AS mensaje;
+        END IF;
+    ELSE
+        SELECT 'El usuario no es un productor.' AS mensaje;
+    END IF;
+END$$
+
+DROP PROCEDURE IF EXISTS `InsertarPersonaUsuario`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarPersonaUsuario` (IN `p_cedula` VARCHAR(15), IN `p_nombre` VARCHAR(50), IN `p_apellido1` VARCHAR(50), IN `p_apellido2` VARCHAR(50), IN `p_direccion` VARCHAR(100), IN `p_telefono` VARCHAR(15), IN `p_estado` ENUM('Activo','Inactivo','Pendiente','Eliminado','Bloqueado'), IN `p_email` VARCHAR(255), IN `p_nombre_usuario` VARCHAR(50), IN `p_contrasena` VARCHAR(255), IN `p_rol_id` INT)   BEGIN
+    -- Insertar en la tabla personas
+    INSERT INTO personas (per_cedula, per_nombre, per_apellido1, per_apellido2, per_direccion, per_telefono, per_estado)
+    VALUES (p_cedula, p_nombre, p_apellido1, p_apellido2, p_direccion, p_telefono, p_estado);
+
+    -- Insertar en la tabla usuarios
+    INSERT INTO usuarios (usr_email, usr_nombre, usr_contrasena, rol_id, per_cedula, usr_estado)
+    VALUES (p_email, p_nombre_usuario, p_contrasena, p_rol_id, p_cedula, p_estado);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -55,15 +110,22 @@ CREATE TABLE IF NOT EXISTS `afiliados` (
   `afl_id` int NOT NULL AUTO_INCREMENT,
   `pdt_id` int DEFAULT NULL,
   `usr_id` int DEFAULT NULL,
-  `afl_fec_afiliacion` date NOT NULL,
-  `afl_fec_vencimiento` date DEFAULT NULL,
+  `afl_fec_afiliacion` timestamp NOT NULL,
+  `afl_fec_vencimiento` timestamp NULL DEFAULT NULL,
   `afl_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
   `afl_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `afl_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`afl_id`),
   KEY `pdt_id` (`pdt_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `afiliados`
+--
+
+INSERT INTO `afiliados` (`afl_id`, `pdt_id`, `usr_id`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
+(5, 1, 1, '2023-09-28 06:25:32', '2023-10-28 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-09-28 06:25:32');
 
 -- --------------------------------------------------------
 
@@ -166,7 +228,7 @@ CREATE TABLE IF NOT EXISTS `paginas` (
   `pag_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `pag_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pag_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `paginas`
@@ -178,7 +240,9 @@ INSERT INTO `paginas` (`pag_id`, `pag_nombre`, `pag_descripcion`, `pag_estado`, 
 (3, 'Usuarios', 'Usuarios', 'Activo', '2023-09-20 06:11:23', '2023-09-20 06:11:23'),
 (4, 'Productores', 'Productores', 'Activo', '2023-09-20 06:11:23', '2023-09-20 06:11:23'),
 (5, 'Productos', 'Productos', 'Activo', '2023-09-20 06:11:23', '2023-09-20 06:11:23'),
-(6, 'Actividades', 'Actividades', 'Activo', '2023-09-20 06:11:23', '2023-09-20 06:11:23');
+(6, 'Actividades', 'Actividades', 'Activo', '2023-09-20 06:11:23', '2023-09-20 06:11:23'),
+(7, 'Donaciones', 'Donaciones', 'Activo', '2023-09-21 21:34:13', '2023-09-21 21:34:23'),
+(8, 'Personas', 'Personas', 'Activo', '2023-09-21 21:34:13', '2023-09-21 21:34:23');
 
 -- --------------------------------------------------------
 
@@ -235,7 +299,9 @@ CREATE TABLE IF NOT EXISTS `personas` (
 --
 
 INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apellido2`, `per_direccion`, `per_telefono`, `per_estado`, `per_fec_creacion`, `per_fec_modificacion`) VALUES
-('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07');
+('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07'),
+('123456789', 'Nombre', 'Apellido1', 'Apellido2', 'Dirección', '123456789', 'Activo', '2023-09-28 03:35:30', '2023-09-28 03:35:30'),
+('', '', '', '', '', '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36');
 
 -- --------------------------------------------------------
 
@@ -287,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   PRIMARY KEY (`pro_id`),
   KEY `pdt_id` (`pdt_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -295,13 +361,19 @@ CREATE TABLE IF NOT EXISTS `productos` (
 
 INSERT INTO `productos` (`pro_id`, `pro_nombre`, `pro_descripcion`, `pro_categoria`, `pro_precio`, `pro_imagen`, `pdt_id`, `pro_estado`, `pro_fec_creacion`, `pro_fec_modificacion`, `usr_id`) VALUES
 (1, 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'fruta.png', 1, 'Activo', '2023-09-20 15:50:15', '2023-09-20 15:50:15', 1),
-(2, 'DSJKJF', 'JHHJDFJ', 'SHJFHS', '0.00', 'imageUnavailable.png', 1, 'Eliminado', '2023-09-21 17:00:37', '2023-09-21 17:18:06', 1),
-(3, 'PIZZA CARA', 'HHH', 'HHH', '5000.00', 'imageUnavailable.png', 1, 'Activo', '2023-09-21 17:16:06', '2023-09-21 18:20:30', 1),
 (4, 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_c6b10d7b98310947726dde5e2e35871a.jpg', 1, 'Activo', '2023-09-21 18:21:19', '2023-09-21 18:55:09', 1),
-(5, '', '', '', '0.00', 'imageUnavailable.png', 1, '', '2023-09-21 18:22:26', '2023-09-21 18:22:26', 1),
-(6, 'jsfkjf', 'jfkefj', 'jfksf', '234.00', 'img_8a15cbbf1790d9d588a8a38e079896a0.jpg', 1, 'Activo', '2023-09-21 18:56:00', '2023-09-21 18:56:00', 1),
-(7, 'aaroncito', 'aaroncito', 'aaroncito', '99999999.00', 'img_59a099967de2400fb3481b458eba97db.jpg', 1, 'Activo', '2023-09-21 19:06:55', '2023-09-21 19:07:35', 1),
-(8, 'cafe', 'cafe', 'fmesdk,fm', '44444.00', 'img_2aa8f6a087d7bb125caa6d99caa091f5.jpg', 1, 'Activo', '2023-09-21 19:13:18', '2023-09-21 19:13:18', 1);
+(7, 'aaroncito', 'aaroncito', 'Fruta', '99999999.00', 'img_59a099967de2400fb3481b458eba97db.jpg', 1, 'Activo', '2023-09-21 19:06:55', '2023-09-22 00:52:58', 1),
+(8, 'cafe', 'cafe', 'Fruta', '44444.00', 'img_2aa8f6a087d7bb125caa6d99caa091f5.jpg', 1, 'Activo', '2023-09-21 19:13:18', '2023-09-22 00:52:55', 1),
+(9, 'Manzana', 'Manzanas frescas', 'Fruta', '1000.00', 'imagen1.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(10, 'Naranja', 'Naranjas frescas', 'Fruta', '800.00', 'imagen2.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(11, 'Pera', 'Peras frescas', 'Fruta', '1200.00', 'imagen3.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(12, 'Fresa', 'Fresas frescas', 'Fruta', '600.00', 'imagen4.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(13, 'Zanahoria', 'Zanahorias frescas', 'Verdura', '900.00', 'imagen5.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(14, 'Tomate', 'Tomates frescos', 'Verdura', '700.00', 'imagen6.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(15, 'Pepino', 'Pepinos frescos', 'Verdura', '1100.00', 'imagen7.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(16, 'Plátano', 'Plátanos frescos', 'Fruta', '1500.00', 'imagen8.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(17, 'Uva', 'Uvas frescas', 'Fruta', '2000.00', 'imagen9.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
+(18, 'Brocoli', 'Brócolis frescos', 'Verdura', '1800.00', 'imagen10.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1);
 
 -- --------------------------------------------------------
 
@@ -352,7 +424,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`usr_id`),
   KEY `rol_id` (`rol_id`),
   KEY `per_cedula` (`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -360,7 +432,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `usr_token`, `rol_id`, `per_cedula`, `usr_estado`, `usr_fec_creacion`, `usr_fec_modificacion`) VALUES
 (1, 'andmejigo12@gmail.com', 'anerthy', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '504460444', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:54:33'),
-(3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00');
+(3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00'),
+(4, 'jdf@gmail.com', 'desao', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 6, '504460444', 'Inactivo', '2023-09-21 22:00:32', '2023-09-21 23:24:53'),
+(5, 'correo@example.com', 'Usuario123', 'Contraseña123', NULL, 1, '123456789', 'Activo', '2023-09-28 03:35:30', '2023-09-28 03:35:30'),
+(6, 'Activo', '', '', NULL, 1, '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
