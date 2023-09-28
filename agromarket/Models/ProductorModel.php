@@ -50,16 +50,18 @@
 
 
 
-		public function selectUsuario(int $idproductor){
-			$this->intIdProductor = $idproductor;
+		public function selectUsuario(int $pdt_id)
+		{
+			$this->intIdProductor = $pdt_id;
             $sql = "SELECT pdt_id, pdt_cedula, pdt_nombre, pdt_ubicacion, pdt_imagen, usr_id, pdt_estado
-                    FROM productores p 
-					INNER JOIN rol r
-					ON p.rolid = r.idrol
+                    FROM productores
 					WHERE pdt_id = $this->intIdProductor";
-			$request = $this->select($sql);
+			$request = $this->select_all($sql);
 			return $request;
 		}
+
+
+
 
 		public function updateProductor(int $idProductor, string $cedula, string $nombre, string $ubicacion, string $imagen, string $estado){
 

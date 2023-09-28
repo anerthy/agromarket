@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
     //Actualizar Perfil
     if(document.querySelector("#formProductor")){
         let formProductor = document.querySelector("#formProductor");
-        formPerfil.onsubmit = function(e) {
+        formProductor.onsubmit = function(e) {
             e.preventDefault();
             let strCedula = document.querySelector('#txtCedula').value;
             let strNombre = document.querySelector('#txtNombre').value;

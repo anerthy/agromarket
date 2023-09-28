@@ -14,17 +14,17 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="txtCedula">Cédula <span class="required">*</span></label>
-                  <input type="text" class="form-control" id="txtCedula" name="txtCedula" value="<?= $_SESSION['userData']['cedula']; ?>" required="">
+                  <input type="text" class="form-control" id="txtCedula" name="txtCedula" value="<?= $_SESSION['arrData']['cedula']; ?>" required="">
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="txtNombre">Nombre <span class="required">*</span></label>
-                  <input type="text" class="form-control valid validText" id="txtNombre" name="txtNombre" value="<?= $_SESSION['userData']['nombre']; ?>" required="">
+                  <input type="text" class="form-control valid validText" id="txtNombre" name="txtNombre" value="<?= $_SESSION['arrData']['nombre']; ?>" required="">
                 </div>
                 <div class="form-group col-md-6">
                   <label for="txtUbicacion">Ubicacion <span class="required">*</span></label>
-                  <input type="text" class="form-control valid validText" id="txtUbicacion" name="txtUbicacion" value="<?= $_SESSION['userData']['ubicacion']; ?>" required="">
+                  <input type="text" class="form-control valid validText" id="txtUbicacion" name="txtUbicacion" value="<?= $_SESSION['arrData']['ubicacion']; ?>" required="">
                 </div>
               </div>
             

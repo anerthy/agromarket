@@ -4,12 +4,12 @@ class Usuario extends Controllers
 {
 	public function __construct()
 	{
-		//sessionStart();
+		sessionStart();
 		parent::__construct();
-		//if (empty($_SESSION['login'])) {
-		//	header('Location: ' . base_url() . '/login');
+		if (empty($_SESSION['login'])) {
+			header('Location: ' . base_url() . '/login');
 		}
-		//  getPermisos(3);
+		  //getPermisos(3);
 	}
 
 	public function Usuario()
