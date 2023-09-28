@@ -25,7 +25,7 @@
 			$this->views->getView($this,"usuarios",$data);
 		}
 
-		public function setUsuario(){
+		public function setUsuario(){ //NOMBRE, UBICACION Y IMAGEN
 			if($_POST){			
 				if(empty($_POST['txtIdentificacion']) || empty($_POST['txtNombre']) || empty($_POST['txtApellido']) || empty($_POST['txtTelefono']) || empty($_POST['txtEmail']) || empty($_POST['listRolid']) || empty($_POST['listStatus']) )
 				{
@@ -90,6 +90,7 @@
 			die();
 		}
 
+         //ELIMIANR
 		public function getUsuarios()
 		{
 			if($_SESSION['permisosMod']['r']){
@@ -152,6 +153,7 @@
 			die();
 		}
 
+		//ELIMIANR
 		public function delUsuario()
 		{
 			if($_POST){
@@ -212,6 +214,8 @@
 			die();
 		}
 
+
+		//ELIMIANR
 		public function putDFical(){
 			if($_POST){
 				if(empty($_POST['txtNit']) || empty($_POST['txtNombreFiscal']) || empty($_POST['txtDirFiscal']) )
