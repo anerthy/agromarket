@@ -50,7 +50,7 @@ class RegisterModel extends Mysql
 
         $sql_user = "SELECT usr_nombre 
                 FROM usuarios
-                WHERE usr_emial = '{$this->strEmail}' ";
+                WHERE usr_email = '{$this->strEmail}' ";
         $request_user = $this->select_all($sql_user);
 
         if (empty($request_person) && empty($request_user)) {
@@ -62,7 +62,7 @@ class RegisterModel extends Mysql
                                     '{$this->strDireccion}', 
                                     '{$this->strTelefono}', 
                                     '{$this->strEstado}', 
-                                    '{$this->strEstado}', 
+                                    '{$this->strEmail}', 
                                     '{$this->strUsuario}', 
                                     '{$this->strContrasena}', 
                                     {$this->intRol}
