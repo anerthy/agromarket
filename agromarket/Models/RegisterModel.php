@@ -28,8 +28,7 @@ class RegisterModel extends Mysql
         string $telefono,
         string $email,
         string $usuario,
-        string $contrasena,
-
+        string $contrasena
     ) {
         $return = "";
         $this->strCedula        = $cedula;
