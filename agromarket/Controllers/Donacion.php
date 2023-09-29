@@ -18,6 +18,15 @@ class Donacion extends Controllers
         $this->views->getView($this, "donacion", $data);
     }
 
+    public function DonacionAdmin()
+    {
+        $data['page_tag'] = "Donaciones Admin";
+        $data['page_name'] = "donacion_admin";
+        $data['page_title'] = "Donacion Admin";
+        $data['arrData'] = $this->model->getAll(); 
+        $this->views->getView($this, "donacion_admin", $data);
+    }
+
     public function getDonaciones()
     {
         $arrData = $this->model->getAll();
