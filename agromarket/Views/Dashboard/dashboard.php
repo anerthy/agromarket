@@ -22,7 +22,7 @@ headerAdmin($data);
     <div class="row">
 
       <div class="col-md-6 col-lg-3">
-        <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+        <div class="widget-small primary coloured-icon" style="  box-shadow: rgba(7, 7, 7, 0.1) 11px 9px 0px 0px;"><i class="icon fa fa-users fa-3x"></i>
 
           <div class="info">
             <h4><a href="<?= base_url(); ?>/usuario">Usuarios</a></h4>
@@ -43,7 +43,7 @@ headerAdmin($data);
       </div>
 
       <div class="col-md-6 col-lg-3">
-        <div class="widget-small info coloured-icon"><i class="icon fa fa-tree fa-3x"></i>
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-calendar"></i>
           <div class="info">
             <h4><a href="<?= base_url(); ?>/actividad">Actividades</a></h4>
             <p><b> 1</b></p>
