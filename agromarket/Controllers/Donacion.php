@@ -13,7 +13,7 @@ class Donacion extends Controllers
     {
         $data['page_tag'] = "Donaciones";
         $data['page_name'] = "donacion";
-        $data['page_title'] = "Donacion";
+        $data['page_title'] = "Donación";
         $data['arrData'] = $this->model->getAll(); 
         $this->views->getView($this, "donacion", $data);
     }
@@ -22,7 +22,7 @@ class Donacion extends Controllers
     {
         $data['page_tag'] = "Donaciones Admin";
         $data['page_name'] = "donacion_admin";
-        $data['page_title'] = "Donacion Admin";
+        $data['page_title'] = "Donacion";
         $data['arrData'] = $this->model->getAll(); 
         $this->views->getView($this, "donacion_admin", $data);
     }

@@ -6,7 +6,7 @@ headerAdmin($data);
     <div class="app-title">
         <div>
             <h1>
-                <a href="<?= base_url(); ?>//Donacion/DonacionAdmin" style="text-decoration: none;">
+                <a href="<?= base_url(); ?>/Donacion/DonacionAdmin" style="text-decoration: none;">
                 <i class="fas fa-dollar-sign"></i> <?= $data['page_title'] ?>
                 </a>
 
