@@ -2,6 +2,9 @@
 headerAdmin($data);
 getModal('modalProductor', $data);
 ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="Assets/js/functions_productor.js"></script> <!-- Tu script que utiliza jQuery -->
 
 <main class="app-content">
     <div class="row user">

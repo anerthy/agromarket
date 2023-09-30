@@ -63,7 +63,8 @@ class ProductorModel extends Mysql
 						pdt_estado
                     FROM productores
 					WHERE usr_id 		= $this->intIdUsuario
-					  AND per_cedula 	= $this->strCedula";
+					--   AND per_cedula 	= $this->strCedula  
+					";
 		$request = $this->select_all($sql);
 		return $request;
 	}
