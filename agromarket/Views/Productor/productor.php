@@ -1,6 +1,6 @@
 <?php
-  headerAdmin($data);
-  getModal('modalProductor', $data);
+headerAdmin($data);
+getModal('modalProductor', $data);
 ?>
 
 <main class="app-content">
@@ -34,7 +34,6 @@
                             <!-- Agrega la clase table-sm para reducir el tamaño de la tabla -->
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>NOMBRE</th>
                                     <th>CÉDULA</th>
                                     <th>UBICACIÓN</th>
@@ -42,11 +41,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($data['arrData'] as $productor): ?>
+                                <?php foreach ($data['arrData'] as $productor) : ?>
                                     <tr>
-                                        <td><?php echo $productor['pdt_id']; ?></td>
                                         <td><?php echo $productor['pdt_nombre']; ?></td>
-                                        <td><?php echo $productor['pdt_cedula']; ?></td>
+                                        <td><?php echo $productor['per_cedula']; ?></td>
                                         <td><?php echo $productor['pdt_ubicacion']; ?></td>
                                         <td><?php echo $productor['pdt_estado']; ?></td>
                                     </tr>

@@ -6,7 +6,10 @@ class Productor extends Controllers
 	{
 		sessionStart();
 		parent::__construct();
-		$this->model = new ProductorModel();
+
+		if (empty($_SESSION['login'])) {
+			header('Location: ' . base_url() . '/login');
+		}
 	}
 
 	public function Productor()
@@ -15,7 +18,10 @@ class Productor extends Controllers
 		$data['page_title'] = "Productor";
 		$data['page_name'] = "productor";
 		$data['page_functions_js'] = "functions_productor.js";
-		$data['arrData'] = $this->model->selectUsuario(1);
+		$data['arrData'] = $this->model->getProductor(
+			$_SESSION['userData']['usr_id'],
+			$_SESSION['userData']['per_cedula']
+		);
 		$this->views->getView($this, "productor", $data);
 	}
 
