@@ -11,7 +11,6 @@
       <div class="modal-body">
         <form id="formUsuario" name="formUsuario" class="form-horizontal">
           <input type="hidden" id="usr_id" name="usr_id" value="">
-          <p class="text-primary">Todos los campos son obligatorios.</p>
 
           <div class="form-row">
             <div class="form-group col-md-6">
@@ -20,7 +19,7 @@
             </div>
             <div class="form-group col-md-6">
               <label for="txtEmail">Email</label>
-              <input type="email" class="form-control valid validEmail" id="txtEmail" name="txtEmail" required="">
+              <input type="email" class="form-control valid validEmail" id="txtEmail" name="txtEmail" required="" autocomplete="off">
             </div>
             <div class="form-group col-md-6">
               <label for="txtCedula">Cedula</label>
@@ -46,7 +45,7 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="txtContrasena">Contraseña</label>
-              <input type="password" class="form-control" id="txtContrasena" name="txtContrasena">
+              <input type="password" class="form-control" id="txtContrasena" name="txtContrasena" autocomplete="off">
             </div>
           </div>
 

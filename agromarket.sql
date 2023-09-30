@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-09-2023 a las 06:25:49
+-- Tiempo de generación: 30-09-2023 a las 04:32:22
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -301,7 +301,8 @@ CREATE TABLE IF NOT EXISTS `personas` (
 INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apellido2`, `per_direccion`, `per_telefono`, `per_estado`, `per_fec_creacion`, `per_fec_modificacion`) VALUES
 ('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07'),
 ('123456789', 'Nombre', 'Apellido1', 'Apellido2', 'Dirección', '123456789', 'Activo', '2023-09-28 03:35:30', '2023-09-28 03:35:30'),
-('', '', '', '', '', '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36');
+('', '', '', '', '', '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36'),
+('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08');
 
 -- --------------------------------------------------------
 
@@ -311,25 +312,26 @@ INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apelli
 
 DROP TABLE IF EXISTS `productores`;
 CREATE TABLE IF NOT EXISTS `productores` (
-  `pdt_id` int NOT NULL AUTO_INCREMENT,
-  `pdt_cedula` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
+  `usr_id` int NOT NULL,
+  `per_cedula` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
   `pdt_nombre` varchar(50) COLLATE utf8mb4_swedish_ci NOT NULL,
   `pdt_ubicacion` varchar(100) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `pdt_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `usr_id` int DEFAULT NULL,
   `pdt_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
   `pdt_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `pdt_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pdt_id`),
+  PRIMARY KEY (`usr_id`,`per_cedula`),
+  KEY `per_cedula` (`per_cedula`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productores`
 --
 
-INSERT INTO `productores` (`pdt_id`, `pdt_cedula`, `pdt_nombre`, `pdt_ubicacion`, `pdt_imagen`, `usr_id`, `pdt_estado`, `pdt_fec_creacion`, `pdt_fec_modificacion`) VALUES
-(1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 1, 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41');
+INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`, `pdt_imagen`, `pdt_estado`, `pdt_fec_creacion`, `pdt_fec_modificacion`) VALUES
+(1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41'),
+(7, '503120432', 'fiorella', 'Brasilito', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-30 04:03:33');
 
 -- --------------------------------------------------------
 
@@ -424,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`usr_id`),
   KEY `rol_id` (`rol_id`),
   KEY `per_cedula` (`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -435,7 +437,8 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00'),
 (4, 'jdf@gmail.com', 'desao', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 6, '504460444', 'Inactivo', '2023-09-21 22:00:32', '2023-09-21 23:24:53'),
 (5, 'correo@example.com', 'Usuario123', 'Contraseña123', NULL, 1, '123456789', 'Activo', '2023-09-28 03:35:30', '2023-09-28 03:35:30'),
-(6, 'Activo', '', '', NULL, 1, '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36');
+(6, 'Activo', '', '', NULL, 1, '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36'),
+(7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

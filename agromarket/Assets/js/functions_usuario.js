@@ -90,13 +90,13 @@ document.addEventListener('DOMContentLoaded', function () {
         let formUsuario = document.querySelector("#formUsuario");
         formUsuario.onsubmit = function (e) {
             e.preventDefault();
-            var intIdUsuario = document.querySelector('#usr_id').value;
-            let strNombre = document.querySelector('#txtNombre').value;
+            var intId = document.querySelector('#usr_id').value;
             let strEmail = document.querySelector('#txtEmail').value;
-            let intRol = document.querySelector('#listRol').value;
-            let strCedula = document.querySelector('#txtCedula').value;
+            let strNombre = document.querySelector('#txtNombre').value;
             let strContrasena = document.querySelector('#txtContrasena').value;
             let strEstado = document.querySelector('#listEstado').value;
+            let intRol = document.querySelector('#listRol').value;
+            let strCedula = document.querySelector('#txtCedula').value;
 
             if (strNombre == '' || strEmail == '' || intRol == '' || strCedula == '') {
                 swal("Atención", "Todos los campos son obligatorios.", "error");
@@ -127,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             htmlEstado = strEstado == 'Activo' ?
                                 '<span class="badge badge-info">Activo</span>' :
                                 '<span class="badge badge-danger">Inactivo</span>';
-                            rowTable.cells[1].textContent = strEmail;
-                            rowTable.cells[2].textContent = strNombre;
+                            rowTable.cells[1].textContent = strNombre;
+                            rowTable.cells[2].textContent = strEmail;
                             rowTable.cells[3].textContent = document.querySelector("#listRol").selectedOptions[0].text;
                             rowTable.cells[4].textContent = strCedula;
                             rowTable.cells[5].innerHTML = htmlEstado;
