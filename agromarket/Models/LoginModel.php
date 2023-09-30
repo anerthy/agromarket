@@ -30,7 +30,8 @@ class LoginModel extends Mysql
 	public function sessionLogin(int $iduser)
 	{
 		$this->intIdUsuario = $iduser;
-		$sql = "SELECT	usr_id, 
+		$sql = "SELECT	usr_id,
+						pdt_cedula, 
 						usr_nombre, 
 						usr_email, 
 						u.rol_id, 
