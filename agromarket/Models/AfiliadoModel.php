@@ -20,7 +20,7 @@ class AfiliadoModel extends Mysql
         $return = "";
         $this->intIdUsuario   = $usuario;
 
-        $sql = "SELECT ptd_id  
+        $sql = "SELECT *  
                 FROM afiliados 
                 WHERE usr_id = '{$this->intIdUsuario}' ";
         $request = $this->select_all($sql);
