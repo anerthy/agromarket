@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 30-09-2023 a las 04:32:22
+-- Tiempo de generación: 02-10-2023 a las 03:44:29
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -27,7 +27,7 @@ DELIMITER $$
 --
 DROP PROCEDURE IF EXISTS `CrearAfiliado`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT)   BEGIN
-    DECLARE v_pdt_id INT;
+    DECLARE v_per_cedula VARCHAR(15);
     DECLARE v_afl_fec_afiliacion TIMESTAMP;
     DECLARE v_afl_fec_vencimiento TIMESTAMP;
     DECLARE v_afiliado_existente INT;
@@ -41,8 +41,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT) 
     
     IF v_productor_existente > 0 THEN
         IF v_afiliado_existente = 0 THEN
-            -- Obtener pdt_id del productor
-            SELECT pdt_id INTO v_pdt_id FROM productores WHERE usr_id = p_usr_id;
+            -- Obtener datos del productor
+            SELECT 
+                per_cedula 
+            INTO 
+                v_per_cedula 
+            FROM productores 
+            WHERE usr_id = p_usr_id;
 
             -- Obtener la fecha de afiliación actual
             SET v_afl_fec_afiliacion = NOW();
@@ -51,8 +56,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT) 
             SET v_afl_fec_vencimiento = DATE_ADD(NOW(), INTERVAL 1 MONTH);
 
             -- Insertar el registro en la tabla afiliados
-            INSERT INTO afiliados (pdt_id, usr_id, afl_fec_afiliacion, afl_fec_vencimiento, afl_estado)
-            VALUES (v_pdt_id, p_usr_id, v_afl_fec_afiliacion, v_afl_fec_vencimiento, 'Activo');
+            INSERT INTO afiliados (usr_id, per_cedula, afl_fec_afiliacion, afl_fec_vencimiento, afl_estado)
+            VALUES (p_usr_id, v_per_cedula, v_afl_fec_afiliacion, v_afl_fec_vencimiento, 'Activo');
             
             SELECT 'Afiliado insertado correctamente.' AS mensaje;
         ELSE
@@ -107,25 +112,23 @@ CREATE TABLE IF NOT EXISTS `actividades` (
 
 DROP TABLE IF EXISTS `afiliados`;
 CREATE TABLE IF NOT EXISTS `afiliados` (
-  `afl_id` int NOT NULL AUTO_INCREMENT,
-  `pdt_id` int DEFAULT NULL,
-  `usr_id` int DEFAULT NULL,
+  `usr_id` int NOT NULL,
+  `per_cedula` varchar(15) COLLATE utf8mb4_swedish_ci NOT NULL,
   `afl_fec_afiliacion` timestamp NOT NULL,
   `afl_fec_vencimiento` timestamp NULL DEFAULT NULL,
   `afl_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
   `afl_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `afl_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`afl_id`),
-  KEY `pdt_id` (`pdt_id`),
+  PRIMARY KEY (`per_cedula`,`usr_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `afiliados`
 --
 
-INSERT INTO `afiliados` (`afl_id`, `pdt_id`, `usr_id`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
-(5, 1, 1, '2023-09-28 06:25:32', '2023-10-28 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-09-28 06:25:32');
+INSERT INTO `afiliados` (`usr_id`, `per_cedula`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
+(1, '504460444', '2023-09-28 06:25:32', '2023-10-28 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-02 03:28:18');
 
 -- --------------------------------------------------------
 
