@@ -43,9 +43,9 @@ headerAdmin($data);
         <li>Funciones adicionales</li>
         <li>Soporte al cliente mejorado</li>
         </ul> -->
-                    <a href="#" class="btn btn-success mt-3">
-                        <button id="btn-afiliarse" onClick="fntAfiliarse(1)">Solicitar Afiliación</button>
-                    </a>
+
+                    <button id="btn-afiliarse" class="btn btn-success mt-3" onClick="fntAfiliarse(1)">Solicitar Afiliación</button>
+
                 </div>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
