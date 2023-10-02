@@ -44,7 +44,7 @@ headerAdmin($data);
         <li>Soporte al cliente mejorado</li>
         </ul> -->
                     <a href="#" class="btn btn-success mt-3">
-                        <button id="btn-afiliarse" onClick="fntAfiliarse(7)">Solicitar Afiliación</button>
+                        <button id="btn-afiliarse" onClick="fntAfiliarse(1)">Solicitar Afiliación</button>
                     </a>
                 </div>
 
