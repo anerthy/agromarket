@@ -162,7 +162,7 @@ sup {
 }
 
 a {
-  color: #000000;
+ color: #000000;
   text-decoration: none;
   background-color: transparent;
 }
@@ -2619,7 +2619,7 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #FFF;
-  background-color: #0f265c;
+  background-color: #4c4d44 ;
 
 }
 
@@ -14866,7 +14866,7 @@ be a descendant of the grid when it is being dragged.
   min-height: calc(100vh - 50px);
   margin-top: 50px;
   padding: 30px;
-  background-color: #E5E5E5;
+  background-color: #fff;
   -webkit-transition: margin-left 0.3s ease;
   -o-transition: margin-left 0.3s ease;
   transition: margin-left 0.3s ease;
@@ -14959,7 +14959,7 @@ be a descendant of the grid when it is being dragged.
             flex: 0 0 auto;
     display: block;
     width: 230px;
-    background-color: #417648;
+background-color: #417648;
   }
 }
 
@@ -15161,7 +15161,6 @@ be a descendant of the grid when it is being dragged.
   overflow: auto;
   z-index: 10;
   background-image: url("http://localhost/agromarket/agromarket/Assets/images/img/Dashboard/slidebar.jpg");
-
   -webkit-box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 17px rgba(0, 0, 0, 0.2);
   -webkit-transition: left 0.3s ease,
@@ -15470,8 +15469,8 @@ be a descendant of the grid when it is being dragged.
   background-color: #FFF;
   margin: -30px -30px 30px;
   padding: 20px 30px;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  /* -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); */
 }
 
 @media print {
@@ -15894,7 +15893,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .material-half-bg .cover {
-  background-color: #0f265c;
+  background-color: #4c4d44 ;
   height: 50vh;
 }
 
@@ -16621,7 +16620,7 @@ be a descendant of the grid when it is being dragged.
   text-align: center;
   background-color: #fff;
   white-space: nowrap;
-  background-color: #0f265c;
+  background-color: #4c4d44 ;
   color: #fff;
 }
 

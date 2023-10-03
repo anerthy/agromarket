@@ -1,10 +1,11 @@
-import Navbar from "./Navbar";
+import PageTemplate from "./PageTemplate";
 
 export default function Activities() {
   return (
     <>
-      <Navbar />
-      <h1>Actividades</h1>
+      <PageTemplate>
+        <h1>Actividades</h1>
+     </PageTemplate> 
     </>
   );
 }

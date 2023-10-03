@@ -1,10 +1,11 @@
-import Navbar from "./Navbar";
+import PageTemplate from "./PageTemplate";
 
 export default function Producers() {
   return (
     <>
-      <Navbar />
-      <h1>Productores de AgroMarket</h1>
+      <PageTemplate>
+        <h1>Productores de AgroMarket</h1>
+      </PageTemplate> 
     </>
   );
 }

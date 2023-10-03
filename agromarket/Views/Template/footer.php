@@ -26,6 +26,8 @@
                           <li><a href="<?= base_url(); ?>/SobreNosotros/proyecto">Sobre el proyecto</a></li>
                           <li><a href="<?= base_url(); ?>/voluntariado">Voluntariado</a></li>
                           <li><a href="<?= base_url(); ?>/login">Iniciar sesión</a></li>
+                          <li><a href="<?= base_url(); ?>/donacion">Donaciones</a></li>
+
                       </ul>
                   </div>
 
