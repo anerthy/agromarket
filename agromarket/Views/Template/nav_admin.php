@@ -55,7 +55,11 @@
                 <a class="app-menu__item" href="<?= base_url(); ?>/productor">
                     <span class="fa fa-user fa-2x" title="Volverme productor"></span>
                     <span class="app-menu__label icon">
-                        Volverme productor
+                        <?php if ( 1 == 1) { ?>
+                        Volverme afiliado              
+                    <?php } else {?>
+                        Perfil de productor
+                    <?php } ?>
                     </span>
                 </a>
             </li>
