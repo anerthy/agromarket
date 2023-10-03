@@ -56,7 +56,7 @@
                     <span class="fa fa-user fa-2x" title="Volverme productor"></span>
                     <span class="app-menu__label icon">
                         <?php if ( 1 == 1) { ?>
-                        Volverme afiliado              
+                        Volverme productor              
                     <?php } else {?>
                         Perfil de productor
                     <?php } ?>
