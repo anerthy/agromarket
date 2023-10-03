@@ -25,7 +25,7 @@ class Producto extends Controllers
         $data['page_functions_js'] = "functions_producto.js";
         $this->views->getView($this, "producto", $data);
     }
-
+//de acá pat
     public function getProductos()
     {
         $arrData = $this->model->getAll();
@@ -74,7 +74,7 @@ class Producto extends Controllers
         }
         die();
     }
-
+//acá
     public function setProducto()
     {
         $intIdProducto  = intval($_POST['pro_id']);
@@ -155,7 +155,7 @@ class Producto extends Controllers
         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
         die();
     }
-
+//hasta acá
     public function disProducto()
     {
         if ($_POST) {

@@ -1,5 +1,6 @@
 import { useRoute } from "wouter";
-import Navbar from "./Navbar";
+import PageTemplate from "./PageTemplate";
+
 
 const fetchProducer = async (id) => {
   const response = await fetch(`http://localhost/agromarket/producer/${id}`);
@@ -15,7 +16,7 @@ const ProducerDetails = () => {
 
   return (
     <>
-      <Navbar />
+      <PageTemplate>
       <h1>Detalles del productor #{params.id}</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus earum
@@ -23,6 +24,7 @@ const ProducerDetails = () => {
         mollitia, eum aperiam sunt accusamus esse, voluptatibus sed possimus
         ullam deleniti doloremque?
       </p>
+      </PageTemplate>
     </>
   );
 };
