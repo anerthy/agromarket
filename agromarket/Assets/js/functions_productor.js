@@ -1,6 +1,3 @@
-
-let rowTable = "";
-let divLoading = document.querySelector("#divLoading");
 document.addEventListener('DOMContentLoaded', function () {
 
 
@@ -39,11 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     let objData = JSON.parse(request.responseText);
                     if (objData.status) {
                         console.log('si funca')
-                      
+                       
                     } else {
                         console.log('no funca')
-                        window.location.href = base_url + '/productor';
+                        
                     }
+                    window.location.href = base_url + '/productor';
                 }
                 return false;
             }
