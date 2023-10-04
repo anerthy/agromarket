@@ -25,7 +25,7 @@
   </center>
   <div class="tile">
     <div class="tile-body">
-      <form id="formRegister" class="form-horizontal">
+      <form id="formRegister" name="formRegister" class="form-horizontal">
         <h3 class="tile-title">Datos personales</h3>
         <div class="mb-3 row">
           <label class="form-label col-md-3">Cedula</label>
@@ -86,10 +86,10 @@
             <label class="form-label">Contraseña</label>
             <input id="txtContrasena" class="form-control" type="password" placeholder="Digite su contraseña">
           </div>
-          <div class="mb-3 col-md-3">
+          <!-- <div class="mb-3 col-md-3">
             <label class="form-label">Confirmar contraseña</label>
             <input id="txtContrasenaConfirmar" class="form-control" type="password" placeholder="Digite su contraseña de nuevo">
-          </div>
+          </div> -->
         </div>
         <div class="tile-footer">
           <div class="row">
