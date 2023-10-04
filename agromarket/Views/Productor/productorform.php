@@ -150,14 +150,24 @@
                     <input type="text" id="txtUbicacion" name="txtUbicacion"  required>
                 </div>
 
-                <!-- <div class="form-group">
-                    <label class="letra" for="imagen">Imagen de perfil:</label>
-                    <div id="dropzone" name="foto" class="dropzone">
-                        <div class="dz-message">
-                            Arrastra y suelta una imagen aquí o haz clic para seleccionarla
-                        </div>
-                    </div>
-                </div> -->
+                <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="photo">
+                                        <label for="foto">Imagen</label>
+                                        <div class="prevPhoto">
+                                            <span class="delPhoto notBlock">X</span>
+                                            <label for="foto"></label>
+                                            <div>
+                                                <img id="img" src="<?= media(); ?>/images/uploads/imageUnavailable.png">
+                                            </div>
+                                        </div>
+                                        <div class="upimg">
+                                            <input type="file" name="foto" id="foto">
+                                        </div>
+                                        <div id="form_alert"></div>
+                                    </div>
+                                </div>
+                            </div>
 
                 <div class="form-group">
                     <button type="submit">Registrarse</button>
@@ -171,20 +181,6 @@
 <script src="<?= media(); ?>/js/<?= $data['page_functions_js']; ?>"></script>
 
 
-<script>
-  
-    // Dropzone.autoDiscover = false; 
 
-    // var myDropzone = new Dropzone("#dropzone", {
-    //     url: "tu_url_de_carga",
-    //     maxFilesize: 5,
-    //     acceptedFiles: "image/*",
-    //     addRemoveLinks: true, 
-    //     dictRemoveFile: "Eliminar archivo", 
-    //     dictDefaultMessage: "Arrastra y suelta una imagen aquí o haz clic para seleccionarla", // Mensaje predeterminado
-    // });
-
-
-</script>
 
 </html>

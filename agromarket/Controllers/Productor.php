@@ -44,24 +44,34 @@ class Productor extends Controllers
 
     public function volverseProductor()
     {
-        // la cedula y usuario se puede obtener del array SESSION
-        // $strUsuario     = strClean($_POST['txtUsuario']);
-        // $strCedula      = strClean($_POST['txtCedula']); 
         $strNombre      = strClean($_POST['txtNombre']);
         $strUbicacion   = strClean($_POST['txtUbicacion']);
-       // $strImagen      = strClean($_POST['txtImagen']); // REVISAR OTROS CRUDS PARA VER EL MANEJO DE IMAGENES, YO NO SE JEJE, GL!
+
+        $foto       = $_FILES['foto'];
+        $nombre_foto     = $foto['name'];
+        $type              = $foto['type'];
+        $url_temp        = $foto['tmp_name'];
+        $imgImage     = 'imageUnavailable.png';
+        $request = "";
+        if ($nombre_foto != '') {
+            $imgImage = 'img_' . md5(date('d-m-Y H:m:s')) . '.jpg';
+        }
+
 
         $request = $this->model->insertProductor(
             $_SESSION['userData']['usr_id'],
             $_SESSION['userData']['per_cedula'],
             $strNombre,
             $strUbicacion,
-            'Hola'
+            $imgImage
         );
 
         //! REVISAR LOS MENSAJES DE $ARRRESPONSE
         if ($request > 0) {
             $arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
+            if ($nombre_foto != '') {
+                uploadImage('productores', $foto, $imgImage);
+            }
         } else if ($request == 'exist') {
             $arrResponse = array('status' => false, 'msg' => '¡Atención! Información ya existente en el sistema');
         } else {
