@@ -1,5 +1,5 @@
+let divLoading = document.querySelector("#divLoading");
 document.addEventListener('DOMContentLoaded', function () {
-
 
     if (document.querySelector("#foto")) {
         let foto = document.querySelector("#foto");
@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
     //Actualizar Perfil
     if (document.querySelector("#formProductor")) {
         let formProductor = document.querySelector("#formProductor");
@@ -81,12 +80,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     let objData = JSON.parse(request.responseText);
                     if (objData.status) {
                         console.log('si funca')
-                       
+
                     } else {
                         console.log('no funca')
-                        
+
                     }
-                    window.location.href = base_url + '/productor';
+                    // window.location.href = base_url + '/productor';
                 }
                 return false;
             }
