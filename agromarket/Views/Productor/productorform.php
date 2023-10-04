@@ -140,7 +140,7 @@
             <center>
             <h2 class="letra" style="font-size: 30px;">Registro de productor</h2>
             </center>
-            <form action="productor" method="post" enctype="multipart/form-data">
+            <form  id="formProductor"  name="formProductor" action="productor.php" method="post">
                 <div class="form-group">
                     <label class="letra" for="txtNombre">Nombre:</label>
                     <input type="text" id="txtNombre" name="txtNombre"  required>
@@ -150,14 +150,14 @@
                     <input type="text" id="txtUbicacion" name="txtUbicacion"  required>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="letra" for="imagen">Imagen de perfil:</label>
                     <div id="dropzone" name="foto" class="dropzone">
                         <div class="dz-message">
                             Arrastra y suelta una imagen aquí o haz clic para seleccionarla
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                     <button type="submit">Registrarse</button>
@@ -167,18 +167,24 @@
     </div>
 </body>
 
-<script>
-    // Inicializa Dropzone.js en el elemento con id "dropzone"
-    Dropzone.autoDiscover = false; // Evita que Dropzone se inicialice automáticamente
+<script>const base_url = "<?= base_url(); ?>";</script>
+<script src="<?= media(); ?>/js/<?= $data['page_functions_js']; ?>"></script>
 
-    var myDropzone = new Dropzone("#dropzone", {
-        url: "tu_url_de_carga", // Especifica la URL de carga de imágenes
-        maxFilesize: 5, // Tamaño máximo del archivo en MB
-        acceptedFiles: "image/*", // Tipos de archivo aceptados
-        addRemoveLinks: true, // Agrega un enlace para eliminar archivos cargados
-        dictRemoveFile: "Eliminar archivo", // Texto del enlace para eliminar archivos
-        dictDefaultMessage: "Arrastra y suelta una imagen aquí o haz clic para seleccionarla", // Mensaje predeterminado
-    });
+
+<script>
+  
+    // Dropzone.autoDiscover = false; 
+
+    // var myDropzone = new Dropzone("#dropzone", {
+    //     url: "tu_url_de_carga",
+    //     maxFilesize: 5,
+    //     acceptedFiles: "image/*",
+    //     addRemoveLinks: true, 
+    //     dictRemoveFile: "Eliminar archivo", 
+    //     dictDefaultMessage: "Arrastra y suelta una imagen aquí o haz clic para seleccionarla", // Mensaje predeterminado
+    // });
+
+
 </script>
 
 </html>

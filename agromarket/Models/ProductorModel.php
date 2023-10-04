@@ -61,7 +61,7 @@ class ProductorModel extends Mysql
 									pdt_ubicacion,
 									pdt_imagen,
 									pdt_estado
-								) VALUES('?','?','?','?','?','Activo')";
+								) VALUES(?,?,?,?,?,'Activo')";
 
 			$arrData = array(
 				$this->intIdUsuario,

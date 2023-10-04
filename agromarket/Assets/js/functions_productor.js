@@ -9,12 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let formProductor = document.querySelector("#formProductor");
         formProductor.onsubmit = function (e) {
             e.preventDefault();
-            let strCedula = document.querySelector('#txtCedula').value;
             let strNombre = document.querySelector('#txtNombre').value;
             let strUbicacion = document.querySelector('#txtUbicacion').value;
 
 
-            if (strCedula == '' || strNombre == '' || strUbicacion == '') {
+            if (strNombre == '' || strUbicacion == '') {
                 swal("Atención", "Todos los campos son obligatorios.", "error");
                 return false;
             }
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return false;
                 }
             }
-            divLoading.style.display = "flex";
+
             let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
             let ajaxUrl = base_url + '/Productor/volverseProductor';
             let formData = new FormData(formProductor);
@@ -39,32 +38,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (request.status == 200) {
                     let objData = JSON.parse(request.responseText);
                     if (objData.status) {
-                        $('#modalFormProductor').modal("hide");
-                        swal({
-                            title: "",
-                            text: objData.msg,
-                            type: "success",
-                            confirmButtonText: "Aceptar",
-                            closeOnConfirm: false,
-                        }, function (isConfirm) {
-                            if (isConfirm) {
-                                location.reload();
-                            }
-                        });
+                        console.log('si funca')
+                      
                     } else {
-                        swal("Error", objData.msg, "error");
+                        console.log('no funca')
+                        window.location.href = base_url + '/productor';
                     }
                 }
-                divLoading.style.display = "none";
                 return false;
             }
         }
     }
 
 }, false);
-
-
-
-function openModalProductor() {
-    $('#modalFormProductor').modal('show');
-}

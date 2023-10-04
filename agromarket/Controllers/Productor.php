@@ -49,14 +49,14 @@ class Productor extends Controllers
         // $strCedula      = strClean($_POST['txtCedula']); 
         $strNombre      = strClean($_POST['txtNombre']);
         $strUbicacion   = strClean($_POST['txtUbicacion']);
-        $strImagen      = strClean($_POST['txtImagen']); // REVISAR OTROS CRUDS PARA VER EL MANEJO DE IMAGENES, YO NO SE JEJE, GL!
+       // $strImagen      = strClean($_POST['txtImagen']); // REVISAR OTROS CRUDS PARA VER EL MANEJO DE IMAGENES, YO NO SE JEJE, GL!
 
         $request = $this->model->insertProductor(
             $_SESSION['userData']['usr_id'],
             $_SESSION['userData']['per_cedula'],
             $strNombre,
             $strUbicacion,
-            $strImagen
+            'Hola'
         );
 
         //! REVISAR LOS MENSAJES DE $ARRRESPONSE
