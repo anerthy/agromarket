@@ -31,7 +31,7 @@ class LoginModel extends Mysql
 	{
 		$this->intIdUsuario = $iduser;
 		$sql = "SELECT	usr_id, 
-						per_cedula
+						per_cedula,
 						usr_nombre, 
 						usr_email, 
 						u.rol_id, 
