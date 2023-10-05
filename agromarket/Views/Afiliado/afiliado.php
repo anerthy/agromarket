@@ -40,15 +40,21 @@ $datAfiliado =  $data['dat_afiliado'];
                 <?php } else { ?>
                     <section class="ver-afiliacion">
                         <h1><?php echo $datAfiliado[0]['pdt_nombre'] ?></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla soluta eveniet veniam fuga esse quidem enim beatae, veritatis impedit temporibus ducimus vero praesentium eius iusto consequatur itaque ullam dolor dolorem.</p>
-                        <p>Afiliacion vigente hasta el <span><?php echo $datAfiliado[0]['afl_fec_vencimiento'] ?></span></p>
+                        <img src="<?= media(); ?>/images/afiliadopremium.jpg" alt="Afiliados Premium" class="rounded" style="max-width: 40%; height: auto;">
+                        <p class="mt-3">Con el plan premium tendrás acceso a funcionalidades adicionales
+                            dentro de Agromarket.
+                        </p>
+                        <p >Ante cualquier avería usted tendrá soporte técnico prioritario.</p>
+                        <p >La membresía premium ofrece más espacio de almacenamiento.</p>
+                        <br>
+                        <p>La Afiliación está vigente hasta el día <span class="font-weight-bold"><?php echo $datAfiliado[0]['afl_fec_vencimiento'] ?></span></p>
                         <button class="btn btn-success mt-3">Renovar ahora</button>
                     </section>
                 <?php } ?>
             </div>
         </div>
     </div>
+    
 </main>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
