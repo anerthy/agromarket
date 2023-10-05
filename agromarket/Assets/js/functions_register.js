@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var strEmail = document.querySelector('#txtEmail').value;
         var strUsuario = document.querySelector('#txtUsuario').value;
         var strContrasena = document.querySelector('#txtContrasena').value;
-        var strContrasenaConfirmar = document.querySelector('#txtContrasenaConfirmar').value;
+        // var strContrasenaConfirmar = document.querySelector('#txtContrasenaConfirmar').value;
 
         if (strCedula == '' || strNombre == '' || strApellido1 == '' || strApellido2 == '' || strDireccion == '' || strTelefono == '' || strEmail == '' || strUsuario == '' || strContrasena == '') {
             Swal.fire({
@@ -25,16 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
-        if (strContrasena != strContrasenaConfirmar) {
-            Swal.fire({
-                title: 'Error',
-                text: 'Las contraseñas deben coincidir',
-                icon: 'warning',
-                confirmButtonText: 'Aceptar',
-                confirmButtonColor: '#F19757'
-            })
-            return false;
-        }
+        // if (strContrasena != strContrasenaConfirmar) {
+        //     Swal.fire({
+        //         title: 'Error',
+        //         text: 'Las contraseñas deben coincidir',
+        //         icon: 'warning',
+        //         confirmButtonText: 'Aceptar',
+        //         confirmButtonColor: '#F19757'
+        //     })
+        //     return false;
+        // }
 
         var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         var ajaxUrl = base_url + '/register/addPersonUser';
@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 var objData = JSON.parse(request.responseText);
                 if (objData.status) {
-
                     Swal.fire({
                         title: 'Datos enviados',
                         text: 'Los datos fueron enviados de manera exitosa.',
@@ -54,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         confirmButtonText: 'Aceptar',
                         confirmButtonColor: '#3085d6'
                     })
-
                     formRegister.reset();
                 }
                 else {

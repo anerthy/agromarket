@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-10-2023 a las 03:44:29
+-- Tiempo de generación: 05-10-2023 a las 01:04:33
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -175,7 +175,14 @@ CREATE TABLE IF NOT EXISTS `donaciones` (
   `don_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `don_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`don_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `donaciones`
+--
+
+INSERT INTO `donaciones` (`don_id`, `don_descripcion`, `don_medio`, `don_informacion`, `don_estado`, `don_fec_creacion`, `don_fec_modificacion`) VALUES
+(1, 'dfdsf', 'dfsdf', 'ddsfff', 'Aprobado', '2023-10-03 00:29:39', '2023-10-03 00:29:39');
 
 -- --------------------------------------------------------
 
@@ -303,8 +310,8 @@ CREATE TABLE IF NOT EXISTS `personas` (
 
 INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apellido2`, `per_direccion`, `per_telefono`, `per_estado`, `per_fec_creacion`, `per_fec_modificacion`) VALUES
 ('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07'),
-('123456789', 'Nombre', 'Apellido1', 'Apellido2', 'Dirección', '123456789', 'Activo', '2023-09-28 03:35:30', '2023-09-28 03:35:30'),
-('', '', '', '', '', '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36'),
+('', '', '', '', '', '', 'Activo', '2023-10-04 01:19:05', '2023-10-04 01:19:05'),
+('501230123', 'Admin', 'Admin', 'Admin', 'Nicoya', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
 ('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08');
 
 -- --------------------------------------------------------
@@ -429,18 +436,17 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`usr_id`),
   KEY `rol_id` (`rol_id`),
   KEY `per_cedula` (`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `usr_token`, `rol_id`, `per_cedula`, `usr_estado`, `usr_fec_creacion`, `usr_fec_modificacion`) VALUES
-(1, 'andmejigo12@gmail.com', 'anerthy', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '504460444', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:54:33'),
+(1, 'andmejigo12@gmail.com', 'anerthy', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '', 1, '504460444', 'Activo', '2023-09-19 05:17:02', '2023-10-05 00:48:27'),
 (3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00'),
-(4, 'jdf@gmail.com', 'desao', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 6, '504460444', 'Inactivo', '2023-09-21 22:00:32', '2023-09-21 23:24:53'),
-(5, 'correo@example.com', 'Usuario123', 'Contraseña123', NULL, 1, '123456789', 'Activo', '2023-09-28 03:35:30', '2023-09-28 03:35:30'),
-(6, 'Activo', '', '', NULL, 1, '', 'Activo', '2023-09-28 05:25:36', '2023-09-28 05:25:36'),
+(10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
+(9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-10-04 01:44:50'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24');
 COMMIT;
 
