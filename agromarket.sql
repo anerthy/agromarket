@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-10-2023 a las 00:50:37
+-- Tiempo de generación: 05-10-2023 a las 01:04:33
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -311,6 +311,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apellido2`, `per_direccion`, `per_telefono`, `per_estado`, `per_fec_creacion`, `per_fec_modificacion`) VALUES
 ('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07'),
 ('', '', '', '', '', '', 'Activo', '2023-10-04 01:19:05', '2023-10-04 01:19:05'),
+('501230123', 'Admin', 'Admin', 'Admin', 'Nicoya', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
 ('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08');
 
 -- --------------------------------------------------------
