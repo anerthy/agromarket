@@ -4,7 +4,7 @@ trait TDatosAfiliacion
 {
     public $con;
 
-    public function existeAfiliado()
+    public function getDataAfiliation()
     {
         $this->con = new Mysql();
         $sql = "SELECT COUNT(*) AS EXISTE
