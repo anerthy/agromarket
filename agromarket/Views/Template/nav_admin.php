@@ -2,11 +2,7 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
-            <!-- <span class="fa fa-user">Usuario</span> -->
-            <div>
-                <!-- <p class="app-sidebar__user-name"><?= $_SESSION['userData']['usr_nombre']; ?></p>
-                <p class="app-sidebar__user-designation"><?= $_SESSION['userData']['rol_nombre']; ?></p> -->
-            </div>
+            <span class="fa fa-user"><?= $_SESSION['userData']['usr_nombre']; ?></span>
         </div>
         <ul class="app-menu">
             <li>
@@ -55,11 +51,11 @@
                 <a class="app-menu__item" href="<?= base_url(); ?>/productor">
                     <span class="fa fa-user fa-2x" title="Volverme productor"></span>
                     <span class="app-menu__label icon">
-                        <?php if ( 1 == 1) { ?>
-                        Volverme productor              
-                    <?php } else {?>
-                        Perfil de productor
-                    <?php } ?>
+                        <?php if (1 == 1) { ?>
+                            Volverme productor
+                        <?php } else { ?>
+                            Perfil de productor
+                        <?php } ?>
                     </span>
                 </a>
             </li>

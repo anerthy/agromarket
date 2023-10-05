@@ -41,7 +41,7 @@ class UsuarioModel extends Mysql
 
 		if (empty($request)) {
 			$query_insert  = 	"INSERT INTO usuarios(usr_email,usr_nombre,usr_contrasena,rol_id,per_cedula,usr_estado)
-								VALUES('?', '?', '?', '?', '?', '?')";
+								VALUES(?, ?, ?, ?, ?, ?)";
 
 			$arrData = array(
 				$this->strEmail,
