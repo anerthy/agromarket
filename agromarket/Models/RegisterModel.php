@@ -54,21 +54,22 @@ class RegisterModel extends Mysql
         $request_user = $this->select_all($sql_user);
 
         if (empty($request_person) && empty($request_user)) {
-            $query_insert  =    "CALL InsertarPersonaUsuario(
-                                    '{$this->strCedula}', 
-                                    '{$this->strNombre}', 
-                                    '{$this->strApellido1}', 
-                                    '{$this->strApellido2}', 
-                                    '{$this->strDireccion}', 
-                                    '{$this->strTelefono}', 
-                                    '{$this->strEstado}', 
-                                    '{$this->strEmail}', 
-                                    '{$this->strUsuario}', 
-                                    '{$this->strContrasena}', 
-                                    {$this->intRol}
-                                );";
-            $request_insert = $this->procedure($query_insert);
-            $return = $request_insert;
+            $query = "CALL InsertarPersonaUsuario(?,?,?,?,?,?,?,?,?,?,?);";
+            $arrData = array(
+                $this->strCedula,
+                $this->strNombre,
+                $this->strApellido1,
+                $this->strApellido2,
+                $this->strDireccion,
+                $this->strTelefono,
+                $this->strEstado,
+                $this->strEmail,
+                $this->strUsuario,
+                $this->strContrasena,
+                $this->intRol
+            );
+            $request_procedure = $this->procedure($query, $arrData);
+            $return = $request_procedure;
         } else {
             $return = "exist";
         }
