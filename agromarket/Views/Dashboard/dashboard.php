@@ -97,6 +97,15 @@ headerAdmin($data);
           </div>
         </div>
       </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="widget-small info coloured-icon"><i class="icon fa fa-home fa-3x"></i>
+          <div class="info">
+            <h4><a href="<?= base_url(); ?>/Productor/productorform">Perfil</a></h4>
+          </div>
+        </div>
+      </div>
+
+      
     </div>
     <!-- FIN DE FILA DOS -->
   </section>

@@ -9,7 +9,7 @@ class Usuario extends Controllers
 		if (empty($_SESSION['login'])) {
 			header('Location: ' . base_url() . '/login');
 		}
-		//  getPermisos(3);
+		  //getPermisos(3);
 	}
 
 	public function Usuario()
