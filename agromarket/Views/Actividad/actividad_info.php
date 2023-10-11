@@ -46,16 +46,16 @@
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center me-4">
                     <span class="fa fa-phone-alt me-2"></span>
-                    <span>+012 345 6789</span>
+                    <span>2202 0222</span>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <span class="far fa-envelope me-2"></span>
-                    <span>info@example.com</span>
+                    <span>agromarket@gmail.com</span>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center mx-n2">
-                    <span>Follow Us:</span>
+                    <span>Síguenos en:</span>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
@@ -70,7 +70,7 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h1 class="m-0">Gardener</h1>
+            <h1 class="m-0">Agromarket</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -102,7 +102,7 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">Projects</h1>
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Actividades</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
