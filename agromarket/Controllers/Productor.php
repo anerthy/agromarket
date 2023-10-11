@@ -35,6 +35,15 @@ class Productor extends Controllers
         $this->views->getView($this, "productorform", $data);
     }
 
+    public function ProductorInfo()
+    {
+        // Resto del código para cargar la vista del formulario aquí
+        $data['page_tag'] = "Productor Info";
+        $data['page_title'] = "Productor Info";
+        $data['page_name'] = "productor_info";
+        $this->views->getView($this, "productor_info", $data);
+    }
+
     // sin params como se obtienen los datos de la SESSION
     public function getProductor(/*int $usuario, string $cedula*/)
     {

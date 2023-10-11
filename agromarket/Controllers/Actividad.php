@@ -15,6 +15,14 @@ class Actividad extends Controllers
         $data['page_functions_js'] = "functions_actividad.js";
         $this->views->getView($this, "actividad", $data);
     }
+    public function ActividadInfo()
+    {
+        $data['page_tag'] = "Actividades Info";
+        $data['page_name'] = "actividad_info";
+        $data['page_title'] = "Actividad Info";
+        $this->views->getView($this, "actividad_info", $data);
+    }
+
 
     public function getActividades()
     {
