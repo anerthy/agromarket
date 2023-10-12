@@ -518,3 +518,8 @@ h6,
 .copyright a:hover {
     color: var(--primary);
 }
+
+.icon{
+    border-radius: 50%;
+    height: 100px;
+}
