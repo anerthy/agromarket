@@ -41,7 +41,18 @@ class Productor extends Controllers
         $data['page_tag'] = "Productor Info";
         $data['page_title'] = "Productor Info";
         $data['page_name'] = "productor_info";
+        $data['arrData'] = $this->model->selectProductores();
         $this->views->getView($this, "productor_info", $data);
+    }
+
+    public function PerfilInInfo()
+    {
+        // Resto del código para cargar la vista del formulario aquí
+        $data['page_tag'] = "Perfil Info";
+        $data['page_title'] = "Perfil Info";
+        $data['page_name'] = "perfil_info";
+        $data['arrData'] = $this->model->selectProductores();
+        $this->views->getView($this, "perfil_info", $data);
     }
 
     // sin params como se obtienen los datos de la SESSION
