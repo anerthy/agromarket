@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Gardener - Gardening Website Template</title>
+    <title>Actividades</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -46,16 +46,16 @@
             <div class="col-lg-7 px-5 text-start">
                 <div class="h-100 d-inline-flex align-items-center me-4">
                     <span class="fa fa-phone-alt me-2"></span>
-                    <span>+012 345 6789</span>
+                    <span>+506 2023-2023</span>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
                     <span class="far fa-envelope me-2"></span>
-                    <span>info@example.com</span>
+                    <span>agromarket@gmail.com</span>
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
                 <div class="h-100 d-inline-flex align-items-center mx-n2">
-                    <span>Follow Us:</span>
+                    <span>Síguenos en:</span>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-link text-light" href=""><i class="fab fa-linkedin-in"></i></a>
@@ -70,18 +70,19 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h1 class="m-0">Gardener</h1>
+            <h1 class="m-0">Agromarket</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="service.html" class="nav-item nav-link">Services</a>
-                <a href="project.html" class="nav-item nav-link active">Projects</a>
-                <div class="nav-item dropdown">
+                <a href="<?= base_url(); ?>/" class="nav-item nav-link">Inicio</a>
+                <a href="<?= base_url(); ?>/producto/page" class="nav-item nav-link">Productos</a>
+                <a href="<?= base_url(); ?>/productor/page" class="nav-item nav-link">Productores</a>
+                <a href="<?= base_url(); ?>/actividad/page" class="nav-item nav-link active">Actividades</a>
+                <a href="<?= base_url(); ?>/donacion/page" class="nav-item nav-link active">Donaciones</a>
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu bg-light m-0">
                         <a href="feature.html" class="dropdown-item">Features</a>
@@ -90,10 +91,10 @@
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                         <a href="404.html" class="dropdown-item">404 Page</a>
                     </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div> -->
+                <a href="contact.html" class="nav-item nav-link">Contactenos</a>
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Get A Quote<i class="fa fa-arrow-right ms-3"></i></a>
+            <a href="<?= base_url(); ?>/login" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Iniciar sesión<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -102,12 +103,11 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center py-5">
-            <h1 class="display-3 text-white mb-4 animated slideInDown">Projects</h1>
+            <h1 class="display-3 text-white mb-4 animated slideInDown">Actividades</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb justify-content-center mb-0">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Projects</li>
+                    <li class="breadcrumb-item"><a href="<?= base_url(); ?>/">Agromarket</a></li>
+                    <li class="breadcrumb-item"><a href="#">Actividades</a></li>
                 </ol>
             </nav>
         </div>
@@ -119,92 +119,78 @@
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-bold text-primary">Our Projects</p>
-                <h1 class="display-5 mb-5">Some Of Our Wonderful Projects</h1>
+                <p class="fs-5 fw-bold text-primary">Nuestras Actividades</p>
+                <h1 class="display-5 mb-5">Actividades a Realizar</h1>
             </div>
             <div class="row wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
                     <ul class="list-inline rounded mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">All</li>
-                        <li class="mx-2" data-filter=".first">Complete Projects</li>
-                        <li class="mx-2" data-filter=".second">Ongoing Projects</li>
+                        <li class="mx-2 active" data-filter="*">Todas</li>
+                        <li class="mx-2" data-filter=".first">Actividades Completas</li>
+                        <li class="mx-2" data-filter=".second">Actividades en Curso</li>
                     </ul>
                 </div>
             </div>
+
             <div class="row g-4 portfolio-container">
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="<?= media(); ?>/images/img/plantilla/img/service-1.jpg" alt="">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Landscaping</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="<?= media(); ?>/images/img/plantilla/img/service-1.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                            </div>
+                    <div class="card">
+                        <i class="fa fa-leaf fa-5x d-block mx-auto mt-3 text-success"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Evento 1</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in volutpat nunc. Vivamus quis dui at risus fermentum auctor.</p>
+                            <p><i class="fa fa-map-marker"></i> Lugar: Ciudad Evento 1</p>
+                            <p><i class="fa fa-calendar"></i> Fecha: 01/01/2023</p>
+                            <p><i class="fa fa-clock"></i> Hora: 10:00 AM</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="<?= media(); ?>/images/img/plantilla/img/service-2.jpg" alt="">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Pruning plants</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="<?= media(); ?>/images/img/plantilla/img/service-2.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                            </div>
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card">
+                        <i class="fa fa-leaf fa-5x d-block mx-auto mt-3 text-success"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Evento 1</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in volutpat nunc. Vivamus quis dui at risus fermentum auctor.</p>
+                            <p><i class="fa fa-map-marker"></i> Lugar: Ciudad Evento 1</p>
+                            <p><i class="fa fa-calendar"></i> Fecha: 01/01/2023</p>
+                            <p><i class="fa fa-clock"></i> Hora: 10:00 AM</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="<?= media(); ?>/images/img/plantilla/img/service-3.jpg" alt="">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Irrigation & Drainage</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="<?= media(); ?>/images/img/plantilla/img/service-3.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                            </div>
+                <!-- Repite el mismo patrón para las demás tarjetas -->
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card">
+                        <i class="fa fa-leaf fa-5x d-block mx-auto mt-3 text-success"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Evento 1</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in volutpat nunc. Vivamus quis dui at risus fermentum auctor.</p>
+                            <p><i class="fa fa-map-marker"></i> Lugar: Ciudad Evento 1</p>
+                            <p><i class="fa fa-calendar"></i> Fecha: 01/01/2023</p>
+                            <p><i class="fa fa-clock"></i> Hora: 10:00 AM</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="<?= media(); ?>/images/img/plantilla/img/service-4.jpg" alt="">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Garden Maintenance</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="<?= media(); ?>/images/img/plantilla/img/service-4.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                            </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="card">
+                        <i class="fa fa-leaf fa-5x d-block mx-auto mt-3 text-success"></i>
+                        <div class="card-body">
+                            <h5 class="card-title">Evento 1</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in volutpat nunc. Vivamus quis dui at risus fermentum auctor.</p>
+                            <p><i class="fa fa-map-marker"></i> Lugar: Ciudad Evento 1</p>
+                            <p><i class="fa fa-calendar"></i> Fecha: 01/01/2023</p>
+                            <p><i class="fa fa-clock"></i> Hora: 10:00 AM</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="<?= media(); ?>/images/img/plantilla/img/service-5.jpg" alt="">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Green Technology</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="<?= media(); ?>/images/img/plantilla/img/service-5.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="portfolio-inner rounded">
-                        <img class="img-fluid" src="<?= media(); ?>/images/img/plantilla/img/service-6.jpg" alt="">
-                        <div class="portfolio-text">
-                            <h4 class="text-white mb-4">Urban Gardening</h4>
-                            <div class="d-flex">
-                                <a class="btn btn-lg-square rounded-circle mx-2" href="<?= media(); ?>/images/img/plantilla/img/service-6.jpg" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
             </div>
+
+
+
+
+
         </div>
     </div>
     <!-- Projects End -->
@@ -215,10 +201,10 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Our Office</h4>
+                    <h4 class="text-white mb-4">Contactenos</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+506 2323 2323</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>agromarket@email.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
@@ -227,27 +213,26 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Services</h4>
-                    <a class="btn btn-link" href="">Landscaping</a>
-                    <a class="btn btn-link" href="">Pruning plants</a>
-                    <a class="btn btn-link" href="">Urban Gardening</a>
-                    <a class="btn btn-link" href="">Garden Maintenance</a>
-                    <a class="btn btn-link" href="">Green Technology</a>
+                    <h4 class="text-white mb-4">Paginas</h4>
+                    <a class="btn btn-link" href="<?= base_url(); ?>/">Inicio</a>
+                    <a class="btn btn-link" href="<?= base_url(); ?>/producto/page">Productos</a>
+                    <a class="btn btn-link" href="<?= base_url(); ?>/productor/page">Productores</a>
+                    <a class="btn btn-link" href="<?= base_url(); ?>/actividad/page">Actividades</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Our Services</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Support</a>
+                    <h4 class="text-white mb-4">Enlaces de interes</h4>
+                    <a class="btn btn-link" href="">Sobre nosotros</a>
+                    <a class="btn btn-link" href="">Contactenos</a>
+                    <!-- <a class="btn btn-link" href="">Our Services</a> -->
+                    <a class="btn btn-link" href="<?= base_url(); ?>/donacion/page">Donaciones</a>
+                    <a class="btn btn-link" href="">Terminos & Condiciones</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <h4 class="text-white mb-4">Necesitas ayuda</h4>
+                    <p>Dejanos tu correo para contactarnos contigo.</p>
                     <div class="position-relative w-100">
-                        <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
                     </div>
                 </div>
             </div>
@@ -261,7 +246,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                    &copy; <a class="border-bottom" href="<?= base_url(); ?>/">Agromarket</a>, All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
