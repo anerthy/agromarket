@@ -115,6 +115,41 @@
     <!-- Page Header End -->
 
 
+
+    <!-- ANUNCIOS  -->
+    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                
+                <h1 class="display-5 mb-5">Empresas Patrocinadoras</h1>
+            </div>
+
+
+            <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-12">
+      <div class="card" style="border: none;">
+        <img src="<?= media(); ?>/images/cocacolanuncio.png" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-12">
+      <div class="card" style="border: none;">
+        <img src="<?= media(); ?>/images/dospinosanuncio.png" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-12">
+      <div class "card" style="border: none;">
+        <img src="<?= media(); ?>/images/pizzahutanuncio.jpg" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- ANUNCIOS FIN -->
+
+
+
+
+
+    
     <!-- Projects Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -126,11 +161,18 @@
                 <div class="col-12 text-center">
                     <ul class="list-inline rounded mb-5" id="portfolio-flters">
                         <li class="mx-2 active" data-filter="*">Todas</li>
-                        <li class="mx-2" data-filter=".first">Actividades Completas</li>
-                        <li class="mx-2" data-filter=".second">Actividades en Curso</li>
+                        <li class="mx-2" data-filter=".first">Nicoya</li>
+                        <li class="mx-2" data-filter=".second">Santa Cruz</li>
                     </ul>
                 </div>
             </div>
+
+
+
+
+
+            
+
 
             <div class="row g-4 portfolio-container">
                 <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
