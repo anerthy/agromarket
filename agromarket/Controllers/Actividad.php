@@ -15,6 +15,14 @@ class Actividad extends Controllers
         $data['page_functions_js'] = "functions_actividad.js";
         $this->views->getView($this, "actividad", $data);
     }
+    public function Page()
+    {
+        $data['page_tag'] = "Actividades";
+        $data['page_name'] = "actividades";
+        $data['page_title'] = "Actividades";
+        $this->views->getView($this, "actividad_info", $data);
+    }
+
 
     public function getActividades()
     {
@@ -38,14 +46,14 @@ class Actividad extends Controllers
             // Botón de revisar
             $btnCheck = '<button class="btn btn-warning btn-sm fntCheckActividad" onClick="fntCheckActividad(' . $arrData[$i]['act_id'] . ')" title="Revisar"><i class="fas fa-exclamation"></i></button>';
 
-            $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>'; 
-            
+            $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>';
+
             if ($arrData[$i]['act_estado'] == 1) {
-                $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';  
+                $arrData[$i]['options'] = '<div class="text-center">' . $btnCheck . '</div>';
             }
 
             if ($arrData[$i]['act_estado'] == 4) {
-                $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';  
+                $arrData[$i]['options'] = '<div class="text-center">' . $btnView . '</div>';
             }
 
             // Formatear estado
@@ -99,7 +107,7 @@ class Actividad extends Controllers
         $strCategoria = strClean($_POST['txtCategoria']);
         $strEstado = strClean($_POST['listEstado']);
 
-       
+
 
         $foto       = $_FILES['foto'];
         $nombre_foto     = $foto['name'];
@@ -113,22 +121,24 @@ class Actividad extends Controllers
 
         if ($intIdActividad == 0) {
             // Crear
-            $request_Actividad = $this->model->insertActividad($strNombre,
-                                                              $strDescripcion,
-                                                              $strFecha,
-                                                              $strLugar, 
-                                                              $strCategoria, 
-                                                              $imgImagen);
+            $request_Actividad = $this->model->insertActividad(
+                $strNombre,
+                $strDescripcion,
+                $strFecha,
+                $strLugar,
+                $strCategoria,
+                $imgImagen
+            );
             $option = 1;
         } else {
 
             // Actualizar
-             if ($nombre_foto == '') {
+            if ($nombre_foto == '') {
                 if ($_POST['foto_actual'] != 'imageUnavailable.png' && $_POST['foto_remove'] == 0) {
                     $imgImagen = $_POST['foto_actual'];
                 }
             }
-            $request_Actividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion,$strFecha, $strLugar, $strCategoria, $imgImagen, $strEstado);
+            $request_Actividad = $this->model->updateActividad($intIdActividad, $strNombre, $strDescripcion, $strFecha, $strLugar, $strCategoria, $imgImagen, $strEstado);
             $option = 2;
         }
 
