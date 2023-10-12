@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 10-10-2023 a las 13:54:22
+-- Tiempo de generación: 12-10-2023 a las 23:28:01
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -364,27 +364,25 @@ CREATE TABLE IF NOT EXISTS `productos` (
   PRIMARY KEY (`pro_id`),
   KEY `pdt_id` (`pdt_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
 INSERT INTO `productos` (`pro_id`, `pro_nombre`, `pro_descripcion`, `pro_categoria`, `pro_precio`, `pro_imagen`, `pdt_id`, `pro_estado`, `pro_fec_creacion`, `pro_fec_modificacion`, `usr_id`) VALUES
-(1, 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'fruta.png', 1, 'Activo', '2023-09-20 15:50:15', '2023-09-20 15:50:15', 1),
-(4, 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_c6b10d7b98310947726dde5e2e35871a.jpg', 1, 'Activo', '2023-09-21 18:21:19', '2023-09-21 18:55:09', 1),
-(7, 'aaroncito', 'aaroncito', 'Fruta', '99999999.00', 'img_59a099967de2400fb3481b458eba97db.jpg', 1, 'Activo', '2023-09-21 19:06:55', '2023-09-22 00:52:58', 1),
-(8, 'cafe', 'cafe', 'Fruta', '44444.00', 'img_2aa8f6a087d7bb125caa6d99caa091f5.jpg', 1, 'Activo', '2023-09-21 19:13:18', '2023-09-22 00:52:55', 1),
-(9, 'Manzana', 'Manzanas frescas', 'Fruta', '1000.00', 'imagen1.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(10, 'Naranja', 'Naranjas frescas', 'Fruta', '800.00', 'imagen2.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(11, 'Pera', 'Peras frescas', 'Fruta', '1200.00', 'imagen3.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(12, 'Fresa', 'Fresas frescas', 'Fruta', '600.00', 'imagen4.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(13, 'Zanahoria', 'Zanahorias frescas', 'Verdura', '900.00', 'imagen5.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(14, 'Tomate', 'Tomates frescos', 'Verdura', '700.00', 'imagen6.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(15, 'Pepino', 'Pepinos frescos', 'Verdura', '1100.00', 'imagen7.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(16, 'Plátano', 'Plátanos frescos', 'Fruta', '1500.00', 'imagen8.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(17, 'Uva', 'Uvas frescas', 'Fruta', '2000.00', 'imagen9.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1),
-(18, 'Brocoli', 'Brócolis frescos', 'Verdura', '1800.00', 'imagen10.jpg', 1, '', '2023-09-22 00:51:05', '2023-09-22 00:51:05', 1);
+(25, 'Yuca', 'Se vende', 'Verdura', '520.00', 'img_b7648ca58f6bcbdbf4d55eda28931c9f.jpg', 1, 'Activo', '2023-10-13 04:57:57', '2023-10-13 04:57:57', 1),
+(26, 'Papaya', 'Se vende', 'Fruta', '8000.00', 'img_fc6e4649f61b81574097edab4c27db86.jpg', 1, 'Activo', '2023-10-13 04:58:23', '2023-10-13 04:58:23', 1),
+(23, 'Jocote', 'Se vende jocote', 'Frutas', '2000.00', 'img_3e14010f753144f1c0b26a97febfe96e.jpg', 1, 'Activo', '2023-10-13 04:49:31', '2023-10-13 04:49:31', 1),
+(24, 'Mamón chino', 'Se vende Mamón chino', 'Fruta', '3000.00', 'img_3e2049e34c80055c8bbe16a023ab791a.jpg', 7, 'Activo', '2023-10-13 04:56:05', '2023-10-13 04:56:23', 1),
+(22, 'Cebolla', 'Se vende cebollas', 'Verdura', '800.00', 'img_bb194d316866a7b2e88348827ee239f1.jpg', 1, 'Activo', '2023-10-13 04:48:34', '2023-10-13 04:48:34', 1),
+(21, 'Papas', 'Se vende papas', 'Verdura', '10000.00', 'img_e68181f115659b312b930a8cc0618b31.jpg', 1, 'Activo', '2023-10-13 04:46:43', '2023-10-13 04:47:40', 1),
+(20, 'Banano', 'Se vende banano', 'Fruta', '500.00', 'img_f48d8a7cde75a4ea4d7ac2497e6e812f.jpg', 1, 'Activo', '2023-10-13 04:44:59', '2023-10-13 04:44:59', 1),
+(8, 'Café', 'Se vende café', 'Fruta', '50000.00', 'img_3dc7feb48fa74bbf0eff703d2a5ea9bc.jpg', 1, 'Activo', '2023-09-22 01:13:18', '2023-10-13 04:31:26', 1),
+(7, 'Sandía', 'Se vende sandía', 'Fruta', '40000.00', 'img_3e1a21c217073784bd49f3e762bb9d5a.jpg', 1, 'Activo', '2023-09-22 01:06:55', '2023-10-13 04:32:21', 1),
+(4, 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_fc6cc214fabeff8687f323148cd95189.jpg', 1, 'Activo', '2023-09-22 00:21:19', '2023-10-13 04:34:49', 1),
+(1, 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 1, 'Activo', '2023-09-20 21:50:15', '2023-10-13 04:36:44', 1),
+(27, 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 1, 'Activo', '2023-10-13 04:58:47', '2023-10-13 04:58:47', 1);
 
 -- --------------------------------------------------------
 
