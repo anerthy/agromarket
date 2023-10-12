@@ -54,6 +54,8 @@ class Productor extends Controllers
         $data['page_title'] = "Perfil Info";
         $data['page_name'] = "perfil_info";
         $data['arrData'] = $this->model->getProductorInfo($id);
+
+        $data['arrDatapro'] = $this->model->getProductoInfo($id);
         $this->views->getView($this, "perfil_info", $data);
     }
 

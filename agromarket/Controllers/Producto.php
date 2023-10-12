@@ -25,6 +25,15 @@ class Producto extends Controllers
         $data['page_functions_js'] = "functions_producto.js";
         $this->views->getView($this, "producto", $data);
     }
+
+
+
+
+
+
+
+
+
 //de acá pat
     public function getProductos()
     {

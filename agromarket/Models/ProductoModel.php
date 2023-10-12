@@ -179,4 +179,8 @@ class ProductoModel extends Mysql
         $request = $this->delete($sql);
         return $request;
     }
+
+
+
+
 }
