@@ -77,7 +77,7 @@ headerAdmin($data);
       <div class="col-md-6 col-lg-3">
         <div class="widget-small warning coloured-icon"><i class="icon fa fa-calendar fa-3x"></i>
           <div class="info">
-            <h4><a href="<?= base_url(); ?>/rol">Actividades</a></h4>
+            <h4><a href="<?= base_url(); ?>/actividad">Actividades</a></h4>
           </div>
         </div>
       </div>

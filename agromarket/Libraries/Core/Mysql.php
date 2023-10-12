@@ -13,12 +13,17 @@ class Mysql extends Conexion
 	}
 	
 	//Ejecuta un procedimiento
-	public function procedure(string $query)
+	public function procedure(string $query, array $arrValues = null)
 	{
-		$this->strquery = $query;
-		$result = $this->conexion->prepare($this->strquery);
-		$del = $result->execute();
-		return $del;
+		$this->strquery 	= $query;
+		$this->arrValues 	= $arrValues;
+
+		if($arrValues != null){
+			$resExecute = $update->execute($this->arrValues);
+		}else{
+			$resExecute = $update->execute();
+		}
+		return $resExecute;
 	}
 
 	//Insertar un registro

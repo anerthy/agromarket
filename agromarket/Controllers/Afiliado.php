@@ -1,7 +1,8 @@
 <?php
-
+require_once("Models/Traits/TAfiliado.php");
 class Afiliado extends Controllers
 {
+    use TAfiliado;
     public function __construct()
     {
         sessionStart();
@@ -19,6 +20,8 @@ class Afiliado extends Controllers
         $data['page_name'] = "afiliado";
         $data['page_title'] = "afiliado";
         $data['page_functions_js'] = "functions_afiliado.js";
+        $data['val_afiliado']    =    $this->existeAfiliado();
+        $data['dat_afiliado']    =    $this->getDataAfiliation();
         $this->views->getView($this, "afiliado", $data);
     }
 

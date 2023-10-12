@@ -26,6 +26,13 @@ class Anuncio extends Controllers
         $data['page_functions_js'] = "functions_anuncio.js";
         $this->views->getView($this, "anuncio", $data);
     }
+    public function Page()
+    {
+        $data['page_tag'] = "Servicios de Anuncios";
+        $data['page_name'] = "anuncio_info";
+        $data['page_title'] = "Anuncio Info";
+        $this->views->getView($this, "anuncio_info", $data);
+    }
 
     public function getAnuncios()
     {

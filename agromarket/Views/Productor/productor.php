@@ -54,7 +54,6 @@ getModal('modalProductor', $data);
 
                                 <img src="<?php echo $productor['pdt_imagen']; ?>" alt="Foto">
 
-
                                 <!-- <p class="text-muted mb-1">Full Stack Developer</p>
                                 <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
                                 <div class="d-flex justify-content-center mb-2">
