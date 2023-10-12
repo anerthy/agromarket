@@ -4,12 +4,12 @@ class Producto extends Controllers
 {
     public function __construct()
     {
-        // sessionStart();
+         sessionStart();
         parent::__construct();
 
-        // if (empty($_SESSION['login'])) {
-        //     header('Location: ' . base_url() . '/login');
-        // }
+         if (empty($_SESSION['login'])) {
+         header('Location: ' . base_url() . '/login');
+         }
         // getPermisos(6);
     }
 
@@ -25,6 +25,15 @@ class Producto extends Controllers
         $data['page_functions_js'] = "functions_producto.js";
         $this->views->getView($this, "producto", $data);
     }
+
+
+
+
+
+
+
+
+
 //de acá pat
     public function getProductos()
     {
