@@ -35,7 +35,7 @@ class Productor extends Controllers
         $this->views->getView($this, "productorform", $data);
     }
 
-    public function ProductorInfo()
+    public function Page()
     {
         // Resto del código para cargar la vista del formulario aquí
         $data['page_tag'] = "Productor Info";
@@ -55,7 +55,7 @@ class Productor extends Controllers
             $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
         } else {
             $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
-          
+
             $arrResponse = array('status' => true, 'data' => $arrData);
         }
         echo json_encode($arrData, JSON_UNESCAPED_UNICODE);

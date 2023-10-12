@@ -9,11 +9,11 @@ class Donacion extends Controllers
     }
 
     
-    public function Donacion()
+    public function Donaciones()
     {
         $data['page_tag'] = "Donaciones";
-        $data['page_name'] = "donacion";
-        $data['page_title'] = "Donación";
+        $data['page_name'] = "donaciones";
+        $data['page_title'] = "Donaciones";
         $data['arrData'] = $this->model->getAll(); 
         $this->views->getView($this, "donacion", $data);
     }
