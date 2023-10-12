@@ -135,7 +135,7 @@
                             </div>
                             <h4 class="mb-3"><?php echo $productor['pdt_nombre']; ?></h4>
                             <p class="mb-4"><?php echo $productor['pdt_ubicacion']; ?></p>
-                            <a class="btn btn-sm" href="<?= base_url(); ?>/Productor/PerfilInInfo"><i class="fa fa-plus text-primary me-2"></i>Ir al perfil</a>
+                            <a class="btn btn-sm" href="<?= base_url(); ?>/Productor/PerfilInInfo?usr_id=<?= $productor['usr_id'] ?>"><i class="fa fa-plus text-primary me-2"></i>Ir al perfil</a>
                         </div>
                     </div>
                 </div>

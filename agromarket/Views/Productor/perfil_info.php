@@ -28,10 +28,7 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
@@ -115,56 +112,72 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/hero/banner.jpg">
-                        <div class="hero__text">
-                            <span>FRUIT FRESH</span>
-                            <h2>Vegetable <br />100% Organic</h2>
-                            <p>Free Pickup and Delivery Available</p>
-                            <a href="#" class="primary-btn">SHOP NOW</a>
-                        </div>
-                    </div>
+
+<style> 
+.container-hero {
+    display: flex;
+    background: #FFFFFF;
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.27);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1421px;
+    margin: 0 auto;
+}
+
+.info-section-hero {
+    flex: 1;
+    padding: 20px;
+}
+
+.info-text-hero {
+    background: #FCFCFC;
+    border: 1px solid #D1CBCB;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.image-section-hero {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section-hero img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+</style>
+
+
+             <?php foreach ($data['arrData'] as $productor): ?>
+         
+                <div class="container-hero">
+        <div class="info-section-hero">
+            <div class="info-text-hero">
+                <h4><?php echo $productor['pdt_nombre']; ?></h4>
+                <p><?php echo $productor['pdt_ubicacion']; ?></p>
+            </div>
+        </div>
+        <div class="image-section-hero">
+            <img src="<?php echo media() . '/images/uploads/productores/' .$productor['pdt_imagen']; ?>" alt="">
+        </div>
+    </div>
+            
+                <?php endforeach; ?>
+
+
+
+
                 </div>
             </div>
         </div>
     </section>
     <!-- Hero Section End -->
-
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/categories/cat-1.jpg">
-                            <h5><a href="#">Fresh Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/categories/cat-2.jpg">
-                            <h5><a href="#">Dried Fruit</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/categories/cat-3.jpg">
-                            <h5><a href="#">Vegetables</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/categories/cat-4.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/categories/cat-5.jpg">
-                            <h5><a href="#">drink fruits</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
-
     <!-- Featured Section Begin -->
     <section class="featured spad">
         <div class="container">
@@ -185,6 +198,8 @@
                 </div>
             </div>
             <div class="row featured__filter">
+
+
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/featured/feature-1.jpg">
@@ -200,6 +215,15 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+                
+
+
+
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="<?= media(); ?>/images/img/Perfil-productor/featured/feature-2.jpg">

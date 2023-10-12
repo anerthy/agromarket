@@ -141,4 +141,31 @@ class ProductorModel extends Mysql
 
 
 
+	public function getProductorInfo(int $id)
+	{
+		$this->intIdUsuario = $id;
+		$sql = "SELECT
+					usr_id, 
+					per_cedula, 
+					pdt_nombre, 
+					pdt_ubicacion, 
+					pdt_imagen, 
+					pdt_estado
+				FROM productores 
+				WHERE usr_id = '{$this->intIdUsuario}'";
+		$request = $this->select_all($sql);
+		return $request;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
