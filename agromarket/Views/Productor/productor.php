@@ -52,7 +52,7 @@ getModal('modalProductor', $data);
                         <div class="card mb-4">
                             <div class="card-body text-center">
 
-                                <img src="<?php echo $productor['pdt_imagen']; ?>" alt="Foto">
+                                <img src="<?php echo media() . '/images/uploads/productores/' .$productor['pdt_imagen']; ?>" alt="Foto">
 
                                 <!-- <p class="text-muted mb-1">Full Stack Developer</p>
                                 <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
