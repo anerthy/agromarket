@@ -9,7 +9,7 @@ class Donacion extends Controllers
     }
 
     
-    public function Donaciones()
+    public function Page()
     {
         $data['page_tag'] = "Donaciones";
         $data['page_name'] = "donaciones";
