@@ -24,7 +24,8 @@ getModal('modalProductor', $data);
                     <!-- Contenido de la pestaña "Datos personales" -->
                     <h5 class="mb-4">
                         DATOS PERSONALES
-                        <button class="btn btn-sm btn-info" type="button" onclick="openModalProductor();"><i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                        <button class="btn btn-sm btn-info" onclick="fntEditProductor()">
+                            Editar
                         </button>
                     </h5>
                 </div>
@@ -101,13 +102,5 @@ getModal('modalProductor', $data);
 
     <?php endforeach; ?>
 </main>
-
-<script>
-    // Inicializar DataTable en las tablas
-    $(document).ready(function() {
-        $('#personal-info-table').DataTable();
-        $('#payment-methods-table').DataTable();
-    });
-</script>
 
 <?php footerAdmin($data); ?>

@@ -101,3 +101,39 @@ function removePhoto() {
         document.querySelector('#img').remove();
     }
 }
+
+function fntEditProductor() {
+    var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    var ajaxUrl = base_url + '/Productor/getProductor/';
+    request.open("GET", ajaxUrl, true);
+    request.send();
+
+    request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+
+            var objData = JSON.parse(request.responseText);
+            if (objData.status) {
+                document.querySelector("#pdt_id").value = objData.data.pdt_id;
+                document.querySelector("#txtNombre").value = objData.data.pdt_nombre;
+                document.querySelector("#txtUbicacion").value = objData.data.pdt_ubicacion;
+                document.querySelector('#foto_actual').value = objData.data.pdt_imagen;
+                document.querySelector("#foto_remove").value = 0;
+
+                if (document.querySelector('#img')) {
+                    document.querySelector('#img').src = objData.data.pdt_imagen;
+                } else {
+                    document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src=" + objData.data.pdt_imagen + ">";
+                }
+
+                if (objData.data.pdt_imagen == 'imageUnavailable.png') {
+                    document.querySelector('.delPhoto').classList.add("notBlock");
+                } else {
+                    document.querySelector('.delPhoto').classList.remove("notBlock");
+                }
+                $('#modalFormProdutor').modal('show');
+            } else {
+                swal("Error", objData.msg, "error");
+            }
+        }
+    }
+}
