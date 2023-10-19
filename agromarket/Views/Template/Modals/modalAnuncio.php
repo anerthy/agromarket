@@ -25,20 +25,20 @@
                                 <input class="form-control" id="txtTipo" name="txtTipo" type="text" placeholder="Tipo de anuncio" required="">
                             </div>
                             <div class="form-group">
-    <label class="control-label">Fecha Vigencia</label>
-    <input class="form-control" id="txtFechaVigencia" name="txtFechaVigencia" type="date" required="">
-</div>
+                                <label class="control-label">Fecha Vigencia</label>
+                                <input class="form-control" id="txtFechaVigencia" name="txtFechaVigencia" type="date" required="">
+                            </div>
 
 
-<div class="form-group" id="selectEstado">
-    <label for="listEstado">Estado</label>
-    <select class="form-control" id="listEstado" name="listEstado" required="">
-        <option value="Activo">Activo</option>
-        <option value="Inactivo">Inactivo</option>
-    </select>
-</div>
+                            <div class="form-group" id="selectEstado">
+                                <label for="listEstado">Estado</label>
+                                <select class="form-control" id="listEstado" name="listEstado" required="">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                </select>
+                            </div>
 
-                            
+
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="photo">

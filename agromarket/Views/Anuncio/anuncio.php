@@ -10,9 +10,9 @@ getModal('modalAnuncio', $data); // Cambiamos el modal de alimentación al de an
                 <a href="<?= base_url(); ?>/anuncio" style="text-decoration: none;">
                     <i class="fas fa-bullhorn"></i> <?= $data['page_title'] ?> <!-- Cambiamos el icono y el título -->
                 </a>
-           
-                    <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
-            
+
+                <button class="btn btn-primary" type="button" onclick="openModal();"><i class="fas fa-plus-circle"></i> Nuevo</button>
+
             </h1>
         </div>
         <ul class="app-breadcrumb breadcrumb">
