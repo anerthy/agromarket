@@ -8,15 +8,7 @@ getModal('modalProductor', $data);
 
 <main class="app-content">
     <div class="row user">
-        <div class="col-md-12">
-            <div class="profile">
-                <div class="info">
-                    <img class="user-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR6uEHi2L1HNWSAF99KaXalj_S1HfyvTjzKw&usqp=CAU" alt="Foto de perfil">
-                </div>
-                <div class="cover-image" style="background-image: url('https://marketplace.canva.com/EAE8BWK0q3g/1/0/1600w/canva-fondo-de-pantalla-frutas-y-verduras-kawaii-naranja-Rtvd067L36k.jpg');">
-                </div>
-            </div>
-        </div>
+     
 
         <div class="col-md-9">
             <div class="tab-content">
@@ -43,16 +35,13 @@ getModal('modalProductor', $data);
                     </div>
                 </div>
 
-                <div>
-                    <?php dep($data['arrData'])  ?>
-                </div>
 
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
 
-                                <img src="<?php echo $productor['pdt_imagen']; ?>" alt="Foto">
+                                <img src="<?php echo media() . '/images/uploads/productores/' . $productor['pdt_imagen']; ?>" alt="Foto" style="    width: 220px;height: 200px;">
 
                                 <!-- <p class="text-muted mb-1">Full Stack Developer</p>
                                 <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
