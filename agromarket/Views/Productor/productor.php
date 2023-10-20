@@ -43,23 +43,12 @@ getModal('modalProductor', $data);
                     </div>
                 </div>
 
-                <div>
-                    <?php dep($data['arrData'])  ?>
-                </div>
-
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
 
-                                <img src="<?php echo media() . '/images/uploads/productores/' .$productor['pdt_imagen']; ?>" alt="Foto">
-
-                                <!-- <p class="text-muted mb-1">Full Stack Developer</p>
-                                <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                                <div class="d-flex justify-content-center mb-2">
-                                    <button type="button" class="btn btn-primary">Follow</button>
-                                    <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-                                </div> -->
+                                <img src="<?php echo $productor['pdt_imagen']; ?>" alt="Foto">
 
                             </div>
                         </div>
