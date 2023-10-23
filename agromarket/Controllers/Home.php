@@ -1,6 +1,8 @@
 <?php
+require_once("Models/Traits/TProducto.php");
 class Home extends Controllers
 {
+	use TProducto;
 	public function __construct()
 	{
 		parent::__construct();
@@ -12,6 +14,7 @@ class Home extends Controllers
 		$data['page_tag'] = "Home";
 		$data['page_title'] = "Página principal";
 		$data['page_name'] = "home";
+		$data['listado_productos'] = $this->getProducts();
 		$this->views->getView($this, "home", $data);
 	}
 
