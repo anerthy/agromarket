@@ -123,9 +123,9 @@ class ProductorModel extends Mysql
 
 
 	public function selectProductores()
-    {
-       
-        $sql = "SELECT
+	{
+
+		$sql = "SELECT
 					usr_id, 
 					per_cedula, 
 					pdt_nombre, 
@@ -134,9 +134,9 @@ class ProductorModel extends Mysql
 					pdt_estado
 				FROM productores
                 WHERE pdt_estado IN ('Activo', 'Inactivo')";
-        $request = $this->select_all($sql);
-        return $request;
-    }
+		$request = $this->select_all($sql);
+		return $request;
+	}
 
 
 
@@ -167,7 +167,6 @@ class ProductorModel extends Mysql
                     pro_categoria,
                     pro_precio,
                     pro_imagen,
-                    pdt_id,
                     pro_estado,
                     usr_id
                 FROM productos
@@ -175,17 +174,4 @@ class ProductorModel extends Mysql
 		$request = $this->select_all($sql);
 		return $request;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
