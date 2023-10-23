@@ -78,7 +78,6 @@
     </div>
     <!-- Carousel End -->
 
-
     <!-- Top Feature Start -->
     <div class="container-fluid top-feature py-5 pt-lg-0">
         <div class="container py-5 pt-lg-0">
@@ -127,7 +126,6 @@
     </div>
     <!-- Top Feature End -->
 
-
     <!-- About Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -165,7 +163,6 @@
     </div>
     <!-- About End -->
 
-
     <!-- Facts Start -->
     <div class="container-fluid facts my-5 py-5" data-parallax="scroll" data-image-src="<?= media(); ?>/images/img/plantilla/img/carousel-1.jpg">
         <div class="container py-5">
@@ -190,7 +187,6 @@
         </div>
     </div>
     <!-- Facts End -->
-
 
     <!-- Features Start -->
     <div class="container-xxl py-5">
@@ -238,7 +234,6 @@
         </div>
     </div>
     <!-- Features End -->
-
 
     <!-- Service Start -->
     <div class="container-xxl py-5">
@@ -437,7 +432,6 @@
     </div>
     <!-- Projects End -->
 
-
     <!-- Team Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -492,8 +486,7 @@
         </div>
     </div>
     <!-- Team End -->
-
-
+    
     <!-- Testimonial Start -->
     <div class="container-xxl py-5">
         <div class="container">
