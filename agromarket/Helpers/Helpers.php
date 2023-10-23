@@ -28,7 +28,13 @@ function _header($data = "")
     require_once($view_header);
 }
 
-function footer($data = "")
+function navbar()
+{
+    $view_footer = "Views/Template/navbar.php";
+    require_once($view_footer);
+}
+
+function footer()
 {
     $view_footer = "Views/Template/footer.php";
     require_once($view_footer);
