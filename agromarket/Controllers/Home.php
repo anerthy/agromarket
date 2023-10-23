@@ -14,4 +14,9 @@ class Home extends Controllers
 		$data['page_name'] = "home";
 		$this->views->getView($this, "home", $data);
 	}
+
+	public function about_us()
+	{
+		$this->views->getView($this, "about-us");
+	}
 }
