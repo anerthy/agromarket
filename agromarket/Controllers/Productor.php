@@ -47,7 +47,6 @@ class Productor extends Controllers
 
     public function PerfilInInfo()
     {
-
         $id = $_GET['usr_id'];
         // Resto del código para cargar la vista del formulario aquí
         $data['page_tag'] = "Perfil Info";
@@ -59,8 +58,6 @@ class Productor extends Controllers
         $this->views->getView($this, "perfil_info", $data);
     }
 
-    
-
     // sin params como se obtienen los datos de la SESSION
     public function getProductor(/*int $usuario, string $cedula*/)
     {
@@ -71,7 +68,7 @@ class Productor extends Controllers
         if (empty($arrData)) {
             $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
         } else {
-            $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
+            // $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
 
             $arrResponse = array('status' => true, 'data' => $arrData);
         }
@@ -94,7 +91,6 @@ class Productor extends Controllers
         if ($nombre_foto != '') {
             $imgImage = 'img_' . md5(date('d-m-Y H:m:s')) . '.jpg';
         }
-
 
         $request = $this->model->insertProductor(
             $_SESSION['userData']['usr_id'],

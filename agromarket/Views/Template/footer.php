@@ -1,92 +1,62 @@
-      <!-- ======= Footer ======= -->
-      <footer id="footer" class="footer">
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Contactenos</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+506 2323 2323</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>agromarket@email.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Paginas</h4>
+                <a class="btn btn-link" href="<?= base_url(); ?>/">Inicio</a>
+                <a class="btn btn-link" href="<?= base_url(); ?>/producto/page">Productos</a>
+                <a class="btn btn-link" href="<?= base_url(); ?>/productor/page">Productores</a>
+                <a class="btn btn-link" href="<?= base_url(); ?>/actividad/page">Actividades</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Enlaces de interes</h4>
+                <a class="btn btn-link" href="">Sobre nosotros</a>
+                <a class="btn btn-link" href="">Contactenos</a>
+                <!-- <a class="btn btn-link" href="">Our Services</a> -->
+                <a class="btn btn-link" href="<?= base_url(); ?>/donacion/page">Donaciones</a>
+                <a class="btn btn-link" href="">Terminos & Condiciones</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Necesitas ayuda</h4>
+                <p>Dejanos tu correo para contactarnos contigo.</p>
+                <div class="position-relative w-100">
+                    <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
 
-          <div class="container">
-              <div class="row gy-4">
-                  <div class="col-lg-5 col-md-12 footer-info">
-                      <a href="index.html" class="logo d-flex align-items-center">
-                          <span>Paraíso Azul</span>
-                      </a>
-                      <p>El Centro Mesoamericano de Desarrollo Sostenible del Trópico Seco (CEMEDE). Es un programa de
-                          investigación y extensión de la Universidad Nacional (UNA)</p>
-                      <div class="social-links d-flex mt-4">
-                          <a href="<?php echo TWITTER ?>" target="on_blank" class="twitter"><i
-                                  class="bi bi-twitter"></i></a>
-                          <a href="<?php echo FACEBOOK ?>" target="on_blank" class="facebook"><i
-                                  class="bi bi-facebook"></i></a>
-                          <a href="<?php echo INSTAGRAM ?>" target="on_blank" class="instagram"><i
-                                  class="bi bi-instagram"></i></a>
-                      </div>
-                  </div>
+<!-- Copyright Start -->
+<div class="container-fluid copyright py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                &copy; <a class="border-bottom" href="<?= base_url(); ?>/">Agromarket</a>, All Right Reserved.
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Copyright End -->
 
-                  <div class="col-lg-2 col-6 footer-links">
-                      <h4>Enlaces útiles</h4>
-                      <ul>
-                          <li><a href="<?= base_url(); ?>">Inicio</a></li>
-                          <li><a href="<?= base_url(); ?>/SobreNosotros/proyecto">Sobre el proyecto</a></li>
-                          <li><a href="<?= base_url(); ?>/voluntariado">Voluntariado</a></li>
-                          <li><a href="<?= base_url(); ?>/login">Iniciar sesión</a></li>
-                          <li><a href="<?= base_url(); ?>/donacion">Donaciones</a></li>
-
-                      </ul>
-                  </div>
-
-                  <div class="col-lg-2 col-6 footer-links">
-                      <h4>Nuestros Servicios</h4>
-                      <ul>
-                          <li><a href="<?= base_url(); ?>/Servicios/alimentacion">Alimentación</a></li>
-                          <li><a href="<?= base_url(); ?>/Servicios/hospedaje">Hospedaje</a></li>
-                          <li><a href="<?= base_url(); ?>/Servicios/transporte">Transporte</a></li>
-                          <li><a href="<?= base_url(); ?>/Servicios/tours">Tours</a></li>
-                      </ul>
-                  </div>
-
-                  <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                      <h4>Contáctenos</h4>
-                      <p>
-                          CEMEDE <br>
-                          50201, Nicoya, Costa Rica<br>
-                          Costa Rica <br><br>
-                          <strong>Teléfono:</strong> 2562 6212<br>
-                          <strong>Correo:</strong> cemede@una.cr<br>
-                      </p>
-
-                  </div>
-
-              </div>
-          </div>
-
-          <div class="container mt-4">
-              <div class="copyright">
-                  &copy; Copyright <strong><span>Paraíso Azul</span></strong>. All Rights Reserved
-              </div>
-              <div class="credits">
-
-                  Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              </div>
-          </div>
-
-      </footer><!-- End Footer -->
-      <!-- End Footer -->
-
-      <!-- boton para hacer scroll -->
-      <a href="#" class="scroll-top d-flex align-items-center justify-content-center active"><i
-              class="bi bi-arrow-up-short"></i></a>
-
-
-
-      <script src="<?= media(); ?>/js/funtions_voluntariado.js"></script>
-      <script>
-const base_url = "<?= base_url(); ?>";
-      </script>
-      <!-- js de grupos -->
-      <script src="<?= media(); ?>/js/views/functions_view_grupos.js"></script>
-
-      <!-- Template Main JS File -->
-      <script src="<?= media(); ?>/js/navbar/main.js"></script>
-      <!-- Page specific javascripts-->
-      <script type="text/javascript" src="<?= media(); ?>/js/plugins/sweetalert.min.js"></script>
-      <script src="<?= media(); ?>/js/bootstrap.min.js"></script>
-      </body>
-
-      </html>
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
