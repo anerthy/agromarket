@@ -1,5 +1,6 @@
 <?php
 require_once("Models/Traits/TProducto.php");
+require_once("Models/DonacionModel.php");
 class Home extends Controllers
 {
 	use TProducto;
@@ -21,6 +22,8 @@ class Home extends Controllers
 
 	public function about_us()
 	{
-		$this->views->getView($this, "about-us");
+		$modelo = new DonacionModel();
+		$data['arrData'] = $modelo->getAll(); 
+		$this->views->getView($this, "about-us", $data);
 	}
 }
