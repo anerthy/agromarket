@@ -102,7 +102,7 @@
                                         </div> -->
                                         <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
                                         <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
-                                        <a class="btn btn-sm" href=""><i class="fa fa-eye text-primary me-2"></i>Ver</a>
+                                        <a class="btn btn-sm" href=""><i class="fa fa-eye text-primary me-2"></i>Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -126,8 +126,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="row g-4 portfolio-container">
 
+            <div class="row g-4 portfolio-container">
                 <?php if (count($data['listado_productos']) > 0) { ?>
                     <?php for ($i = 0; $i < count($data['listado_productos']); $i++) { ?>
                         <div class="col-lg-3 col-md-6 portfolio-item <?php echo $data['listado_productos'][$i]['pro_categoria']; ?>">
