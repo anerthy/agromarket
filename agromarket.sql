@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 12-10-2023 a las 23:28:01
+-- Tiempo de generación: 25-10-2023 a las 03:36:32
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -102,7 +102,14 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   `usr_id` int DEFAULT NULL,
   PRIMARY KEY (`act_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+
+INSERT INTO `actividades` (`act_id`, `act_nombre`, `act_descripcion`, `act_fecha`, `act_lugar`, `act_categoria`, `act_imagen`, `act_estado`, `act_fec_creacion`, `act_fec_modificacion`, `usr_id`) VALUES
+(1, 'Feria', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-10-25 03:25:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -128,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `afiliados` (
 --
 
 INSERT INTO `afiliados` (`usr_id`, `per_cedula`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
-(1, '504460444', '2023-09-28 06:25:32', '2023-10-28 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-02 03:28:18');
+(1, '504460444', '2023-09-28 06:25:32', '2023-11-30 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-23 03:57:11');
 
 -- --------------------------------------------------------
 
@@ -345,44 +352,80 @@ INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`
 -- --------------------------------------------------------
 
 --
+-- Estructura Stand-in para la vista `productores_afiliados`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `productores_afiliados`;
+CREATE TABLE IF NOT EXISTS `productores_afiliados` (
+`pdt_fec_creacion` timestamp
+,`pdt_fec_modificacion` timestamp
+,`pdt_imagen` varchar(255)
+,`pdt_nombre` varchar(50)
+,`pdt_ubicacion` varchar(100)
+,`per_cedula` varchar(15)
+,`usr_id` int
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productos`
 --
 
 DROP TABLE IF EXISTS `productos`;
 CREATE TABLE IF NOT EXISTS `productos` (
   `pro_id` int NOT NULL AUTO_INCREMENT,
-  `pro_nombre` varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
-  `pro_descripcion` text COLLATE utf8mb4_swedish_ci,
-  `pro_categoria` varchar(50) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
+  `usr_id` int DEFAULT NULL,
+  `per_cedula` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `pro_nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci NOT NULL,
+  `pro_descripcion` text CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci,
+  `pro_categoria` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `pro_precio` decimal(10,2) NOT NULL,
-  `pro_imagen` varchar(255) COLLATE utf8mb4_swedish_ci DEFAULT NULL,
-  `pdt_id` int DEFAULT NULL,
+  `pro_imagen` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_swedish_ci DEFAULT NULL,
   `pro_estado` enum('Activo','Inactivo','Pendiente','Eliminado','Bloqueado') COLLATE utf8mb4_swedish_ci DEFAULT 'Activo',
   `pro_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `pro_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `usr_id` int DEFAULT NULL,
   PRIMARY KEY (`pro_id`),
-  KEY `pdt_id` (`pdt_id`),
-  KEY `usr_id` (`usr_id`)
+  KEY `usr_id` (`usr_id`,`per_cedula`)
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`pro_id`, `pro_nombre`, `pro_descripcion`, `pro_categoria`, `pro_precio`, `pro_imagen`, `pdt_id`, `pro_estado`, `pro_fec_creacion`, `pro_fec_modificacion`, `usr_id`) VALUES
-(25, 'Yuca', 'Se vende', 'Verdura', '520.00', 'img_b7648ca58f6bcbdbf4d55eda28931c9f.jpg', 1, 'Activo', '2023-10-13 04:57:57', '2023-10-13 04:57:57', 1),
-(26, 'Papaya', 'Se vende', 'Fruta', '8000.00', 'img_fc6e4649f61b81574097edab4c27db86.jpg', 1, 'Activo', '2023-10-13 04:58:23', '2023-10-13 04:58:23', 1),
-(23, 'Jocote', 'Se vende jocote', 'Frutas', '2000.00', 'img_3e14010f753144f1c0b26a97febfe96e.jpg', 1, 'Activo', '2023-10-13 04:49:31', '2023-10-13 04:49:31', 1),
-(24, 'Mamón chino', 'Se vende Mamón chino', 'Fruta', '3000.00', 'img_3e2049e34c80055c8bbe16a023ab791a.jpg', 7, 'Activo', '2023-10-13 04:56:05', '2023-10-13 04:56:23', 1),
-(22, 'Cebolla', 'Se vende cebollas', 'Verdura', '800.00', 'img_bb194d316866a7b2e88348827ee239f1.jpg', 1, 'Activo', '2023-10-13 04:48:34', '2023-10-13 04:48:34', 1),
-(21, 'Papas', 'Se vende papas', 'Verdura', '10000.00', 'img_e68181f115659b312b930a8cc0618b31.jpg', 1, 'Activo', '2023-10-13 04:46:43', '2023-10-13 04:47:40', 1),
-(20, 'Banano', 'Se vende banano', 'Fruta', '500.00', 'img_f48d8a7cde75a4ea4d7ac2497e6e812f.jpg', 1, 'Activo', '2023-10-13 04:44:59', '2023-10-13 04:44:59', 1),
-(8, 'Café', 'Se vende café', 'Fruta', '50000.00', 'img_3dc7feb48fa74bbf0eff703d2a5ea9bc.jpg', 1, 'Activo', '2023-09-22 01:13:18', '2023-10-13 04:31:26', 1),
-(7, 'Sandía', 'Se vende sandía', 'Fruta', '40000.00', 'img_3e1a21c217073784bd49f3e762bb9d5a.jpg', 1, 'Activo', '2023-09-22 01:06:55', '2023-10-13 04:32:21', 1),
-(4, 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_fc6cc214fabeff8687f323148cd95189.jpg', 1, 'Activo', '2023-09-22 00:21:19', '2023-10-13 04:34:49', 1),
-(1, 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 1, 'Activo', '2023-09-20 21:50:15', '2023-10-13 04:36:44', 1),
-(27, 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 1, 'Activo', '2023-10-13 04:58:47', '2023-10-13 04:58:47', 1);
+INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_descripcion`, `pro_categoria`, `pro_precio`, `pro_imagen`, `pro_estado`, `pro_fec_creacion`, `pro_fec_modificacion`) VALUES
+(25, 1, '504460444', 'Yuca', 'Se vende', 'Verdura', '520.00', 'img_b7648ca58f6bcbdbf4d55eda28931c9f.jpg', 'Activo', '2023-10-13 04:57:57', '2023-10-23 03:47:03'),
+(26, 1, '504460444', 'Papaya', 'Se vende', 'Fruta', '800.00', 'img_fc6e4649f61b81574097edab4c27db86.jpg', 'Activo', '2023-10-13 04:58:23', '2023-10-25 03:18:32'),
+(23, 1, '504460444', 'Jocote', 'Se vende jocote', 'Fruta', '2000.00', 'img_3e14010f753144f1c0b26a97febfe96e.jpg', 'Activo', '2023-10-13 04:49:31', '2023-10-23 04:34:17'),
+(24, 1, '504460444', 'Mamón chino', 'Se vende Mamón chino', 'Fruta', '3000.00', 'img_3e2049e34c80055c8bbe16a023ab791a.jpg', 'Activo', '2023-10-13 04:56:05', '2023-10-23 03:47:03'),
+(22, 1, '504460444', 'Cebolla', 'Se vende cebollas', 'Verdura', '800.00', 'img_bb194d316866a7b2e88348827ee239f1.jpg', 'Activo', '2023-10-13 04:48:34', '2023-10-23 03:47:03'),
+(21, 1, '504460444', 'Papas', 'Se vende papas', 'Verdura', '10000.00', 'img_e68181f115659b312b930a8cc0618b31.jpg', 'Activo', '2023-10-13 04:46:43', '2023-10-23 03:47:03'),
+(20, 1, '504460444', 'Banano', 'Se vende banano', 'Fruta', '500.00', 'img_f48d8a7cde75a4ea4d7ac2497e6e812f.jpg', 'Activo', '2023-10-13 04:44:59', '2023-10-23 03:47:03'),
+(8, 1, '504460444', 'Café', 'Se vende café', 'Fruta', '1500.00', 'img_3dc7feb48fa74bbf0eff703d2a5ea9bc.jpg', 'Activo', '2023-09-22 01:13:18', '2023-10-25 03:18:47'),
+(7, 1, '504460444', 'Sandía', 'Se vende sandía', 'Fruta', '40000.00', 'img_3e1a21c217073784bd49f3e762bb9d5a.jpg', 'Activo', '2023-09-22 01:06:55', '2023-10-23 03:47:03'),
+(4, 1, '504460444', 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_fc6cc214fabeff8687f323148cd95189.jpg', 'Activo', '2023-09-22 00:21:19', '2023-10-23 03:47:03'),
+(1, 1, '504460444', 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 'Activo', '2023-09-20 21:50:15', '2023-10-23 03:47:03'),
+(27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `productos_premium`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `productos_premium`;
+CREATE TABLE IF NOT EXISTS `productos_premium` (
+`per_cedula` varchar(15)
+,`pro_categoria` varchar(50)
+,`pro_descripcion` text
+,`pro_fec_creacion` timestamp
+,`pro_fec_modificacion` timestamp
+,`pro_id` int
+,`pro_imagen` varchar(255)
+,`pro_nombre` varchar(100)
+,`pro_precio` decimal(10,2)
+,`usr_id` int
+);
 
 -- --------------------------------------------------------
 
@@ -445,6 +488,26 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
 (9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-10-04 01:44:50'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `productores_afiliados`
+--
+DROP TABLE IF EXISTS `productores_afiliados`;
+
+DROP VIEW IF EXISTS `productores_afiliados`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `productores_afiliados`  AS SELECT `pdt`.`usr_id` AS `usr_id`, `pdt`.`per_cedula` AS `per_cedula`, `pdt`.`pdt_nombre` AS `pdt_nombre`, `pdt`.`pdt_ubicacion` AS `pdt_ubicacion`, `pdt`.`pdt_imagen` AS `pdt_imagen`, `pdt`.`pdt_fec_creacion` AS `pdt_fec_creacion`, `pdt`.`pdt_fec_modificacion` AS `pdt_fec_modificacion` FROM (`productores` `pdt` join `afiliados` `afl`) WHERE ((`pdt`.`usr_id` = `afl`.`usr_id`) AND (`pdt`.`per_cedula` = `afl`.`per_cedula`) AND (`afl`.`afl_fec_vencimiento` > curdate()) AND (`pdt`.`pdt_estado` = 'Activo'))  ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `productos_premium`
+--
+DROP TABLE IF EXISTS `productos_premium`;
+
+DROP VIEW IF EXISTS `productos_premium`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `productos_premium`  AS SELECT `pro`.`pro_id` AS `pro_id`, `pro`.`usr_id` AS `usr_id`, `pro`.`per_cedula` AS `per_cedula`, `pro`.`pro_nombre` AS `pro_nombre`, `pro`.`pro_descripcion` AS `pro_descripcion`, `pro`.`pro_categoria` AS `pro_categoria`, `pro`.`pro_precio` AS `pro_precio`, `pro`.`pro_imagen` AS `pro_imagen`, `pro`.`pro_fec_creacion` AS `pro_fec_creacion`, `pro`.`pro_fec_modificacion` AS `pro_fec_modificacion` FROM (`productos` `pro` join `productores_afiliados` `afl`) WHERE ((`pro`.`usr_id` = `afl`.`usr_id`) AND (`pro`.`per_cedula` = `afl`.`per_cedula`) AND (`pro`.`pro_estado` = 'Activo'))  ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
