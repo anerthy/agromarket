@@ -28,7 +28,7 @@ class Actividad extends Controllers
         $data['page_tag'] = "Actividades";
         $data['page_name'] = "actividades";
         $data['page_title'] = "Actividades";
-        $data['productos_premium'] = $this->listadoActividades();
+        $data['listado_actividades'] = $this->listadoActividades();
         $this->views->getView($this, "actividad_info", $data);
     }
 

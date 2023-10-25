@@ -11,7 +11,7 @@ trait TActividad
                     act_nombre,
                     act_descripcion,
                     act_fecha,
-                    act_lugar,
+                    LOWER(act_lugar) AS act_lugar,
                     act_categoria,
                     act_imagen
                 FROM actividades

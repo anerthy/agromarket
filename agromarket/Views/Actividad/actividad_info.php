@@ -86,16 +86,16 @@
                 <div class="col-12 text-center">
                     <ul class="list-inline rounded mb-5" id="portfolio-flters">
                         <li class="mx-2 active" data-filter="*">Todas</li>
-                        <li class="mx-2" data-filter=".first">Nicoya</li>
-                        <li class="mx-2" data-filter=".second">Santa Cruz</li>
+                        <li class="mx-2" data-filter=".nicoya">Nicoya</li>
+                        <li class="mx-2" data-filter=".santa_cruz">Santa Cruz</li>
                     </ul>
                 </div>
             </div>
 
             <div class="row g-4 portfolio-container">
 
-                <?php foreach ($data['productos_premium'] as $actividad) : ?>
-                    <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                <?php foreach ($data['listado_actividades'] as $actividad) : ?>
+                    <div class="col-lg-4 col-md-6 portfolio-item <?php echo $actividad['act_lugar']; ?> wow fadeInUp" data-wow-delay="0.1s">
                         <div class="card">
                             <i class="fa fa-leaf fa-5x d-block mx-auto mt-3 text-success"></i>
                             <div class="card-body">
