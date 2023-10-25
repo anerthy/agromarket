@@ -2,9 +2,11 @@
 require_once("Models/Traits/TProducto.php");
 require_once("Models/DonacionModel.php");
 require_once("Models/ProductorModel.php");
+require_once("Models/ProductoModel.php");
+require_once("Models/Traits/TActividad.php");
 class Home extends Controllers
 {
-	use TProducto;
+	use TProducto, TActividad;
 	public function __construct()
 	{
 		parent::__construct();
@@ -34,5 +36,20 @@ class Home extends Controllers
 		$modeloproductor = new ProductorModel();
         $data['arrData'] = $modeloproductor->selectProductores();
         $this->views->getView($this, "Productor/productor_info", $data);
+    }
+
+	public function PerfilInInfo()
+    {
+
+		$modelproductor = new ProductorModel();
+        $id = $_GET['usr_id'];
+        $data['arrData'] = $modelproductor->getProductorInfo($id);
+        $data['arrDatapro'] = $modelproductor->getProductoInfo($id);
+        $this->views->getView($this, "Productor/perfil_info", $data);
+    }
+
+	public function Actividad() {
+        $data['listado_actividades'] = $this->listadoActividades();
+        $this->views->getView($this, "Actividad/actividad_info", $data);
     }
 }
