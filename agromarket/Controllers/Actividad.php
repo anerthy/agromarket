@@ -1,7 +1,10 @@
 <?php
+require_once("Models/Traits/TActividad.php");
 
 class Actividad extends Controllers
 {
+    use TActividad;
+
     public function __construct()
     {
         sessionStart();
@@ -25,6 +28,7 @@ class Actividad extends Controllers
         $data['page_tag'] = "Actividades";
         $data['page_name'] = "actividades";
         $data['page_title'] = "Actividades";
+        $data['productos_premium'] = $this->listadoActividades();
         $this->views->getView($this, "actividad_info", $data);
     }
 
