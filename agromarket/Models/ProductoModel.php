@@ -15,7 +15,7 @@ class ProductoModel extends Mysql
     {
         parent::__construct();
     }
-//corta aquí
+    //corta aquí
     public function getAll()
     {
         $sql = "SELECT  
@@ -25,7 +25,6 @@ class ProductoModel extends Mysql
                     pro_categoria,
                     pro_precio,
                     pro_imagen,
-                    pdt_id,
                     pro_estado,
                     usr_id
                 FROM productos
@@ -44,7 +43,6 @@ class ProductoModel extends Mysql
                     pro_categoria,
                     pro_precio,
                     pro_imagen,
-                    pdt_id,
                     pro_estado,
                     usr_id
                 FROM productos 
@@ -52,7 +50,7 @@ class ProductoModel extends Mysql
         $request = $this->select($sql);
         return $request;
     }
-//empieza acá
+    //empieza acá
     public function insertProducto(
         string  $nombre,
         string  $descripcion,
@@ -106,7 +104,7 @@ class ProductoModel extends Mysql
         }
         return $return;
     }
-//Hasta aquí
+    //Hasta aquí
     public function updateProducto(
         int     $id,
         string  $nombre,
@@ -179,8 +177,4 @@ class ProductoModel extends Mysql
         $request = $this->delete($sql);
         return $request;
     }
-
-
-
-
 }
