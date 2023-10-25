@@ -14,7 +14,8 @@ class Home extends Controllers
 		$data['page_tag'] = "Home";
 		$data['page_title'] = "Página principal";
 		$data['page_name'] = "home";
-		$data['listado_productos'] = $this->getProducts();
+		$data['listado_productos'] = $this->listadoProductos();
+		$data['productos_premium'] = $this->productosPremium();
 		$this->views->getView($this, "home", $data);
 	}
 
