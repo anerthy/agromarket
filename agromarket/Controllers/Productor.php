@@ -35,15 +35,6 @@ class Productor extends Controllers
         $this->views->getView($this, "productorform", $data);
     }
 
-    public function Page()
-    {
-        // Resto del código para cargar la vista del formulario aquí
-        $data['page_tag'] = "Productor Info";
-        $data['page_title'] = "Productor Info";
-        $data['page_name'] = "productor_info";
-        $data['arrData'] = $this->model->selectProductores();
-        $this->views->getView($this, "productor_info", $data);
-    }
 
     public function PerfilInInfo()
     {

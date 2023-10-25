@@ -43,7 +43,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="<?= base_url(); ?>/" class="nav-item nav-link active">Inicio</a>
-            <a href="<?= base_url(); ?>/productor/page" class="nav-item nav-link">Productores</a>
+            <a href="<?= base_url(); ?>/home/Productor" class="nav-item nav-link">Productores</a>
             <a href="<?= base_url(); ?>/actividad/page" class="nav-item nav-link">Actividades</a>
             <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Sobre Nosotros</a>
             <!-- <div class="nav-item dropdown">

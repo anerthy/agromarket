@@ -1,6 +1,7 @@
 <?php
 require_once("Models/Traits/TProducto.php");
 require_once("Models/DonacionModel.php");
+require_once("Models/ProductorModel.php");
 class Home extends Controllers
 {
 	use TProducto;
@@ -26,4 +27,12 @@ class Home extends Controllers
 		$data['arrData'] = $modelo->getAll(); 
 		$this->views->getView($this, "about-us", $data);
 	}
+
+	
+    public function Productor()
+    {
+		$modeloproductor = new ProductorModel();
+        $data['arrData'] = $modeloproductor->selectProductores();
+        $this->views->getView($this, "Productor/productor_info", $data);
+    }
 }
