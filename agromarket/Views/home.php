@@ -81,10 +81,42 @@
     <!-- Projects Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-bold text-primary">Nuestros</p>
-                <h1 class="display-5 mb-5">Productos</h1>
+
+            <!-- Service Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                        <!-- <p class="fs-5 fw-bold text-primary">Destacados</p> -->
+                        <h1 class="display-5 mb-5">Productos destacados</h1>
+                    </div>
+                    <div class="row g-4">
+                        <?php foreach ($data['productos_premium'] as $producto) : ?>
+                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                                <div class="service-item rounded d-flex h-100">
+                                    <div class="service-img rounded">
+                                        <img class="img-fluid" src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="">
+                                    </div>
+                                    <div class="service-text rounded p-5">
+                                        <!-- <div class="btn-square rounded-circle mx-auto mb-3">
+                                            <img class="img-fluid" src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="Icon">
+                                        </div> -->
+                                        <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
+                                        <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
+                                        <a class="btn btn-sm" href=""><i class="fa fa-eye text-primary me-2"></i>Ver</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
             </div>
+            <!-- Service End -->
+
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <p class="fs-5 fw-bold text-primary">Explora nuestro mercado en linea</p>
+                <!-- <h1 class="display-5 mb-5">Productos</h1> -->
+            </div>
+
             <div class="row wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
                     <ul class="list-inline rounded mb-5" id="portfolio-flters">
@@ -122,54 +154,6 @@
         </div>
     </div>
     <!-- Projects End -->
-
-    <!-- Top Feature Start -->
-    <!-- <div class="container-fluid top-feature py-5 pt-lg-0">
-        <div class="container py-5 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">
-                                <i class="fa fa-wallet text-primary"></i>
-                            </div>
-                            <div class="ps-3">
-                                <h4>Precios accesibles</h4>
-                                <span>Creemos que la calidad no debería costar una fortuna, así que te ofrecemos productos de primera a precios accesibles.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">
-                                <i class="fa fa-users text-primary"></i>
-                            </div>
-                            <div class="ps-3">
-                                <h4>Compras con Propósito</h4>
-                                <span>Cada compra en nuestra página web apoya a los productores locales y fortalece nuestra comunidad.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">
-                                <i class="fa fa-tree text-primary"></i>
-                            </div>
-                            <div class="ps-3">
-                                <h4>Celebra lo Local</h4>
-                                <span>Únete a nuestras ferias y eventos para experimentar la cultura y la comida de tu región como nunca antes.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Top Feature End -->
 
     <?php footer(); ?>
 
