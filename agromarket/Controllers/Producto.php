@@ -4,20 +4,17 @@ class Producto extends Controllers
 {
     public function __construct()
     {
-         sessionStart();
+        sessionStart();
         parent::__construct();
 
-         if (empty($_SESSION['login'])) {
-         header('Location: ' . base_url() . '/login');
-         }
+        if (empty($_SESSION['login'])) {
+            header('Location: ' . base_url() . '/login');
+        }
         // getPermisos(6);
     }
 
     public function Producto()
     {
-        // if (empty($_SESSION['permisosMod']['ver'])) {
-        //     header("Location:" . base_url() . '/access_denied');
-        // }
         $data['page_id'] = 6;
         $data['page_tag'] = "Productos";
         $data['page_name'] = "producto";
@@ -26,15 +23,6 @@ class Producto extends Controllers
         $this->views->getView($this, "producto", $data);
     }
 
-
-
-
-
-
-
-
-
-//de acá pat
     public function getProductos()
     {
         $arrData = $this->model->getAll();
@@ -83,7 +71,7 @@ class Producto extends Controllers
         }
         die();
     }
-//acá
+    //acá
     public function setProducto()
     {
         $intIdProducto  = intval($_POST['pro_id']);
@@ -91,8 +79,6 @@ class Producto extends Controllers
         $strDescripcion = strClean($_POST['txtDescripcion']);
         $strCategoria   = strClean($_POST['txtCategoria']);
         $intPrecio      = intval($_POST['txtPrecio']);
-    // $intIdProductor = intval($_POST['ptd_id']);
-        $intIdProductor = 1; //! PENDIENTE DE OBTENER EL PRODUCTOR DE ESE USUARIO
         $strEstado      = strClean($_POST['listEstado']);
 
         $foto       = $_FILES['foto'];
@@ -114,7 +100,6 @@ class Producto extends Controllers
                 $strCategoria,
                 $intPrecio,
                 $imgImagen,
-                $intIdProductor,
                 $strEstado
             );
             $option = 1;
@@ -132,7 +117,6 @@ class Producto extends Controllers
                 $strCategoria,
                 $intPrecio,
                 $imgImagen,
-                $intIdProductor,
                 $strEstado
             );
             $option = 2;
@@ -164,7 +148,7 @@ class Producto extends Controllers
         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
         die();
     }
-//hasta acá
+
     public function disProducto()
     {
         if ($_POST) {

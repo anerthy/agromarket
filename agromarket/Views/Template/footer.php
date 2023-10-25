@@ -4,7 +4,7 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Contactenos</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Nicoya, Guanacaste</p>
                 <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+506 2323 2323</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>agromarket@email.com</p>
                 <div class="d-flex pt-2">
@@ -23,10 +23,9 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Enlaces de interes</h4>
-                <a class="btn btn-link" href="">Sobre nosotros</a>
+                <a class="btn btn-link" href="<?= base_url(); ?>/home/about_us">Sobre nosotros</a>
                 <a class="btn btn-link" href="">Contactenos</a>
                 <!-- <a class="btn btn-link" href="">Our Services</a> -->
-                <a class="btn btn-link" href="<?= base_url(); ?>/donacion/page">Donaciones</a>
                 <a class="btn btn-link" href="">Terminos & Condiciones</a>
             </div>
             <div class="col-lg-3 col-md-6">

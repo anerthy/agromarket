@@ -1,10 +1,18 @@
 <?php
+require_once("Models/Traits/TActividad.php");
 
 class Actividad extends Controllers
 {
+    use TActividad;
+
     public function __construct()
     {
+        sessionStart();
         parent::__construct();
+
+        if (empty($_SESSION['login'])) {
+            header('Location: ' . base_url() . '/login');
+        }
     }
 
     public function Actividad()
@@ -20,6 +28,7 @@ class Actividad extends Controllers
         $data['page_tag'] = "Actividades";
         $data['page_name'] = "actividades";
         $data['page_title'] = "Actividades";
+        $data['listado_actividades'] = $this->listadoActividades();
         $this->views->getView($this, "actividad_info", $data);
     }
 
