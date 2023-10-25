@@ -184,15 +184,32 @@
                     </div>
                 </div>
                 <div class="form-group" style="display: flex; justify-content: space-between;margin-top: 20px;}">
-                    <button type="submit">Registrarse</button>
-                    <!-- <button onclick="window.location.href='<?= base_url(); ?>/Productor/productor'">Ir al perfil</button> -->
+                    <button type="submit" id="btnSubmit">Registrarse</button>
+                     <button onclick="window.location.href='<?= base_url(); ?>/Productor/productor'">Ir al perfil</button>
                 </div>
 
             </form>
         </div>
     </div>
 </body>
-
+<script>
+        document.getElementById("formProductor").addEventListener("submit", function (e) {
+            e.preventDefault();
+            // Aquí puedes agregar la lógica de envío del formulario
+            
+            // Después de enviar el formulario con éxito, muestra una alerta
+            Swal.fire({
+                icon: 'success', // Cambia el icono a tu elección (success, error, warning, info, etc.)
+                title: '¡Registro Exitoso!',
+                text: 'Tu registro se ha completado con éxito.',
+            }).then((result) => {
+                // Redirige al usuario a donde desees, por ejemplo, al perfil del productor
+                if (result.isConfirmed) {
+                    window.location.href = '<?= base_url(); ?>/Productor/productor';
+                }
+            });
+        });
+    </script>
 <script>
 const base_url = "<?= base_url(); ?>";
 </script>

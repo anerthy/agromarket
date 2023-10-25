@@ -48,7 +48,7 @@ class Productor extends Controllers
         if (empty($arrData)) {
             $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
         } else {
-            // $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
+             $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
 
             $arrResponse = array('status' => true, 'data' => $arrData);
         }
