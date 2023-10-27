@@ -1,12 +1,15 @@
 <?php
 require_once("Models/Traits/TProducto.php");
+require_once("Models/Traits/TAnuncio.php");
+require_once("Models/Traits/TActividad.php");
+
 require_once("Models/DonacionModel.php");
 require_once("Models/ProductorModel.php");
 require_once("Models/ProductoModel.php");
-require_once("Models/Traits/TActividad.php");
+
 class Home extends Controllers
 {
-	use TProducto, TActividad;
+	use TProducto, TAnuncio, TActividad;
 	public function __construct()
 	{
 		parent::__construct();
@@ -20,6 +23,7 @@ class Home extends Controllers
 		$data['page_name'] = "home";
 		$data['listado_productos'] = $this->listadoProductos();
 		$data['productos_premium'] = $this->productosPremium();
+		$data['anuncio_principal'] = $this->anuncio_principal();
 		$this->views->getView($this, "home", $data);
 	}
 
