@@ -1,8 +1,9 @@
 <?php
 require_once("Models/Traits/TProducto.php");
+require_once("Models/Traits/TAnuncio.php");
 class Home extends Controllers
 {
-	use TProducto;
+	use TProducto, TAnuncio;
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,6 +17,7 @@ class Home extends Controllers
 		$data['page_name'] = "home";
 		$data['listado_productos'] = $this->listadoProductos();
 		$data['productos_premium'] = $this->productosPremium();
+		$data['anuncio_principal'] = $this->anuncio_principal();
 		$this->views->getView($this, "home", $data);
 	}
 

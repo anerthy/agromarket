@@ -155,6 +155,25 @@
     </div>
     <!-- Projects End -->
 
+    <section class="anuncio">
+        <?php if (count($data['anuncio_principal']) > 0) { ?>
+            <?php for ($i = 0; $i < count($data['anuncio_principal']); $i++) { ?>
+                <center>
+                    <div class="col-lg-3 col-md-12 portfolio-item">
+                        <div class="rounded">
+                            <img class="img-fluid" src="<?= media(); ?>/images/uploads/anuncio/<?php echo $data['anuncio_principal'][$i]['anu_imagen']; ?>" alt="<?php echo $data['anuncio_principal'][$i]['anu_descripcion']; ?>" title="<?php echo $data['anuncio_principal'][$i]['anu_descripcion']; ?>" />
+                        </div>
+                    </div>
+                </center>
+            <?php  } ?>
+        <?php } else { ?>
+            <center>
+                <p>no hay productos...</p>
+            </center>
+        <?php } ?>
+
+    </section>
+
     <?php footer(); ?>
 
     <!-- JavaScript Libraries -->
