@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 25-10-2023 a las 03:36:32
+-- Tiempo de generación: 27-10-2023 a las 01:22:41
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -157,14 +157,15 @@ CREATE TABLE IF NOT EXISTS `anuncios` (
   PRIMARY KEY (`anu_id`),
   KEY `usr_id` (`usr_id`),
   KEY `pag_id` (`anu_tipo`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `anuncios`
 --
 
 INSERT INTO `anuncios` (`anu_id`, `anu_descripcion`, `anu_tipo`, `anu_imagen`, `anu_fec_vigencia`, `anu_estado`, `anu_fec_creacion`, `anu_fec_modificacion`, `usr_id`) VALUES
-(1, 'dd', 'dd', 'ddddddd', '2023-09-30', 'Expirado', '2023-09-20 03:14:41', '2023-09-20 05:42:44', 1);
+(1, 'dd', 'dd', 'ddddddd', '2023-09-30', 'Expirado', '2023-09-20 03:14:41', '2023-09-20 05:42:44', 1),
+(2, 'Viernes negro!', 'Si', 'img_9336ebac9a186c9bd5942b0593b5c1aa.jpg', '2023-11-30', 'Activo', '2023-10-27 00:39:14', '2023-10-27 00:39:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -357,13 +358,13 @@ INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`
 --
 DROP VIEW IF EXISTS `productores_afiliados`;
 CREATE TABLE IF NOT EXISTS `productores_afiliados` (
-`pdt_fec_creacion` timestamp
-,`pdt_fec_modificacion` timestamp
-,`pdt_imagen` varchar(255)
+`usr_id` int
+,`per_cedula` varchar(15)
 ,`pdt_nombre` varchar(50)
 ,`pdt_ubicacion` varchar(100)
-,`per_cedula` varchar(15)
-,`usr_id` int
+,`pdt_imagen` varchar(255)
+,`pdt_fec_creacion` timestamp
+,`pdt_fec_modificacion` timestamp
 );
 
 -- --------------------------------------------------------
@@ -415,16 +416,16 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 --
 DROP VIEW IF EXISTS `productos_premium`;
 CREATE TABLE IF NOT EXISTS `productos_premium` (
-`per_cedula` varchar(15)
-,`pro_categoria` varchar(50)
+`pro_id` int
+,`usr_id` int
+,`per_cedula` varchar(15)
+,`pro_nombre` varchar(100)
 ,`pro_descripcion` text
+,`pro_categoria` varchar(50)
+,`pro_precio` decimal(10,2)
+,`pro_imagen` varchar(255)
 ,`pro_fec_creacion` timestamp
 ,`pro_fec_modificacion` timestamp
-,`pro_id` int
-,`pro_imagen` varchar(255)
-,`pro_nombre` varchar(100)
-,`pro_precio` decimal(10,2)
-,`usr_id` int
 );
 
 -- --------------------------------------------------------
