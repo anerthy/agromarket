@@ -166,10 +166,6 @@
                     </div>
                 </center>
             <?php  } ?>
-        <?php } else { ?>
-            <center>
-                <p>no hay productos...</p>
-            </center>
         <?php } ?>
 
     </section>
