@@ -35,28 +35,8 @@ class Productor extends Controllers
         $this->views->getView($this, "productorform", $data);
     }
 
-    public function Page()
-    {
-        // Resto del código para cargar la vista del formulario aquí
-        $data['page_tag'] = "Productor Info";
-        $data['page_title'] = "Productor Info";
-        $data['page_name'] = "productor_info";
-        $data['arrData'] = $this->model->selectProductores();
-        $this->views->getView($this, "productor_info", $data);
-    }
 
-    public function PerfilInInfo()
-    {
-        $id = $_GET['usr_id'];
-        // Resto del código para cargar la vista del formulario aquí
-        $data['page_tag'] = "Perfil Info";
-        $data['page_title'] = "Perfil Info";
-        $data['page_name'] = "perfil_info";
-        $data['arrData'] = $this->model->getProductorInfo($id);
 
-        $data['arrDatapro'] = $this->model->getProductoInfo($id);
-        $this->views->getView($this, "perfil_info", $data);
-    }
 
     // sin params como se obtienen los datos de la SESSION
     public function getProductor(/*int $usuario, string $cedula*/)
@@ -68,7 +48,7 @@ class Productor extends Controllers
         if (empty($arrData)) {
             $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
         } else {
-            // $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
+             $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
 
             $arrResponse = array('status' => true, 'data' => $arrData);
         }
