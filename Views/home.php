@@ -102,7 +102,7 @@
                                         </div> -->
                                         <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
                                         <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
-                                        <a class="btn btn-sm" href=""><i class="fa fa-eye text-primary me-2"></i>Ver más</a>
+                                        <a class="btn btn-sm" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $producto['pro_id']; ?>"><i class="fa fa-eye text-primary me-2"></i>Ver más</a>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                                     <h4 class="text-center mb-2 mt-2"><?php echo $data['listado_productos'][$i]['pro_nombre']; ?></h4>
                                     <h5 class="text-center mb-3 mt-2">₡ <?php echo $data['listado_productos'][$i]['pro_precio']; ?></h5>
                                     <center>
-                                        <a class="btn btn-primary py-3 px-4" href="">
+                                        <a class="btn btn-primary py-3 px-4" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $data['listado_productos'][$i]['pro_id']; ?>">
                                             <i class="fa fa-eye me-2"></i>Ver más</a>
                                     </center>
                                 </div>
