@@ -79,9 +79,10 @@ class ProductoModel extends Mysql
                                 pro_precio, 
                                 pro_imagen, 
                                 pro_estado,
-                                usr_id 
+                                usr_id,
+                                per_cedula 
                             ) 
-                            VALUES(?,?,?,?,?,?,?)";
+                            VALUES(?,?,?,?,?,?,?,?)";
 
             $arrData = array(
                 $this->strNombre,
@@ -90,7 +91,8 @@ class ProductoModel extends Mysql
                 $this->intPrecio,
                 $this->strImagen,
                 $this->strEstado,
-                1
+                $_SESSION['userData']['usr_id'],
+                $_SESSION['userData']['per_cedula']
             );
             $request_insert = $this->insert($query_insert, $arrData);
             $return = $request_insert;
@@ -131,7 +133,8 @@ class ProductoModel extends Mysql
                         pro_precio      = ?, 
                         pro_imagen      = ?,
                         pro_estado      = ?,
-                        usr_id          = ?
+                        usr_id          = ?,
+                        per_cedula      = ?
                     WHERE pro_id = $this->intIdProducto ";
             $arrData = array(
                 $this->strNombre,
@@ -140,7 +143,8 @@ class ProductoModel extends Mysql
                 $this->intPrecio,
                 $this->strImagen,
                 $this->strEstado,
-                1
+                $_SESSION['userData']['usr_id'],
+                $_SESSION['userData']['per_cedula']
             );
             $request = $this->update($sql, $arrData);
         } else {
