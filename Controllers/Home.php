@@ -60,6 +60,7 @@ class Home extends Controllers
 	public function DetallesProducto(int $id)
 	{
 		$data['producto'] = $this->getProductById($id);
+		$data['anuncio_principal'] = $this->anuncio_principal();
 		$this->views->getView($this, "Producto/detallesproducto", $data);
 	}
 }

@@ -111,6 +111,16 @@
             font-weight: bold;
             color: #333;
         }
+
+        .banner {
+            width: 100%;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 200px;
+            display: block;
+        }
     </style>
     <div class="product-details">
         <div class="product-image">
@@ -135,25 +145,28 @@
         <p><span id="producer-address"><?php echo $data['producto'][0]['pdt_ubicacion'] ?></span></p>
     </div>
 
-    <div>
-        <?php dep($data['producto'][0]); ?>
-    </div>
-    <?php footer(); ?>
+    <div class="banner">
+        <img src="<?= media(); ?>/images/uploads/anuncio/<?php echo $data['anuncio_principal'][0]['anu_imagen']; ?>" alt="<?php echo $data['anuncio_principal'][0]['anu_descripcion']; ?>" title="<?php echo $data['anuncio_principal'][0]['anu_descripcion']; ?>" </div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/wow/wow.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/easing/easing.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/waypoints/waypoints.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/owlcarousel/owl.carousel.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/counterup/counterup.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/parallax/parallax.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/isotope/isotope.pkgd.min.js"></script>
-    <script src="<?= media(); ?>/lib-plantilla/lightbox/js/lightbox.min.js"></script>
+        <div>
+            <?php dep($data['producto'][0]); ?>
+        </div>
+        <?php footer(); ?>
 
-    <!-- Template Javascript -->
-    <script src="<?= media(); ?>/js/plantilla/main.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/wow/wow.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/easing/easing.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/waypoints/waypoints.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/owlcarousel/owl.carousel.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/counterup/counterup.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/parallax/parallax.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/isotope/isotope.pkgd.min.js"></script>
+        <script src="<?= media(); ?>/lib-plantilla/lightbox/js/lightbox.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="<?= media(); ?>/js/plantilla/main.js"></script>
 </body>
 
 </html>
