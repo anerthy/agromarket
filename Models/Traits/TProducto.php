@@ -47,4 +47,33 @@ trait TProducto
         $request = $this->con->select_all($sql);
         return $request;
     }
+
+    public function getProductById(int $id)
+    {
+        $this->con = new Mysql();
+        $sql = "SELECT
+                    pro_id,
+                    pro.usr_id usr_id,
+                    pro.per_cedula per_cedula,
+                    pro_nombre,
+                    pro_descripcion,
+                    pro_categoria,
+                    pro_precio,
+                    pro_imagen,
+                    pdt_nombre,
+                    pdt_ubicacion,
+                    pdt_imagen,
+                    per_telefono
+                FROM 
+                    productos pro, 
+                    productores pdt, 
+                    personas per
+                WHERE pro_id = $id
+                  AND pro_estado = 'Activo'
+                  AND pro.usr_id = pdt.usr_id
+                  AND pro.per_cedula = pdt.per_cedula
+                  AND per.per_cedula = pro.per_cedula";
+        $request = $this->con->select_all($sql);
+        return $request;
+    }
 }
