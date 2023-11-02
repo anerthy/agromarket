@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="estilos.css"> <!-- Agrega tus estilos CSS aquí -->
     <style>
     body {
-        background-image: url('http://localhost/agromarket/agromarket/Assets/images/img/Perfil/fondo.jpg');
+        background-image: url('http://localhost/agromarket/Assets/images/img/Perfil/fondo.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         font-family: Arial, sans-serif;
