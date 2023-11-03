@@ -49,20 +49,11 @@
     </div>
     <!-- Page Header End -->
     <style>
+        /* Estilos para pantallas grandes */
         .product-details {
             display: flex;
-            width: 100vw;
-            /* Ancho completo de la ventana */
-            /* height: 100vh; */
-            /* Alto completo de la ventana */
-            justify-content: center;
-            /* align-items: center; */
-            margin: 0;
-            padding: 0;
-        }
-
-        .product-image {
-            margin-right: 20px;
+            justify-content: space-around;
+            align-items: center;
         }
 
         .product-image img {
@@ -71,25 +62,40 @@
         }
 
         .details {
-            border: 1px solid #ccc;
-            padding: 20px;
-            width: 75%;
-            /* Ocupará el 50% del ancho de la ventana */
+            max-width: 60%;
+            /* Para asegurar que los detalles no ocupen demasiado espacio */
         }
 
-        .details h1,
-        .details h2 {
-            margin: 0;
-            font-weight: bold;
+        /* Estilos para pantallas más pequeñas o dispositivos móviles */
+        @media (max-width: 768px) {
+            .product-details {
+                flex-direction: column;
+                /* Cambiar a disposición vertical en pantallas pequeñas */
+                text-align: center;
+            }
+
+            .product-image img {
+                max-width: 100%;
+                /* La imagen ocupa todo el ancho disponible */
+                margin-bottom: 20px;
+            }
+
+            .details {
+                max-width: 100%;
+                /* Detalles ocupan todo el ancho disponible */
+            }
         }
 
-        .details h1 span,
-        .details h2 span {
-            color: #333;
-        }
-
-        .details p {
-            margin: 5px 0;
+        .product-category-badge {
+            padding: 5px 10px;
+            background-color: #337ab7;
+            /* Color de fondo del badge */
+            color: white;
+            /* Color del texto dentro del badge */
+            border-radius: 20px;
+            /* Redondear las esquinas del badge */
+            font-size: 0.9em;
+            /* Tamaño de fuente del texto en el badge */
         }
 
         .contact-details {
@@ -122,6 +128,7 @@
             display: block;
         }
     </style>
+
     <div class="product-details">
         <div class="product-image">
             <img src="<?= media() . '/images/uploads/productos/' . $data['producto'][0]['pro_imagen']; ?>" alt="Producto">
@@ -130,8 +137,8 @@
             <h1><span id="product-id"><?php echo $data['producto'][0]['pro_nombre'] ?></span></h1>
             <!-- <h2>Nombre: <span id="product-name">Nombre del Producto</span></h2> -->
             <p><span id="product-description"><?php echo $data['producto'][0]['pro_descripcion'] ?></span></p>
-            <p>Categoría: <span id="product-category"><?php echo $data['producto'][0]['pro_categoria'] ?></span></p>
-            <p>$<span id="product-price"><?php echo $data['producto'][0]['pro_precio'] ?></span></p>
+            <p><span id="product-category" class="product-category-badge"><?php echo $data['producto'][0]['pro_categoria'] ?></span></p>
+            <h3>$ <span id="product-price"><?php echo $data['producto'][0]['pro_precio'] ?></span></h3>
         </div>
     </div>
 
@@ -147,26 +154,23 @@
 
     <div class="banner">
         <img src="<?= media(); ?>/images/uploads/anuncio/<?php echo $data['anuncio_principal'][0]['anu_imagen']; ?>" alt="<?php echo $data['anuncio_principal'][0]['anu_descripcion']; ?>" title="<?php echo $data['anuncio_principal'][0]['anu_descripcion']; ?>" </div>
+    </div>
+    <?php footer(); ?>
 
-        <div>
-            <?php dep($data['producto'][0]); ?>
-        </div>
-        <?php footer(); ?>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/wow/wow.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/easing/easing.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/waypoints/waypoints.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/counterup/counterup.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/parallax/parallax.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/isotope/isotope.pkgd.min.js"></script>
+    <script src="<?= media(); ?>/lib-plantilla/lightbox/js/lightbox.min.js"></script>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/wow/wow.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/easing/easing.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/waypoints/waypoints.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/owlcarousel/owl.carousel.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/counterup/counterup.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/parallax/parallax.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/isotope/isotope.pkgd.min.js"></script>
-        <script src="<?= media(); ?>/lib-plantilla/lightbox/js/lightbox.min.js"></script>
-
-        <!-- Template Javascript -->
-        <script src="<?= media(); ?>/js/plantilla/main.js"></script>
+    <!-- Template Javascript -->
+    <script src="<?= media(); ?>/js/plantilla/main.js"></script>
 </body>
 
 </html>
