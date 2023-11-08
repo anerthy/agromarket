@@ -54,6 +54,10 @@
             text-align: center;
         }
 
+        .itemBox .product-card .hide {
+            display: none;
+        }
+
         .product-card img {
             max-width: 100%;
             height: auto;
@@ -110,18 +114,17 @@
             <div class="row wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
                     <ul class="list-inline rounded mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">Todos</li>
-                        <li class="mx-2" data-filter=".fruta">Frutas</li>
-                        <li class="mx-2" data-filter=".verdura">Verduras</li>
+                        <li class="list mx-2 active" data-filter="all">Todos</li>
+                        <li class="list mx-2" data-filter="fruta">Frutas</li>
+                        <li class="list mx-2" data-filter="verdura">Verduras</li>
                     </ul>
                 </div>
             </div>
 
-
-            <div class=" product-card-container">
+            <div class="product-card-container">
                 <?php if (count($data['listado_productos']) > 0) { ?>
                     <?php for ($i = 0; $i < count($data['listado_productos']); $i++) { ?>
-                        <div class="portfolio-item product-card <?php echo $data['listado_productos'][$i]['pro_categoria']; ?>">
+                        <div class="itemBox product-card" data-item="<?php echo $data['listado_productos'][$i]['pro_categoria']; ?>">
                             <img src="<?= media(); ?>/images/uploads/productos/<?php echo $data['listado_productos'][$i]['pro_imagen']; ?>" alt="<?php echo $data['listado_productos'][$i]['pro_descripcion']; ?>" />
                             <h2><?php echo $data['listado_productos'][$i]['pro_nombre']; ?></h2>
                             <p>₡ <?php echo $data['listado_productos'][$i]['pro_precio']; ?></p>
@@ -139,7 +142,30 @@
     </div>
 
     <!-- Product List End -->
+    <script>
+        let list = document.querySelectorAll('.list');
+        let itemBox = document.querySelectorAll('.itemBox');
 
+        for (let i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function() {
+                for (let j = 0; j < list.length; j++) {
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let dataFilter = this.getAttribute('data-filter');
+                for (let k = 0; k < itemBox.length; k++) {
+                    itemBox[k].classList.remove('active');
+                    itemBox[k].classList.add('hide');
+
+                    if (itemBox[k].getAttribute('data-item') == dataFilter || dataFilter == "all") {
+                        itemBox[k].classList.remove('hide');
+                        itemBox[k].classList.add('active');
+                    }
+                }
+            })
+        }
+    </script>
     <?php footer(); ?>
 
     <!-- JavaScript Libraries -->
