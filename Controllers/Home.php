@@ -33,6 +33,11 @@ class Home extends Controllers
 		$this->views->getView($this, "about-us", $data);
 	}
 
+	public function Productos()
+	{
+		$data['listado_productos'] = $this->listadoProductos();
+		$this->views->getView($this, "Producto/productos", $data);
+	}
 
 	public function Productor()
 	{
