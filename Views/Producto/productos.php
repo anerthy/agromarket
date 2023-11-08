@@ -30,6 +30,55 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= media(); ?>/css/plantilla/style.css" rel="stylesheet">
+
+    <style>
+        /* Estilos generales */
+        .product-card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Espacio entre tarjetas */
+            justify-content: space-around;
+            /* Ajuste horizontal */
+            margin: 0 auto;
+            max-width: 1200px;
+            /* Máximo ancho del contenedor */
+        }
+
+        .product-card {
+            width: 250px;
+            /* Ancho fijo de la tarjeta */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .product-card a {
+            display: block;
+            background-color: #348E38;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .product-card a:hover {
+            background-color: #0EA06F;
+        }
+    </style>
 </head>
 
 <body>
@@ -68,21 +117,15 @@
                 </div>
             </div>
 
-            <div class="row g-4 portfolio-container">
+
+            <div class=" product-card-container">
                 <?php if (count($data['listado_productos']) > 0) { ?>
                     <?php for ($i = 0; $i < count($data['listado_productos']); $i++) { ?>
-                        <div class="col-lg-3 col-md-6 portfolio-item <?php echo $data['listado_productos'][$i]['pro_categoria']; ?>">
-                            <div class="rounded">
-                                <img class="img-fluid" src="<?= media(); ?>/images/uploads/productos/<?php echo $data['listado_productos'][$i]['pro_imagen']; ?>" alt="<?php echo $data['listado_productos'][$i]['pro_descripcion']; ?>" />
-                                <div class="portfolio-text">
-                                    <h4 class="text-center mb-2 mt-2"><?php echo $data['listado_productos'][$i]['pro_nombre']; ?></h4>
-                                    <h5 class="text-center mb-3 mt-2">₡ <?php echo $data['listado_productos'][$i]['pro_precio']; ?></h5>
-                                    <center>
-                                        <a class="btn btn-primary py-3 px-4" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $data['listado_productos'][$i]['pro_id']; ?>">
-                                            <i class="fa fa-eye me-2"></i>Ver más</a>
-                                    </center>
-                                </div>
-                            </div>
+                        <div class="portfolio-item product-card <?php echo $data['listado_productos'][$i]['pro_categoria']; ?>">
+                            <img src="<?= media(); ?>/images/uploads/productos/<?php echo $data['listado_productos'][$i]['pro_imagen']; ?>" alt="<?php echo $data['listado_productos'][$i]['pro_descripcion']; ?>" />
+                            <h2><?php echo $data['listado_productos'][$i]['pro_nombre']; ?></h2>
+                            <p>₡ <?php echo $data['listado_productos'][$i]['pro_precio']; ?></p>
+                            <a href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $data['listado_productos'][$i]['pro_id']; ?>">Ver más</a>
                         </div>
                     <?php  } ?>
                 <?php } else { ?>
@@ -90,10 +133,11 @@
                         <p>no hay productos...</p>
                     </center>
                 <?php } ?>
-
             </div>
+
         </div>
     </div>
+
     <!-- Product List End -->
 
     <?php footer(); ?>
