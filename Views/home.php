@@ -78,82 +78,36 @@
     </div>
     <!-- Carousel End -->
 
-    <!-- Projects Start -->
+
+    <!-- Productos destacados Start -->
     <div class="container-xxl py-5">
         <div class="container">
-
-            <!-- Service Start -->
-            <div class="container-xxl py-5">
-                <div class="container">
-                    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                        <!-- <p class="fs-5 fw-bold text-primary">Destacados</p> -->
-                        <h1 class="display-5 mb-5">Productos destacados</h1>
-                    </div>
-                    <div class="row g-4">
-                        <?php foreach ($data['productos_premium'] as $producto) : ?>
-                            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                                <div class="service-item rounded d-flex h-100">
-                                    <div class="service-img rounded">
-                                        <img class="img-fluid" src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="">
-                                    </div>
-                                    <div class="service-text rounded p-5">
-                                        <!-- <div class="btn-square rounded-circle mx-auto mb-3">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <!-- <p class="fs-5 fw-bold text-primary">Destacados</p> -->
+                <h1 class="display-5 mb-5">Productos destacados</h1>
+            </div>
+            <div class="row g-4">
+                <?php foreach ($data['productos_premium'] as $producto) : ?>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="service-item rounded d-flex h-100">
+                            <div class="service-img rounded">
+                                <img class="img-fluid" src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="">
+                            </div>
+                            <div class="service-text rounded p-5">
+                                <!-- <div class="btn-square rounded-circle mx-auto mb-3">
                                             <img class="img-fluid" src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="Icon">
                                         </div> -->
-                                        <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
-                                        <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
-                                        <a class="btn btn-sm" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $producto['pro_id']; ?>"><i class="fa fa-eye text-primary me-2"></i>Ver más</a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </div>
-            <!-- Service End -->
-
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-bold text-primary">Explora nuestro mercado en linea</p>
-                <!-- <h1 class="display-5 mb-5">Productos</h1> -->
-            </div>
-
-            <div class="row wow fadeInUp" data-wow-delay="0.3s">
-                <div class="col-12 text-center">
-                    <ul class="list-inline rounded mb-5" id="portfolio-flters">
-                        <li class="mx-2 active" data-filter="*">Todos</li>
-                        <li class="mx-2" data-filter=".fruta">Frutas</li>
-                        <li class="mx-2" data-filter=".verdura">Verduras</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row g-4 portfolio-container">
-                <?php if (count($data['listado_productos']) > 0) { ?>
-                    <?php for ($i = 0; $i < count($data['listado_productos']); $i++) { ?>
-                        <div class="col-lg-3 col-md-6 portfolio-item <?php echo $data['listado_productos'][$i]['pro_categoria']; ?>">
-                            <div class="rounded">
-                                <img class="img-fluid" src="<?= media(); ?>/images/uploads/productos/<?php echo $data['listado_productos'][$i]['pro_imagen']; ?>" alt="<?php echo $data['listado_productos'][$i]['pro_descripcion']; ?>" />
-                                <div class="portfolio-text">
-                                    <h4 class="text-center mb-2 mt-2"><?php echo $data['listado_productos'][$i]['pro_nombre']; ?></h4>
-                                    <h5 class="text-center mb-3 mt-2">₡ <?php echo $data['listado_productos'][$i]['pro_precio']; ?></h5>
-                                    <center>
-                                        <a class="btn btn-primary py-3 px-4" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $data['listado_productos'][$i]['pro_id']; ?>">
-                                            <i class="fa fa-eye me-2"></i>Ver más</a>
-                                    </center>
-                                </div>
+                                <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
+                                <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
+                                <a class="btn btn-sm" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $producto['pro_id']; ?>"><i class="fa fa-eye text-primary me-2"></i>Ver más</a>
                             </div>
                         </div>
-                    <?php  } ?>
-                <?php } else { ?>
-                    <center>
-                        <p>no hay productos...</p>
-                    </center>
-                <?php } ?>
-
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
-    <!-- Projects End -->
+    <!-- Productos destacados End -->
 
     <section class="anuncio">
         <?php if (count($data['anuncio_principal']) > 0) { ?>
