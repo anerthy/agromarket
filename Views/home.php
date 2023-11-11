@@ -30,6 +30,12 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= media(); ?>/css/plantilla/style.css" rel="stylesheet">
+
+
+
+
+
+    
 </head>
 
 <body>
@@ -79,6 +85,134 @@
     <!-- Carousel End -->
 
 
+
+<!-- QUIENES COMO Y QUE HACEMOS -->
+<br>
+<br>
+<div class="container">
+  <div class="row g-3 mb-4">
+    <div class="col-md-8">
+      <div class="pt-5">
+        <h5 class="display-6"><strong>¿Quiénes Somos?</strong></h5>
+        <p class="mb-0">
+          En Agromarket, somos más que una plataforma digital; somos una comunidad apasionada que une a productores y consumidores en Nicoya y Santa Cruz. Nuestra historia se teje con la dedicación de agricultores locales y la conexión directa con aquellos que valoran la frescura, la autenticidad y la comunidad.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <!-- Ajustar tamaño máximo y agregar clase para imágenes responsivas -->
+      <img class="img-fluid rounded" src="<?= media(); ?>/images/hojitamision.jpg" alt="Misión">
+    </div>
+  </div>
+  <div class="border-top mb-4"></div>
+  <div class="row g-3">
+    <div class="col-md-4 my-5">
+      <!-- Ajustar tamaño máximo y agregar clase para imágenes responsivas -->
+      <img class="img-fluid rounded" src="<?= media(); ?>/images/hojitavision.jpg" alt="Visión">
+    </div>
+    <div class="col-md-8">
+      <div class="pt-5">
+        <h5 class="display-6"><strong>¿Qué Hacemos?</strong></h5>
+        <p class="mb-0">
+          En Agromarket, nos dedicamos a potenciar la conexión directa entre los productores locales y los consumidores en las vibrantes comunidades de Nicoya y Santa Cruz. Nuestra plataforma ofrece una experiencia integral que abarca desde la promoción de actividades en ferias locales hasta la presentación detallada de productos frescos y sus precios.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FIN QUIENES SOMOS Y QUE HACEMOS -->
+
+    
+
+
+
+<!-- VALORES -->
+<div class="container-xxl py-5">
+    <div class="container">
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto wow fadeInUp" data-wow-delay="0.5s" style="max-width: 600px; visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+        <h5 class="fw-bold text-primary text-uppercase">AQUÍ ENCONTRARÁS LOS</h5>
+        <h1 class="mb-0">Valores de Agromarket</h1>
+    </div>
+        <div class="d-flex flex-wrap justify-content-around">
+            <!-- Tarjeta 1 -->
+            <div class="col-lg-2 col-md-4 col-sm-6 wow fadeInUp mb-4" data-wow-delay="0.5s">
+                <div class="card">
+                    <div class="card-content p-3">
+                        <h3 class="fw-bold text-primary">Equidad</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="col-lg-2 col-md-4 col-sm-6 wow fadeInUp mb-4" data-wow-delay="0.5s">
+                <div class="card">
+                    <div class="card-content p-3">
+                        <h3 class="fw-bold text-primary">Respeto</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="col-lg-2 col-md-4 col-sm-6 wow fadeInUp mb-4" data-wow-delay="0.5s">
+                <div class="card">
+                    <div class="card-content p-3">
+                        <h3 class="fw-bold text-primary">Innovación</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="col-lg-2 col-md-4 col-sm-6 wow fadeInUp mb-4" data-wow-delay="0.5s">
+                <div class="card">
+                    <div class="card-content p-3">
+                        <h3 class="fw-bold text-primary">Empatía</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5 -->
+            <div class="col-lg-2 col-md-4 col-sm-6 wow fadeInUp mb-4" data-wow-delay="0.5s">
+                <div class="card">
+                    <div class="card-content p-3">
+                        <h3 class="fw-bold text-primary">Autenticidad</h3>
+                    </div>
+                    <!-- "mb-3 font-weight-bold" -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN VALORES -->
+
+
+
+
+<style>
+    .card {
+        width: 100%;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+</style>
+
+
+
+
+
+
     <!-- Productos destacados Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -108,6 +242,64 @@
         </div>
     </div>
     <!-- Productos destacados End -->
+
+
+
+
+<!-- LO DE AFILIARSE -->
+
+
+
+<H1>COMO AFILIARSE NO SÉ Y NO RECUERDO LO QUE SE HACÍA ACÁ</H1>
+
+
+<!-- LO DE AFILIARSE FIN -->
+
+
+
+<!-- MAPA Y FORM -->
+
+
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <p class="fs-5 fw-bold text-primary">Contáctenos</p>
+                    <h1 class="display-5 mb-5">Puedes ayudarnos enviándonos donaciones por los siguientes medios</h1>
+                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                        <table class="table table-hover table-bordered" id="tableDonacion">
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Medio</th>
+                                <th>Información</th>
+                            </tr>
+                        </thead>
+
+                        <!--COMENTO ESTO PORQUE SE DESPICHA TERE <tbody>
+                            <?php foreach ($data['arrData'] as $donacion): ?>
+                            <tr>
+                                <td><?php echo $donacion['don_descripcion']; ?></td>
+                                <td><?php echo $donacion['don_medio']; ?></td>
+                                <td><?php echo $donacion['don_informacion']; ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody> -->
+                    </table>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 450px;">
+                    <div class="position-relative rounded overflow-hidden h-100">
+                        <iframe class="position-relative w-100 h-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15709.663922105574!2d-85.45294767953472!3d10.146801913996205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f9fb6d26f825361%3A0xcbdc1416a01be4f3!2sProvincia%20de%20Guanacaste%2C%20Nicoya!5e0!3m2!1ses-419!2scr!4v1698256841525!5m2!1ses-419!2scr" frameborder="0" style="min-height: 450px; border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+<!-- FIN MAPA Y FORM -->
+
+
 
     <section class="anuncio">
         <?php if (count($data['anuncio_principal']) > 0) { ?>
