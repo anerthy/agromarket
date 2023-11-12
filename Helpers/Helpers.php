@@ -34,6 +34,12 @@ function navbar()
     require_once($view_footer);
 }
 
+function anuncios()
+{
+    $view_footer = "Views/Template/anuncios.php";
+    require_once($view_footer);
+}
+
 function footer()
 {
     $view_footer = "Views/Template/footer.php";
