@@ -44,7 +44,7 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="<?= base_url(); ?>/" class="nav-item nav-link active">Inicio</a>
             <div class="nav-item dropdown">
-                <a href="<?= base_url(); ?>/home/productos" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Productos</a>
+                <a href="<?= base_url(); ?>/home/productos" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mercado</a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="<?= base_url(); ?>/home/productos" class="dropdown-item">Productos</a>
                     <a href="<?= base_url(); ?>/home/productor" class="dropdown-item">Productores</a>
