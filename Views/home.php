@@ -98,7 +98,7 @@
                                             <img class="img-fluid" src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="Icon">
                                         </div> -->
                                 <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
-                                <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
+                                <p class="mb-4">₡ <?php echo $producto['pro_precio']; ?></p>
                                 <a class="btn btn-sm" href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $producto['pro_id']; ?>"><i class="fa fa-eye text-primary me-2"></i>Ver más</a>
                             </div>
                         </div>
