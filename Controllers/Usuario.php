@@ -109,33 +109,6 @@ class Usuario extends Controllers
 				$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario(' . $arrData[$i]['usr_id'] . ')" title="Ver usuario"><i class="far fa-eye"></i></button>';
 				$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario(this,' . $arrData[$i]['usr_id'] . ')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>';
 				$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario(' . $arrData[$i]['usr_id'] . ')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';
-
-				// // boton de ver
-				// if ($_SESSION['permisosMod']['ver']) {
-				// 	$btnView = '<button class="btn btn-info btn-sm btnViewUsuario" onClick="fntViewUsuario(' . $arrData[$i]['id_usuario'] . ')" title="Ver usuario"><i class="far fa-eye"></i></button>';
-				// }
-				// // boton de actualizar
-				// if ($_SESSION['permisosMod']['actualizar']) {
-				// 	if (($_SESSION['idUser'] == 1 and $_SESSION['userData']['id_rol'] == 1) ||
-				// 		($_SESSION['userData']['id_rol'] == 1 and $arrData[$i]['id_rol'] != 1)
-				// 	) {
-				// 		$btnEdit = '<button class="btn btn-primary  btn-sm btnEditUsuario" onClick="fntEditUsuario(this,' . $arrData[$i]['id_usuario'] . ')" title="Editar usuario"><i class="fas fa-pencil-alt"></i></button>';
-				// 	} else {
-				// 		$btnEdit = '<button class="btn btn-secondary btn-sm" disabled ><i class="fas fa-pencil-alt"></i></button>';
-				// 	}
-				// }
-				// // boton de eliminar
-				// if ($_SESSION['permisosMod']['eliminar']) {
-				// 	if (($_SESSION['idUser'] == 1 and $_SESSION['userData']['id_rol'] == 1) ||
-				// 		($_SESSION['userData']['id_rol'] == 1 and $arrData[$i]['id_rol'] != 1) and
-				// 		($_SESSION['userData']['id_usuario'] != $arrData[$i]['id_usuario'])
-				// 	) {
-				// 		$btnDelete = '<button class="btn btn-danger btn-sm btnDelUsuario" onClick="fntDelUsuario(' . $arrData[$i]['id_usuario'] . ')" title="Eliminar usuario"><i class="far fa-trash-alt"></i></button>';
-				// 	} else {
-				// 		$btnDelete = '<button class="btn btn-secondary btn-sm" disabled ><i class="far fa-trash-alt"></i></button>';
-				// 	}
-				// }
-
 				$arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDelete . '</div>';
 			}
 			echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
