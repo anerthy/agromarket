@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-10-2023 a las 01:22:41
+-- Tiempo de generación: 13-11-2023 a las 03:43:17
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -58,7 +58,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT) 
             -- Insertar el registro en la tabla afiliados
             INSERT INTO afiliados (usr_id, per_cedula, afl_fec_afiliacion, afl_fec_vencimiento, afl_estado)
             VALUES (p_usr_id, v_per_cedula, v_afl_fec_afiliacion, v_afl_fec_vencimiento, 'Activo');
-            
+            -- Se actualiza el rol de ese usuario
+            UPDATE usuarios SET rol_id = 4 WHERE usr_id = p_usr_id;
             SELECT 'Afiliado insertado correctamente.' AS mensaje;
         ELSE
             SELECT 'El usuario ya está afiliado.' AS mensaje;
@@ -109,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `actividades` (
 --
 
 INSERT INTO `actividades` (`act_id`, `act_nombre`, `act_descripcion`, `act_fecha`, `act_lugar`, `act_categoria`, `act_imagen`, `act_estado`, `act_fec_creacion`, `act_fec_modificacion`, `usr_id`) VALUES
-(1, 'Feria', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-10-25 03:25:22', NULL);
+(1, 'Feria Nicoyana', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-11-13 02:13:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -183,14 +184,15 @@ CREATE TABLE IF NOT EXISTS `donaciones` (
   `don_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `don_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`don_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `donaciones`
 --
 
 INSERT INTO `donaciones` (`don_id`, `don_descripcion`, `don_medio`, `don_informacion`, `don_estado`, `don_fec_creacion`, `don_fec_modificacion`) VALUES
-(1, 'dfdsf', 'dfsdf', 'ddsfff', 'Aprobado', '2023-10-03 00:29:39', '2023-10-03 00:29:39');
+(1, 'SINPE de Organización', 'SINPE MOVIL', '+506 2023-2023\n', 'Aprobado', '2023-10-03 00:29:39', '2023-11-13 02:15:41'),
+(2, 'Cuenta', 'IBAN', 'CR98015100010012144683', 'Aprobado', '2023-10-03 00:29:39', '2023-11-13 02:15:41');
 
 -- --------------------------------------------------------
 
@@ -283,14 +285,51 @@ CREATE TABLE IF NOT EXISTS `permisos` (
   PRIMARY KEY (`per_id`),
   KEY `rol_id` (`rol_id`),
   KEY `pag_id` (`pag_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `permisos`
 --
 
 INSERT INTO `permisos` (`per_id`, `rol_id`, `pag_id`, `per_ver`, `per_agregar`, `per_actualizar`, `per_eliminar`, `per_estado`, `per_fec_creacion`, `per_fec_modificacion`) VALUES
-(1, 2, 1, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-09-20 04:32:04');
+(1, 1, 1, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(2, 1, 2, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(3, 1, 3, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(4, 1, 4, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(5, 1, 3, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(6, 1, 5, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(7, 1, 4, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(8, 1, 6, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(9, 1, 5, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(10, 1, 7, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(11, 1, 6, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(12, 1, 8, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(13, 1, 7, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(14, 1, 8, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(15, 2, 1, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(16, 2, 2, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(17, 2, 3, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(18, 2, 4, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(19, 2, 5, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(20, 2, 6, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(21, 2, 7, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(22, 2, 8, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(23, 3, 1, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(24, 3, 2, 0, 0, 0, 0, 'Activo', '2023-09-20 04:31:44', '2023-11-13 00:14:10'),
+(25, 3, 3, 0, 0, 0, 0, 'Activo', '2023-09-20 04:31:44', '2023-11-13 00:14:25'),
+(26, 3, 4, 1, 0, 0, 0, 'Activo', '2023-09-20 04:31:44', '2023-11-13 00:14:44'),
+(27, 3, 5, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(28, 3, 6, 0, 0, 0, 0, 'Activo', '2023-09-20 04:31:44', '2023-11-13 00:15:00'),
+(29, 3, 7, 0, 0, 0, 0, 'Activo', '2023-09-20 04:31:44', '2023-11-13 00:15:19'),
+(30, 3, 8, 0, 0, 0, 0, 'Activo', '2023-09-20 04:31:44', '2023-11-13 00:15:21'),
+(31, 4, 1, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(32, 4, 2, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(33, 4, 3, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(34, 4, 4, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(35, 4, 5, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(36, 4, 6, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(37, 4, 7, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42'),
+(38, 4, 8, 1, 1, 1, 1, 'Activo', '2023-09-20 04:31:44', '2023-11-12 23:36:42');
 
 -- --------------------------------------------------------
 
@@ -358,13 +397,13 @@ INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`
 --
 DROP VIEW IF EXISTS `productores_afiliados`;
 CREATE TABLE IF NOT EXISTS `productores_afiliados` (
-`usr_id` int
-,`per_cedula` varchar(15)
+`pdt_fec_creacion` timestamp
+,`pdt_fec_modificacion` timestamp
+,`pdt_imagen` varchar(255)
 ,`pdt_nombre` varchar(50)
 ,`pdt_ubicacion` varchar(100)
-,`pdt_imagen` varchar(255)
-,`pdt_fec_creacion` timestamp
-,`pdt_fec_modificacion` timestamp
+,`per_cedula` varchar(15)
+,`usr_id` int
 );
 
 -- --------------------------------------------------------
@@ -388,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `pro_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pro_id`),
   KEY `usr_id` (`usr_id`,`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -406,7 +445,8 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 (7, 1, '504460444', 'Sandía', 'Se vende sandía', 'Fruta', '40000.00', 'img_3e1a21c217073784bd49f3e762bb9d5a.jpg', 'Activo', '2023-09-22 01:06:55', '2023-10-23 03:47:03'),
 (4, 1, '504460444', 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_fc6cc214fabeff8687f323148cd95189.jpg', 'Activo', '2023-09-22 00:21:19', '2023-10-23 03:47:03'),
 (1, 1, '504460444', 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 'Activo', '2023-09-20 21:50:15', '2023-10-23 03:47:03'),
-(27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03');
+(27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03'),
+(29, 9, '504400644', 'prueba', 'prueba', 'Frutas', '200.00', 'imageUnavailable.png', 'Activo', '2023-11-13 03:29:56', '2023-11-13 03:29:56');
 
 -- --------------------------------------------------------
 
@@ -416,16 +456,16 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 --
 DROP VIEW IF EXISTS `productos_premium`;
 CREATE TABLE IF NOT EXISTS `productos_premium` (
-`pro_id` int
-,`usr_id` int
-,`per_cedula` varchar(15)
-,`pro_nombre` varchar(100)
-,`pro_descripcion` text
+`per_cedula` varchar(15)
 ,`pro_categoria` varchar(50)
-,`pro_precio` decimal(10,2)
-,`pro_imagen` varchar(255)
+,`pro_descripcion` text
 ,`pro_fec_creacion` timestamp
 ,`pro_fec_modificacion` timestamp
+,`pro_id` int
+,`pro_imagen` varchar(255)
+,`pro_nombre` varchar(100)
+,`pro_precio` decimal(10,2)
+,`usr_id` int
 );
 
 -- --------------------------------------------------------
@@ -452,9 +492,8 @@ CREATE TABLE IF NOT EXISTS `roles` (
 INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`, `rol_estado`, `rol_fec_creacion`, `rol_fec_modificacion`) VALUES
 (1, 'sa', 'super-administrador', 'Activo', '2023-09-19 05:12:59', '2023-09-19 05:13:10'),
 (2, 'Desarrollador', 'Rol de desarrollador', 'Activo', '2023-09-19 05:12:59', '2023-09-19 05:13:10'),
-(6, 'Cliente', 'Cliente', 'Activo', '2023-09-20 01:05:52', '2023-09-20 06:07:00'),
-(7, 'hhhh', 'sdsdfsf', 'Inactivo', '2023-09-20 01:09:09', '2023-09-20 01:23:47'),
-(11, 'melany', 'melany', 'Activo', '2023-09-20 04:27:40', '2023-09-20 06:12:34');
+(3, 'Cliente', 'Cliente', 'Activo', '2023-09-20 01:05:52', '2023-11-12 23:42:02'),
+(4, 'Afiliado', 'Afiliado', 'Activo', '2023-09-20 01:09:09', '2023-11-12 23:42:14');
 
 -- --------------------------------------------------------
 
@@ -487,7 +526,7 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (1, 'andmejigo12@gmail.com', 'anerthy', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '', 1, '504460444', 'Activo', '2023-09-19 05:17:02', '2023-10-05 00:48:27'),
 (3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00'),
 (10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
-(9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 2, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-10-04 01:44:50'),
+(9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-13 00:44:20'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24');
 
 -- --------------------------------------------------------

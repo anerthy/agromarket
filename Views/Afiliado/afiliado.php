@@ -25,7 +25,7 @@ $datAfiliado =  $data['dat_afiliado'];
     <div class="app-title">
         <div>
             <div class="custom-container">
-                <?php if ($valAfiliado[0]['EXISTE'] = 0) { ?>
+                <?php if ($valAfiliado[0]['EXISTE'] == 0) { ?>
                     <section class="afiliarse">
                         <h1> <strong> UNIRSE AL PLAN PREMIUM </strong></h1>
                         <img src="<?= media(); ?>/images/afiliado.jpg" alt="Afiliados" class="rounded" style="max-width: 40%; height: auto;">
