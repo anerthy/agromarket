@@ -2,7 +2,10 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
-            <span class="fa fa-user"><?= $_SESSION['userData']['usr_nombre']; ?></span>
+            
+            
+        <span class="fa fa-user  fa-2x" style="margin-right: 5px;"></span>
+        <span ><?= $_SESSION['userData']['usr_nombre']; ?></span>
         </div>
         <ul class="app-menu">
             <li>

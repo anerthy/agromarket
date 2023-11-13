@@ -41,8 +41,8 @@
 <body>
     <?php navbar(); ?>
 
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
+   <!-- Carousel Start -->
+   <div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
         <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="carousel-item">
                     <img class="w-100" src="<?= media(); ?>/images/img/plantilla/img/carousel-5.jpg" alt="Image">
-                    <div class="carousel-captire ron">
+                    <div class="carousel-caption">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7">
@@ -84,6 +84,45 @@
     </div>
     <!-- Carousel End -->
 
+
+<!-- Afiliarse -->
+<div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-end">
+                <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <!-- <img class="img-fluid rounded" src="<?= media(); ?>/images/hojitavision.jpg" alt="Visión"> -->
+                    <img class="img-fluid rounded" data-wow-delay="0.1s" src="<?= media(); ?>/images/img/plantilla/img/about.jpg"> 
+                </div>
+                <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
+                    <h1 class="display-1 text-primary mb-0">#1</h1>
+                    <p class="text-primary mb-4">En Ofrecer Productos Frescos</p>
+                    <h1 class="display-5 mb-4">Únete a Agromarket y Haz Crecer tu Éxito Agrícola.</h1>
+                    <p class="mb-4">Únete a Agromarket hoy y sé parte de una plataforma dedicada al impulso del sector agropecuario. Juntos, podemos fortalecer nuestras comunidades y crear oportunidades de crecimiento sostenible.</p>
+                    <a class="btn btn-primary py-3 px-4" href="http://localhost/agromarket/register">Más Información</a>
+
+                </div>
+                <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-5">
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-award fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">Visibilidad Mejorada</h4>
+                                <span>Destaca tus productos y eventos ante una audiencia amplia y comprometida.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">Conexiones Estratégicas</h4>
+                                <span>Establece contactos con otros miembros de la comunidad agrícola y empresarial.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Afiliarse fin-->
 
 
 <!-- QUIENES COMO Y QUE HACEMOS -->
@@ -271,48 +310,6 @@
         </div>
     </div>
     <!-- Productos destacados End -->
-
-
-
-<!-- Afiliarse -->
-<div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5 align-items-end">
-                <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
-                <!-- <img class="img-fluid rounded" src="<?= media(); ?>/images/hojitavision.jpg" alt="Visión"> -->
-                    <img class="img-fluid rounded" data-wow-delay="0.1s" src="<?= media(); ?>/images/img/plantilla/img/about.jpg"> 
-                </div>
-                <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
-                    <h1 class="display-1 text-primary mb-0">#1</h1>
-                    <p class="text-primary mb-4">En Ofrecer Productos Frescos</p>
-                    <h1 class="display-5 mb-4">Únete a Agromarket y Haz Crecer tu Éxito Agrícola.</h1>
-                    <p class="mb-4">Únete a Agromarket hoy y sé parte de una plataforma dedicada al impulso del sector agropecuario. Juntos, podemos fortalecer nuestras comunidades y crear oportunidades de crecimiento sostenible.</p>
-                    <a class="btn btn-primary py-3 px-4" href="http://localhost/agromarket/register">Más Información</a>
-
-                </div>
-                <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="row g-5">
-                        <div class="col-12 col-sm-6 col-lg-12">
-                            <div class="border-start ps-4">
-                                <i class="fa fa-award fa-3x text-primary mb-3"></i>
-                                <h4 class="mb-3">Visibilidad Mejorada</h4>
-                                <span>Destaca tus productos y eventos ante una audiencia amplia y comprometida.</span>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-12">
-                            <div class="border-start ps-4">
-                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
-                                <h4 class="mb-3">Conexiones Estratégicas</h4>
-                                <span>Establece contactos con otros miembros de la comunidad agrícola y empresarial.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Afiliarse fin-->
-
 
 
 
