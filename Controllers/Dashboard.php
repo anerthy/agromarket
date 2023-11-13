@@ -1,6 +1,8 @@
 <?php
+require_once("Models/Traits/TProductor.php");
 class Dashboard extends Controllers
 {
+	use TProductor;
 	public function __construct()
 	{
 		sessionStart();
@@ -9,7 +11,7 @@ class Dashboard extends Controllers
 		if (empty($_SESSION['login'])) {
 			header('Location: ' . base_url() . '/login');
 		}
-		// getPermisos(1);
+		getPermisos(1);
 	}
 
 	public function dashboard()
@@ -21,6 +23,7 @@ class Dashboard extends Controllers
 		$data['page_tag']	=	"Panel de control";
 		$data['page_title']	=	"Panel de control";
 		$data['page_name']	=	"Panel de control";
+		$data['existe_productor'] = $this->existeProductor();
 		$this->views->getView($this, "dashboard", $data);
 	}
 }
