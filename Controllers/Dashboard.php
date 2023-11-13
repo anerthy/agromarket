@@ -16,9 +16,9 @@ class Dashboard extends Controllers
 
 	public function dashboard()
 	{
-		// if (empty($_SESSION['permisosMod']['ver'])) {
-		// 	header("Location:" . base_url() . '/access_denied');
-		// }
+		if (!in_array($_SESSION['userData']['rol_id'], [1, 2,3,4])) {
+			header("Location:" . base_url() . '/access_denied');
+		}
 		$data['page_id']	=	1;
 		$data['page_tag']	=	"Panel de control";
 		$data['page_title']	=	"Panel de control";
