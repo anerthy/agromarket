@@ -10,7 +10,7 @@ class Rol extends Controllers
 		if (empty($_SESSION['login'])) {
 			header('Location: ' . base_url() . '/login');
 		}
-		// getPermisos(2);
+		getPermisos(2);
 	}
 
 	public function Rol()
