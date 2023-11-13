@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-11-2023 a las 01:50:03
+-- Tiempo de generación: 13-11-2023 a las 03:43:17
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `actividades` (
 --
 
 INSERT INTO `actividades` (`act_id`, `act_nombre`, `act_descripcion`, `act_fecha`, `act_lugar`, `act_categoria`, `act_imagen`, `act_estado`, `act_fec_creacion`, `act_fec_modificacion`, `usr_id`) VALUES
-(1, 'Feria', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-10-25 03:25:22', NULL);
+(1, 'Feria Nicoyana', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-11-13 02:13:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -184,14 +184,15 @@ CREATE TABLE IF NOT EXISTS `donaciones` (
   `don_fec_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `don_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`don_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `donaciones`
 --
 
 INSERT INTO `donaciones` (`don_id`, `don_descripcion`, `don_medio`, `don_informacion`, `don_estado`, `don_fec_creacion`, `don_fec_modificacion`) VALUES
-(1, 'dfdsf', 'dfsdf', 'ddsfff', 'Aprobado', '2023-10-03 00:29:39', '2023-10-03 00:29:39');
+(1, 'SINPE de Organización', 'SINPE MOVIL', '+506 2023-2023\n', 'Aprobado', '2023-10-03 00:29:39', '2023-11-13 02:15:41'),
+(2, 'Cuenta', 'IBAN', 'CR98015100010012144683', 'Aprobado', '2023-10-03 00:29:39', '2023-11-13 02:15:41');
 
 -- --------------------------------------------------------
 
@@ -426,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `pro_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pro_id`),
   KEY `usr_id` (`usr_id`,`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -444,7 +445,8 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 (7, 1, '504460444', 'Sandía', 'Se vende sandía', 'Fruta', '40000.00', 'img_3e1a21c217073784bd49f3e762bb9d5a.jpg', 'Activo', '2023-09-22 01:06:55', '2023-10-23 03:47:03'),
 (4, 1, '504460444', 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_fc6cc214fabeff8687f323148cd95189.jpg', 'Activo', '2023-09-22 00:21:19', '2023-10-23 03:47:03'),
 (1, 1, '504460444', 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 'Activo', '2023-09-20 21:50:15', '2023-10-23 03:47:03'),
-(27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03');
+(27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03'),
+(29, 9, '504400644', 'prueba', 'prueba', 'Frutas', '200.00', 'imageUnavailable.png', 'Activo', '2023-11-13 03:29:56', '2023-11-13 03:29:56');
 
 -- --------------------------------------------------------
 
