@@ -15,9 +15,16 @@ class ProductoModel extends Mysql
     {
         parent::__construct();
     }
-    //corta aquí
+
     public function getAll()
     {
+        $isAdmin = " AND usr_id = {$_SESSION['userData']['usr_id']}";
+
+        $roles = array(1, 2); // Administrador Desarrollador
+        if (in_array($_SESSION['userData']['rol_id'], $roles)) {
+            $isAdmin = " ";
+        }
+
         $sql = "SELECT  
                     pro_id,
                     pro_nombre,
@@ -28,7 +35,9 @@ class ProductoModel extends Mysql
                     pro_estado,
                     usr_id
                 FROM productos
-                WHERE pro_estado IN ('Activo','Inactivo')";
+                WHERE pro_estado IN ('Activo','Inactivo') "
+            . $isAdmin;
+
         $request = $this->select_all($sql);
         return $request;
     }
