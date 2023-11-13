@@ -92,7 +92,7 @@ headerAdmin($data);
         <div class="col-md-6 col-lg-3">
           <div class="widget-small info coloured-icon"><i class="icon fa fa-money"></i>
             <div class="info">
-              <h4><a href="<?= base_url(); ?>/donacion_admin">Donaciones</a></h4>
+              <h4><a href="<?= base_url(); ?>/donacion">Donaciones</a></h4>
             </div>
           </div>
         </div>
