@@ -1,10 +1,20 @@
     <!-- Sidebar menu-->
+    
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="app-sidebar__user">
-            <span class="fa fa-user"><?= $_SESSION['userData']['usr_nombre']; ?></span>
+            
+   
+        
+        <a class="app-menu__item"> 
+        <span class="fa fa-user  fa-2x" style="margin-right: 5px;"></span>
+        <span ><?= $_SESSION['userData']['usr_nombre']; ?></span>
+        </a>
+       
         </div>
+      
         <ul class="app-menu">
+
             <li>
                 <a class="app-menu__item" href="<?= base_url(); ?>/home">
                     <span class="fa fa-home fa-2x"></span>
