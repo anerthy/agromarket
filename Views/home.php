@@ -60,7 +60,7 @@
                 </div>
                 <div class="carousel-item">
                     <img class="w-100" src="<?= media(); ?>/images/img/plantilla/img/carousel-5.jpg" alt="Image">
-                    <div class="carousel-caption">
+                    <div class="carousel-captire ron">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-7">
@@ -184,9 +184,6 @@
         </div>
     </div>
 </div>
-<!-- FIN VALORES -->
-
-
 
 
 <style>
@@ -207,7 +204,39 @@
         transform: scale(1.1);
     }
 </style>
+<!-- FIN VALORES -->
 
+<!-- MISION Y VISON -->
+<div class="container-xxl py-5">
+    <div class="container mv">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="img-border">
+                <img class="img-fluid rounded" src="<?= media(); ?>/images/misionvision.jpg" alt="Visión">
+                </div>
+            </div>
+
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="display-5 mb-4">
+                   ¡Nuestra
+                    <span class="text-primary">Misión</span>!
+                </h1>
+                <p class="mb-4">
+                Facilitar y promover el encuentro entre productores agrícolas, emprendedores y la comunidad en general, mediante la difusión clara y precisa de información sobre las ferias agropecuarias.
+                </p>
+
+                <h1 class="display-5 mb-4">
+                    ¡Nuestra
+                    <span class="text-primary">Visión</span>!
+                </h1>
+                <p class="mb-4">
+                En Agromarket, aspiramos a ser el principal referente en la difusión de eventos agrícolas, convirtiéndonos en la plataforma preferida para agricultores y consumidores por igual.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Misión y visión End -->
 
 
 
@@ -218,7 +247,7 @@
         <div class="container">
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <!-- <p class="fs-5 fw-bold text-primary">Destacados</p> -->
-                <h1 class="display-5 mb-5">Productos destacados</h1>
+                <h1 class="display-5 mb-5">Productos Destacados</h1>
             </div>
             <div class="row g-4">
                 <?php foreach ($data['productos_premium'] as $producto) : ?>
@@ -245,15 +274,45 @@
 
 
 
+<!-- Afiliarse -->
+<div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-end">
+                <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <!-- <img class="img-fluid rounded" src="<?= media(); ?>/images/hojitavision.jpg" alt="Visión"> -->
+                    <img class="img-fluid rounded" data-wow-delay="0.1s" src="<?= media(); ?>/images/img/plantilla/img/about.jpg"> 
+                </div>
+                <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
+                    <h1 class="display-1 text-primary mb-0">#1</h1>
+                    <p class="text-primary mb-4">En Ofrecer Productos Frescos</p>
+                    <h1 class="display-5 mb-4">Únete a Agromarket y Haz Crecer tu Éxito Agrícola.</h1>
+                    <p class="mb-4">Únete a Agromarket hoy y sé parte de una plataforma dedicada al impulso del sector agropecuario. Juntos, podemos fortalecer nuestras comunidades y crear oportunidades de crecimiento sostenible.</p>
+                    <a class="btn btn-primary py-3 px-4" href="http://localhost/agromarket/register">Más Información</a>
 
-<!-- LO DE AFILIARSE -->
+                </div>
+                <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-5">
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-award fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">Visibilidad Mejorada</h4>
+                                <span>Destaca tus productos y eventos ante una audiencia amplia y comprometida.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">Conexiones Estratégicas</h4>
+                                <span>Establece contactos con otros miembros de la comunidad agrícola y empresarial.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Afiliarse fin-->
 
-
-
-<H1>COMO AFILIARSE NO SÉ Y NO RECUERDO LO QUE SE HACÍA ACÁ</H1>
-
-
-<!-- LO DE AFILIARSE FIN -->
 
 
 
@@ -265,17 +324,17 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <p class="fs-5 fw-bold text-primary">Contáctenos</p>
-                    <h1 class="display-5 mb-5">Puedes ayudarnos enviándonos donaciones por los siguientes medios</h1>
-                    <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                        <table class="table table-hover table-bordered" id="tableDonacion">
+                    <p class="fs-5 fw-bold text-primary">¿Cómo Llegar?</p>
+                    <h1 class="display-5 mb-5">Cada feria es un viaje vibrante hacia la comunidad agrícola</h1>
+                    <p class="mb-4">En Agromarket, nos preocupamos por facilitar tu llegada a las imperdibles ferias. Para guiarte con precisión, hemos incorporado un mapa detallado en nuestro sitio web que puedes consultar para planificar tu ruta.</a>.</p>
+                        <!-- <table class="table table-hover table-bordered" id="tableDonacion">
                         <thead>
                             <tr>
                                 <th>Descripción</th>
                                 <th>Medio</th>
                                 <th>Información</th>
                             </tr>
-                        </thead>
+                        </thead> -->
 
                         <!--COMENTO ESTO PORQUE SE DESPICHA TERE <tbody>
                             <?php foreach ($data['arrData'] as $donacion): ?>
