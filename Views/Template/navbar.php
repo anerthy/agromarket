@@ -53,7 +53,7 @@
             </div>
             <!-- <a href="<?= base_url(); ?>/home/Productor" class="nav-item nav-link">Productores</a> -->
             <a href="<?= base_url(); ?>/home/Actividad" class="nav-item nav-link">Actividades</a>
-            <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Contacto</a>
+            <a href="<?= base_url(); ?>/home/contacto" class="nav-item nav-link">Contacto</a>
 
         </div>
         <a href="<?= base_url(); ?>/login" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Iniciar sesión<i class="fa fa-arrow-right ms-3"></i></a>
