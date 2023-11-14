@@ -30,6 +30,8 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= media(); ?>/css/plantilla/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
 
 <body>
@@ -60,7 +62,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="bg-light rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.1s">
-                        <form id="formProductor" name="formProductor" class="form-horizontal">
+                        <form id="formProductor" name="formProductor" class="form-horizontal" action="procesar_registro.php" method="post">
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-floating">
@@ -76,7 +78,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="inombiapellido1re" placeholder="Primer apellido">
+                                        <input type="text" class="form-control border-0" id="iapellido1" placeholder="Primer apellido">
                                         <label for="iapellido1">Tu primer apellido</label>
                                     </div>
                                 </div>
@@ -121,6 +123,53 @@
                                 </div>
                             </div>
                         </form>
+                        <script>
+                            $(document).ready(function() {
+                                $('#formProductor').submit(function(e) {
+                                    e.preventDefault(); // Evitar el envío estándar del formulario
+
+                                    // Obtener los valores del formulario
+                                    var cedula = $('#icedula').val();
+                                    var nombre = $('#inombre').val();
+                                    var apellido1 = $('#iapellido1').val();
+                                    var apellido2 = $('#iapellido2').val();
+                                    var direccion = $('#idireccion').val();
+                                    var email = $('#imail').val();
+                                    var telefono = $('#itelefono').val();
+                                    var usuario = $('#iusuario').val();
+                                    var contrasena = $('#icontrasena').val();
+
+                                    // Realizar la solicitud AJAX
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'http://localhost/agromarket/procesar_registro.php', // Cambia esto a la URL de tu script PHP
+                                        data: {
+                                            cedula: cedula,
+                                            nombre: nombre,
+                                            apellido1: apellido1,
+                                            apellido2: apellido2,
+                                            direccion: direccion,
+                                            email: email,
+                                            telefono: telefono,
+                                            usuario: usuario,
+                                            contrasena: contrasena,
+                                        },
+                                        success: function(response) {
+                                            // Manejar la respuesta del servidor
+                                            // console.log(response);
+                                            console.log('Registro exitoso');
+                                            alert('Registro exitoso');
+                                            // Puedes redirigir a otra página o mostrar un mensaje de éxito aquí
+                                        },
+                                        error: function(error) {
+                                            console.error(error);
+                                            alert('Ha ocurrido un error');
+                                            // Manejar errores aquí
+                                        }
+                                    });
+                                });
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -145,56 +194,6 @@
 
     <!-- Template Javascript -->
     <script src="<?= media(); ?>/js/plantilla/main.js"></script>
-
-    <script>
-        var tableVoluntarios;
-        let rowTable = "";
-        let divLoading = document.querySelector("#divLoading");
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            var formProductor = document.querySelector("#formProductor");
-            formProductor.onsubmit = function(e) {
-                e.preventDefault();
-                // var intIdVoluntario = document.querySelector('#vol_id').value;
-                var strCedula = document.querySelector('#icedula').value;
-                var strNombre = document.querySelector('#inombre').value;
-                var strApellido1 = document.querySelector('#iapellido1').value;
-                var strApellido2 = document.querySelector('#iapellido2').value;
-                var strDireccion = document.querySelector('#idireccion').value;
-                var strCorreo = document.querySelector('#imail').value;
-                var strTelefono = document.querySelector('#itelefono').value;
-                var strUsuario = document.querySelector('#iusuario').value;
-                var strContrasena = document.querySelector('#icontrasena').value;
-
-                alert(strCedula)
-                if (strNombre == '' || strApellido1 == '' || strApellido2 == '' || strCedula == '' || strCorreo == '' || strTelefono == '' || strFechaNacimiento == '' || strUsuario == '' || strDireccion == '') {
-                    alert("Atención", "Todos los campos son obligatorios.");
-                }
-
-                var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-                var ajaxUrl = 'http://localhost/agromarket/Register/agregarProductor';
-                var formData = new FormData(formProductor);
-                request.open("POST", ajaxUrl, true);
-                request.send(formData);
-                request.onreadystatechange = function() {
-                    if (request.readyState == 4 && request.status == 200) {
-
-                        var objData = JSON.parse(request.responseText);
-                        if (objData.status) {
-
-                            alert('Registro exitoso');
-
-                            formProductor.reset();
-                        } else {
-                            alert('Ha ocurrido un error');
-                        }
-                    }
-                    return false;
-                }
-            }
-        }, false);
-    </script>
 </body>
 
 </html>
