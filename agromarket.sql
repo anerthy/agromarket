@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 13-11-2023 a las 03:43:17
+-- Tiempo de generación: 14-11-2023 a las 05:08:36
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -70,14 +70,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT) 
 END$$
 
 DROP PROCEDURE IF EXISTS `InsertarPersonaUsuario`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarPersonaUsuario` (IN `p_cedula` VARCHAR(15), IN `p_nombre` VARCHAR(50), IN `p_apellido1` VARCHAR(50), IN `p_apellido2` VARCHAR(50), IN `p_direccion` VARCHAR(100), IN `p_telefono` VARCHAR(15), IN `p_estado` ENUM('Activo','Inactivo','Pendiente','Eliminado','Bloqueado'), IN `p_email` VARCHAR(255), IN `p_nombre_usuario` VARCHAR(50), IN `p_contrasena` VARCHAR(255), IN `p_rol_id` INT)   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarPersonaUsuario` (IN `p_cedula` VARCHAR(15), IN `p_nombre` VARCHAR(50), IN `p_apellido1` VARCHAR(50), IN `p_apellido2` VARCHAR(50), IN `p_direccion` VARCHAR(100), IN `p_telefono` VARCHAR(15), IN `p_email` VARCHAR(255), IN `p_nombre_usuario` VARCHAR(50), IN `p_contrasena` VARCHAR(255))   BEGIN
     -- Insertar en la tabla personas
     INSERT INTO personas (per_cedula, per_nombre, per_apellido1, per_apellido2, per_direccion, per_telefono, per_estado)
-    VALUES (p_cedula, p_nombre, p_apellido1, p_apellido2, p_direccion, p_telefono, p_estado);
+    VALUES (p_cedula, p_nombre, p_apellido1, p_apellido2, p_direccion, p_telefono, 'Activo');
 
     -- Insertar en la tabla usuarios
     INSERT INTO usuarios (usr_email, usr_nombre, usr_contrasena, rol_id, per_cedula, usr_estado)
-    VALUES (p_email, p_nombre_usuario, p_contrasena, p_rol_id, p_cedula, p_estado);
+    VALUES (p_email, p_nombre_usuario, p_contrasena, 3, p_cedula, 'Activo');
 END$$
 
 DELIMITER ;
@@ -357,6 +357,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 
 INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apellido2`, `per_direccion`, `per_telefono`, `per_estado`, `per_fec_creacion`, `per_fec_modificacion`) VALUES
 ('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07'),
+('43412341', 'bgt', 'rrrr', 'Gonzalez', 'Correos De Nandayure', '32323232', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05'),
 ('501230123', 'Admin', 'Admin', 'Admin', 'Nicoya', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
 ('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08');
 
@@ -516,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`usr_id`),
   KEY `rol_id` (`rol_id`),
   KEY `per_cedula` (`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -527,7 +528,8 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00'),
 (10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
 (9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-13 00:44:20'),
-(7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24');
+(7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24'),
+(12, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '43412341', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05');
 
 -- --------------------------------------------------------
 

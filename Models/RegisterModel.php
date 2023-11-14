@@ -41,7 +41,7 @@ class RegisterModel extends Mysql
         $this->strEmail         = $email;
         $this->strUsuario       = $usuario;
         $this->strContrasena    = $contrasena;
-        $this->intRol           = 1;
+        $this->intRol           = 3;
 
         $sql_person = "SELECT per_cedula 
                 FROM personas
@@ -54,7 +54,7 @@ class RegisterModel extends Mysql
         $request_user = $this->select_all($sql_user);
 
         if (empty($request_person) && empty($request_user)) {
-            $query = "CALL InsertarPersonaUsuario(?,?,?,?,?,?,?,?,?,?,?);";
+            $query = "CALL InsertarPersonaUsuario(?,?,?,?,?,?,?,?,?);";
             $arrData = array(
                 $this->strCedula,
                 $this->strNombre,
@@ -62,11 +62,9 @@ class RegisterModel extends Mysql
                 $this->strApellido2,
                 $this->strDireccion,
                 $this->strTelefono,
-                $this->strEstado,
                 $this->strEmail,
                 $this->strUsuario,
-                $this->strContrasena,
-                $this->intRol
+                $this->strContrasena
             );
             $request_procedure = $this->procedure($query, $arrData);
             $return = $request_procedure;

@@ -98,7 +98,7 @@
                     <p class="text-primary mb-4">En Ofrecer Productos Frescos</p>
                     <h1 class="display-5 mb-4">Únete a Agromarket y Haz Crecer tu Éxito Agrícola.</h1>
                     <p class="mb-4">Únete a Agromarket hoy y sé parte de una plataforma dedicada al impulso del sector agropecuario. Juntos, podemos fortalecer nuestras comunidades y crear oportunidades de crecimiento sostenible.</p>
-                    <a class="btn btn-primary py-3 px-4" href="http://localhost/agromarket/register">Más Información</a>
+                    <a class="btn btn-primary py-3 px-4" href="http://localhost/agromarket/register">Registrarse</a>
 
                 </div>
                 <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
