@@ -1,0 +1,46 @@
+    /* Estilos generales */
+    .owl-carousel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+  
+      .owl-carousel .owl-stage {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+  
+      /* Estilos para cada ítem del carrusel */
+      .owl-item {
+        margin-right: 10px;
+        transition: transform 0.3s ease-in-out;
+      }
+  
+      .owl-item:hover {
+        transform: scale(1.05);
+      }
+  
+      .owl-item img {
+        width: 100%;
+        height: auto; /* Cambiado de 100% a auto */
+        object-fit: cover;
+        border-radius: 8px; /* Puedes ajustar el radio de borde según tu preferencia */
+      }
+  
+      .owl-item .shadow-sm {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #88b44e;
+        padding: 10px;
+      }
+  
+      .owl-item h4 {
+        color: #fff;
+        font-size: 1.5em;
+        margin: 0;
+      }
+    
