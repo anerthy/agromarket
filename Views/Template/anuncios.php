@@ -1,22 +1,15 @@
-<style>
-    .article-anuncios {
-        width: 100%;
-    }
-
-    .article-anuncios img {
-        width: 100%;
-        height: 200px;
-        display: block;
-    }
-</style>
-
-<article class="article-anuncios">
-    <img src="..." alt="..." title="...">
-</article>
-
-
-
-
+<?php
+// Lógica del Trait
+$con = new Mysql();
+$sql = "SELECT
+            anu_descripcion,
+            anu_imagen
+        FROM anuncios
+        WHERE anu_estado = 'Activo'
+          AND anu_fec_vigencia > CURRENT_DATE()";
+$request = $con->select_all($sql);
+$data['anuncio_principal'] = $request;
+?>
 
 
 <!DOCTYPE html>
@@ -78,35 +71,25 @@
 </head>
 <body>
 
-<!-- Products Start -->
+<!-- Anuncios Start -->
 <div class="container-fluid product py-5 my-5">
   <div class="container py-5">
     <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-      <h1 class="display-6">Valores</h1>
+      <h1 class="display-6">Anuncios</h1>
     </div>
     <div class="owl-carousel owl-theme product-carousel wow fadeInUp" data-wow-delay="0.5s">
-      <!-- Primer elemento del carrusel -->
-      <a href="" class="d-block product-item rounded">
-        <img src="<?= media(); ?>/images/uploads/anuncio/anuncio1.jpg" alt="">
 
-      </a>
+      <?php foreach ($data['anuncio_principal'] as $anuncio) : ?>
+        <!-- <a href="<?php echo $anuncio['url']; ?>" class="d-block product-item rounded"> -->
+          <img src="<?= media(); ?>/images/uploads/anuncio/<?php echo $anuncio['anu_imagen']; ?>" alt="<?php echo $anuncio['anu_descripcion']; ?>" title="<?php echo $anuncio['anu_descripcion']; ?>">
+        <!-- </a> -->
+      <?php endforeach; ?>
 
-      <!-- Segundo elemento del carrusel -->
-      <a href="" class="d-block product-item rounded">
-        <img src="<?= media(); ?>/images/uploads/anuncio/anuncio1.jpg" alt="">
-
-      </a>
-
-      <!-- Tercer elemento del carrusel -->
-      <a href="" class="d-block product-item rounded">
-        <img src="<?= media(); ?>/images/uploads/anuncio/anuncio1.jpg" alt="">
-
-      </a>
-      <!-- Agrega más elementos del carrusel aquí -->
     </div>
   </div>
 </div>
-<!-- Products End -->
+<!-- Anuncios End -->
+
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
