@@ -97,12 +97,22 @@
             </div>
 
             <div class="row g-4 portfolio-container">
+            <style>
+    .actividad-img {
+        height: 200px; /* Ajusta la altura de la imagen según tus preferencias */
+        object-fit: cover;
+    }
 
-            <?php foreach ($data['listado_actividades'] as $actividad) : ?>
+    .card {
+        height: 400px; /* Ajusta la altura de la tarjeta según tus preferencias */
+    }
+</style>
+
+<?php foreach ($data['listado_actividades'] as $actividad) : ?>
     <div class="col-lg-4 col-md-6 portfolio-item <?php echo $actividad['act_lugar']; ?> wow fadeInUp" data-wow-delay="0.1s">
         <div class="card">
             <div class="card-body">
-                <img class="card-img img-fluid" src="<?php echo media() . '/images/uploads/actividades/' . $actividad['act_imagen']; ?>" alt="<?php echo $actividad['act_nombre']; ?>">
+                <img class="card-img img-fluid actividad-img" src="<?php echo media() . '/images/uploads/actividades/' . $actividad['act_imagen']; ?>" alt="<?php echo $actividad['act_nombre']; ?>">
                 <h5 class="card-title"><?php echo $actividad['act_nombre']; ?></h5>
                 <p class="card-text"><?php echo $actividad['act_descripcion']; ?></p>
                 <p><i class="fa fa-map-marker"></i> Lugar: <?php echo $actividad['act_lugar']; ?></p>
@@ -111,6 +121,8 @@
         </div>
     </div>
 <?php endforeach; ?>
+
+
 
 
             </div>
@@ -140,3 +152,21 @@
 </body>
 
 </html>
+
+
+
+
+
+<!-- <?php foreach ($data['listado_actividades'] as $actividad) : ?>
+    <div class="col-lg-4 col-md-6 portfolio-item <?php echo $actividad['act_lugar']; ?> wow fadeInUp" data-wow-delay="0.1s">
+        <div class="card">
+            <div class="card-body">
+                <img class="card-img img-fluid" src="<?php echo media() . '/images/uploads/actividades/' . $actividad['act_imagen']; ?>" alt="<?php echo $actividad['act_nombre']; ?>">
+                <h5 class="card-title"><?php echo $actividad['act_nombre']; ?></h5>
+                <p class="card-text"><?php echo $actividad['act_descripcion']; ?></p>
+                <p><i class="fa fa-map-marker"></i> Lugar: <?php echo $actividad['act_lugar']; ?></p>
+                <p><i class="fa fa-calendar"></i> Fecha: <?php echo $actividad['act_fecha']; ?></p>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?> -->
