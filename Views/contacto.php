@@ -91,8 +91,8 @@
                         <i class="bi bi-phone-fill fa-2x text-white"></i>
                     </div>
                     <p class="mb-2"><b>Número de teléfono</b></p>
-                    <a href="tel:+50689888893">
-                        <p class="mb-0">+0000000</p>
+                    <a href="tel:+50620232023">
+                        <p class="mb-0">+506 2023-2023</p>
                     </a>
                 </div>
 
