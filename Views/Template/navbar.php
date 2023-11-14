@@ -43,8 +43,9 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="<?= base_url(); ?>/" class="nav-item nav-link active">Inicio</a>
+            <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Sobre Nosotros</a>
             <div class="nav-item dropdown">
-                <a href="<?= base_url(); ?>/home/productos" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Productos</a>
+                <a href="<?= base_url(); ?>/home/productos" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mercado</a>
                 <div class="dropdown-menu bg-light m-0">
                     <a href="<?= base_url(); ?>/home/productos" class="dropdown-item">Productos</a>
                     <a href="<?= base_url(); ?>/home/productor" class="dropdown-item">Productores</a>
@@ -52,7 +53,8 @@
             </div>
             <!-- <a href="<?= base_url(); ?>/home/Productor" class="nav-item nav-link">Productores</a> -->
             <a href="<?= base_url(); ?>/home/Actividad" class="nav-item nav-link">Actividades</a>
-            <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Sobre Nosotros</a>
+            <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Contacto</a>
+
         </div>
         <a href="<?= base_url(); ?>/login" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Iniciar sesión<i class="fa fa-arrow-right ms-3"></i></a>
     </div>

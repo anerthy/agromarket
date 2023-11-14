@@ -138,7 +138,7 @@
             <!-- <h2>Nombre: <span id="product-name">Nombre del Producto</span></h2> -->
             <p><span id="product-description"><?php echo $data['producto'][0]['pro_descripcion'] ?></span></p>
             <p><span id="product-category" class="product-category-badge"><?php echo $data['producto'][0]['pro_categoria'] ?></span></p>
-            <h3>$ <span id="product-price"><?php echo $data['producto'][0]['pro_precio'] ?></span></h3>
+            <h3>₡ <span id="product-price"><?php echo $data['producto'][0]['pro_precio'] ?></span></h3>
         </div>
     </div>
 
