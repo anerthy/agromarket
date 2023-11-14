@@ -52,7 +52,7 @@
     </div>
     <!-- Page Header End -->
 <!-- Resto de tu código HTML -->
-
+<center>
 <div class="container product-details-container">
     <div class="row">
         <div class="col-md-6">
@@ -79,7 +79,7 @@
         </div>
     </div>
 </div>
-
+</center>
 <!-- Resto de tu código HTML -->
 
 
