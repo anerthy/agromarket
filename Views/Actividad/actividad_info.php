@@ -49,31 +49,35 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- ANUNCIOS  -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <h1 class="display-5 mb-5">Empresas Patrocinadoras</h1>
-    </div>
 
+    
+    <!-- Información  -->
+   
+    <div class="container-xxl py-5">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="card" style="border: none;">
-                    <img src="<?= media(); ?>/images/cocacolanuncio.png" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
-                </div>
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+<br>
+<br>
+                <h1 class="display-5 mb-4">
+                    ¡Nuestras
+                    <font color="#028A0F">Actividades!</font>
+                </h1>
+                <p class="lh-lg mb-4">
+                Sumérgete en la riqueza cultural y en las vibrantes comunidades de Nicoya y Santa Cruz a través de nuestra plataforma web. Descubre eventos emocionantes, familiarízate con los días y horarios, y explora los variados lugares que otorgan vida a estas ciudades. Únete a nosotros para una experiencia única mientras te mantenemos al tanto de todo lo que estas fascinantes localidades tienen para ofrecer
+                </p>
+
             </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="card" style="border: none;">
-                    <img src="<?= media(); ?>/images/dospinosanuncio.png" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class "card" style="border: none;">
-                    <img src="<?= media(); ?>/images/pizzahutanuncio.jpg" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="img-border">
+                <img class="img-fluid rounded" src="<?= media(); ?>/images/feria.jpg" alt="Visión">
                 </div>
             </div>
         </div>
     </div>
-    <!-- ANUNCIOS FIN -->
+</div>
+
+    <!-- Información FIN -->
 
     <!-- Projects Start -->
     <div class="container-xxl py-5">
@@ -114,6 +118,9 @@
     </div>
     <!-- Projects End -->
 
+<!-- EL ANUNCIO -->
+    <?php anuncios(); ?>
+    <!-- ANUNCIO FIN -->
     <?php footer(); ?>
 
     <!-- JavaScript Libraries -->

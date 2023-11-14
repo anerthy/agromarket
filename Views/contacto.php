@@ -112,6 +112,9 @@
         </div>
     </div>
 
+    <!-- EL ANUNCIO -->
+    <?php anuncios(); ?>
+    <!-- ANUNCIO FIN -->
     <?php footer(); ?>
 
     <!-- JavaScript Libraries -->

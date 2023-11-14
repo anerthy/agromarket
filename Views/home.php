@@ -380,7 +380,7 @@
 
 
 
-    <section class="anuncio">
+    <!-- <section class="anuncio">
         <?php if (count($data['anuncio_principal']) > 0) { ?>
         <?php for ($i = 0; $i < count($data['anuncio_principal']); $i++) { ?>
         <center>
@@ -396,7 +396,11 @@
         <?php  } ?>
         <?php } ?>
 
-    </section>
+    </section> -->
+
+    <!-- EL ANUNCIO -->
+    <?php anuncios(); ?>
+    <!-- ANUNCIO FIN -->
 
     <?php footer(); ?>
 
