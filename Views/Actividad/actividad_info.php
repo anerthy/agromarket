@@ -49,31 +49,35 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- ANUNCIOS  -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <h1 class="display-5 mb-5">Empresas Patrocinadoras</h1>
-    </div>
 
+    
+    <!-- Información  -->
+   
+    <div class="container-xxl py-5">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="card" style="border: none;">
-                    <img src="<?= media(); ?>/images/cocacolanuncio.png" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
-                </div>
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+<br>
+<br>
+                <h1 class="display-5 mb-4">
+                    ¡Nuestras
+                    <font color="#028A0F">Actividades!</font>
+                </h1>
+                <p class="lh-lg mb-4">
+                Sumérgete en la riqueza cultural y en las vibrantes comunidades de Nicoya y Santa Cruz a través de nuestra plataforma web. Descubre eventos emocionantes, familiarízate con los días y horarios, y explora los variados lugares que otorgan vida a estas ciudades. Únete a nosotros para una experiencia única mientras te mantenemos al tanto de todo lo que estas fascinantes localidades tienen para ofrecer
+                </p>
+
             </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="card" style="border: none;">
-                    <img src="<?= media(); ?>/images/dospinosanuncio.png" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class "card" style="border: none;">
-                    <img src="<?= media(); ?>/images/pizzahutanuncio.jpg" alt="Afiliados Premium" class="rounded" style="width: 100%; max-height: 200px;">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="img-border">
+                <img class="img-fluid rounded" src="<?= media(); ?>/images/feria.jpg" alt="Visión">
                 </div>
             </div>
         </div>
     </div>
-    <!-- ANUNCIOS FIN -->
+</div>
+
+    <!-- Información FIN -->
 
     <!-- Projects Start -->
     <div class="container-xxl py-5">
@@ -93,12 +97,22 @@
             </div>
 
             <div class="row g-4 portfolio-container">
+            <style>
+    .actividad-img {
+        height: 200px; /* Ajusta la altura de la imagen según tus preferencias */
+        object-fit: cover;
+    }
 
-            <?php foreach ($data['listado_actividades'] as $actividad) : ?>
+    .card {
+        height: 400px; /* Ajusta la altura de la tarjeta según tus preferencias */
+    }
+</style>
+
+<?php foreach ($data['listado_actividades'] as $actividad) : ?>
     <div class="col-lg-4 col-md-6 portfolio-item <?php echo $actividad['act_lugar']; ?> wow fadeInUp" data-wow-delay="0.1s">
         <div class="card">
             <div class="card-body">
-                <img class="card-img img-fluid" src="<?php echo media() . '/images/uploads/actividades/' . $actividad['act_imagen']; ?>" alt="<?php echo $actividad['act_nombre']; ?>">
+                <img class="card-img img-fluid actividad-img" src="<?php echo media() . '/images/uploads/actividades/' . $actividad['act_imagen']; ?>" alt="<?php echo $actividad['act_nombre']; ?>">
                 <h5 class="card-title"><?php echo $actividad['act_nombre']; ?></h5>
                 <p class="card-text"><?php echo $actividad['act_descripcion']; ?></p>
                 <p><i class="fa fa-map-marker"></i> Lugar: <?php echo $actividad['act_lugar']; ?></p>
@@ -109,11 +123,16 @@
 <?php endforeach; ?>
 
 
+
+
             </div>
         </div>
     </div>
     <!-- Projects End -->
 
+<!-- EL ANUNCIO -->
+    <?php anuncios(); ?>
+    <!-- ANUNCIO FIN -->
     <?php footer(); ?>
 
     <!-- JavaScript Libraries -->
@@ -133,3 +152,21 @@
 </body>
 
 </html>
+
+
+
+
+
+<!-- <?php foreach ($data['listado_actividades'] as $actividad) : ?>
+    <div class="col-lg-4 col-md-6 portfolio-item <?php echo $actividad['act_lugar']; ?> wow fadeInUp" data-wow-delay="0.1s">
+        <div class="card">
+            <div class="card-body">
+                <img class="card-img img-fluid" src="<?php echo media() . '/images/uploads/actividades/' . $actividad['act_imagen']; ?>" alt="<?php echo $actividad['act_nombre']; ?>">
+                <h5 class="card-title"><?php echo $actividad['act_nombre']; ?></h5>
+                <p class="card-text"><?php echo $actividad['act_descripcion']; ?></p>
+                <p><i class="fa fa-map-marker"></i> Lugar: <?php echo $actividad['act_lugar']; ?></p>
+                <p><i class="fa fa-calendar"></i> Fecha: <?php echo $actividad['act_fecha']; ?></p>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?> -->
