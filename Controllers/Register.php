@@ -6,16 +6,7 @@ class Register extends Controllers
 		parent::__construct();
 	}
 
-	public function register()
-	{
-		$data['page_tag']			=	"Register";
-		$data['page_title'] 		=	"AgroMarket";
-		$data['page_name']			=	"register";
-		$data['page_functions_js'] 	=	"functions_register.js";
-		$this->views->getView($this, "registro", $data);
-	}
-
-	public function registro()
+	public function Register()
 	{
 		$data['page_tag']			=	"Register";
 		$data['page_title'] 		=	"AgroMarket";
