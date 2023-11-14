@@ -11,8 +11,7 @@ trait TAnuncio
                     anu_imagen
                 FROM anuncios
                 WHERE anu_estado = 'Activo'
-                  AND anu_fec_vigencia > CURRENT_DATE()
-                LIMIT 1";
+                  AND anu_fec_vigencia > CURRENT_DATE()";
         $request = $this->con->select_all($sql);
         return $request;
     }

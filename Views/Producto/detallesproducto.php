@@ -52,7 +52,7 @@
     </div>
     <!-- Page Header End -->
 <!-- Resto de tu código HTML -->
-
+<center>
 <div class="container product-details-container">
     <div class="row">
         <div class="col-md-6">
@@ -79,15 +79,18 @@
         </div>
     </div>
 </div>
-
+</center>
 <!-- Resto de tu código HTML -->
 
 
-    <div class="banner">
-        <img src="<?= media(); ?>/images/uploads/anuncio/<?php echo $data['anuncio_principal'][0]['anu_imagen']; ?>" alt="<?php echo $data['anuncio_principal'][0]['anu_descripcion']; ?>" title="<?php echo $data['anuncio_principal'][0]['anu_descripcion']; ?>">
-    </div>
+    <?php anuncios(); ?>
+        
 
     <?php footer(); ?>
+
+
+
+    
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
