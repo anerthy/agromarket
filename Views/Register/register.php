@@ -66,55 +66,55 @@
                             <div class="row g-3">
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="icedula" placeholder="Cedula">
+                                        <input type="text" class="form-control border-0" id="icedula" required placeholder="Cedula">
                                         <label for="icedula">Tu cedula</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="inombre" placeholder="Nombre">
+                                        <input type="text" class="form-control border-0" id="inombre" required placeholder="Nombre">
                                         <label for="inombre">Tu nombre</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="iapellido1" placeholder="Primer apellido">
+                                        <input type="text" class="form-control border-0" id="iapellido1" required placeholder="Primer apellido">
                                         <label for="iapellido1">Tu primer apellido</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="iapellido2" placeholder="Segundo apellido">
+                                        <input type="text" class="form-control border-0" id="iapellido2" required placeholder="Segundo apellido">
                                         <label for="iapellido2">Tu segundo apellido</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control border-0" placeholder="Direccion" id="idireccion" style="height: 100px"></textarea>
+                                        <textarea class="form-control border-0" required placeholder="Direccion" id="idireccion" style="height: 100px"></textarea>
                                         <label for="idireccion">Dirreccion</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control border-0" id="imail" placeholder="Email">
+                                        <input type="email" class="form-control border-0" id="imail" required placeholder="Email">
                                         <label for="imail">Tu Email</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="itelefono" placeholder="Telefono">
+                                        <input type="text" class="form-control border-0" id="itelefono" required placeholder="Telefono">
                                         <label for="itelefono">Tu telefono</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control border-0" id="iusuario" placeholder="Nombre de usuario">
+                                        <input type="text" class="form-control border-0" id="iusuario" required placeholder="Nombre de usuario">
                                         <label for="iusuario">Tu nombre de usuario</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-floating">
-                                        <input type="password" class="form-control border-0" id="icontrasena" placeholder="Contraseña">
+                                        <input type="password" class="form-control border-0" id="icontrasena" required placeholder="Contraseña">
                                         <label for="icontrasena">Tu contraseña</label>
                                     </div>
                                 </div>
