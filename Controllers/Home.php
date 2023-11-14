@@ -69,5 +69,10 @@ class Home extends Controllers
 		$this->views->getView($this, "Producto/detallesproducto", $data);
 		
 	}
-	
+
+	public function contacto()
+	{
+		$this->views->getView($this, "contacto");
+	}
+
 }
