@@ -11,25 +11,24 @@
     <!-- Favicon -->
     <link href="<?= media(); ?>/images/img/plantilla/img/favicon.ico" rel="icon">
 
-    <!-- Google Web Fonts
+    <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet
+    <!-- Libraries Stylesheet -->
     <link href="<?= media(); ?>/lib-plantilla/animate/animate.min.css" rel="stylesheet">
     <link href="<?= media(); ?>/lib-plantilla/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="<?= media(); ?>/lib-plantilla/lightbox/css/lightbox.min.css" rel="stylesheet"> -->
+    <link href="<?= media(); ?>/lib-plantilla/lightbox/css/lightbox.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?= media(); ?>/css/plantilla/bootstrap.min.css" rel="stylesheet">
     <!-- Css Styles -->
     <link rel="stylesheet" href="<?= media(); ?>/css/PerfilProductor_Info/style.css" type="text/css">
-
 
     <!-- Template Stylesheet -->
     <link href="<?= media(); ?>/css/plantilla/style.css" rel="stylesheet">
@@ -37,13 +36,11 @@
 
 <body>
     <!-- NAVBAR -->
-
     <!-- Spinner Start -->
     <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
     </div>
     <!-- Spinner End -->
-
 
     <!-- Topbar Start -->
     <div class="container-fluid bg-dark text-light px-0 py-2">
@@ -54,7 +51,6 @@
                     <span>+506 2023-2023</span>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
-
                     <span class="far fa-envelope me-2"></span>
                     <span>agromarket@gmail.com</span>
                 </div>
@@ -72,12 +68,10 @@
     </div>
     <!-- Topbar End -->
 
-
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
         <a href="<?= base_url(); ?>" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h1 style="color: #0F4229;
-    font-size: 40px;" class="m-0">Agromarket</h1>
+            <h1 style="color: #0F4229; font-size: 40px;" class="m-0">Agromarket</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -103,18 +97,12 @@
     </nav>
     <!-- Navbar End -->
 
-
-    <!-- NAVBAR -->
-
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="container">
             <div class="row">
                 <center>
-
-                    <br>
-                    <br>
-
+                    <br><br>
                     <div class="col-lg-12">
                         <div class="section-title">
                             <h2>Perfil del Productor</h2>
@@ -159,56 +147,9 @@
                             </div>
                         <?php endforeach; ?>
                         </section>
-
-                        <!-- <div class="container mt-5 d-flex justify-content-center">
-
-<div class="card p-3">
-
-    <div class="d-flex align-items-center">
-
-        <div class="image">
-    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155" >
-    </div>
-
-    <div class="ml-3 w-100">
-    <?php foreach ($data['arrData'] as $productor) : ?> 
-       <h4 class="mb-0 mt-0"><?php echo $productor['pdt_nombre']; ?></h4>
-       <span><?php echo $productor['pdt_ubicacion']; ?></span>
-
-    </div>
-
-    <?php endforeach; ?>  
-    </div> -->
-
                     </div>
-
+                </center>
             </div>
-            <!-- 
-                    <div class="col-lg-9" style="    margin-top: 100px;">
-                        <?php foreach ($data['arrData'] as $productor) : ?>
-
-                        <div class="container-hero">
-                            <div class="info-section-hero">
-                                <div class="info-text-hero">
-                               
-                                <img class="img-fluid rounded" src="<?= media(); ?>/images/misionvision.jpg" alt="Visión">
-                                    <h4><?php echo $productor['pdt_nombre']; ?></h4>
-                                    <p><?php echo $productor['pdt_ubicacion']; ?></p>
-                                </div>
-                       
-                            </div>
-                            <div class="image-section-hero">
-                                <img src="<?php echo media() . '/images/uploads/productores/' . $productor['pdt_imagen']; ?>"
-                                    alt="">
-
-                                    
-                            </div>
-                        </div>
-
-                        <?php endforeach; ?>
-                    </div> -->
-            </center>
-        </div>
         </div>
     </section>
     <!-- Hero Section End -->
@@ -230,7 +171,6 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
             <style>
@@ -259,8 +199,6 @@
                 }
             </style>
             <div class="row featured__filter">
-
-
                 <?php if (count($data['arrDatapro']) > 0) : ?>
                     <?php foreach ($data['arrDatapro'] as $producto) : ?>
                         <div class="col-lg-3 col-md-4 col-sm-6 mix <?= $producto['pro_categoria']; ?> fresh-meat">
@@ -289,28 +227,13 @@
                         <p>No hay productos...</p>
                     </center>
                 <?php endif; ?>
-
-
-
-
-
-
+            </div>
     </section>
     <!-- Featured Section End -->
-
-    <!-- Banner End -->
 
     <!-- Footer Start -->
     <?php footer(); ?>
     <!-- Footer End -->
-
-
-
-
-
-
-
-
 
     <!-- Js Plugins -->
     <script src="<?= media(); ?>/js/Perfil-productor/jquery-3.3.1.min.js"></script>
@@ -337,8 +260,5 @@
     <!-- Template Javascript -->
     <script src="<?= media(); ?>/js/plantilla/main.js"></script>
 
-
-
 </body>
-
 </html>
