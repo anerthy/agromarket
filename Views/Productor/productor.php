@@ -23,9 +23,9 @@ getModal('modalProductor', $data);
                     <!-- Contenido de la pestaña "Datos personales" -->
                     <h5 class="mb-4">
                         DATOS PERSONALES
-                        <!-- <button class="btn btn-sm btn-info" onclick="fntEditProductor()">
+                        <button class="btn btn-sm btn-info" onclick="fntEditProductor()">
                             Editar
-                        </button> -->
+                        </button>
                     </h5>
                 </div>
             </div>

@@ -93,45 +93,34 @@ class ProductorModel extends Mysql
 		int $usuario,
 		string $cedula,
 		string $nombre,
-		string $ubicacion,
-		string $imagen,
-		string $estado
+		string $ubicacion
 	) {
 		$this->intIdUsuario = $usuario;
-		$this->strCedula 	= $cedula;
-		$this->strNombre 	= $nombre;
+		$this->strCedula = $cedula;
+		$this->strNombre = $nombre;
 		$this->strUbicacion = $ubicacion;
-		$this->strImage 	= $imagen;
-		$this->strEstado 	= $estado;
-
-		$sql = "SELECT * 
-				FROM productores 
-				WHERE pdt_cedula = '{$this->strCedula}'";
-		$request = $this->select_all($sql);
-
-		if (empty($request)) {
-
-			$sql = "UPDATE productores 
-					SET pdt_nombre		= ?, 
-						pdt_ubicacion 	= ?, 
-						pdt_imagen 		= ?, 
-						pdt_estado		= ? 
-					WHERE per_cedula 	= $this->strCedula 
-					  AND usr_id 		= $this->intIdUsuario";
-			$arrData = array(
-				$this->strNombre,
-				$this->strUbicacion,
-				$this->strImage,
-				$this->strEstado
-			);
-
-			$request = $this->update($sql, $arrData);
+	
+		$sql = "UPDATE productores 
+				SET pdt_nombre = ?, 
+					pdt_ubicacion = ?
+				WHERE per_cedula = ? 
+				AND usr_id = ?";
+		$arrData = array(
+			$this->strNombre,
+			$this->strUbicacion,
+			$this->strCedula,
+			$this->intIdUsuario
+		);
+	
+		$request = $this->update($sql, $arrData);
+	
+		if ($request > 0) {
+			return true; 
 		} else {
-			$request = "exist";
+			return false; 
 		}
-		return $request;
 	}
-
+	
 
 	public function selectProductores()
 	{
@@ -182,7 +171,7 @@ class ProductorModel extends Mysql
 					pdt_imagen, 
 					pdt_estado
 				FROM productores, personas
-				WHERE usr_id				= '{$this->intIdUsuario}'
+				WHERE usr_id = '{$this->intIdUsuario}'
 				AND personas.per_cedula = productores.per_cedula";
 		$request = $this->select_all($sql);
 		return $request;

@@ -82,23 +82,24 @@ class Productor extends Controllers
     }
 
     // sin params como se obtienen los datos de la SESSION
-    public function getProductor(/*int $usuario, string $cedula*/)
+    public function getProductor()
     {
         $arrData = $this->model->getProductor(
             $_SESSION['userData']['usr_id'],
             $_SESSION['userData']['per_cedula']
         );
+    
         if (empty($arrData)) {
             $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
         } else {
-            $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
-
+            //  $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
             $arrResponse = array('status' => true, 'data' => $arrData);
         }
-        echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
 
+        echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
         die();
     }
+    
 
     public function volverseProductor()
     {
@@ -129,6 +130,45 @@ class Productor extends Controllers
             if ($nombre_foto != '') {
                 uploadImage('productores', $foto, $imgImage);
             }
+        } else if ($request == 'exist') {
+            $arrResponse = array('status' => false, 'msg' => '¡Atención! Información ya existente en el sistema');
+        } else {
+            $arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
+        }
+        echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+        die();
+    }
+
+    // ACTUAL PERFIL
+    public function editarPerfil()
+    {
+        $strNombre      = strClean($_POST['txtNombre']);
+        $strUbicacion   = strClean($_POST['txtUbicacion']);
+
+        // $foto       = $_FILES['foto'];
+        // $nombre_foto     = $foto['name'];
+        // $type              = $foto['type'];
+        // $url_temp        = $foto['tmp_name'];
+        // $imgImage     = 'imageUnavailable.png';
+        // $request = "";
+        // if ($nombre_foto != '') {
+        //     $imgImage = 'img_' . md5(date('d-m-Y H:m:s')) . '.jpg';
+        // }
+
+        $request = $this->model->updateProductor(
+            $_SESSION['userData']['usr_id'],
+            $_SESSION['userData']['per_cedula'],
+            $strNombre,
+            $strUbicacion,
+            // $imgImage
+        );
+
+        //! REVISAR LOS MENSAJES DE $ARRRESPONSE
+        if ($request > 0) {
+            $arrResponse = array('status' => true, 'msg' => 'Datos guardados correctamente.');
+            // if ($nombre_foto != '') {
+            //     uploadImage('productores', $foto, $imgImage);
+            // }
         } else if ($request == 'exist') {
             $arrResponse = array('status' => false, 'msg' => '¡Atención! Información ya existente en el sistema');
         } else {
