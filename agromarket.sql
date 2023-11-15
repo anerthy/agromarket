@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-11-2023 a las 05:51:32
+-- Tiempo de generación: 15-11-2023 a las 06:05:30
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -110,14 +110,15 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   `usr_id` int DEFAULT NULL,
   PRIMARY KEY (`act_id`),
   KEY `usr_id` (`usr_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `actividades`
 --
 
 INSERT INTO `actividades` (`act_id`, `act_nombre`, `act_descripcion`, `act_fecha`, `act_lugar`, `act_categoria`, `act_imagen`, `act_estado`, `act_fec_creacion`, `act_fec_modificacion`, `usr_id`) VALUES
-(1, 'Feria Nicoyana', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-11-13 02:13:10', NULL);
+(1, 'Feria Nicoyana', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-11-15 06:03:52', NULL),
+(2, 'Feria de emprendedores', 'emprendedores', '2023-12-08', 'SantaCruz', 'Feria', 'img_1f84a9a65000bb513364649b0b3a2131.jpg', 'Activo', '2023-11-15 06:04:27', '2023-11-15 06:04:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -144,7 +145,6 @@ CREATE TABLE IF NOT EXISTS `afiliados` (
 
 INSERT INTO `afiliados` (`usr_id`, `per_cedula`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
 (1, '504460444', '2023-09-28 06:25:32', '2023-11-30 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-23 03:57:11'),
-(13, '504320123', '2023-11-15 04:56:27', '2023-12-15 04:56:27', 'Activo', '2023-11-15 04:56:27', '2023-11-15 04:56:27'),
 (15, '503020123', '2023-11-15 05:46:27', '2023-12-15 05:46:27', 'Inactivo', '2023-11-15 05:46:27', '2023-11-15 05:51:02');
 
 -- --------------------------------------------------------
@@ -462,7 +462,7 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 (1, 1, '504460444', 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 'Activo', '2023-09-20 21:50:15', '2023-10-23 03:47:03'),
 (27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03'),
 (29, 9, '504400644', 'prueba', 'prueba', 'Frutas', '200.00', 'imageUnavailable.png', 'Activo', '2023-11-13 03:29:56', '2023-11-13 03:29:56'),
-(30, 13, '504320123', 'Piña', 'Piña', 'Fruta', '1500.00', 'img_6d44967d338d82f41aba2ad7930e9a33.jpg', 'Activo', '2023-11-15 04:32:02', '2023-11-15 04:32:02'),
+(30, 13, '504320123', 'Piña', 'Piña', 'Fruta', '1500.00', 'img_6d44967d338d82f41aba2ad7930e9a33.jpg', 'Activo', '2023-11-15 04:32:02', '2023-11-15 06:00:02'),
 (31, 15, '503020123', 'UVA', 'hh', 'hhh', '0.00', 'imageUnavailable.png', 'Activo', '2023-11-15 05:42:41', '2023-11-15 05:42:41');
 
 -- --------------------------------------------------------
