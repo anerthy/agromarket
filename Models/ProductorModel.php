@@ -125,15 +125,21 @@ class ProductorModel extends Mysql
 	public function selectProductores()
 	{
 
-		$sql = "SELECT
+		$sql = "SELECT 
 					usr_id, 
 					per_cedula, 
 					pdt_nombre, 
 					pdt_ubicacion, 
 					pdt_imagen, 
-					pdt_estado
-				FROM productores
-                WHERE pdt_estado IN ('Activo', 'Inactivo')";
+					pdt_estado 
+				FROM productores 
+				WHERE pdt_estado IN('Activo', 'Inactivo') 
+				  AND per_cedula IN (	
+										SELECT 
+											DISTINCT per_cedula 
+										FROM productos 
+										WHERE pro_estado = 'Activo'
+									);";
 		$request = $this->select_all($sql);
 		return $request;
 	}
