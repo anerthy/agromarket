@@ -71,6 +71,17 @@ class ProductorModel extends Mysql
 				$this->strImage
 			);
 			$request_insert = $this->insert($query_insert, $arrData);
+
+			//convierte al usuario en productor
+			// if ($request_insert  != 0) {
+			$query_usr  = 	"UPDATE usuarios SET rol_id = 5 WHERE usr_id = ? AND per_cedula = ?";
+			$arrDataPdt = array(
+				$this->intIdUsuario,
+				$this->strCedula
+			);
+			$this->insert($query_usr, $arrDataPdt);
+			// }
+
 			$return = $request_insert;
 		} else {
 			$return = "exist";
