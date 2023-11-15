@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 14-11-2023 a las 05:08:36
+-- Tiempo de generación: 15-11-2023 a las 02:47:15
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -158,15 +158,16 @@ CREATE TABLE IF NOT EXISTS `anuncios` (
   PRIMARY KEY (`anu_id`),
   KEY `usr_id` (`usr_id`),
   KEY `pag_id` (`anu_tipo`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `anuncios`
 --
 
 INSERT INTO `anuncios` (`anu_id`, `anu_descripcion`, `anu_tipo`, `anu_imagen`, `anu_fec_vigencia`, `anu_estado`, `anu_fec_creacion`, `anu_fec_modificacion`, `usr_id`) VALUES
-(1, 'dd', 'dd', 'ddddddd', '2023-09-30', 'Expirado', '2023-09-20 03:14:41', '2023-09-20 05:42:44', 1),
-(2, 'Viernes negro!', 'Si', 'img_9336ebac9a186c9bd5942b0593b5c1aa.jpg', '2023-11-30', 'Activo', '2023-10-27 00:39:14', '2023-10-27 00:39:14', NULL);
+(1, 'Cupon de descuento del 5%', 'Descuento', 'img_66191576daf0b2d778b87de0ceaff1b8.jpg', '2023-11-30', 'Activo', '2023-09-20 03:14:41', '2023-11-15 00:57:07', 1),
+(2, 'Viernes negro!', 'Si', 'img_9336ebac9a186c9bd5942b0593b5c1aa.jpg', '2023-11-30', 'Activo', '2023-10-27 00:39:14', '2023-10-27 00:39:14', NULL),
+(3, 'Feria de emprendedores', 'Feria', 'img_d173bdf8eac4cd5df370a0310283119e.jpg', '2023-12-31', 'Activo', '2023-11-15 00:59:49', '2023-11-15 00:59:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -359,7 +360,8 @@ INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apelli
 ('504460444', 'F. Andrés', 'Mejías', 'González', '25m oeste de la escuela de porvenir', '87293508', 'Activo', '2023-09-19 05:15:07', '2023-09-19 05:15:07'),
 ('43412341', 'bgt', 'rrrr', 'Gonzalez', 'Correos De Nandayure', '32323232', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05'),
 ('501230123', 'Admin', 'Admin', 'Admin', 'Nicoya', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
-('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08');
+('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
+('504320123', 'Estefany Elena', 'Marin', 'Junez', 'Liberia', '87878787', 'Activo', '2023-11-14 05:13:52', '2023-11-14 05:13:52');
 
 -- --------------------------------------------------------
 
@@ -388,7 +390,8 @@ CREATE TABLE IF NOT EXISTS `productores` (
 
 INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`, `pdt_imagen`, `pdt_estado`, `pdt_fec_creacion`, `pdt_fec_modificacion`) VALUES
 (1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41'),
-(7, '503120432', 'fiorella', 'Brasilito', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-30 04:03:33');
+(7, '503120432', 'fiorella', 'Brasilito', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-30 04:03:33'),
+(13, '504320123', 'estefany', 'Nicoya', 'img_cbb36fba1e45a3cf0fcadb2ef5b03d96.jpg', 'Activo', '2023-11-15 01:13:32', '2023-11-15 01:13:32');
 
 -- --------------------------------------------------------
 
@@ -517,7 +520,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`usr_id`),
   KEY `rol_id` (`rol_id`),
   KEY `per_cedula` (`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -529,7 +532,8 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
 (9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-13 00:44:20'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24'),
-(12, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '43412341', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05');
+(12, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '43412341', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05'),
+(13, 'estefany.marin@crccoding.com', 'estefany', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504320123', 'Activo', '2023-11-14 05:13:52', '2023-11-14 05:13:52');
 
 -- --------------------------------------------------------
 
