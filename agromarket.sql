@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-11-2023 a las 02:47:15
+-- Tiempo de generación: 15-11-2023 a las 04:10:35
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -533,7 +533,7 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-13 00:44:20'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24'),
 (12, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '43412341', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05'),
-(13, 'estefany.marin@crccoding.com', 'estefany', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504320123', 'Activo', '2023-11-14 05:13:52', '2023-11-14 05:13:52');
+(13, 'estefany.marin@crccoding.com', 'estefany', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 4, '504320123', 'Activo', '2023-11-14 05:13:52', '2023-11-15 04:01:41');
 
 -- --------------------------------------------------------
 
