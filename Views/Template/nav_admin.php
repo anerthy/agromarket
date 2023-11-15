@@ -28,9 +28,21 @@
                     </a>
                 </li>
                 <li>
-                    <a class="app-menu__item" href="<?= base_url(); ?>/ro">
+                    <a class="app-menu__item" href="<?= base_url(); ?>/rol">
                         <span class="fa fa-gear fa-2x"></span>
                         <span class="app-menu__label icon">Roles</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="app-menu__item" href="<?= base_url(); ?>/persona">
+                        <span class="fa fa-user fa-2x"></span>
+                        <span class="app-menu__label icon">Personas</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="app-menu__item" href="<?= base_url(); ?>/productor/listado">
+                        <span class="fa fa-user fa-2x"></span>
+                        <span class="app-menu__label icon">Productores</span>
                     </a>
                 </li>
             <?php } ?>
