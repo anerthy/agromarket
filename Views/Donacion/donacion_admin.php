@@ -6,7 +6,7 @@ headerAdmin($data);
     <div class="app-title">
         <div>
             <h1>
-                <a href="<?= base_url(); ?>/Donacion/DonacionAdmin" style="text-decoration: none;">
+                <a href="<?= base_url(); ?>/donacion/DonacionAdmin" style="text-decoration: none;">
                 <i class="fas fa-dollar-sign"></i> <?= $data['page_title'] ?>
                 </a>
 
@@ -16,7 +16,7 @@ headerAdmin($data);
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><a href="<?= base_url(); ?>/dashboard"><i class="fa fa-home fa-lg"></i></a></li>
             <li class="breadcrumb-item"> <a
-                    href="<?= base_url(); ?>/donacion_admin"><?= $data['page_title'] ?></a></li>
+                    href="<?= base_url(); ?>/donacion/DonacionAdmin"><?= $data['page_title'] ?></a></li>
         </ul>
     </div>
 
