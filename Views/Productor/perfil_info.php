@@ -55,7 +55,8 @@
                     <span>+506 2023-2023</span>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
-                    <span class="far fa-envelope me-2"></span>
+           
+                <span class="far fa-envelope me-2"></span>
                     <span>agromarket@gmail.com</span>
                 </div>
             </div>
@@ -111,29 +112,109 @@
         <div class="container">
             <div class="row">
                 <center>
+
+<br>
+<br>
+
+            <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Perfil del Productor</h2>
+                    </div>
+
+<section class="vh-5" style="background-color: #417648;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-10">
+      <div class="col col-lg-6 mb-4 mb-lg-0">
+        <div class="card mb-3" style="border-radius: .5rem;">
+          <div class="row g-0">
+            <div class="col-md-4 gradient-custom text-center text-white"
+              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155" >
+                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+              <i class="far fa-edit mb-5"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body p-4">
+              <?php foreach ($data['arrData'] as $productor): ?>
+                <h6>Información Personal</h6>
+                <hr class="mt-0 mb-4">
+                <div class="row pt-1">
+                  <div class="col-6 mb-3">
+                    <h6>Nombre</h6>
+                    <p class="text-muted"><?php echo $productor['pdt_nombre']; ?></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Dirección</h6>
+                    <p class="text-muted"><?php echo $productor['pdt_ubicacion']; ?></p>
+                  </div>
+                  <div class="col-6 mb-3">
+                    <h6>Teléfono</h6>
+                    <p>8888888</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php endforeach; ?>
+</section>
+
+                <!-- <div class="container mt-5 d-flex justify-content-center">
+
+<div class="card p-3">
+
+    <div class="d-flex align-items-center">
+
+        <div class="image">
+    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155" >
+    </div>
+
+    <div class="ml-3 w-100">
+    <?php foreach ($data['arrData'] as $productor): ?> 
+       <h4 class="mb-0 mt-0"><?php echo $productor['pdt_nombre']; ?></h4>
+       <span><?php echo $productor['pdt_ubicacion']; ?></span>
+
+    </div>
+
+    <?php endforeach; ?>  
+    </div> -->
+    
+</div>
+ 
+</div>
+<!-- 
                     <div class="col-lg-9" style="    margin-top: 100px;">
                         <?php foreach ($data['arrData'] as $productor): ?>
 
                         <div class="container-hero">
                             <div class="info-section-hero">
                                 <div class="info-text-hero">
+                               
+                                <img class="img-fluid rounded" src="<?= media(); ?>/images/misionvision.jpg" alt="Visión">
                                     <h4><?php echo $productor['pdt_nombre']; ?></h4>
                                     <p><?php echo $productor['pdt_ubicacion']; ?></p>
                                 </div>
+                       
                             </div>
                             <div class="image-section-hero">
                                 <img src="<?php echo media() . '/images/uploads/productores/' .$productor['pdt_imagen']; ?>"
                                     alt="">
+
+                                    
                             </div>
                         </div>
 
                         <?php endforeach; ?>
-                    </div>
+                    </div> -->
                 </center>
             </div>
         </div>
     </section>
     <!-- Hero Section End -->
+
     <!-- Featured Section Begin -->
     <section class="featured spad">
         <div class="container">
