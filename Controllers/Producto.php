@@ -14,7 +14,7 @@ class Producto extends Controllers
 
     public function Producto()
     {
-        if (!in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+        if (!in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
             header("Location:" . base_url() . '/access_denied');
             // 	header("Location:" . base_url() . '/dashboard');
         }
@@ -28,7 +28,7 @@ class Producto extends Controllers
 
     public function getProductos()
     {
-        if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+        if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
             $arrData = $this->model->getAll();
 
             for ($i = 0; $i < count($arrData); $i++) {
@@ -63,7 +63,7 @@ class Producto extends Controllers
 
     public function getProducto(int $pro_id)
     {
-        if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+        if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
             $intIdProducto = intval(strClean($pro_id));
             if ($intIdProducto > 0) {
                 $arrData = $this->model->getById($intIdProducto);
@@ -81,7 +81,7 @@ class Producto extends Controllers
 
     public function setProducto()
     {
-        if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+        if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
             $intIdProducto  = intval($_POST['pro_id']);
             $strNombre      = strClean($_POST['txtNombre']);
             $strDescripcion = strClean($_POST['txtDescripcion']);
@@ -161,7 +161,7 @@ class Producto extends Controllers
     public function disProducto()
     {
         if ($_POST) {
-            if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+            if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
                 $intIdProducto = intval($_POST['pro_id']);
                 $requestDelete = $this->model->disableProducto($intIdProducto);
                 if ($requestDelete) {
@@ -178,7 +178,7 @@ class Producto extends Controllers
     public function delProducto()
     {
         if ($_POST) {
-            if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+            if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
                 $intIdProducto = intval($_POST['pro_id']);
                 $requestDelete = $this->model->deleteProducto($intIdProducto);
                 if ($requestDelete) {
