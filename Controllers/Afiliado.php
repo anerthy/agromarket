@@ -15,6 +15,10 @@ class Afiliado extends Controllers
 
     public function Afiliado()
     {
+        if (!in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
+            header("Location:" . base_url() . '/access_denied');
+            // 	header("Location:" . base_url() . '/dashboard');
+        }
         $data['page_id'] = 6;
         $data['page_tag'] = "Afiliados";
         $data['page_name'] = "afiliado";
@@ -28,6 +32,7 @@ class Afiliado extends Controllers
     public function Afiliarse()
     {
         if ($_POST) {
+            // if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3, 4, 5])) {
             $intIdActividad = intval($_POST['alf_id']);
             $request_afiliado = $this->model->CrearAfiliado(
                 $_SESSION['userData']['usr_id']
@@ -38,6 +43,7 @@ class Afiliado extends Controllers
                 $arrResponse = array('status' => false, 'msg' => 'Error al afiliarse');
             }
             echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            // }
         }
         die();
     }

@@ -91,7 +91,7 @@
                     <ul class="list-inline rounded mb-5" id="portfolio-flters">
                         <li class="mx-2 active" data-filter="*">Todas</li>
                         <li class="mx-2" data-filter=".nicoya">Nicoya</li>
-                        <li class="mx-2" data-filter=".santa_cruz">Santa Cruz</li>
+                        <li class="mx-2" data-filter=".santacruz">Santa Cruz</li>
                     </ul>
                 </div>
             </div>

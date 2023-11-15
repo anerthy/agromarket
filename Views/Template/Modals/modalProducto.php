@@ -27,7 +27,10 @@
 
                             <div class="form-group">
                                 <label class="control-label">Categoria</label>
-                                <textarea class="form-control" id="txtCategoria" name="txtCategoria" rows="2" placeholder="Categoria del Producto" required=""></textarea>
+                                <select class="form-control" id="txtCategoria" name="txtCategoria" required="">
+                                    <option value="Fruta">Fruta</option>
+                                    <option value="Verdura">Verdura</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

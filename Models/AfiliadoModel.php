@@ -26,7 +26,7 @@ class AfiliadoModel extends Mysql
         $request = $this->select_all($sql);
 
         if (empty($request)) {
-            $query_insert  = " CALL CrearAfiliado('{$this->intIdUsuario}}');";
+            $query_insert  = "CALL CrearAfiliado('{$this->intIdUsuario}')";
             $request_insert = $this->procedure($query_insert);
             $return = $request_insert;
         } else {

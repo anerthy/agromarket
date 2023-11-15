@@ -27,7 +27,10 @@
 
                             <div class="form-group">
                                 <label class="control-label">Lugar</label>
-                                <input class="form-control" id="txtLugar" name="txtLugar" type="text" placeholder="Lugar de la actividad" required="">
+                                <select class="form-control" id="txtLugar" name="txtLugar" required="">
+                                    <option value="Nicoya">Nicoya</option>
+                                    <option value="SantaCruz">Santa Cruz</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -37,13 +40,13 @@
 
                             <div class="form-group">
                                 <label class="control-label">Fecha</label>
-                               
+
                                 <input class="form-control" id="txtFecha" name="txtFecha" type="date" required="">
                             </div>
 
-  
 
-                            
+
+
 
                             <div class="form-group" id="selectEstado" style="display: none">
                                 <label for="exampleSelect1">Estado</label>
@@ -52,7 +55,7 @@
                                     <option value="Inactivo">Inactivo</option>
                                 </select>
                             </div>
-                            
+
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="photo">

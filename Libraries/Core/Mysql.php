@@ -11,16 +11,17 @@ class Mysql extends Conexion
 		$this->conexion = new Conexion();
 		$this->conexion = $this->conexion->conect();
 	}
-	
+
 	//Ejecuta un procedimiento
 	public function procedure(string $query, array $arrValues = null)
 	{
 		$this->strquery 	= $query;
 		$this->arrValues 	= $arrValues;
-
-		if($arrValues != null){
+		$update = $this->conexion->prepare($this->strquery);
+		
+		if ($arrValues != null) {
 			$resExecute = $update->execute($this->arrValues);
-		}else{
+		} else {
 			$resExecute = $update->execute();
 		}
 		return $resExecute;
@@ -68,9 +69,9 @@ class Mysql extends Conexion
 		$this->arrValues = $arrValues;
 		$update = $this->conexion->prepare($this->strquery);
 
-		if($arrValues != null){
+		if ($arrValues != null) {
 			$resExecute = $update->execute($this->arrValues);
-		}else{
+		} else {
 			$resExecute = $update->execute();
 		}
 		return $resExecute;
