@@ -147,7 +147,7 @@
                                                                 </div>
                                                                 <div class="col-6 mb-3">
                                                                     <h6>Teléfono</h6>
-                                                                    <p>8888888</p>
+                                                                    <p><?php echo $productor['per_telefono']; ?></p>
                                                                 </div>
                                                             </div>
                                                     </div>

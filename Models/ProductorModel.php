@@ -145,14 +145,16 @@ class ProductorModel extends Mysql
 	{
 		$this->intIdUsuario = $id;
 		$sql = "SELECT
-					usr_id, 
-					per_cedula, 
+					productores.usr_id AS usr_id,
+					productores.per_cedula AS per_cedula, 
 					pdt_nombre, 
-					pdt_ubicacion, 
+					pdt_ubicacion,
+					personas.per_telefono AS per_telefono, 
 					pdt_imagen, 
 					pdt_estado
-				FROM productores 
-				WHERE usr_id = '{$this->intIdUsuario}'";
+				FROM productores, personas
+				WHERE usr_id				= '{$this->intIdUsuario}'
+				AND personas.per_cedula = productores.per_cedula";
 		$request = $this->select_all($sql);
 		return $request;
 	}
