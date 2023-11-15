@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-11-2023 a las 06:05:30
+-- Tiempo de generación: 15-11-2023 a las 06:56:57
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -25,6 +25,21 @@ DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `CambiarEstadoProductor`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CambiarEstadoProductor` (IN `p_cedula` VARCHAR(255))   BEGIN
+    DECLARE current_estado VARCHAR(255);
+
+    -- Get the current estado for the provided cedula
+    SELECT pdt_estado INTO current_estado FROM productores WHERE per_cedula = p_cedula;
+
+    -- Update the estado based on the current state
+    IF current_estado = 'Activo' THEN
+        UPDATE productores SET pdt_estado = 'Bloqueado' WHERE per_cedula = p_cedula;
+    ELSE
+        UPDATE productores SET pdt_estado = 'Activo' WHERE per_cedula = p_cedula;
+    END IF;
+END$$
+
 DROP PROCEDURE IF EXISTS `CrearAfiliado`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT)   BEGIN
     DECLARE v_per_cedula VARCHAR(15);
@@ -402,7 +417,7 @@ INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`
 (1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41'),
 (7, '503120432', 'fiorella', 'Brasilito', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-30 04:03:33'),
 (13, '504320123', 'estefany', 'Nicoya', 'img_cbb36fba1e45a3cf0fcadb2ef5b03d96.jpg', 'Activo', '2023-11-15 01:13:32', '2023-11-15 01:13:32'),
-(15, '503020123', 'Luisito', 'Nicoya', 'imageUnavailable.png', 'Activo', '2023-11-15 05:30:01', '2023-11-15 05:30:01');
+(15, '503020123', 'Luisito', 'Nicoya', 'imageUnavailable.png', 'Activo', '2023-11-15 05:30:01', '2023-11-15 06:50:31');
 
 -- --------------------------------------------------------
 
