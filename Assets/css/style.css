@@ -108,6 +108,11 @@
   top: -10px;
   z-index: 10;
 }
+
+     /* Nueva regla CSS para cambiar el color de los iconos a #348E38 */
+.custom-icon-size {
+  font-size: 3rem; /* Ajusta el tamaño del icono según tu preferencia */
+  }
 #tbl_list_productos img {
   width: 50px;
 }
