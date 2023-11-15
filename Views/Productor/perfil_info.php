@@ -263,7 +263,7 @@
 
                 <?php if (count($data['arrDatapro']) > 0) : ?>
                     <?php foreach ($data['arrDatapro'] as $producto) : ?>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix <?= $producto['pro_categoria']; ?> fresh-meat">
                             <div class="featured__item">
                                 <div class="featured__item__pic set-bg" data-setbg="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>">
                                     <ul class="featured__item__pic__hover">

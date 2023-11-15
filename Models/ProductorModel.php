@@ -166,7 +166,7 @@ class ProductorModel extends Mysql
                     pro_id,
                     pro_nombre,
                     pro_descripcion,
-                    pro_categoria,
+                    LOWER(pro_categoria) AS pro_categoria,
                     pro_precio,
                     pro_imagen,
                     pro_estado,
