@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-11-2023 a las 04:10:35
+-- Tiempo de generación: 15-11-2023 a las 05:51:32
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -32,6 +32,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT) 
     DECLARE v_afl_fec_vencimiento TIMESTAMP;
     DECLARE v_afiliado_existente INT;
     DECLARE v_productor_existente INT;
+    DECLARE v_rol_id INT;
 
     -- Verificar si el usuario ya está afiliado
     SELECT COUNT(*) INTO v_afiliado_existente FROM afiliados WHERE usr_id = p_usr_id;
@@ -58,8 +59,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CrearAfiliado` (IN `p_usr_id` INT) 
             -- Insertar el registro en la tabla afiliados
             INSERT INTO afiliados (usr_id, per_cedula, afl_fec_afiliacion, afl_fec_vencimiento, afl_estado)
             VALUES (p_usr_id, v_per_cedula, v_afl_fec_afiliacion, v_afl_fec_vencimiento, 'Activo');
-            -- Se actualiza el rol de ese usuario
-            UPDATE usuarios SET rol_id = 4 WHERE usr_id = p_usr_id;
+            
+            SELECT rol_id INTO v_rol_id FROM usuarios WHERE usr_id = p_usr_id;
+
+            IF v_rol_id IN (3,5) THEN 
+                -- Se actualiza el rol de ese usuario
+            	UPDATE usuarios SET rol_id = 4 WHERE usr_id = p_usr_id;
+            END IF;
+            
             SELECT 'Afiliado insertado correctamente.' AS mensaje;
         ELSE
             SELECT 'El usuario ya está afiliado.' AS mensaje;
@@ -136,7 +143,9 @@ CREATE TABLE IF NOT EXISTS `afiliados` (
 --
 
 INSERT INTO `afiliados` (`usr_id`, `per_cedula`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
-(1, '504460444', '2023-09-28 06:25:32', '2023-11-30 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-23 03:57:11');
+(1, '504460444', '2023-09-28 06:25:32', '2023-11-30 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-23 03:57:11'),
+(13, '504320123', '2023-11-15 04:56:27', '2023-12-15 04:56:27', 'Activo', '2023-11-15 04:56:27', '2023-11-15 04:56:27'),
+(15, '503020123', '2023-11-15 05:46:27', '2023-12-15 05:46:27', 'Inactivo', '2023-11-15 05:46:27', '2023-11-15 05:51:02');
 
 -- --------------------------------------------------------
 
@@ -361,7 +370,8 @@ INSERT INTO `personas` (`per_cedula`, `per_nombre`, `per_apellido1`, `per_apelli
 ('43412341', 'bgt', 'rrrr', 'Gonzalez', 'Correos De Nandayure', '32323232', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05'),
 ('501230123', 'Admin', 'Admin', 'Admin', 'Nicoya', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
 ('503120432', 'Fiorella', 'Bonilla', 'Gonzalez', 'Brasilito', '80808080', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:08'),
-('504320123', 'Estefany Elena', 'Marin', 'Junez', 'Liberia', '87878787', 'Activo', '2023-11-14 05:13:52', '2023-11-14 05:13:52');
+('504320123', 'Estefany Elena', 'Marin', 'Junez', 'Liberia', '87878787', 'Activo', '2023-11-14 05:13:52', '2023-11-14 05:13:52'),
+('503020123', 'Luis', 'Mora', 'Macherna', 'Nicoya', '32323232', 'Activo', '2023-11-15 05:28:48', '2023-11-15 05:28:48');
 
 -- --------------------------------------------------------
 
@@ -391,7 +401,8 @@ CREATE TABLE IF NOT EXISTS `productores` (
 INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`, `pdt_imagen`, `pdt_estado`, `pdt_fec_creacion`, `pdt_fec_modificacion`) VALUES
 (1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41'),
 (7, '503120432', 'fiorella', 'Brasilito', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-30 04:03:33'),
-(13, '504320123', 'estefany', 'Nicoya', 'img_cbb36fba1e45a3cf0fcadb2ef5b03d96.jpg', 'Activo', '2023-11-15 01:13:32', '2023-11-15 01:13:32');
+(13, '504320123', 'estefany', 'Nicoya', 'img_cbb36fba1e45a3cf0fcadb2ef5b03d96.jpg', 'Activo', '2023-11-15 01:13:32', '2023-11-15 01:13:32'),
+(15, '503020123', 'Luisito', 'Nicoya', 'imageUnavailable.png', 'Activo', '2023-11-15 05:30:01', '2023-11-15 05:30:01');
 
 -- --------------------------------------------------------
 
@@ -431,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `pro_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pro_id`),
   KEY `usr_id` (`usr_id`,`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -450,7 +461,9 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 (4, 1, '504460444', 'Tomates', 'tomates frescos de la huerta de melany', 'Verdura', '800.00', 'img_fc6cc214fabeff8687f323148cd95189.jpg', 'Activo', '2023-09-22 00:21:19', '2023-10-23 03:47:03'),
 (1, 1, '504460444', 'Maracuya', 'Maracuya', 'Fruta', '500.00', 'img_07ccd6237ea14c35608032b1cd3d8d6f.jpg', 'Activo', '2023-09-20 21:50:15', '2023-10-23 03:47:03'),
 (27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03'),
-(29, 9, '504400644', 'prueba', 'prueba', 'Frutas', '200.00', 'imageUnavailable.png', 'Activo', '2023-11-13 03:29:56', '2023-11-13 03:29:56');
+(29, 9, '504400644', 'prueba', 'prueba', 'Frutas', '200.00', 'imageUnavailable.png', 'Activo', '2023-11-13 03:29:56', '2023-11-13 03:29:56'),
+(30, 13, '504320123', 'Piña', 'Piña', 'Fruta', '1500.00', 'img_6d44967d338d82f41aba2ad7930e9a33.jpg', 'Activo', '2023-11-15 04:32:02', '2023-11-15 04:32:02'),
+(31, 15, '503020123', 'UVA', 'hh', 'hhh', '0.00', 'imageUnavailable.png', 'Activo', '2023-11-15 05:42:41', '2023-11-15 05:42:41');
 
 -- --------------------------------------------------------
 
@@ -497,7 +510,8 @@ INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`, `rol_estado`, `r
 (1, 'sa', 'super-administrador', 'Activo', '2023-09-19 05:12:59', '2023-09-19 05:13:10'),
 (2, 'Desarrollador', 'Rol de desarrollador', 'Activo', '2023-09-19 05:12:59', '2023-09-19 05:13:10'),
 (3, 'Cliente', 'Cliente', 'Activo', '2023-09-20 01:05:52', '2023-11-12 23:42:02'),
-(4, 'Afiliado', 'Afiliado', 'Activo', '2023-09-20 01:09:09', '2023-11-12 23:42:14');
+(4, 'Afiliado', 'Afiliado', 'Activo', '2023-09-20 01:09:09', '2023-11-12 23:42:14'),
+(5, 'Productor', 'Productor', 'Activo', '2023-09-20 01:09:09', '2023-11-12 23:42:14');
 
 -- --------------------------------------------------------
 
@@ -520,7 +534,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`usr_id`),
   KEY `rol_id` (`rol_id`),
   KEY `per_cedula` (`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -532,8 +546,8 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
 (9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-13 00:44:20'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24'),
-(12, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '43412341', 'Activo', '2023-11-14 05:07:05', '2023-11-14 05:07:05'),
-(13, 'estefany.marin@crccoding.com', 'estefany', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 4, '504320123', 'Activo', '2023-11-14 05:13:52', '2023-11-15 04:01:41');
+(15, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 4, '503020123', 'Activo', '2023-11-15 05:28:48', '2023-11-15 05:46:27'),
+(13, 'estefany.marin@crccoding.com', 'estefany', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 5, '504320123', 'Activo', '2023-11-14 05:13:52', '2023-11-15 05:04:18');
 
 -- --------------------------------------------------------
 
@@ -543,7 +557,7 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 DROP TABLE IF EXISTS `productores_afiliados`;
 
 DROP VIEW IF EXISTS `productores_afiliados`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `productores_afiliados`  AS SELECT `pdt`.`usr_id` AS `usr_id`, `pdt`.`per_cedula` AS `per_cedula`, `pdt`.`pdt_nombre` AS `pdt_nombre`, `pdt`.`pdt_ubicacion` AS `pdt_ubicacion`, `pdt`.`pdt_imagen` AS `pdt_imagen`, `pdt`.`pdt_fec_creacion` AS `pdt_fec_creacion`, `pdt`.`pdt_fec_modificacion` AS `pdt_fec_modificacion` FROM (`productores` `pdt` join `afiliados` `afl`) WHERE ((`pdt`.`usr_id` = `afl`.`usr_id`) AND (`pdt`.`per_cedula` = `afl`.`per_cedula`) AND (`afl`.`afl_fec_vencimiento` > curdate()) AND (`pdt`.`pdt_estado` = 'Activo'))  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `productores_afiliados`  AS SELECT `pdt`.`usr_id` AS `usr_id`, `pdt`.`per_cedula` AS `per_cedula`, `pdt`.`pdt_nombre` AS `pdt_nombre`, `pdt`.`pdt_ubicacion` AS `pdt_ubicacion`, `pdt`.`pdt_imagen` AS `pdt_imagen`, `pdt`.`pdt_fec_creacion` AS `pdt_fec_creacion`, `pdt`.`pdt_fec_modificacion` AS `pdt_fec_modificacion` FROM (`productores` `pdt` join `afiliados` `afl`) WHERE ((`pdt`.`usr_id` = `afl`.`usr_id`) AND (`pdt`.`per_cedula` = `afl`.`per_cedula`) AND (`afl`.`afl_fec_vencimiento` > curdate()) AND (`pdt`.`pdt_estado` = 'Activo') AND (`afl`.`afl_estado` = 'Activo'))  ;
 
 -- --------------------------------------------------------
 

@@ -15,7 +15,7 @@ class Afiliado extends Controllers
 
     public function Afiliado()
     {
-        if (!in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
+        if (!in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) {
             header("Location:" . base_url() . '/access_denied');
             // 	header("Location:" . base_url() . '/dashboard');
         }
@@ -32,18 +32,18 @@ class Afiliado extends Controllers
     public function Afiliarse()
     {
         if ($_POST) {
-            if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) {
-                $intIdActividad = intval($_POST['alf_id']);
-                $request_afiliado = $this->model->CrearAfiliado(
-                    $_SESSION['userData']['usr_id']
-                );
-                if ($request_afiliado) {
-                    $arrResponse = array('status' => true, 'msg' => 'Se ha afiliado');
-                } else {
-                    $arrResponse = array('status' => false, 'msg' => 'Error al afiliarse');
-                }
-                echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            // if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3, 4, 5])) {
+            $intIdActividad = intval($_POST['alf_id']);
+            $request_afiliado = $this->model->CrearAfiliado(
+                $_SESSION['userData']['usr_id']
+            );
+            if ($request_afiliado) {
+                $arrResponse = array('status' => true, 'msg' => 'Se ha afiliado');
+            } else {
+                $arrResponse = array('status' => false, 'msg' => 'Error al afiliarse');
             }
+            echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            // }
         }
         die();
     }
