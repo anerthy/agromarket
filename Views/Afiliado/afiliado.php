@@ -35,7 +35,7 @@ $datAfiliado =  $data['dat_afiliado'];
                         <p class="mt-3">En AgroMarket hemos desarrollado un plan premium diseñado para potenciar al máximo tus ventajas en nuestra plataforma.
                             Te invitamos a aprovechar esta oportunidad y descubrir todas las ventajas que tenemos reservadas para ti por un costo mensual.
                         </p>
-                        <button id="btn-afiliarse" class="btn btn-success mt-3" onClick="fntAfiliarse(1)">Solicitar Afiliación</button>
+                        <button id="btn-afiliarse" class="btn btn-success mt-3" onClick="fntAfiliarse(<?php echo $_SESSION['userData']['usr_id']; ?>)">Solicitar Afiliación</button>
                     </section>
                 <?php } else { ?>
                     <section class="ver-afiliacion">
