@@ -136,6 +136,36 @@
     <!-- Afiliarse fin-->
 
 
+ <!-- CAROUSEL -->
+ <div class="container-fluid product py-5 my-5">
+        <div class="container py-5">
+            <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h1 class="display-6">Productos Destacados</h1>
+            </div>
+            <div class="owl-carousel owl-theme product-carousel wow fadeInUp" data-wow-delay="0.5s">
+                <?php foreach ($data['productos_premium'] as $producto) : ?>
+                <div data-wow-delay="0.5s">
+                    <div class="service-item rounded d-flex h-100" style="margin-right: 20px; margin-bottom: 20px;">
+                        <div class="service-img rounded">
+                            <img class="img-fluid"
+                                src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="">
+                        </div>
+                        <div class="service-text rounded p-5">
+                            <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
+                            <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
+                            <a class="btn btn-sm"
+                                href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $producto['pro_id']; ?>"><i
+                                    class="fa fa-eye text-primary me-2"></i>Ver más</a>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <!-- END CAROUSEL -->
+
+
     <!-- QUIENES COMO Y QUE HACEMOS -->
     <br>
     <br>
@@ -297,36 +327,6 @@
         </div>
     </div>
     <!-- Misión y visión End -->
-
-
-    <!-- CAROUSEL -->
-    <div class="container-fluid product py-5 my-5">
-        <div class="container py-5">
-            <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <h1 class="display-6">Productos Destacados</h1>
-            </div>
-            <div class="owl-carousel owl-theme product-carousel wow fadeInUp" data-wow-delay="0.5s">
-                <?php foreach ($data['productos_premium'] as $producto) : ?>
-                <div data-wow-delay="0.5s">
-                    <div class="service-item rounded d-flex h-100" style="margin-right: 20px; margin-bottom: 20px;">
-                        <div class="service-img rounded">
-                            <img class="img-fluid"
-                                src="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>" alt="">
-                        </div>
-                        <div class="service-text rounded p-5">
-                            <h4 class="mb-3"><?php echo $producto['pro_nombre']; ?></h4>
-                            <p class="mb-4">$ <?php echo $producto['pro_precio']; ?></p>
-                            <a class="btn btn-sm"
-                                href="<?= base_url(); ?>/home/DetallesProducto/<?php echo $producto['pro_id']; ?>"><i
-                                    class="fa fa-eye text-primary me-2"></i>Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-    <!-- END CAROUSEL -->
 
 
 
