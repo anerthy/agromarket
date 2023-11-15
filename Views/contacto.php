@@ -23,9 +23,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap Icons v1.5.0 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.0.0/css/all.min.css" />
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
     <!-- Libraries Stylesheet -->
     <link href="lib/animate/animate.min.css" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
@@ -45,6 +45,7 @@
 
     <!-- Template Stylesheet -->
     <link href="<?= media(); ?>/css/plantilla/style.css" rel="stylesheet">
+    
 </head>
 
 
@@ -74,10 +75,11 @@
             </div>
 
             <div class="row g-5 mb-5">
-                <!-- Sección de correo electrónico -->
-                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="mx-auto mb-3">
-                        <i class="bi bi-phone-fill fa-2x text-white"></i>
+             <!-- Sección de correo electrónico -->
+             <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="mx-auto mb-3 icon-bg">
+                        <!-- Utilizando icono de sobre de Font Awesome -->
+                        <i class="fa fa-envelope fa-2x text-white"></i>
                     </div>
                     <p class="mb-2"><b>Correo electrónico</b></p>
                     <a href="mailto:agrolajascostarica@gmail.com">
@@ -87,8 +89,9 @@
 
                 <!-- Sección de número de teléfono -->
                 <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="mx-auto mb-3">
-                        <i class="bi bi-phone-fill fa-2x text-white"></i>
+                    <div class="mx-auto mb-3 icon-bg">
+                        <!-- Utilizando icono de teléfono de Font Awesome -->
+                        <i class="fa fa-phone fa-2x text-white"></i>
                     </div>
                     <p class="mb-2"><b>Número de teléfono</b></p>
                     <a href="tel:+50689888893">
@@ -98,8 +101,9 @@
 
                 <!-- Sección de dirección -->
                 <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="mx-auto mb-3">
-                        <i class="bi bi-map-fill fa-2x text-white"></i>
+                    <div class="mx-auto mb-3 icon-bg">
+                        <!-- Utilizando icono de mapa de Font Awesome -->
+                        <i class="fa fa-map-marker-alt fa-2x text-white"></i>
                     </div>
                     <p class="mb-2"><b>Dirección</b></p>
                     <p class="mb-0">
@@ -107,6 +111,7 @@
                     </p>
                 </div>
             </div>
+
 
             <!-- Resto del contenido -->
         </div>
