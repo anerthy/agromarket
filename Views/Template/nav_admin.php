@@ -6,9 +6,9 @@
 
 
 
-            <a class="app-menu__item">
+            <a class="app-menu__item" href="<?= base_url(); ?>/productor">
                 <span class="fa fa-user  fa-2x" style="margin-right: 5px;"></span>
-                <span><?= $_SESSION['userData']['usr_nombre']; ?></span>
+                <span><?= $_SESSION['userData']['usr_nombre']; ?> (<?= $_SESSION['userData']['rol_nombre']; ?> )</span>
             </a>
 
         </div>
@@ -34,7 +34,7 @@
                     </a>
                 </li>
             <?php } ?>
-            <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) { ?>
+            <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
                 <li>
                     <a class="app-menu__item" href="<?= base_url(); ?>/producto">
                         <span class="fa fa-carrot fa-2x"></span>
@@ -62,20 +62,18 @@
                     </a>
                 </li>
             <?php } ?>
-            <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3, 4])) { ?>
+            <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3])) { ?>
                 <li>
-                    <a class="app-menu__item" href="<?= base_url(); ?>/productor">
+                    <a class="app-menu__item" href="<?= base_url(); ?>/Productor/productorform">
                         <span class="fa fa-user fa-2x" title="Volverme productor"></span>
                         <span class="app-menu__label icon">
-                            <?php if (1 == 1) { ?>
-                                Volverme productor
-                            <?php } else { ?>
-                                Perfil de productor
-                            <?php } ?>
+                            Volverme productor
                         </span>
                     </a>
                 </li>
-                <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) { ?>
+            <?php } ?>
+            <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
+                <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
                     <li>
                         <a class="app-menu__item" href="<?= base_url(); ?>/afiliado">
                             <span class="fa fa-user-plus fa-2x" title="Plan Premium"></span>

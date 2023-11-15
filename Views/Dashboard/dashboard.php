@@ -53,7 +53,7 @@ headerAdmin($data);
           </div>
         </div>
       <?php } ?>
-      <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3, 4])) { ?>
+      <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3, 4, 5])) { ?>
         <?php if ($data['existe_productor'][0]['EXISTE'] != 0) { ?>
           <!-- PRODUCTORES -->
           <div class="col-md-6 col-lg-3">
@@ -69,7 +69,7 @@ headerAdmin($data);
     <!-- FIN DE FILA UNO -->
     <!-- INICIO FILA DOS -->
     <div class="row">
-      <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) { ?>
+      <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
         <!-- Productos -->
         <div class="col-md-6 col-lg-3">
           <div class="widget-small danger coloured-icon" style="  box-shadow: rgba(7, 7, 7, 0.1) 11px 9px 0px 0px;"><i class="icon fa fa-carrot fa-3x"></i>
@@ -116,7 +116,7 @@ headerAdmin($data);
       <?php } ?>
     </div>
     <!-- FIN DE FILA DOS -->
-    <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4])) { ?>
+    <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
       <!-- INICIO FILA TRES -->
       <div class="row">
         <!-- AFILIACION -->
