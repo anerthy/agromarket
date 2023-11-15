@@ -52,6 +52,14 @@ headerAdmin($data);
             </div>
           </div>
         </div>
+        <!-- PRODUCTORES -->
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small primary coloured-icon"><i class="icon fa fa-users"></i>
+            <div class="info">
+              <h4><a href="<?= base_url(); ?>/productor/listado">Productores</a></h4>
+            </div>
+          </div>
+        </div>
       <?php } ?>
       <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 3, 4, 5])) { ?>
         <?php if ($data['existe_productor'][0]['EXISTE'] != 0) { ?>
