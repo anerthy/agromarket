@@ -155,8 +155,20 @@ class ProductorModel extends Mysql
 		return $request;
 	}
 
-
-
+	public function getAll()
+	{
+		$sql = "SELECT
+					productores.per_cedula,
+					pdt_nombre AS pdt_nom_productor,
+					CONCAT(personas.per_nombre,' ',personas.per_apellido1,' ',per_apellido2) AS pdt_nom_completo,
+					pdt_ubicacion,
+					personas.per_telefono,
+					pdt_estado
+				FROM productores, personas
+				WHERE productores.per_cedula = personas.per_cedula";
+		$request = $this->select_all($sql);
+		return $request;
+	}
 
 	public function getProductorInfo(int $id)
 	{
@@ -191,6 +203,15 @@ class ProductorModel extends Mysql
                 FROM productos
 				WHERE usr_id = '{$this->intId}'";
 		$request = $this->select_all($sql);
+		return $request;
+	}
+
+	public function disableProductor(string $cedula)
+	{
+		$this->strCedula = $cedula;
+		$sql = "CALL CambiarEstadoProductor('{$this->strCedula}')";
+		$request = $this->procedure($sql);
+
 		return $request;
 	}
 }

@@ -25,6 +25,19 @@ class Productor extends Controllers
         $this->views->getView($this, "productor", $data);
     }
 
+    public function listado()
+    {
+        if (!in_array($_SESSION['userData']['rol_id'], [1, 2])) {
+            header("Location:" . base_url() . '/access_denied');
+            // 	header("Location:" . base_url() . '/dashboard');
+        }
+        $data['page_tag'] = "Productores";
+        $data['page_name'] = "Productores";
+        $data['page_title'] = "Productores";
+        $data['page_functions_js'] = "functions_productores.js";
+        $this->views->getView($this, "productores", $data);
+    }
+
     public function ProductorForm()
     {
         // Resto del código para cargar la vista del formulario aquí
@@ -35,8 +48,38 @@ class Productor extends Controllers
         $this->views->getView($this, "productorform", $data);
     }
 
+    public function getAll()
+    {
+        if (in_array($_SESSION['userData']['rol_id'], [1, 2])) {
+            $arrData = $this->model->getAll();
 
+            for ($i = 0; $i < count($arrData); $i++) {
+                $btnView = '';
+                $btnEdit = '';
+                $btnDisable = '';
 
+                $btnDisable = '<button class="btn btn-danger btn-sm fntDisProductor" onClick="fntDisProductor(' . $arrData[$i]['per_cedula'] . ')" title="Eliminar"><i class="fa fa-gear"></i></button>';
+
+                $arrData[$i]['options'] = '<div class="text-center">' . $btnView . ' ' . $btnEdit . ' ' . $btnDisable . '</div>';
+
+                switch ($arrData[$i]['pdt_estado']) {
+                    case 'Activo':
+                        $arrData[$i]['pdt_estado'] = '<span class="badge badge-info">Activo</span>';
+                        break;
+                    case 'Inactivo':
+                        $arrData[$i]['pdt_estado'] = '<span class="badge badge-danger">Inactivo</span>';
+                        break;
+                    case 'Bloqueado':
+                        $arrData[$i]['pdt_estado'] = '<span class="badge badge-dark">Bloqueado</span>';
+                        break;
+                    default:
+                        // do something else
+                }
+            }
+            echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
+        }
+        die();
+    }
 
     // sin params como se obtienen los datos de la SESSION
     public function getProductor(/*int $usuario, string $cedula*/)
@@ -48,7 +91,7 @@ class Productor extends Controllers
         if (empty($arrData)) {
             $arrResponse = array('status' => false, 'msg' => 'Datos no encontrados.');
         } else {
-             $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
+            $arrData['pdt_imagen'] = media() . '/images/uploads/productores/' . $arrData['pdt_imagen'];
 
             $arrResponse = array('status' => true, 'data' => $arrData);
         }
@@ -92,6 +135,23 @@ class Productor extends Controllers
             $arrResponse = array("status" => false, "msg" => 'No es posible almacenar los datos.');
         }
         echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+        die();
+    }
+
+    public function disProductor()
+    {
+        if ($_POST) {
+            if (in_array($_SESSION['userData']['rol_id'], [1, 2])) {
+                $strCedula = intval($_POST['per_cedula']);
+                $requestDelete = $this->model->disableProductor($strCedula);
+                if ($requestDelete) {
+                    $arrResponse = array('status' => true, 'msg' => 'Se ha modificado al productor.');
+                } else {
+                    $arrResponse = array('status' => false, 'msg' => 'Error al modificar.');
+                }
+                echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+            }
+        }
         die();
     }
 }
