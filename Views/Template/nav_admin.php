@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="app-menu__item" href="<?= base_url(); ?>/donacion">
+                    <a class="app-menu__item" href="<?= base_url(); ?>/donacion/DonacionAdmin">
                         <span class="fa fa-money fa-2x"></span>
                         <span class="app-menu__label icon">Donaciones</span>
                     </a>
