@@ -39,8 +39,7 @@
     <!-- NAVBAR -->
 
     <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
     </div>
     <!-- Spinner End -->
@@ -55,8 +54,8 @@
                     <span>+506 2023-2023</span>
                 </div>
                 <div class="h-100 d-inline-flex align-items-center">
-           
-                <span class="far fa-envelope me-2"></span>
+
+                    <span class="far fa-envelope me-2"></span>
                     <span>agromarket@gmail.com</span>
                 </div>
             </div>
@@ -86,9 +85,9 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="<?= base_url(); ?>/" class="nav-item nav-link active">Inicio</a>
+                <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Sobre Nosotros</a>
                 <div class="nav-item dropdown">
-                    <a href="<?= base_url(); ?>/home/productos" class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown">Productos</a>
+                    <a href="<?= base_url(); ?>/home/productos" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Mercado</a>
                     <div class="dropdown-menu bg-light m-0">
                         <a href="<?= base_url(); ?>/home/productos" class="dropdown-item">Productos</a>
                         <a href="<?= base_url(); ?>/home/productor" class="dropdown-item">Productores</a>
@@ -96,7 +95,7 @@
                 </div>
                 <!-- <a href="<?= base_url(); ?>/home/Productor" class="nav-item nav-link">Productores</a> -->
                 <a href="<?= base_url(); ?>/home/Actividad" class="nav-item nav-link">Actividades</a>
-                <a href="<?= base_url(); ?>/home/about_us" class="nav-item nav-link">Sobre Nosotros</a>
+                <a href="<?= base_url(); ?>/home/contacto" class="nav-item nav-link">Contacto</a>
             </div>
             <a href="<?= base_url(); ?>/login" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">Iniciar
                 sesión<i class="fa fa-arrow-right ms-3"></i></a>
@@ -113,56 +112,55 @@
             <div class="row">
                 <center>
 
-<br>
-<br>
+                    <br>
+                    <br>
 
-            <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Perfil del Productor</h2>
-                    </div>
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Perfil del Productor</h2>
+                        </div>
 
-<section class="vh-5" style="background-color: #417648;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-10">
-      <div class="col col-lg-6 mb-4 mb-lg-0">
-        <div class="card mb-3" style="border-radius: .5rem;">
-          <div class="row g-0">
-            <div class="col-md-4 gradient-custom text-center text-white"
-              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-              <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155" >
-                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
-              <i class="far fa-edit mb-5"></i>
-            </div>
-            <div class="col-md-8">
-              <div class="card-body p-4">
-              <?php foreach ($data['arrData'] as $productor): ?>
-                <h6>Información Personal</h6>
-                <hr class="mt-0 mb-4">
-                <div class="row pt-1">
-                  <div class="col-6 mb-3">
-                    <h6>Nombre</h6>
-                    <p class="text-muted"><?php echo $productor['pdt_nombre']; ?></p>
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>Dirección</h6>
-                    <p class="text-muted"><?php echo $productor['pdt_ubicacion']; ?></p>
-                  </div>
-                  <div class="col-6 mb-3">
-                    <h6>Teléfono</h6>
-                    <p>8888888</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php endforeach; ?>
-</section>
+                        <section class="vh-5" style="background-color: #417648;">
+                            <div class="container py-5 h-100">
+                                <div class="row d-flex justify-content-center align-items-center h-10">
+                                    <div class="col col-lg-6 mb-4 mb-lg-0">
+                                        <div class="card mb-3" style="border-radius: .5rem;">
+                                            <div class="row g-0">
+                                                <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                                                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155">
+                                                    alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                                                    <i class="far fa-edit mb-5"></i>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body p-4">
+                                                        <?php foreach ($data['arrData'] as $productor) : ?>
+                                                            <h6>Información Personal</h6>
+                                                            <hr class="mt-0 mb-4">
+                                                            <div class="row pt-1">
+                                                                <div class="col-6 mb-3">
+                                                                    <h6>Nombre</h6>
+                                                                    <p class="text-muted"><?php echo $productor['pdt_nombre']; ?></p>
+                                                                </div>
+                                                                <div class="col-6 mb-3">
+                                                                    <h6>Dirección</h6>
+                                                                    <p class="text-muted"><?php echo $productor['pdt_ubicacion']; ?></p>
+                                                                </div>
+                                                                <div class="col-6 mb-3">
+                                                                    <h6>Teléfono</h6>
+                                                                    <p><?php echo $productor['per_telefono']; ?></p>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                        </section>
 
-                <!-- <div class="container mt-5 d-flex justify-content-center">
+                        <!-- <div class="container mt-5 d-flex justify-content-center">
 
 <div class="card p-3">
 
@@ -173,7 +171,7 @@
     </div>
 
     <div class="ml-3 w-100">
-    <?php foreach ($data['arrData'] as $productor): ?> 
+    <?php foreach ($data['arrData'] as $productor) : ?> 
        <h4 class="mb-0 mt-0"><?php echo $productor['pdt_nombre']; ?></h4>
        <span><?php echo $productor['pdt_ubicacion']; ?></span>
 
@@ -181,13 +179,13 @@
 
     <?php endforeach; ?>  
     </div> -->
-    
-</div>
- 
-</div>
-<!-- 
+
+                    </div>
+
+            </div>
+            <!-- 
                     <div class="col-lg-9" style="    margin-top: 100px;">
-                        <?php foreach ($data['arrData'] as $productor): ?>
+                        <?php foreach ($data['arrData'] as $productor) : ?>
 
                         <div class="container-hero">
                             <div class="info-section-hero">
@@ -200,7 +198,7 @@
                        
                             </div>
                             <div class="image-section-hero">
-                                <img src="<?php echo media() . '/images/uploads/productores/' .$productor['pdt_imagen']; ?>"
+                                <img src="<?php echo media() . '/images/uploads/productores/' . $productor['pdt_imagen']; ?>"
                                     alt="">
 
                                     
@@ -209,8 +207,8 @@
 
                         <?php endforeach; ?>
                     </div> -->
-                </center>
-            </div>
+            </center>
+        </div>
         </div>
     </section>
     <!-- Hero Section End -->
@@ -221,7 +219,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Featured Product</h2>
+                        <h2>Productos</h2>
                     </div>
                     <div class="row wow fadeInUp" data-wow-delay="0.3s">
                         <div class="col-12 text-center">
@@ -236,62 +234,60 @@
                 </div>
             </div>
             <style>
-            /* Estilos para el botón */
-            button {
-                background-color: #7fad39;
-                /* Color de fondo */
-                color: white;
-                /* Color del texto */
-                border: none;
-                /* Quita el borde */
-                padding: 10px 20px;
-                /* Espaciado interno */
-                border-radius: 5px;
-                /* Bordes redondeados */
-                cursor: pointer;
-                /* Cambia el cursor al pasar por encima */
-                font-size: 16px;
-                /* Tamaño del texto */
-            }
+                /* Estilos para el botón */
+                button {
+                    background-color: #7fad39;
+                    /* Color de fondo */
+                    color: white;
+                    /* Color del texto */
+                    border: none;
+                    /* Quita el borde */
+                    padding: 10px 20px;
+                    /* Espaciado interno */
+                    border-radius: 5px;
+                    /* Bordes redondeados */
+                    cursor: pointer;
+                    /* Cambia el cursor al pasar por encima */
+                    font-size: 16px;
+                    /* Tamaño del texto */
+                }
 
-            /* Estilos cuando el cursor está sobre el botón */
-            button:hover {
-                background-color: #8ea964;
-                /* Cambia el color de fondo al pasar el cursor */
-            }
+                /* Estilos cuando el cursor está sobre el botón */
+                button:hover {
+                    background-color: #8ea964;
+                    /* Cambia el color de fondo al pasar el cursor */
+                }
             </style>
             <div class="row featured__filter">
 
 
-                <?php if (count($data['arrDatapro']) > 0): ?>
-                <?php foreach ($data['arrDatapro'] as $producto): ?>
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg"
-                            data-setbg="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>">
-                            <ul class="featured__item__pic__hover">
-                                <button class="ver-detalles-button"
-                                    onclick="redirectToDetails(<?= $producto['pro_id']; ?>)">Ver detalles</button>
+                <?php if (count($data['arrDatapro']) > 0) : ?>
+                    <?php foreach ($data['arrDatapro'] as $producto) : ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mix <?= $producto['pro_categoria']; ?> fresh-meat">
+                            <div class="featured__item">
+                                <div class="featured__item__pic set-bg" data-setbg="<?= media() . '/images/uploads/productos/' . $producto['pro_imagen']; ?>">
+                                    <ul class="featured__item__pic__hover">
+                                        <button class="ver-detalles-button" onclick="redirectToDetails(<?= $producto['pro_id']; ?>)">Ver detalles</button>
 
-                                <script>
-                                function redirectToDetails(productId) {
-                                    window.location.href = "<?= base_url(); ?>/home/DetallesProducto/" + productId;
-                                }
-                                </script>
+                                        <script>
+                                            function redirectToDetails(productId) {
+                                                window.location.href = "<?= base_url(); ?>/home/DetallesProducto/" + productId;
+                                            }
+                                        </script>
 
-                            </ul>
+                                    </ul>
+                                </div>
+                                <div class="featured__item__text">
+                                    <h6><?= $producto['pro_nombre']; ?></h6>
+                                    <h5>$<?= $producto['pro_precio']; ?></h5>
+                                </div>
+                            </div>
                         </div>
-                        <div class="featured__item__text">
-                            <h6><?= $producto['pro_nombre']; ?></h6>
-                            <h5>$<?= $producto['pro_precio']; ?></h5>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-                <?php else: ?>
-                <center>
-                    <p>No hay productos...</p>
-                </center>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <center>
+                        <p>No hay productos...</p>
+                    </center>
                 <?php endif; ?>
 
 

@@ -14,6 +14,7 @@ $data['anuncio_principal'] = $request;
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,9 +49,11 @@ $data['anuncio_principal'] = $request;
 
     .owl-item img {
       width: 100%;
-      height: auto; /* Cambiado de 100% a auto */
+      height: auto;
+      /* Cambiado de 100% a auto */
       object-fit: cover;
-      border-radius: 8px; /* Puedes ajustar el radio de borde según tu preferencia */
+      border-radius: 8px;
+      /* Puedes ajustar el radio de borde según tu preferencia */
     }
 
     .owl-item .shadow-sm {
@@ -69,50 +72,52 @@ $data['anuncio_principal'] = $request;
     }
   </style>
 </head>
+
 <body>
 
-<!-- Anuncios Start -->
-<div class="container-fluid product py-5 my-5">
-  <div class="container py-5">
-    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-      <h1 class="display-6">Anuncios</h1>
-    </div>
-    <div class="owl-carousel owl-theme product-carousel wow fadeInUp" data-wow-delay="0.5s">
+  <!-- Anuncios Start -->
+  <div class="container-fluid product py-5 my-5">
+    <div class="container py-5">
+      <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+        <!-- <h1 class="display-6">Anuncios</h1> -->
+      </div>
+      <div class="owl-carousel owl-theme product-carousel wow fadeInUp" data-wow-delay="0.5s">
 
-      <?php foreach ($data['anuncio_principal'] as $anuncio) : ?>
-        <!-- <a href="<?php echo $anuncio['url']; ?>" class="d-block product-item rounded"> -->
+        <?php foreach ($data['anuncio_principal'] as $anuncio) : ?>
+          <!-- <a href="<?php echo $anuncio['url']; ?>" class="d-block product-item rounded"> -->
           <img src="<?= media(); ?>/images/uploads/anuncio/<?php echo $anuncio['anu_imagen']; ?>" alt="<?php echo $anuncio['anu_descripcion']; ?>" title="<?php echo $anuncio['anu_descripcion']; ?>">
-        <!-- </a> -->
-      <?php endforeach; ?>
+          <!-- </a> -->
+        <?php endforeach; ?>
 
+      </div>
     </div>
   </div>
-</div>
-<!-- Anuncios End -->
+  <!-- Anuncios End -->
 
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
-<script>
-  $(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-      items: 3,
-      loop: true,
-      margin: 10,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      responsive: {
-        0: {
-          items: 1
-        },
-        768: {
-          items: 3
+  <script>
+    $(document).ready(function() {
+      $('.owl-carousel').owlCarousel({
+        items: 3,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        responsive: {
+          0: {
+            items: 1
+          },
+          768: {
+            items: 3
+          }
         }
-      }
+      });
     });
-  });
-</script>
+  </script>
 
 </body>
+
 </html>
