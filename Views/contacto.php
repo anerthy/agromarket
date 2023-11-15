@@ -81,14 +81,9 @@
                     Para cualquier consulta, estamos a tu disposición
                 </h1>
             </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-            <div class="row g-5 mb-5">
+
+            <div class="row g-5 mb-5 mt-5">
              <!-- Sección de correo electrónico -->
              <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
                     <div class="mx-auto mb-3 icon-bg">
