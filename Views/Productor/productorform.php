@@ -152,46 +152,59 @@
             <center>
                 <h2 class="letra" style="font-size: 30px;">Registro de productor</h2>
             </center>
-            <form id="formProductor" name="formProductor">
-                <input type="hidden" id="foto_actual" name="foto_actual" value="">
-                <input type="hidden" id="foto_remove" name="foto_remove" value="0">
-                <div class="form-group">
-                    <label class="letra" for="txtNombre">Nombre:</label>
-                    <input type="text" id="txtNombre" name="txtNombre" required>
-                </div>
-                <div class="form-group">
-                    <label class="letra" for="txtUbicacion">Ubicación:</label>
-                    <input type="text" id="txtUbicacion" name="txtUbicacion" required>
-                </div>
+            <form id="formProductor" name="formProductor" action="<?= base_url(); ?>/Productor/procesar" method="POST">
+        <input type="hidden" id="foto_actual" name="foto_actual" value="">
+        <input type="hidden" id="foto_remove" name="foto_remove" value="0">
+        <div class="form-group">
+            <label class="letra" for="txtNombre">Nombre:</label>
+            <input type="text" id="txtNombre" name="txtNombre" required>
+        </div>
+        <div class="form-group">
+            <label class="letra" for="txtUbicacion">Ubicación:</label>
+            <input type="text" id="txtUbicacion" name="txtUbicacion" required>
+        </div>
 
-                <div class="form-row">
-                    <div class="col-md-6">
-                        <div class="photo">
-                            <label for="foto">Imagen</label>
-                            <div class="prevPhoto">
-                                <span class="delPhoto notBlock">X</span>
-                                <label for="foto"></label>
-                                <div>
-                                    <img id="img" src="<?= media(); ?>/images/uploads/imageUnavailable.png"
-                                        style="width: 400px;">
-                                </div>
-                            </div>
-                            <div class="upimg">
-                                <input type="file" name="foto" id="foto">
-                            </div>
-                            <div id="form_alert"></div>
+        <div class="form-row">
+            <div class="col-md-6">
+                <div class="photo">
+                    <label for="foto">Imagen</label>
+                    <div class="prevPhoto">
+                        <span class="delPhoto notBlock">X</span>
+                        <label for="foto"></label>
+                        <div>
+                            <img id="img" src="<?= media(); ?>/images/uploads/imageUnavailable.png" style="width: 400px;">
                         </div>
                     </div>
+                    <div class="upimg">
+                        <input type="file" name="foto" id="foto">
+                    </div>
+                    <div id="form_alert"></div>
                 </div>
-                <div class="form-group" style="display: flex; justify-content: space-between;margin-top: 20px;}">
-                    <button type="submit" id="btnSubmit">Registrarse</button>
-                     <button onclick="window.location.href='<?= base_url(); ?>/Productor/productor'">Ir al perfil</button>
-                </div>
+            </div>
+        </div>
+        <div class="form-group" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <button type="submit" id="btnSubmit">Registrarse</button>
+        </div>
+    </form>
 
-            </form>
         </div>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('formProductor');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Aquí puedes hacer lo que quieras con los datos del formulario
+            // Por ejemplo, enviar los datos a través de AJAX o realizar otras operaciones necesarias antes de redireccionar.
+
+            window.location.href = '<?= base_url(); ?>/Productor/productor?' + new Date().getTime();
+        });
+    });
+</script>
+
 <script>
         document.getElementById("formProductor").addEventListener("submit", function (e) {
             e.preventDefault();
