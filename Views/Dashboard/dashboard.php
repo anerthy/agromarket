@@ -25,7 +25,7 @@ headerAdmin($data);
     </ul>
   </div>
   <section>
-    <!-- INICIO FILA UNO -->
+    <!-- INICIO FILA -->
     <div class="row">
       <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2])) { ?>
         <!-- USUARIOS -->
@@ -73,10 +73,6 @@ headerAdmin($data);
           </div>
         <?php } ?>
       <?php } ?>
-    </div>
-    <!-- FIN DE FILA UNO -->
-    <!-- INICIO FILA DOS -->
-    <div class="row">
       <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
         <!-- Productos -->
         <div class="col-md-6 col-lg-3">
@@ -122,11 +118,7 @@ headerAdmin($data);
           </div>
         </div>
       <?php } ?>
-    </div>
-    <!-- FIN DE FILA DOS -->
-    <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
-      <!-- INICIO FILA TRES -->
-      <div class="row">
+      <?php if (in_array($_SESSION['userData']['rol_id'], [1, 2, 4, 5])) { ?>
         <!-- AFILIACION -->
         <div class="col-md-6 col-lg-3">
           <div class="widget-small primary coloured-icon" style="  box-shadow: rgba(7, 7, 7, 0.1) 11px 9px 0px 0px;"><i class="icon fa fa-user-plus fa-3x"></i>
@@ -143,9 +135,9 @@ headerAdmin($data);
             </div>
           </div>
         </div>
-      </div>
-      <!-- FIN DE FILA TRES -->
-    <?php } ?>
+    </div>
+    <!-- FIN DE FILA -->
+  <?php } ?>
   </section>
 </main>
 <?php footerAdmin($data); ?>
