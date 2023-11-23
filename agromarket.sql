@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 15-11-2023 a las 06:56:57
+-- Tiempo de generación: 23-11-2023 a las 17:27:16
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `actividades` (
 --
 
 INSERT INTO `actividades` (`act_id`, `act_nombre`, `act_descripcion`, `act_fecha`, `act_lugar`, `act_categoria`, `act_imagen`, `act_estado`, `act_fec_creacion`, `act_fec_modificacion`, `usr_id`) VALUES
-(1, 'Feria Nicoyana', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-11-15 06:03:52', NULL),
+(1, 'Feria Nicoyana Noviembre', 'Feria de nicoya', '2023-11-30', 'Nicoya', 'Feria', 'img_6bcbc1550baa6a480c0ea2db992c7374.jpg', 'Activo', '2023-10-25 03:25:22', '2023-11-16 20:17:01', NULL),
 (2, 'Feria de emprendedores', 'emprendedores', '2023-12-08', 'SantaCruz', 'Feria', 'img_1f84a9a65000bb513364649b0b3a2131.jpg', 'Activo', '2023-11-15 06:04:27', '2023-11-15 06:04:27', NULL);
 
 -- --------------------------------------------------------
@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `afiliados` (
 
 INSERT INTO `afiliados` (`usr_id`, `per_cedula`, `afl_fec_afiliacion`, `afl_fec_vencimiento`, `afl_estado`, `afl_fec_creacion`, `afl_fec_modificacion`) VALUES
 (1, '504460444', '2023-09-28 06:25:32', '2023-11-30 06:25:32', 'Activo', '2023-09-28 06:25:32', '2023-10-23 03:57:11'),
+(9, '504400644', '2023-11-16 20:12:02', '2023-12-16 20:12:02', 'Activo', '2023-11-16 20:12:02', '2023-11-16 20:12:02'),
 (15, '503020123', '2023-11-15 05:46:27', '2023-12-15 05:46:27', 'Inactivo', '2023-11-15 05:46:27', '2023-11-15 05:51:02');
 
 -- --------------------------------------------------------
@@ -414,10 +415,11 @@ CREATE TABLE IF NOT EXISTS `productores` (
 --
 
 INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`, `pdt_imagen`, `pdt_estado`, `pdt_fec_creacion`, `pdt_fec_modificacion`) VALUES
-(1, '504460444', 'Andres', 'Nicoya', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-20 15:41:41'),
+(1, '504460444', 'Andres', 'Heredia', 'paz.jpg', 'Activo', '2023-09-20 15:41:41', '2023-11-16 19:52:00'),
 (7, '503120432', 'fiorella', 'Brasilito', 'imagen.png', 'Activo', '2023-09-20 15:41:41', '2023-09-30 04:03:33'),
-(13, '504320123', 'estefany', 'Nicoya', 'img_cbb36fba1e45a3cf0fcadb2ef5b03d96.jpg', 'Activo', '2023-11-15 01:13:32', '2023-11-15 01:13:32'),
-(15, '503020123', 'Luisito', 'Nicoya', 'imageUnavailable.png', 'Activo', '2023-11-15 05:30:01', '2023-11-15 06:50:31');
+(13, '504320123', 'estefany', 'Nicoya', 'productora.jpg', 'Activo', '2023-11-15 01:13:32', '2023-11-16 19:50:54'),
+(9, '504400644', 'Aaron Villegas', 'Nicoya', 'pedro.jpg', 'Activo', '2023-11-16 20:09:33', '2023-11-16 20:11:23'),
+(15, '503020123', 'Luisito', 'Nicoya', 'imageUnavailable.png', 'Bloqueado', '2023-11-15 05:30:01', '2023-11-16 20:15:31');
 
 -- --------------------------------------------------------
 
@@ -427,13 +429,13 @@ INSERT INTO `productores` (`usr_id`, `per_cedula`, `pdt_nombre`, `pdt_ubicacion`
 --
 DROP VIEW IF EXISTS `productores_afiliados`;
 CREATE TABLE IF NOT EXISTS `productores_afiliados` (
-`pdt_fec_creacion` timestamp
-,`pdt_fec_modificacion` timestamp
-,`pdt_imagen` varchar(255)
+`usr_id` int
+,`per_cedula` varchar(15)
 ,`pdt_nombre` varchar(50)
 ,`pdt_ubicacion` varchar(100)
-,`per_cedula` varchar(15)
-,`usr_id` int
+,`pdt_imagen` varchar(255)
+,`pdt_fec_creacion` timestamp
+,`pdt_fec_modificacion` timestamp
 );
 
 -- --------------------------------------------------------
@@ -457,7 +459,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `pro_fec_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pro_id`),
   KEY `usr_id` (`usr_id`,`per_cedula`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
@@ -478,7 +480,8 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 (27, 1, '504460444', 'Plátano', 'Se vende', 'Verdura', '600.00', 'img_25b77f7c13ca111480d969045375dcf3.jpg', 'Activo', '2023-10-13 04:58:47', '2023-10-23 03:47:03'),
 (29, 9, '504400644', 'prueba', 'prueba', 'Frutas', '200.00', 'imageUnavailable.png', 'Activo', '2023-11-13 03:29:56', '2023-11-13 03:29:56'),
 (30, 13, '504320123', 'Piña', 'Piña', 'Fruta', '1500.00', 'img_6d44967d338d82f41aba2ad7930e9a33.jpg', 'Activo', '2023-11-15 04:32:02', '2023-11-15 06:00:02'),
-(31, 15, '503020123', 'UVA', 'hh', 'hhh', '0.00', 'imageUnavailable.png', 'Activo', '2023-11-15 05:42:41', '2023-11-15 05:42:41');
+(31, 15, '503020123', 'UVA', 'hh', 'hhh', '0.00', 'imageUnavailable.png', 'Activo', '2023-11-15 05:42:41', '2023-11-15 05:42:41'),
+(32, 9, '504400644', 'pera', 'pera', 'Fruta', '500.00', 'imageUnavailable.png', 'Activo', '2023-11-16 20:13:12', '2023-11-16 20:13:12');
 
 -- --------------------------------------------------------
 
@@ -488,16 +491,16 @@ INSERT INTO `productos` (`pro_id`, `usr_id`, `per_cedula`, `pro_nombre`, `pro_de
 --
 DROP VIEW IF EXISTS `productos_premium`;
 CREATE TABLE IF NOT EXISTS `productos_premium` (
-`per_cedula` varchar(15)
-,`pro_categoria` varchar(50)
+`pro_id` int
+,`usr_id` int
+,`per_cedula` varchar(15)
+,`pro_nombre` varchar(100)
 ,`pro_descripcion` text
+,`pro_categoria` varchar(50)
+,`pro_precio` decimal(10,2)
+,`pro_imagen` varchar(255)
 ,`pro_fec_creacion` timestamp
 ,`pro_fec_modificacion` timestamp
-,`pro_id` int
-,`pro_imagen` varchar(255)
-,`pro_nombre` varchar(100)
-,`pro_precio` decimal(10,2)
-,`usr_id` int
 );
 
 -- --------------------------------------------------------
@@ -559,7 +562,7 @@ INSERT INTO `usuarios` (`usr_id`, `usr_email`, `usr_nombre`, `usr_contrasena`, `
 (1, 'andmejigo12@gmail.com', 'anerthy', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', '', 1, '504460444', 'Activo', '2023-09-19 05:17:02', '2023-10-05 00:48:27'),
 (3, 'admin_paraiso_azul@pa.com', 'aaron', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', '', 1, '50440644', 'Activo', '2023-09-19 05:17:02', '2023-09-20 04:53:00'),
 (10, 'admin@gmail.com', 'admin', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 1, '501230123', 'Activo', '2023-10-05 00:50:23', '2023-10-05 00:50:23'),
-(9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 3, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-13 00:44:20'),
+(9, 'aaron1314@gmail.com', 'aaroncito', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 4, '504400644', 'Activo', '2023-10-04 01:44:50', '2023-11-16 20:12:02'),
 (7, 'fiorella@gmail.com', 'fiorella', '57cd4391d4968fbd69f08fc123f230c439361e9dcf81469c1bb1216ab8eba719', NULL, 1, '503120432', 'Activo', '2023-09-30 04:01:08', '2023-09-30 04:01:24'),
 (15, 'luimora2@gmail.com', 'luismora', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 4, '503020123', 'Activo', '2023-11-15 05:28:48', '2023-11-15 05:46:27'),
 (13, 'estefany.marin@crccoding.com', 'estefany', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', NULL, 5, '504320123', 'Activo', '2023-11-14 05:13:52', '2023-11-15 05:04:18');
