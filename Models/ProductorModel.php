@@ -68,7 +68,7 @@ class ProductorModel extends Mysql
 				$this->strCedula,
 				$this->strNombre,
 				$this->strUbicacion,
-				$this->strImage
+				'chambeadores.jpg'
 			);
 			$request_insert = $this->insert($query_insert, $arrData);
 
